@@ -1,8 +1,32 @@
 package utility
 
-import "gorm.io/gorm"
+import (
+    "fmt"
+    "log"
+    "gorm.io/driver/mysql"
+    "gorm.io/gorm"
+)
 var DB *gorm.DB
+
 func DatabaseInit() {
-    //TODO Finish this!
+    username := Config.GetString("database.username")
+    password := Config.GetString("database.password")
+    address := Config.GetString("database.address")
+    dbname := Config.GetString("database.dbname")
+
+    dsn := fmt.Sprintf("%v:%v@tcp(%v)/%v", username, password, address, dbname)
+    var err error
+    DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
+    if err != nil {
+        log.Fatalln("Database Connection Error!")
+        panic(err)
+    }
+    //Auto Mirage
+    // TODO: Insert more list
+    // err = DB.AutoMigrate(&model.User{})
+    // if err != nil {
+    //     log.Fatalln("Database Create Lists Error!")
+    //     panic(err)
+    // }
 }
 
