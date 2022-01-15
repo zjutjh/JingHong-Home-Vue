@@ -1,0 +1,12 @@
+server:
+    port: "8888" # type: string
+    jwt:
+        expires: 48 # hours
+        issuer: "string"
+        secret: "string"
+
+database:
+    username: "username"
+    password: "password"
+    address: "address:port"
+    dbname: "databaseName"
