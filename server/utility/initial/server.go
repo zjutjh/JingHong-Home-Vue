@@ -1,4 +1,4 @@
-package utility
+package initial
 
 import (
 	"context"
@@ -7,17 +7,17 @@ import (
 	"os"
 	"os/signal"
 	"time"
-	"zjutjh/Join-Us/router"
+    "github.com/gin-gonic/gin"
 )
 
-func RunServer(){
+func RunServer(router *gin.Engine){
     var server *http.Server
     var port string = ":" + Config.GetString("server.port")
     log.Println("Running Server at", port)
 
     server = &http.Server{
         Addr: port,
-        Handler: router.Router,
+        Handler: router,
     }
 
     go func () {

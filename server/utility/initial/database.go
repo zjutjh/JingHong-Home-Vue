@@ -1,11 +1,10 @@
-package utility
+package initial
 
 import (
 	"fmt"
 	"log"
 	"zjutjh/Join-Us/model"
-
-	"gorm.io/driver/mysql"
+    "gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 var DB *gorm.DB
