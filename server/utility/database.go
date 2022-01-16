@@ -1,10 +1,12 @@
 package utility
 
 import (
-    "fmt"
-    "log"
-    "gorm.io/driver/mysql"
-    "gorm.io/gorm"
+	"fmt"
+	"log"
+	"zjutjh/Join-Us/model"
+
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 var DB *gorm.DB
 
@@ -23,10 +25,10 @@ func DatabaseInit() {
     }
     //Auto Mirage
     // TODO: Insert more list
-    // err = DB.AutoMigrate(&model.User{})
-    // if err != nil {
-    //     log.Fatalln("Database Create Lists Error!")
-    //     panic(err)
-    // }
+    err = DB.AutoMigrate(&model.NormalForm{})
+    if err != nil {
+        log.Fatalln("Database Create Lists Error!")
+        panic(err)
+    }
 }
 

@@ -3,10 +3,10 @@ package model
 type NormalForm struct {
     // 招新季招新申请表
     Name string
-    ID string `gorm: "primaryKey"`
+    StuID string `gorm: "primaryKey"`
     Gender uint8
-    School uint8
-    Department uint8
+    College uint8
+    Campus uint8
     Phone string
     QQ string
     Region uint8
@@ -19,16 +19,16 @@ type NormalForm struct {
 type DeveloperForm struct {
     // 开发部招新申请表
     Name string
-    ID string `gorm: "primaryKey"`
+    StuID string `gorm: "primaryKey"`
     Gender uint8
-    School uint8
-    Department uint8
+    College uint8
+    Campus uint8
     Phone string
     QQ string
     Region uint8
     Profile string
     Feedback string
     Ability string
-    // ? How to restroe a array? Maybe JSON?
+    // ? How to restore a array? Maybe JSON?
     AbilityOther string
 }
