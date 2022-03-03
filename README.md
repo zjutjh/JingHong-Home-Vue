@@ -2,17 +2,30 @@
 The repository of Join Us page.
 
 “加入我们”页面仓库。
+## 使用后端代码进行测试
+### 配置环境
+1. `golang`环境
+2. `mysql`环境：需要新建一个用户，给予其一定的权限，新建一个数据库。
 
+### 修改配置
+clone仓库后
+`cd config`
+
+并且
+`cp config.example.yaml config.yaml`
+
+修改`config.yaml`文件。
+**注意**：**不**要修改`.gitignore`文件避免错误上传`config`文件造成重要信息泄漏。
+
+### 启动服务
+在根目录下执行：`go run main.go`
+如果您正确配置了环境以及`config`，服务器将在指定的端口正常运行。
 ## API
 ### 数据对照表
 #### gender
 0 male
 1 female
 2 other
-#### region
-0 朝晖校区
-1 屏峰校区
-2 莫干山校区
 
 ### 1. 招新季招新表
 提交一个新的申请表。
