@@ -25,7 +25,7 @@ func DatabaseInit() {
 	}
 	//Auto Mirage
 	// TODO: Insert more list
-	err = DB.AutoMigrate(&model.NormalForm{})
+	err = DB.AutoMigrate(&model.NormalForm{}, &model.DeveloperForm{}, &model.Ability{})
 	if err != nil {
 		log.Fatalln("Database Create Lists Error!")
 		panic(err)
