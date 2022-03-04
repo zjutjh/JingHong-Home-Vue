@@ -24,13 +24,18 @@ clone仓库后
 ### 数据对照表
 #### gender
 0 male
+
 1 female
+
 2 other
 
 ### 1. 招新季招新表
 提交一个新的申请表。
+
 url: `/api/new_normal`
+
 method:`POST`
+
 data:
 - name : string
 - stu_id: string
@@ -48,7 +53,9 @@ data:
 
 ### 2. 开发部长期招新表
 url:`/api/new_develop`
+
 method:`POST`
+
 data:
 - name : string 
 - stu_id: string
@@ -70,9 +77,15 @@ data:
 
 ### 3. 后台操作: 获取所有报名表
 在Header的Authorization中传规定的密钥。
+
 url:`/api/get_forms/[?]`
+
 ? == normal 获取招新季报名表
+
 ? == develop 获取技术部报名表
-method:'GET`
+
+method:`GET`
+
 return:
+
 是一个列表，内部结构同上述结构一致。
