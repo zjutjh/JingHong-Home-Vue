@@ -8,22 +8,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// tmd 这真的是我写的代码？
-// type NewNormalFormData struct {
-// 	Name     string `json:"name"`
-// 	StuID    string `json:"stu_id"`
-// 	Gender   uint8  `json:"gender"`
-// 	College  uint8  `json:"college"`
-// 	Campus   uint8  `json:"campus"`
-// 	Phone    string `json:"phone"`
-// 	QQ       string `json:"qq"`
-// 	Region   uint8  `json:"region"`
-// 	Want1    uint8  `json:"want1"`
-// 	Want2    uint8  `json:"want2"`
-// 	Profile  string `json:"profile"`
-// 	Feedback string `json:"feedback"`
-// }
-
 func NewNormalForm(c *gin.Context) {
 	postData := model.NormalForm{}
 	err := c.ShouldBindJSON(&postData)
@@ -76,6 +60,7 @@ func NewDevelopForm(c *gin.Context) {
 	if aff.RowsAffected == 0 {
 		utility.ResponseError(c, "Had been Posted")
 	} else {
+		utility.SendEmail(initial.Config.Email.Receiver)
 		utility.ResponseSuccess(c, nil)
 	}
 }

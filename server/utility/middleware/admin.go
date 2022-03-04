@@ -9,7 +9,7 @@ import (
 
 func IsAdmin(c *gin.Context) {
 	Secret := c.GetHeader("Authorization")
-	if Secret == initial.Config.GetString("secret") {
+	if Secret == initial.Config.Secret {
 		c.Next()
 	} else {
 		utility.ResponseError(c, "You are not admin")

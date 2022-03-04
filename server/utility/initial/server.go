@@ -13,7 +13,7 @@ import (
 
 func RunServer(router *gin.Engine) {
 	var server *http.Server
-	var port string = ":" + Config.GetString("server.port")
+	var port string = ":" + Config.Server.Port
 	log.Println("Running Server at", port)
 
 	server = &http.Server{

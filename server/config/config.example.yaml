@@ -12,3 +12,12 @@ database:
     dbname: "databaseName"
 
 secret: "something"
+
+email:
+    sender: "example@example.com"
+    pwd: "your email token"
+    smtp_addr: "smtp.qq.com"
+    smtp_port: 25
+    receiver: "another email"
+
+env: "dev"  # 环境 dev for 开发环境; pro for 生产环境
