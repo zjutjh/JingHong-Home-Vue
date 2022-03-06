@@ -56,12 +56,20 @@ func NewDevelopForm(c *gin.Context) {
 		utility.ResponseError(c, "Json error")
 		// fmt.Println(err)
 	}
-	aff := initial.DB.Create(&data)
-	if aff.RowsAffected == 0 {
-		utility.ResponseError(c, "Had been Posted")
+	raw_data := model.DeveloperForm{}
+	raw_data.StuID = data.StuID
+	initial.DB.Where("stu_id = ?", data.StuID).First(&raw_data)
+	if (raw_data == model.DeveloperForm{}) {
+		initial.DB.Save(&data)
 	} else {
-		utility.SendEmail(initial.Config.Email.Receiver)
-		utility.ResponseSuccess(c, nil)
+		aff := initial.DB.Create(&data)
+
+		if aff.RowsAffected == 0 {
+			utility.ResponseError(c, "Had been Posted")
+		} else {
+			utility.SendEmail(initial.Config.Email.Receiver)
+			utility.ResponseSuccess(c, nil)
+		}
 	}
 }
 
