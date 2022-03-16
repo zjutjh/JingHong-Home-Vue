@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-const props = defineProps(['pageNow'])
+import { RouterLink } from 'vue-router';
+import { usePageStore } from '../../stores/pages';
+const store = usePageStore();
+// const props = defineProps(['pageNow'])
+
 // Should use State Manager.
 // Should use one var to include following vars.
 const initialScrollTop = ref(0);
@@ -8,13 +12,14 @@ const show = ref(true);
 const hide = ref(false);
 
 const pages = [
-  { name: "首页", href: "index.html" },
-  { name: "我们的故事", href: "story.html" },
-  { name: "我们的产品", href: "product.html" },
-  { name: "我们的部门", href: "department.html" },
-  { name: "加入我们", href: "join.html" },
+  { name: "首页", href: "/index" },
+  { name: "我们的故事", href: "/story" },
+  { name: "我们的产品", href: "/product" },
+  { name: "我们的部门", href: "/department" },
+  { name: "加入我们", href: "/join" },
 ];
 function scrolling() {
+  // alert("Scrolling")
   let scrollTop = window.pageYOffset
     || document.documentElement.scrollTop
     || document.body.scrollTop;
@@ -23,9 +28,11 @@ function scrolling() {
   if (scrollStep <= 0) {
     show.value = true;
     hide.value = false;
+    // console.log("Scrolling Up")
   } else {
+    // console.log("Scrolling Down")
     show.value = false;
-    show.value = true;
+    hide.value = true;
   }
 }
 
@@ -38,16 +45,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-bind:class="{ topShow: show, topHide: hide }">
-    <img src="/top/logo.png" />
+  <div :class="{ topShow: show, topHide: hide }">
+    <img src="photo/top/logo.png" />
     <nav>
       <div class="nav-list">
         <div
           v-for="page, index in pages"
-          :class="props.pageNow == index ? 'page_selected' : 'page_unselected'"
+          :class="store.pageNow == index ? 'page_selected' : 'page_unselected'"
         >
           <!-- TODO : Should not us a. -->
-          <a :href="page.href" style="height: 100%">{{ page.name }}</a>
+          <!-- <a :href="page.href" style="height: 100%">{{ page.name }}</a> -->
+          <router-link :to="page.href">{{ page.name }}</router-link>
         </div>
       </div>
     </nav>

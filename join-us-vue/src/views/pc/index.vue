@@ -1,11 +1,18 @@
 <script setup lang="ts">
-import NavBar from '../../components/pc/NavBar.vue';
+import { usePageStore } from '../../stores/pages';
+// import NavBar from '../../components/pc/NavBar.vue';
 import Start from '../../components/pc/Start.vue';
 import Footer from '../../components/pc/Footer.vue';
-
+import { onMounted } from 'vue';
+const store = usePageStore();
+onMounted(
+  () => {
+    store.pageNow = 0;
+  }
+)
 </script>
 <template>
-  <NavBar page-now="0" />
+  <!-- <NavBar page-now="0" /> -->
   <Start />
   <div class="introduce">
     <img class="introduce-img2" src="/index/taiquandao.png" />
@@ -29,18 +36,19 @@ import Footer from '../../components/pc/Footer.vue';
     <div class="img"></div>
 
     <div class="content">
-      <a href="story.html">
+      <router-link to="/story">
         <div class="story-title">
           <div>我们的故事</div>
           <div class="right-arrow"></div>
         </div>
-      </a>
+      </router-link>
       <div class="story-content">因梦想，我们齐聚一堂；因使命，我们同舟共济。</div>
     </div>
   </div>
 
   <div class="end">
     <div class="end-1">
+      <!-- TODO Wechat contact -->
       <a>
         <div class="follow-img1"></div>
       </a>
@@ -57,9 +65,9 @@ import Footer from '../../components/pc/Footer.vue';
 
     <div class="end-recruit">
       <div class="title-font">精弘招聘</div>
-      <a href="join.html">
+      <router-link to="/join">
         <div class="recruit-button">加入我们</div>
-      </a>
+      </router-link>
     </div>
 
     <div class="loading">
@@ -67,9 +75,8 @@ import Footer from '../../components/pc/Footer.vue';
         <img src="/index/2021.png" />
       </div>
       <div class="loading-border">
-        <!-- TODO What is loading-width? -->
         <!-- <div id="loading-img" class="loading-img" v-bind:style="{ left: loading_width + '%' }"></div> -->
-        <div id="loading-img" class="loading-img" style="{ left: 50 + '%' }"></div>
+        <div id="loading-img" class="loading-img" style="{ left: -100 + '%' }"></div>
       </div>
       <div class="loading-text">
         <img src="/index/loading.png" />
