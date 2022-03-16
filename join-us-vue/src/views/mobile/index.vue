@@ -1,0 +1,1 @@
+<template>This is mobile index page</template>
