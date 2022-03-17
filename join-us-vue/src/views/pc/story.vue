@@ -1,22 +1,20 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onBeforeUnmount, onMounted, reactive, ref } from 'vue';
 import { usePageStore } from '../../stores/pages';
 const store = usePageStore();
-onMounted(() => {
-  store.pageNow = 1;
-  document.title = "我们的故事";
-});
+var timer1: number;
+var timer2: number;
 
 const yixing_imgs = [
   "/photo/yixing/1.jpg",
   "/photo/yixing/2.jpg",
   "/photo/yixing/3.jpg",
 ];
-const yixing_classes = [
+const yixing_classes = reactive([
   "left",
   "center",
   "right",
-];
+]);
 const yuren_imgs = [
   "/photo/wangan/1.jpg",
   "/photo/wangan/2.jpg",
@@ -24,13 +22,16 @@ const yuren_imgs = [
   "/photo/wangan/4.jpg",
   "/photo/wangan/5.jpg",
 ];
-const yuren_classes = [
+const yuren_classes = reactive([
   "left",
   "center",
   "right",
   "after1",
   "after2",
-];
+]);
+const shenghuo_seen = ref(true);
+const shenghuo_selected = ref(0);
+const jiyu_classes = reactive(["jiyuleft", "jiyucenter", "jiyuright", "jiyuafter"]);
 
 const photos = [
   [170, 26, 164, 102, "/photo/story/shenghuo/1.jpg", 3],
@@ -86,34 +87,123 @@ const persons = [
   },
 ];
 
+
+function yixing_before() {
+  clearInterval(timer1);
+  let i = 0;
+  timer1 = setInterval(() => {
+    if (i > 0) {
+      yixing_before();
+    }
+    i++;
+  }, 1500);
+  let last = yixing_classes.pop() as string;
+  yixing_classes.unshift(last);
+}
+
+function yixing_after() {
+  clearInterval(timer1);
+  let i = 0;
+  timer1 = setInterval(() => {
+    if (i > 0) {
+      yixing_before();
+    }
+    i++;
+  }, 1500);
+
+  let first = yixing_classes.shift() as string;
+  yixing_classes.push(first);
+}
 function changePicture(e: MouseEvent) {
-  console.log("changePicture");
+  if (((e.target as HTMLElement).parentNode as HTMLElement).classList.contains("left")) {
+    yixing_after();
+  } else if (((e.target as HTMLElement).parentNode as HTMLElement).classList.contains("right")) {
+    yixing_before();
+  } else {
+    return false;
+  }
 }
-function yuren_after() {
-  console.log("yuren_after");
-}
+
 function yuren_before() {
-  console.log("yuren_before");
+  clearInterval(timer2);
+  let i = 0;
+  timer2 = setInterval(() => {
+    if (i > 0) {
+      yuren_after();
+    }
+    i++;
+  }, 1500);
+  let last = yuren_classes.pop() as string;
+  yuren_classes.unshift(last);
 }
+
+function yuren_after() {
+  clearInterval(timer2);
+  let i = 0;
+  timer2 = setInterval(() => {
+    if (i > 0) {
+      yuren_before();
+    }
+    i++;
+  }, 1500);
+  let first = yuren_classes.shift() as string;
+  yuren_classes.push(first);
+}
+
 function toggle_on(n: number) {
-  console.log("toggle_on");
+  // console.log("toggle_on");
+  shenghuo_seen.value = true;
+  shenghuo_selected.value = n;
 }
 function toggle_off() {
   // console.log("toggle_off");
   shenghuo_seen.value = false;
 }
-function jiyu_after() {
-  console.log("jiyu_after");
-}
-
+var index = 3;
 function jiyu_before() {
-  console.log("jiyu_before");
+  // console.log("jiyu_before");
+  jiyu_classes[index] = "jiyubefore";
+  let last = jiyu_classes.pop() as string;
+  jiyu_classes.unshift(last);
+  index = (index + 1) % 4;
+
+  setTimeout(() => {
+    let last = jiyu_classes.shift() as string;
+    jiyu_classes.unshift(last);
+    jiyu_classes[index] = "jiyuafteractive";
+  }, 500);
 }
 
-const shenghuo_seen = ref(true);
-const shenghuo_selected = ref(0);
-const jiyu_classes = ["jiyuleft", "jiyucenter", "jiyuright", "jiyuafter"];
+function jiyu_after() {
+  // console.log("jiyu_after");
+  let last = jiyu_classes.shift() as string;
+  jiyu_classes.unshift(last);
+  jiyu_classes[index] = "jiyubeforeactive";
+  setTimeout(() => {
+    jiyu_classes[index] = "jiyuafter";
+    let last = jiyu_classes.shift() as string;
+    jiyu_classes.push(last);
+    index = (index + 3) % 4;
+  }, 10);
+}
 
+
+
+
+onMounted(() => {
+  store.pageNow = 1;
+  document.title = "我们的故事";
+  timer1 = setInterval(() => {
+    yixing_before();
+  }, 3000);
+  timer2 = setInterval(() => {
+    yixing_before();
+  }, 3000);
+});
+onBeforeUnmount(() => {
+  clearInterval(timer1);
+  clearInterval(timer2);
+});
 </script>
 <template>
   <div id="body">
@@ -258,17 +348,17 @@ const jiyu_classes = ["jiyuleft", "jiyucenter", "jiyuright", "jiyuafter"];
         </div>
         <div></div>
       </div>
-      <div class="jiyu-left" @click="jiyu_after"></div>
-      <div class="jiyu-right" @click="jiyu_before"></div>
+      <div class="jiyu-left" @click.native="jiyu_after"></div>
+      <div class="jiyu-right" @click.native="jiyu_before"></div>
     </div>
 
     <div class="product">
-      <a href="product.html">
+      <router-link to="/product">
         <div class="product-button">
           我们的产品
           <img src="/photo/svg/右箭头.svg" style="float: right; transform: scale(0.5)" />
         </div>
-      </a>
+      </router-link>
     </div>
     <div class="footer">©2021 浙江工业大学-精弘网络</div>
   </div>
