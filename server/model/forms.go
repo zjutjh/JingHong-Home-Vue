@@ -29,16 +29,15 @@ type DeveloperForm struct {
 	Profile  string `gorm:"not null" json:"profile"`
 	Feedback string `gorm:"not null" json:"feedback"`
 	// Ability  string `gorm:"not null" json:"ability"`
-	// ? How to restore a array? Maybe JSON?
 	AbilityOther string `gorm:"not null" json:"ability_other"`
 	// AbilityID    int     `json:"-"`
 	Ability Ability `json:"ability"`
 }
 
 type Ability struct {
-	DeveloperFormID string `json:"-"`
-	Api             bool   `json:"api"`
-	FrontEnd        bool   `json:"front_end"`
-	Document        bool   `json:"document"`
-	Git             bool   `json:"git"`
+	DeveloperFormID uint `json:"-"`
+	Api             bool `json:"api"`
+	FrontEnd        bool `json:"front_end"`
+	Document        bool `json:"document"`
+	Git             bool `json:"git"`
 }
