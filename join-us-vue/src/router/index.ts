@@ -19,6 +19,13 @@ const routes = [
       navbar: () => NavBarPC,
     }
   },
+  {
+    path: '/join',
+    components: {
+      default: () => import('../views/pc/join.vue'),
+      navbar: () => NavBarPC,
+    }
+  },
   // 移动端
   { path: '/m', redirect: '/m/index' },
   { path: '/m/index', component: () => import('../views/mobile/index.vue') },
