@@ -6,11 +6,11 @@ import { onMounted } from 'vue';
 const store = usePageStore();
 const router = useRouter();
 function To_recruit() {
-  router.push('/join/recruit');
+  router.push('/recruit');
 }
 
 function To_long() {
-  router.push('/join/recruit_long');
+  router.push('/recruit_long');
 }
 
 onMounted(() => {
@@ -28,11 +28,11 @@ onMounted(() => {
           <div class="join_label">最新动态</div>
           <div class="join_code_outlines">
             <div class="join_code-outline">
-              <div class="join_code" style="background: url(/product/11.png) center/cover"></div>
+              <div class="join_code" style="background: url(/photo/product/11.png) center/cover"></div>
               <div>精弘网络</div>
             </div>
             <div class="join_code_outline">
-              <div class="join_code" style="background: url(/product/10.png) center/cover"></div>
+              <div class="join_code" style="background: url(/photo/product/10.png) center/cover"></div>
               <div>精小弘在线</div>
             </div>
           </div>
@@ -120,7 +120,7 @@ template {
   background-color: aqua;
   /* margin: 0px auto 20px; */
 
-  background: url(/haibao/shouji.jpg) center/cover;
+  background: url(photo/haibao/diannao.jpg) center/cover;
 }
 .join_label {
   width: 100px;
@@ -201,7 +201,7 @@ template {
   width: 694px;
   height: 229px;
   margin: 20px auto;
-
+  background: url(photo/haibao/structPc.png) center/cover;
   background-color: aqua;
 }
 </style>

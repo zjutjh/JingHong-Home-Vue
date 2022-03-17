@@ -26,6 +26,13 @@ const routes = [
       navbar: () => NavBarPC,
     }
   },
+  {
+    path: '/recruit',
+    components: {
+      default: () => import('../views/pc/join/recruit.vue'),
+      navbar: () => NavBarPC,
+    }
+  },
   // 移动端
   { path: '/m', redirect: '/m/index' },
   { path: '/m/index', component: () => import('../views/mobile/index.vue') },
