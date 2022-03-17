@@ -1,134 +1,116 @@
 <script setup lang="ts">
-import { onMounted, reactive, watch } from "vue";
-import Footer from "../../../components/pc/Footer.vue"
-import { useRouter } from "vue-router";
-import { usePageStore } from "../../../stores/pages";
-import { INormalForm } from "../../../types/forms";
-import { isPhone, isStuId } from "../../../utils/valid";
-import { NormalForm } from "../../../apis/forms";
-import { regions, choices } from '../../../utils/consts';
-const store = usePageStore();
+import Footer from '../../../components/pc/Footer.vue';
+import { useRouter } from 'vue-router';
+import { DevelopForm } from '../../../apis/forms';
+import { isPhone, isStuId } from '../../../utils/valid';
+import { IDevelopForm } from '../../../types/forms';
+import { reactive } from 'vue';
+import { regions } from '../../../utils/consts';
 const router = useRouter();
-const form = reactive(<INormalForm>{
-  name: "",
-  stu_id: "",
+const form = reactive(<IDevelopForm>{
+  name: '',
+  college: '',
   gender: 0,
-  college: "",
-  campus: "",
-  phone: "",
-  qq: "",
-  region: "",
-  profile: "",
-  feedback: "",
-  want1: "",
-  want2: "",
-});
+  phone: '',
+  stu_id: '',
+  qq: '',
+  campus: '',
+  region: '',
+  ability: {
+    api: false,
+    front_end: false,
+    document: false,
+    git: false,
+  },
+  ability_other: '',
+})
 
-function regionChanged() {
-  form.want1 = "";
-  form.want2 = "";
-}
 function returnClicked() {
   router.push('/join');
 }
+
 async function submitClicked() {
   if (!isPhone(form.phone)) {
-    alert("电话号码有误");
+    alert("手机号错误")
     return;
   }
   if (!isStuId(form.stu_id)) {
-    alert("学号输入有误");
+    alert("学号错误")
     return;
   }
-  // TODO submit
-  var res = await NormalForm(form);
+  var res = await DevelopForm(form);
   if (res.message == "ok") {
-    alert("提交成功!");
-    router.push('/join');
+    alert("提交成功");
+    returnClicked();
+    return;
   } else {
     alert(res.message);
+    return;
   }
 }
-
-onMounted(() => {
-  store.pageNow = 4;
-})
-
-
 </script>
-
 <template>
-  <!-- ! TODO 测试数据, 移除这一行. -->
+  <!-- TODO remove this test. -->
   {{ form }}
   <div style="margin-top: 10px;"></div>
-  <div class="des_label_1">报名表</div>
-  <!-- <div class="box"> -->
+  <div class="label_1">开发部长期招新</div>
   <div class="basic_info">
     <div class="item_name">姓名</div>
     <input class="item_content" v-model="form.name" />
     <div class="item_name">专业</div>
-    <input class="item_content" v-model="form.campus" />
+    <input class="item_content" v-model="form.college" />
     <div class="item_name">性别</div>
-    <!-- <div class="item_content" ></div> -->
     <select class="item_content" v-model="form.gender">
       <option value="0">男</option>
       <option value="1">女</option>
       <option value="2">其他</option>
     </select>
-
     <div class="item_name">联系电话</div>
     <input class="item_content" v-model="form.phone" />
     <div class="item_name">学号</div>
     <input class="item_content" v-model="form.stu_id" />
     <div class="item_name">QQ</div>
     <input class="item_content" v-model="form.qq" />
+
     <div class="item_name">学院</div>
-    <input class="item_content" v-model="form.college" />
+    <input class="item_content" v-model="form.campus" />
     <div class="item_name">校区</div>
-    <select class="item_content" v-model="form.region" @change="regionChanged">
-      <option style="display: none;">选择后显示志愿</option>
+    <select class="item_content" v-model="form.region">
+      <!-- <option value="0" style="display: none;">选择校区</option> -->
       <option v-for="region in regions" :value="region">{{ region }}</option>
     </select>
   </div>
   <div class="other_info">
-    <div
-      style="padding: 20px 0;border-bottom: 1px black solid;display: flex;justify-content: space-between;"
-    >
-      <div class="item_name">第一志愿</div>
-      <select class="item_content" v-model="form.want1" :disabled="(form.region == '')">
-        <!-- <option style="display: none;">请先选择志愿</option> -->
-        <option
-          v-for="(item) in choices[regions.indexOf(form.region)]"
-          :value="item"
-          :disabled="'disabled' ? item == form.want2 : 'true'"
-        >{{ item }}</option>
-      </select>
-
-      <div class="item_name">第二志愿</div>
-      <select class="item_content" v-model="form.want2" :disabled="(form.region == '')">
-        <!-- <option style="display: none;">请先选择志愿</option> -->
-        <option
-          v-for="item in choices[regions.indexOf(form.region)]"
-          :value="item"
-          :disabled="'disabled' ? item == form.want1 : 'true'"
-        >{{ item }}</option>
-      </select>
+    <div class="label_2">必要能力勾选</div>
+    <div style="padding-bottom: 20px;border-bottom: 1px black solid;">
+      <div class="capability_1">
+        <div>
+          <input type="checkbox" v-model="form.ability.api" />能够独立开发api
+        </div>
+        <div>
+          <input type="checkbox" v-model="form.ability.front_end" />能够使用前端框架
+        </div>
+        <div>
+          <input type="checkbox" v-model="form.ability.document" />能够独立撰写说明文档
+        </div>
+        <div>
+          <input type="checkbox" v-model="form.ability.git" />能够使用git进行团队协作交互
+        </div>
+      </div>
+      <div class="label_2">其他能力</div>
+      <input class="capability_2" v-model="form.ability_other" />
     </div>
-    <div class="des_label_2">来一段简单的自我介绍吧！</div>
-    <input class="capability_2" v-model="form.profile" />
-
-    <div class="des_label_2">最后，有什么想对精弘网络说的话，可以在这里畅所欲言哦~</div>
+    <div class="label_2">有什么想对开发部说的话，可以在这里告诉我们</div>
     <input class="capability_2" v-model="form.feedback" />
   </div>
-  <div style="display:flex; center">
-    <!-- TODO: 缺少样式 -->
+  <div style="display:flex;">
+    <!-- TODO no style for this -->
     <div class="button1" @click="returnClicked">返回</div>
     <div class="button1" @click="submitClicked">提交</div>
   </div>
   <!-- </div> -->
-  <Footer></Footer>
+  <Footer />
 </template>
-
 <style>
 template {
   min-width: 900px;

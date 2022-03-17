@@ -33,6 +33,15 @@ const routes = [
       navbar: () => NavBarPC,
     }
   },
+  {
+    path: '/recruit_long',
+    components: {
+      default: () => import('../views/pc/join/recruitDevelop.vue'),
+      navbar: () => NavBarPC,
+    }
+  },
+
+
   // 移动端
   { path: '/m', redirect: '/m/index' },
   { path: '/m/index', component: () => import('../views/mobile/index.vue') },
