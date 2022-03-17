@@ -5,6 +5,7 @@ import { useRouter } from "vue-router";
 import { usePageStore } from "../../../stores/pages";
 import { INormalForm } from "../../../types/forms";
 import { isPhone, isStuId } from "../../../utils/valid"
+import { NormalForm } from "../../../apis/forms"
 const store = usePageStore();
 const router = useRouter();
 const form = reactive(<INormalForm>{
@@ -38,19 +39,27 @@ function regionChanged() {
   form.want2 = "";
 }
 function returnClicked() {
-  router.push('/join')
+  router.push('/join');
 }
-function submitClicked() {
+async function submitClicked() {
   if (!isPhone(form.phone)) {
-    alert("电话号码有误")
+    alert("电话号码有误");
     return;
   }
   if (!isStuId(form.stu_id)) {
-    alert("学号输入有误")
+    alert("学号输入有误");
     return;
   }
   // TODO submit
+  var res = await NormalForm(form);
+  if (res.message == "ok") {
+    alert("提交成功!");
+    router.push('/join');
+  } else {
+    alert(res.message);
+  }
 }
+
 onMounted(() => {
   store.pageNow = 4;
 })
@@ -74,6 +83,7 @@ onMounted(() => {
     <select class="item_content" v-model="form.gender">
       <option value="0">男</option>
       <option value="1">女</option>
+      <option value="2">跨性别</option>
     </select>
 
     <div class="item_name">联系电话</div>
@@ -115,10 +125,10 @@ onMounted(() => {
       </select>
     </div>
     <div class="des_label_2">来一段简单的自我介绍吧！</div>
-    <div class="capability_2" contenteditable="true"></div>
+    <input class="capability_2" v-model="form.profile" />
 
     <div class="des_label_2">最后，有什么想对精弘网络说的话，可以在这里畅所欲言哦~</div>
-    <div class="capability_2" contenteditable="true"></div>
+    <input class="capability_2" v-model="form.feedback" />
   </div>
   <div style="display:flex; center">
     <!-- TODO: 缺少样式 -->

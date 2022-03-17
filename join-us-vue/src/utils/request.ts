@@ -1,10 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { ResponseType } from '../types/apis'
-// const request = axios.create({
-//     baseURL: 'http://127.0.0.1:8989',
-// })
 const instance = axios.create({
-  baseURL: 'http://127.0.0.1:8989'
+  baseURL: 'http://127.0.0.1:8888'
 })
 
 const request = async <T = any>(config: AxiosRequestConfig): Promise<ResponseType<T>> => {
