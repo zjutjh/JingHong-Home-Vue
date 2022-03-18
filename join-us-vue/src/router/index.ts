@@ -42,6 +42,13 @@ const routes = [
   {
     path: '/recruit_long',
     components: {
+      default: () => import('../views/pc/join/recruitLong.vue'),
+      navbar: () => NavBarPC,
+    }
+  },
+  {
+    path: '/recruit_develop',
+    components: {
       default: () => import('../views/pc/join/recruitDevelop.vue'),
       navbar: () => NavBarPC,
     }
@@ -64,6 +71,27 @@ const routes = [
       navbar: () => NavBarMob,
     },
   },
+  {
+    path: '/m/recruit',
+    components: {
+      default: () => import('../views/mobile/join/recruit.vue'),
+      navbar: () => NavBarMob,
+    },
+  },
+  {
+    path: '/m/recruit_long',
+    components: {
+      default: () => import('../views/mobile/join/recruitLong.vue'),
+      navbar: () => NavBarMob,
+    },
+  },
+  {
+    path: '/m/recruit_develop',
+    components: {
+      default: () => import('../views/mobile/join/recruitDevelop.vue'),
+      navbar: () => NavBarMob,
+    },
+  },
   // 404 
   { path: '/:pathMatch(.*)*', name: '404', redirect: '/index', }
 ]
@@ -73,8 +101,9 @@ const router = createRouter(
     history: createWebHistory(),
     routes,
   },
-)
+);
 
+// 全局导航守卫
 router.beforeEach((to, from, next) => {
 
   if (isMobile()) {
