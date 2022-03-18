@@ -26,6 +26,13 @@ const routes = [
     }
   },
   {
+    path: '/product',
+    components: {
+      default: () => import('../views/pc/product.vue'),
+      navbar: () => NavBarPC,
+    }
+  },
+  {
     path: '/join',
     components: {
       default: () => import('../views/pc/join.vue'),
