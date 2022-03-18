@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { RouterLink } from 'vue-router';
+import router from '../../router';
 import { usePageStore } from '../../stores/pages';
 const store = usePageStore();
 // const props = defineProps(['pageNow'])
@@ -36,17 +37,22 @@ function scrolling() {
   }
 }
 
+function logoClicked() {
+  router.push('/index');
+}
+
 onMounted(() => {
   initialScrollTop.value = window.pageYOffset
     || document.documentElement.scrollTop
     || document.body.scrollTop;
   window.addEventListener("scroll", scrolling);
 })
+
 </script>
 
 <template>
   <div :class="{ topShow: show, topHide: hide }">
-    <img src="photo/top/logo.png" />
+    <img src="photo/top/logo.png" @click.native="logoClicked" />
     <nav>
       <div class="nav-list">
         <div

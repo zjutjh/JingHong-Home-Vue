@@ -15,7 +15,7 @@ onMounted(
   <!-- <NavBar page-now="0" /> -->
   <Start />
   <div class="introduce">
-    <img class="introduce-img2" src="/index/taiquandao.png" />
+    <img class="introduce-img2" src="/photo/index/taiquandao.png" />
     <div class="introduce-content">
       <div class="title">
         <span>精弘网络⼁Jinghong Union</span>
@@ -30,7 +30,7 @@ onMounted(
         <br />
       </div>
     </div>
-    <img class="introduce-img1" src="/index/muqiu.png" />
+    <img class="introduce-img1" src="/photo/index/muqiu.png" />
   </div>
   <div class="story">
     <div class="img"></div>
@@ -72,14 +72,14 @@ onMounted(
 
     <div class="loading">
       <div class="loading-text">
-        <img src="/index/2021.png" />
+        <img src="/photo/index/2021.png" />
       </div>
       <div class="loading-border">
         <!-- <div id="loading-img" class="loading-img" v-bind:style="{ left: loading_width + '%' }"></div> -->
         <div id="loading-img" class="loading-img" style="{ left: -100 + '%' }"></div>
       </div>
       <div class="loading-text">
-        <img src="/index/loading.png" />
+        <img src="/photo/index/loading.png" />
       </div>
     </div>
   </div>
@@ -275,7 +275,7 @@ body {
 .history-right-img {
   width: 20vw;
   height: 20vw;
-  background-image: url(/index/jingxiaohong.png);
+  background-image: url(/photo/index/jingxiaohong.png);
   background-color: #efefef;
   background-size: cover;
   transform: rotate(-15deg);
@@ -354,7 +354,7 @@ body {
   height: 60%;
   background-size: contain;
   background-color: aqua;
-  background-image: url(/index/story.jpg);
+  background-image: url(/photo/index/story.jpg);
 }
 .story .content {
   width: 70%;
@@ -381,7 +381,7 @@ body {
   width: 2vw;
   height: 2vw;
   /* background-color: aqua; */
-  background-image: url(/svg/正三角形2.svg);
+  background-image: url(/photo/svg/正三角形2.svg);
   transform: rotate(90deg);
   background-size: 100%;
   background-repeat: no-repeat;
@@ -444,7 +444,7 @@ body {
   height: 8rem;
   border-radius: 50%;
   border: 10px solid white;
-  background-image: url(/index/story1.png);
+  background-image: url(/photo/index/story1.png);
   background-size: cover;
   background-color: white;
   box-shadow: 0 5px 10px #999999;

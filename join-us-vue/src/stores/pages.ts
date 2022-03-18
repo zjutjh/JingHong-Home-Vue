@@ -5,6 +5,7 @@ export const usePageStore = defineStore(
     state: () => {
       return {
         pageNow: 0,
+        isMobile: false,
       }
     }
   },

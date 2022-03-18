@@ -1,9 +1,18 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHistory, RouteLocationNormalized, RouteRecordRaw } from "vue-router";
 import NavBarPC from "../components/pc/NavBar.vue"
-
+import NavBarMob from "../components/mobile/NavBar.vue"
+import { usePageStore } from "../stores/pages";
+import store from "../stores/store";
+import { isMobile } from "../utils/device";
+const pageStore = usePageStore(store);
+const paths = [
+  '/index',
+  '/join',
+  '/m/index',
+]
 const routes = [
   // PC 端
-  { path: '/', redirect: '/index' },
+  // { path: '/', redirect: '/index' },
   // { path: '/index', component: () => import('../views/pc/index.vue') },
   {
     path: '/index',
@@ -44,15 +53,65 @@ const routes = [
 
   // 移动端
   { path: '/m', redirect: '/m/index' },
-  { path: '/m/index', component: () => import('../views/mobile/index.vue') },
-
+  {
+    path: '/m/index',
+    components: {
+      default: () => import('../views/mobile/index.vue'),
+      navbar: () => NavBarMob,
+    },
+  },
+  {
+    path: '/m/join',
+    components: {
+      default: () => import('../views/mobile/join.vue'),
+      navbar: () => NavBarMob,
+    },
+  },
   // 404 
-  { path: '/:pathMatch(.*)*', name: '404', redirect: '/index' },
+  { path: '/:pathMatch(.*)*', name: '404', redirect: '/index', }
 ]
 
-export default createRouter(
+const router = createRouter(
   {
     history: createWebHistory(),
     routes,
   },
 )
+
+router.beforeEach((to, from, next) => {
+  // console.log(to.path);
+  // console.log(pageStore.isMobile);
+  if (isMobile()) {
+    pageStore.isMobile = true;
+    // router.push('/m/index');
+  } else {
+    pageStore.isMobile = false;
+    // router.push('/index');
+  }
+
+  if (to.path == '/') {
+    if (pageStore.isMobile) {
+      next("/m/index");
+    } else {
+      next("/index")
+    }
+  } else {
+    console.log(to.path.split('/'));
+    if (pageStore.isMobile) {
+      if (to.path.split('/')[1] != 'm') {
+        next("/m" + to.path);
+      } else {
+        next();
+      }
+    } else {
+      if (to.path.split('/')[1] == 'm') {
+        next("/" + to.path[2]);
+      } else {
+        next();
+      }
+    }
+  }
+});
+
+
+export default router;
