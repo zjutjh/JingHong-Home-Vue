@@ -33,6 +33,14 @@ const routes = [
     }
   },
   {
+    path: '/department',
+    components: {
+      default: () => import('../views/pc/department.vue'),
+      navbar: () => NavBarPC,
+    },
+    children: [],
+  },
+  {
     path: '/join',
     components: {
       default: () => import('../views/pc/join.vue'),
