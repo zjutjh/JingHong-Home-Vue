@@ -38,7 +38,48 @@ const routes = [
       default: () => import('../views/pc/department.vue'),
       navbar: () => NavBarPC,
     },
-    children: [],
+  },
+  {
+    path: '/department/changwu',
+    components: {
+      default: () => import('../views/pc/departments/changwu.vue'),
+      navbar: () => NavBarPC,
+    },
+  },
+  {
+    path: '/department/jishu',
+    components: {
+      default: () => import('../views/pc/departments/jishu.vue'),
+      navbar: () => NavBarPC,
+    },
+  },
+  {
+    path: '/department/yunying',
+    components: {
+      default: () => import('../views/pc/departments/yunying.vue'),
+      navbar: () => NavBarPC,
+    },
+  },
+  {
+    path: '/department/sheji',
+    components: {
+      default: () => import('../views/pc/departments/sheji.vue'),
+      navbar: () => NavBarPC,
+    },
+  },
+  {
+    path: '/department/xinmeiti',
+    components: {
+      default: () => import('../views/pc/departments/xinmeiti.vue'),
+      navbar: () => NavBarPC,
+    },
+  },
+  {
+    path: '/department/yiban',
+    components: {
+      default: () => import('../views/pc/departments/yiban.vue'),
+      navbar: () => NavBarPC,
+    },
   },
   {
     path: '/join',

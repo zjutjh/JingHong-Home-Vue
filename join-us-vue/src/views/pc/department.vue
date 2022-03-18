@@ -1,6 +1,6 @@
 <script setup lang="ts">import { onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
-import { departments } from '../../utils/consts'
+import { departments } from '../../utils/const';
 import Footer from '../../components/pc/Footer.vue';
 import { usePageStore } from '../../stores/pages';
 const pageStore = usePageStore();
@@ -11,7 +11,7 @@ onMounted(() => {
 })
 </script>
 <template>
-  <div id="body" ref="pronbit">
+  <div id="body">
     <div class="title-style">
       <h1>我们的部门</h1>
     </div>

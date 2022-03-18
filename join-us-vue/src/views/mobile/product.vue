@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { productsMobile, product_details } from "../../utils/consts";
+import { productsMobile, product_details } from "../../utils/const";
 import { RouterLink } from "vue-router";
 import Footer from "../../components/pc/Footer.vue";
 const seen_pro = ref(false);

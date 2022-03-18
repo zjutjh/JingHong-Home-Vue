@@ -6,7 +6,7 @@ import { usePageStore } from "../../../stores/pages";
 import { INormalForm } from "../../../types/forms";
 import { isPhone, isStuId } from "../../../utils/valid";
 import { NormalForm } from "../../../apis/forms";
-import { regions, choices } from '../../../utils/consts';
+import { regions, choices } from '../../../utils/const';
 const store = usePageStore();
 const router = useRouter();
 const form = reactive(<INormalForm>{

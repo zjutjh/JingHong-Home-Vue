@@ -1,6 +1,6 @@
 <script setup lang="ts">import { onMounted } from 'vue';
 import { usePageStore } from '../../stores/pages';
-import { products } from '../../utils/consts';
+import { products } from '../../utils/const';
 const pageStore = usePageStore();
 
 onMounted(() => {

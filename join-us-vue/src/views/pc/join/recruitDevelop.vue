@@ -5,7 +5,7 @@ import { DevelopForm } from '../../../apis/forms';
 import { isPhone, isStuId } from '../../../utils/valid';
 import { IDevelopForm } from '../../../types/forms';
 import { reactive } from 'vue';
-import { regions } from '../../../utils/consts';
+import { regions } from '../../../utils/const';
 const router = useRouter();
 const form = reactive(<IDevelopForm>{
   name: '',
