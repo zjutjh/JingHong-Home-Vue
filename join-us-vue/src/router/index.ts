@@ -11,9 +11,6 @@ const paths = [
   '/m/index',
 ]
 const routes = [
-  // PC 端
-  // { path: '/', redirect: '/index' },
-  // { path: '/index', component: () => import('../views/pc/index.vue') },
   {
     path: '/index',
     components: {
@@ -79,14 +76,11 @@ const router = createRouter(
 )
 
 router.beforeEach((to, from, next) => {
-  // console.log(to.path);
-  // console.log(pageStore.isMobile);
+
   if (isMobile()) {
     pageStore.isMobile = true;
-    // router.push('/m/index');
   } else {
     pageStore.isMobile = false;
-    // router.push('/index');
   }
 
   if (to.path == '/') {
@@ -96,7 +90,6 @@ router.beforeEach((to, from, next) => {
       next("/index")
     }
   } else {
-    console.log(to.path.split('/'));
     if (pageStore.isMobile) {
       if (to.path.split('/')[1] != 'm') {
         next("/m" + to.path);

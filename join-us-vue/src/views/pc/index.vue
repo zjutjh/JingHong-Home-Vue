@@ -425,14 +425,14 @@ body {
   font-size: 20px;
 }
 .follow-img1 {
-  background-image: url(/svg/微信.svg);
+  background-image: url(/photo/svg/微信.svg);
   background-size: cover;
   height: 6vw;
   width: 6vw;
   border-radius: 6rem;
 }
 .follow-img2 {
-  background-image: url(/svg/LogoGitHub.svg);
+  background-image: url(/photo/svg/LogoGitHub.svg);
   background-size: cover;
   height: 6vw;
   width: 6vw;

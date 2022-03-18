@@ -60,6 +60,7 @@ onMounted(() => {
       v-bind:class="{ mob_topshow: show, mob_tophide: hide }"
       :style="{ 'background': initialScrollTop < 1 ? 'transparent' : '#D20001', 'box-shadow': initialScrollTop < 1 ? '' : '0 5px 10px #999999' }"
     >
+      <img class="img" src="/photo/top/logo.png" v-show="seen" />
       <div class="button-on" @click="show1" @touchmove.prevent v-show="seen"></div>
     </div>
     <div v-bind:class="slideNav" @touchmove.prevent @mousewheel.prevent>
@@ -68,7 +69,7 @@ onMounted(() => {
         :style="{ 'background': '#D20001' }"
       >
         <div class="button-off" @click="hide1" v-show="!seen"></div>
-        <img class="img" src="/photo/top/logo.png" />
+        <img class="img" src="/photo/top/logo.png" v-show="!seen" />
       </div>
       <div class="mob-nav-list">
         <div v-for="page in pages">
