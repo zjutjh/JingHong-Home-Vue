@@ -66,11 +66,11 @@ function To_long() {
     <div class="mob_join_label">最新动态</div>
     <div class="mob_join_code_outlines">
       <div class="mob_join_code_outline">
-        <div class="mob_join_code" style="background: url(/product/11.png) center/cover"></div>
+        <div class="mob_join_code" style="background: url(/photo/product/11.png) center/cover"></div>
         <div>精弘网络</div>
       </div>
       <div class="mob_join_code_outline">
-        <div class="mob_join_code" style="background: url(/product/10.png) center/cover"></div>
+        <div class="mob_join_code" style="background: url(/photo/product/10.png) center/cover"></div>
         <div>精小弘在线</div>
       </div>
     </div>
@@ -78,19 +78,16 @@ function To_long() {
 
   <div class="mob_box">
     <Des_label2 content="部门结构一览图"></Des_label2>
-    <div>
-      <img src="/product/10.png" />
-    </div>
+    <!-- <div>
+      <img src="/photo/product/10.png" />
+    </div>-->
 
-    <!-- <div class="mob_department_structure_overview_diagram"></div> -->
+    <div class="mob_department_structure_overview_diagram"></div>
   </div>
 
   <Footer></Footer>
 </template>
 <style>
-body {
-  /* padding: 0 10%; */
-}
 .mob_box {
   width: 90%;
   background-color: white;
@@ -188,10 +185,10 @@ body {
 }
 
 .mob_department_structure_overview_diagram {
-  width: 694px;
-  height: 229px;
+  width: 310px;
+  height: 310px;
   margin: 20px auto;
-
+  background: url(/photo/haibao/structMob.png) center/cover;
   background-color: aqua;
 }
 </style>
