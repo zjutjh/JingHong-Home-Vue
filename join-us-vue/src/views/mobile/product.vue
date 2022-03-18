@@ -57,7 +57,7 @@ function product_hide() {
   </div>
   <Footer />
 </template>
-<style scope>
+<style scoped>
 * {
   text-align: center;
 }

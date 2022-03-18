@@ -1,0 +1,438 @@
+* {
+    text-align: center;
+    border-radius: 1rem;
+    /* position: relative; */
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+}
+
+#body {
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+    background-color: #efefef;
+    border-radius: 0;
+}
+
+.title {
+    width: 35vw;
+    height: 2rem;
+    background-color: #D20001;
+    font-size: 4.5vw;
+    color: white;
+    position: relative;
+    top: 1rem;
+    left: -3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0;
+    box-shadow: 0 1px 5px #999999;
+}
+
+.neikuang {
+    overflow: hidden;
+}
+
+.img1 {
+    width: 90%;
+    height: 200px;
+    margin: 2rem auto 1rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+/* .img11{
+  width: 30%;
+  height: 15vw;
+  margin: 2rem 0.5rem;
+  background-color: #D20001;
+} */
+
+.content-title {
+    width: 26vw;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 0.5rem;
+    background-color: #D20001;
+    margin: auto;
+    color: white;
+    font-size: 15px;
+    box-shadow: 0 1px 5px #999999;
+}
+
+.content-content {
+    text-align: left;
+    white-space: pre-wrap;
+    padding: 1rem;
+    /* text-indent: 2em; */
+}
+
+.back {
+    width: 3em;
+    height: 3rem;
+    margin: 1rem auto 0;
+    border-radius: 3rem;
+    background-color: white;
+    background-image: url(../../photo/svg/返回.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 1px 5px #999999;
+}
+
+.mokuai-title {
+    width: 40vw;
+    height: 10vw;
+    border-radius: 1vw;
+    background-color: #D20001;
+    margin: 3vw auto 3vw auto;
+    color: white;
+    font-size: 5vw;
+    line-height: 10vw;
+    box-shadow: 0 1px 5px #999999;
+}
+
+.mishuchu {
+    width: 90vw;
+    height: auto;
+    background-color: white;
+    margin: 20px auto;
+    box-shadow: 0 1px 5px #999999;
+}
+
+.bangongshi {
+    width: 90vw;
+    height: auto;
+    background-color: white;
+    margin: 20px auto;
+    box-shadow: 0 1px 5px #999999;
+}
+
+.huodongbu {
+    width: 90vw;
+    height: auto;
+    background-color: white;
+    margin: 20px auto;
+    box-shadow: 0 1px 5px #999999;
+}
+
+.chanpinbu {
+    width: 90vw;
+    height: auto;
+    background-color: white;
+    margin: 20px auto;
+    box-shadow: 0 1px 5px #999999;
+}
+
+.xiaohong {
+    width: 90vw;
+    height: auto;
+    background-color: white;
+    margin: 20px auto;
+    box-shadow: 0 1px 5px #999999;
+}
+
+.xinmeiti {
+    width: 90vw;
+    height: auto;
+    background-color: white;
+    margin: 20px auto;
+    padding-top: 1px;
+    box-shadow: 0 1px 5px #999999;
+}
+
+.xinmeiti .content-title {
+    margin-top: 1rem;
+}
+
+.xinmeiti .img1 {
+    margin: 1rem;
+}
+
+.yiban {
+    width: 90vw;
+    height: auto;
+    background-color: white;
+    margin: 20px auto;
+    box-shadow: 0 1px 5px #999999;
+}
+
+.jishu {
+    width: 90vw;
+    height: auto;
+    background-color: white;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 1px 5px #999999;
+}
+
+.kaifa .content-title,
+.yunwei .content-title {
+    margin-top: 2rem;
+}
+
+.jishu .Separator {
+    width: 90%;
+    height: 2px;
+    background-color: black;
+    margin: auto;
+}
+
+
+/* .Separator {
+  position: relative;
+  width: 0.8%;
+  height: 80%;
+  top: 1rem;
+  background-color: #efefef;
+  margin: 0 auto;
+  border-radius: 0;
+} */
+
+.carousel {
+    margin: 1.5rem auto;
+    width: 100%;
+    /* height: 8rem; */
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.carousel::after {
+    display: block;
+    content: '';
+    width: 90%;
+    margin: 0 auto;
+    border-bottom: 0.2rem solid #efefef;
+    padding-bottom: 1rem;
+}
+
+.carousel .whole {
+    width: 70%;
+    height: 40vw;
+    margin: 0 auto;
+}
+
+.carousel .whole .roll-img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+ul {
+    margin: 0;
+    list-style: none;
+}
+
+ul li {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+}
+
+.left {
+    left: -60vw;
+    transform: scale(0.8);
+    z-index: -1;
+    background: rgb(0, 0, 0);
+    transition: all 0.5s ease;
+}
+
+.center {
+    z-index: 1;
+    left: 0;
+    top: 0;
+    bottom: 10%;
+    transition: all 0.5s ease;
+    box-shadow: 0 3px 5px #999999;
+}
+
+.right {
+    left: 60vw;
+    transform: scale(0.8);
+    z-index: -1;
+    background: rgb(0, 0, 0);
+    transition: all 0.5s ease;
+}
+
+.left div,
+.right div {
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all 0.3s ease;
+}
+
+.after1,
+.after2,
+.after3 {
+    z-index: 3;
+    left: 0;
+    top: 0;
+    visibility: hidden;
+    transform: scale(0);
+}
+
+.last,
+.next {
+    position: absolute;
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50px;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 45px;
+    cursor: pointer;
+    top: 45%;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.list {
+    width: 30%;
+    height: 5px;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.last {
+    left: -200px;
+}
+
+.next {
+    right: -200px;
+}
+
+.topshow {
+    position: fixed;
+    left: 0;
+    top: 0rem;
+    width: 100%;
+    height: 4rem;
+    background: #D20001;
+    transition: top linear 0.3s;
+    box-shadow: 0 1px 5px #999999;
+}
+
+.tophide {
+    position: fixed;
+    left: 0;
+    top: -8rem;
+    width: 100%;
+    height: 4rem;
+    background: #D20001;
+    transition: top linear 0.3s;
+    box-shadow: 0 1px 5px #999999;
+}
+
+.Nav-hide {
+    position: fixed;
+    left: 0;
+    top: -100%;
+    width: 100%;
+    height: 100%;
+    background: white;
+    transition: left linear 0.3s;
+}
+
+.Nav-show {
+    position: fixed;
+    left: 0rem;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    transition: left linear 0.3s;
+}
+
+.nav-list {
+    margin: 4rem 4%;
+    width: 92%;
+    height: 45%;
+}
+
+.nav-list div {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    margin: 0;
+    border-bottom: 0.1rem solid #efefef;
+}
+
+.img {
+    float: left;
+}
+
+.button-on {
+    position: relative;
+    float: right;
+    top: 1rem;
+    right: 1rem;
+    height: 2rem;
+    width: 2rem;
+    background-image: url(../../photo/svg/mulu.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 90%;
+}
+
+.button-off {
+    position: relative;
+    float: right;
+    top: 1rem;
+    right: 1rem;
+    height: 2rem;
+    width: 2rem;
+    background-image: url(../../photo/svg/关闭.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 90%;
+}
+
+#nav img {
+    height: 100%;
+    float: left;
+    transform: scale(0.8);
+}
+
+#nav * {
+    border-radius: 0;
+}
+
+.footer {
+    width: 100%;
+    font-size: xx-small;
+    background-color: white;
+    height: 2.2rem;
+    line-height: 2rem;
+    border-radius: 0;
+    box-shadow: 0 1px 5px #999999;
+}

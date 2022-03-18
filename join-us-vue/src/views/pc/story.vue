@@ -367,11 +367,11 @@ onBeforeUnmount(() => {
 <style scoped>
 @font-face {
   font-family: "song";
-  src: url("../font/逐浪雅宋体.ttf");
+  src: url("/font/逐浪雅宋体.ttf");
 }
 @font-face {
   font-family: "SC-VF";
-  src: url("../font/SourceHanSansSC-VF.otf");
+  src: url("/font/SourceHanSansSC-VF.otf");
 }
 * {
   text-align: center;
@@ -537,7 +537,7 @@ body {
   bottom: 0;
   left: 90%;
   margin: auto;
-  background: center/cover no-repeat url(../photo/svg/右箭头红.svg);
+  background: center/cover no-repeat url(/photo/svg/右箭头红.svg);
   cursor: pointer;
 }
 .yuren-left {
@@ -548,7 +548,7 @@ body {
   bottom: 0;
   right: 90%;
   margin: auto;
-  background: center/cover no-repeat url(../photo/svg/右箭头红.svg);
+  background: center/cover no-repeat url(/photo/svg/右箭头红.svg);
   cursor: pointer;
   transform: rotate(180deg);
 }
@@ -1009,7 +1009,7 @@ ul li {
   right: 92%;
   margin: auto;
   margin: auto;
-  background: center/cover no-repeat url(../photo/svg/右箭头红.svg);
+  background: center/cover no-repeat url(/photo/svg/右箭头红.svg);
   transform: rotate(180deg);
   cursor: pointer;
 }
@@ -1021,7 +1021,7 @@ ul li {
   bottom: 0;
   left: 92%;
   margin: auto;
-  background: center/cover no-repeat url(../photo/svg/右箭头红.svg);
+  background: center/cover no-repeat url(/photo/svg/右箭头红.svg);
   cursor: pointer;
 }
 </style>

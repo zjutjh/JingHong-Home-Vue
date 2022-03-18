@@ -6,7 +6,6 @@ import { usePageStore } from './stores/pages';
 import store from './stores/store';
 const router = useRouter();
 const pageStore = usePageStore(store);
-// TODO: un comment following lines for switch mobile and pc mode.
 onMounted(() => {
   if (isMobile()) {
     pageStore.isMobile = true;
@@ -19,7 +18,7 @@ onMounted(() => {
 </script>
 
 <template>
-  {{ pageStore }}
+  <!-- {{ pageStore }} -->
   <router-view name="navbar" />
   <router-view />
 </template>

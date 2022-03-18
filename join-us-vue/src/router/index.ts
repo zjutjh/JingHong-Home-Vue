@@ -111,8 +111,11 @@ const routes = [
   },
 
 
+
+
   // 移动端
   { path: '/m', redirect: '/m/index' },
+
   {
     path: '/m/index',
     components: {
@@ -127,6 +130,14 @@ const routes = [
       navbar: () => NavBarMob,
     },
   },
+
+  {
+    path: '/m/story',
+    components: {
+      default: () => import('../views/mobile/story.vue'),
+      navbar: () => NavBarMob,
+    }
+  },
   {
     path: '/m/product',
     components: {
@@ -134,6 +145,7 @@ const routes = [
       navbar: () => NavBarMob,
     }
   },
+
   {
     path: '/m/recruit',
     components: {

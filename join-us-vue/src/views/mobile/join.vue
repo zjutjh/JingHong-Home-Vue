@@ -87,7 +87,7 @@ function To_long() {
 
   <Footer></Footer>
 </template>
-<style>
+<style scoped>
 .mob_box {
   width: 90%;
   background-color: white;

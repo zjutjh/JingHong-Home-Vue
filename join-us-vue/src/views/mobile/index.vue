@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, CSSProperties, onMounted, ref } from 'vue';
+import { computed, CSSProperties, onMounted, onUnmounted, ref } from 'vue';
 import { RouterView, RouterLink } from 'vue-router';
 import Footer from '../../components/mobile/Footer.vue'
 import Start from '../../components/mobile/Start.vue'
@@ -94,6 +94,9 @@ onMounted(() => {
     }
   }, 10);
 })
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScrollx, true);
+})
 </script>
 <template>
   <div class="content">
@@ -103,6 +106,7 @@ onMounted(() => {
   <div id="body" ref="pronbit">
     <div class="introduce" id="introduce">
       <div class="title">精弘网络⼁Jinghong Union</div>
+
       <div class="content">
         成立于2002年5月，
         <br />精弘的名字取自工大学风“取精用弘”，
@@ -112,6 +116,7 @@ onMounted(() => {
         <br />和交流平台，收到了广泛好评。
       </div>
     </div>
+
     <div class="title-style">精弘成长史</div>
     <div class="history" ref="history">
       <div class="history-line" ref="historyline">
@@ -178,6 +183,7 @@ onMounted(() => {
       </div>
     </div>
   </div>
+
   <Footer />
 </template>
 
