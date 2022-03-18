@@ -135,12 +135,12 @@ onMounted(() => {
       <div class="img" style="background-image: url(/photo/index/diannao.jpg)"></div>
 
       <div class="content">
-        <a href="story.html">
+        <router-link to="/m/story">
           <div class="story-title">
             <div>我们的故事</div>
             <div class="right-arrow"></div>
           </div>
-        </a>
+        </router-link>
 
         <div class="story-content">因梦想，我们齐聚一堂；因使命，我们同舟共济。</div>
       </div>
@@ -163,7 +163,7 @@ onMounted(() => {
 
       <div class="end-recruit">
         <div class="title-font">精弘招聘</div>
-        <router-link to="/join" class="recruit-button">加入我们</router-link>
+        <router-link to="/m/join" class="recruit-button">加入我们</router-link>
       </div>
 
       <div class="end-1">
@@ -181,7 +181,7 @@ onMounted(() => {
   <Footer />
 </template>
 
-<style>
+<style scoped>
 @font-face {
   font-family: "song";
   src: url("/font/逐浪雅宋体.ttf");

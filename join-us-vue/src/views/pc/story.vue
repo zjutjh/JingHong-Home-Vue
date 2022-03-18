@@ -364,7 +364,7 @@ onBeforeUnmount(() => {
   </div>
 </template>
 
-<style>
+<style scoped>
 @font-face {
   font-family: "song";
   src: url("../font/逐浪雅宋体.ttf");

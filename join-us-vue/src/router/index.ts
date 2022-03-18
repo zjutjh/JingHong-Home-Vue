@@ -79,6 +79,13 @@ const routes = [
     },
   },
   {
+    path: '/m/product',
+    components: {
+      default: () => import('../views/mobile/product.vue'),
+      navbar: () => NavBarMob,
+    }
+  },
+  {
     path: '/m/recruit',
     components: {
       default: () => import('../views/mobile/join/recruit.vue'),
