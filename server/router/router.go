@@ -11,4 +11,6 @@ func SetRouter() {
 	Router.POST("/api/new_develop", controller.NewDevelopForm) //
 	Router.GET("/api/get_forms/develop", middleware.IsAdmin, controller.GetAllDevelopForms)
 	Router.GET("/api/get_forms/normal", middleware.IsAdmin, controller.GetAllNormalForms)
+	// Router.GET("/api/get_forms/total", middleware.IsAdmin, controller.GetTotalForm)
+	Router.GET("/api/get_forms/total", controller.GetFormsTotal)
 }

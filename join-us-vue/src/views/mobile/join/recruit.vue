@@ -7,7 +7,7 @@ import { INormalForm } from "../../../types/forms";
 import { isPhone, isStuId } from "../../../utils/valid";
 import { NormalForm } from "../../../apis/forms";
 import { regions, choices } from '../../../utils/const';
-import Footer1 from "../../../components/pc/Footer.vue";
+import Label from '../../../components/pc/JHLabel.vue'
 const store = usePageStore();
 const router = useRouter();
 const form = reactive(<INormalForm>{
@@ -58,6 +58,7 @@ onMounted(() => {
   <!-- {{ form }} -->
   <div style="margin-top: 80px;"></div>
   <div class="mob_label_1">报名表</div>
+  <!-- <Label type="middle">报名表</Label> -->
   <div style="width: 90%;margin: auto;">
     <div class="mob_basic_info">
       <div class="mob_item_name">姓名</div>

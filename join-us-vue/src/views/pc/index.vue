@@ -350,11 +350,12 @@ body {
   box-shadow: 0 2px 20px #999999;
 }
 .story .img {
-  width: 70%;
-  height: 60%;
+  width: 80%;
+  height: 52%;
   background-size: contain;
   background-color: aqua;
   background-image: url(/photo/index/story.jpg);
+  background-repeat: no-repeat;
 }
 .story .content {
   width: 70%;

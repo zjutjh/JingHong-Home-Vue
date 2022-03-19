@@ -7,6 +7,7 @@ import { INormalForm } from "../../../types/forms";
 import { isPhone, isStuId } from "../../../utils/valid";
 import { NormalForm } from "../../../apis/forms";
 import { regions, choices } from '../../../utils/const';
+import Label from "../../../components/pc/JHLabel.vue";
 const store = usePageStore();
 const router = useRouter();
 const form = reactive(<INormalForm>{
@@ -61,7 +62,8 @@ onMounted(() => {
   <!-- ! TODO 测试数据, 移除这一行. -->
   {{ form }}
   <div style="margin-top: 10px;"></div>
-  <div class="des_label_1">报名表</div>
+  <!-- <div class="des_label_1">报名表</div> -->
+  <Label type="middle">报名表</Label>
   <!-- <div class="box"> -->
   <div class="basic_info">
     <div class="item_name">姓名</div>
@@ -114,10 +116,12 @@ onMounted(() => {
         >{{ item }}</option>
       </select>
     </div>
-    <div class="des_label_2">来一段简单的自我介绍吧！</div>
+    <!-- <div class="des_label_2">来一段简单的自我介绍吧！</div> -->
+    <Label type="small">来一段简单的自我介绍吧！</Label>
     <input class="capability_2" v-model="form.profile" />
 
-    <div class="des_label_2">最后，有什么想对精弘网络说的话，可以在这里畅所欲言哦~</div>
+    <!-- <div class="des_label_2">最后，有什么想对精弘网络说的话，可以在这里畅所欲言哦~</div> -->
+    <Label type="small">最后，有什么想对精弘网络说的话，可以在这里畅所欲言哦~</Label>
     <input class="capability_2" v-model="form.feedback" />
   </div>
   <div style="display:flex; center">
@@ -224,5 +228,41 @@ template {
 }
 .other_info option {
   width: 10px;
+}
+.des_label_1 {
+  min-width: 90px;
+  width: fit-content;
+  height: 35px;
+  padding: 0 20px;
+  margin: 15px auto;
+  border-radius: 20px;
+
+  background-color: #d20001;
+
+  color: white;
+  font-size: 18px;
+  line-height: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.des_label_2 {
+  width: fit-content;
+  height: fit-content;
+  margin: 10px 0;
+  padding: 0 10px;
+  border-radius: 5px;
+
+  background-color: #d20001;
+
+  color: white;
+  font-size: 12px;
+  line-height: 30px;
+  text-align: left;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
