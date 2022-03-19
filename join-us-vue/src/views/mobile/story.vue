@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, reactive, ref } from 'vue';
 import { usePageStore } from '../../stores/pages';
+import { RouterLink } from 'vue-router';
 import Footer from '../../components/pc/Footer.vue';
 const store = usePageStore();
 var timer1: number;
@@ -380,12 +381,12 @@ onBeforeUnmount(() => {
     </div>
 
     <div class="product">
-      <a href="product.html">
+      <router-link to="/m/product">
         <div class="product-button">
           我们的产品
           <img src="/photo/svg/右箭头.svg" style="float: right;" />
         </div>
-      </a>
+      </router-link>
     </div>
   </div>
   <Footer />
