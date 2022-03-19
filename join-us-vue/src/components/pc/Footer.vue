@@ -1,8 +1,10 @@
 <script setup lang="ts">
-
+import { RouterLink } from 'vue-router';
 </script>
 <template>
-  <div class="footer">©2021 浙江工业大学-精弘网络</div>
+  <div class="footer">
+    <router-link to="/admin">©2021 浙江工业大学-精弘网络</router-link>
+  </div>
 </template>
 
 <style>

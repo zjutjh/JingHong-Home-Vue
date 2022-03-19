@@ -110,6 +110,13 @@ const routes = [
     }
   },
 
+  {
+    path: '/admin',
+    components: {
+      default: () => import('../views/pc/admin.vue'),
+      navbar: () => NavBarPC,
+    }
+  },
 
 
 

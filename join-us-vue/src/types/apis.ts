@@ -6,3 +6,4 @@ export interface ResponseType<T = any> {
 export interface IRequest {
   message: string;
 }
+

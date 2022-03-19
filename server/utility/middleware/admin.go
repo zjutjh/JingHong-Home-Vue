@@ -3,7 +3,6 @@ package middleware
 import (
 	"zjutjh/Join-Us/utility"
 	"zjutjh/Join-Us/utility/initial"
-
 	"github.com/gin-gonic/gin"
 )
 
