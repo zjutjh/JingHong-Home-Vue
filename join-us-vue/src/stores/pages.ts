@@ -6,6 +6,7 @@ export const usePageStore = defineStore(
       return {
         pageNow: 0,
         isMobile: false,
+        initialScrollTop: 0,
       }
     }
   },

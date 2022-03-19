@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { storeToRefs } from 'pinia';
+import { onMounted, ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import router from '../../router';
 import { usePageStore } from '../../stores/pages';
@@ -8,7 +9,7 @@ const store = usePageStore();
 
 // Should use State Manager.
 // Should use one var to include following vars.
-const initialScrollTop = ref(0);
+const { initialScrollTop } = storeToRefs(store);
 const show = ref(true);
 const hide = ref(false);
 
@@ -41,6 +42,13 @@ function logoClicked() {
   router.push('/index');
 }
 
+watch(initialScrollTop, (newValue, oldValue) => {
+  // console.log("reset: " + initialScrollTop.value)
+  if (newValue == 0) {
+    console.log("reset")
+    document.documentElement.scrollTop = 0;
+  }
+})
 onMounted(() => {
   initialScrollTop.value = window.pageYOffset
     || document.documentElement.scrollTop

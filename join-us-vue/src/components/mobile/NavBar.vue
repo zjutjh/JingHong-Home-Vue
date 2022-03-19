@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { storeToRefs } from 'pinia';
+import { onMounted, ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import router from '../../router';
 import { usePageStore } from '../../stores/pages';
 const store = usePageStore();
-const initialScrollTop = ref(0);
+const { initialScrollTop } = storeToRefs(store);
 const show = ref(true);
 const hide = ref(false);
 const slideNav = ref("mob_Nav-hide");
@@ -52,6 +53,13 @@ onMounted(() => {
   window.addEventListener("scroll", scrolling);
 })
 
+watch(initialScrollTop, (newValue, oldValue) => {
+  // console.log("reset: " + initialScrollTop.value)
+  if (newValue == 0) {
+    console.log("reset")
+    document.documentElement.scrollTop = 0;
+  }
+})
 </script>
 
 <template>
