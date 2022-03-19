@@ -28,13 +28,12 @@ function closeWindow() {
       </div>
       <div class="Separator"></div>
       <div class="jishu-right">
-        <div class="img1">
-          <div
-            class="img11"
-            v-bind:style="{ 'background-image': 'url(../../photo/department/' + img + '.jpg)' }"
-            v-for="img in mokuai[1].img.slice(0, 1)"
-          ></div>
-        </div>
+        <div
+          class="img1"
+          v-bind:style="{ 'background-image': 'url(/photo/department/' + img + '.jpg)' }"
+          v-for="img in mokuai[1].img.slice(0, 1)"
+        ></div>
+
         <div class="content-title">{{ mokuai[1].content[2].title }}</div>
         <div class="content-content">{{ mokuai[1].content[2].content }}</div>
       </div>

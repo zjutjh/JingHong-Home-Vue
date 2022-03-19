@@ -145,7 +145,55 @@ const routes = [
       navbar: () => NavBarMob,
     }
   },
-
+  {
+    path: '/m/department',
+    components: {
+      default: () => import('../views/mobile/department.vue'),
+      navbar: () => NavBarMob,
+    }
+  },
+  {
+    path: '/m/department/changwu',
+    components: {
+      default: () => import('../views/mobile/departments/changwu.vue'),
+      navbar: () => NavBarMob,
+    }
+  },
+  {
+    path: '/m/department/jishu',
+    components: {
+      default: () => import('../views/mobile/departments/jishu.vue'),
+      navbar: () => NavBarMob,
+    }
+  },
+  {
+    path: '/m/department/sheji',
+    components: {
+      default: () => import('../views/mobile/departments/sheji.vue'),
+      navbar: () => NavBarMob,
+    }
+  },
+  {
+    path: '/m/department/xinmeiti',
+    components: {
+      default: () => import('../views/mobile/departments/xinmeiti.vue'),
+      navbar: () => NavBarMob,
+    }
+  },
+  {
+    path: '/m/department/yiban',
+    components: {
+      default: () => import('../views/mobile/departments/yiban.vue'),
+      navbar: () => NavBarMob,
+    }
+  },
+  {
+    path: '/m/department/yunying',
+    components: {
+      default: () => import('../views/mobile/departments/yunying.vue'),
+      navbar: () => NavBarMob,
+    }
+  },
   {
     path: '/m/recruit',
     components: {

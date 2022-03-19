@@ -15,13 +15,12 @@ function closeWindow() {
     <div class="xiaohong">
       <div class="title">小弘工作室</div>
       <div class="neikuang">
-        <div class="img1">
-          <div
-            class="img11"
-            v-bind:style="{ 'background-image': 'url(../../photo/department/' + img + '.jpg)' }"
-            v-for="img in mokuai[3].img.slice(0, 3)"
-          ></div>
-        </div>
+        <div
+          class="img1"
+          v-bind:style="{ 'background-image': 'url(../../photo/department/' + img + '.jpg)' }"
+          v-for="img in mokuai[3].img.slice(0, 3)"
+        ></div>
+
         <div v-for="content in mokuai[3].content.slice(0, 2)">
           <div class="content-title">{{ content.title }}</div>
           <div class="content-content">{{ content.content }}</div>

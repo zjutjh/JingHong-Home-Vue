@@ -92,7 +92,7 @@ onMounted(() => {
     <div class="department_structure_overview_diagram"></div>
   </div>
 
-  <Footer></Footer>
+  <Footer />
 </template>
 
 

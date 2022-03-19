@@ -52,7 +52,7 @@ onMounted(() => {
 
 <template>
   <div :class="{ topShow: show, topHide: hide }">
-    <img src="photo/top/logo.png" @click.native="logoClicked" />
+    <img src="/photo/top/logo.png" @click.native="logoClicked" />
     <nav>
       <div class="nav-list">
         <div

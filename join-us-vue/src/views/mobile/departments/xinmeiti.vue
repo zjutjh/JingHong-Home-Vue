@@ -13,13 +13,11 @@ function closeWindow() {
   <div id="body" ref="pronbit">
     <div class="mokuai-title">新媒体模块</div>
     <div class="xinmeiti">
-      <div class="img1">
-        <div
-          class="img11"
-          v-bind:style="{ 'background-image': 'url(../../photo/department/' + img + '.jpg)' }"
-          v-for="img in mokuai[4].img.slice(0, 1)"
-        ></div>
-      </div>
+      <div
+        class="img1"
+        v-bind:style="{ 'background-image': 'url(../../photo/department/' + img + '.jpg)' }"
+        v-for="img in mokuai[4].img.slice(0, 1)"
+      ></div>
 
       <div class="title">视觉影像部</div>
 

@@ -18,7 +18,7 @@ function closeWindow() {
         <div class="img1">
           <div
             class="img11"
-            v-bind:style="{ 'background-image': 'url(../../photo/department/' + img + '.jpg)' }"
+            v-bind:style="{ 'background-image': 'url(/photo/department/' + img + '.jpg)' }"
             v-for="img in mokuai[5].img.slice(0, 3)"
           ></div>
         </div>

@@ -19,7 +19,7 @@ onMounted(() => {
       <router-link class="department-item" v-for="item in departments" :to="item.href">
         <div
           class="img"
-          v-bind:style="{ 'background-image': 'url(' + item.img + ')' }"
+          :style="{ 'background-image': 'url(' + item.img + ')' }"
           :data-content-after="item.name"
         ></div>
       </router-link>
@@ -30,11 +30,11 @@ onMounted(() => {
 <style scoped>
 @font-face {
   font-family: "song";
-  src: url("../../font/逐浪雅宋体.ttf");
+  src: url("/font/逐浪雅宋体.ttf");
 }
 @font-face {
   font-family: "SC-VF";
-  src: url("../font/SourceHanSansSC-VF.otf");
+  src: url("/font/SourceHanSansSC-VF.otf");
 }
 * {
   text-align: center;
