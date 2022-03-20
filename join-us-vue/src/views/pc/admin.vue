@@ -354,31 +354,31 @@ const data_yb = computed(() => {
   </JHCard>
   <div class="cards">
     <JHCard title="办公室" type="small">
-      <DepartmentsDataPresent :data="data_bgs"></DepartmentsDataPresent>
+      <DepartmentsDataPresent type="pc" :data="data_bgs"></DepartmentsDataPresent>
     </JHCard>
     <JHCard title="活动部" type="small">
-      <DepartmentsDataPresent :data="data_hdb"></DepartmentsDataPresent>
+      <DepartmentsDataPresent type="pc" :data="data_hdb"></DepartmentsDataPresent>
     </JHCard>
     <JHCard title="秘书处" type="small">
-      <DepartmentsDataPresent :data="data_msc"></DepartmentsDataPresent>
+      <DepartmentsDataPresent type="pc" :data="data_msc"></DepartmentsDataPresent>
     </JHCard>
     <JHCard title="Touch产品部" type="small">
-      <DepartmentsDataPresent :data="data_touch"></DepartmentsDataPresent>
+      <DepartmentsDataPresent type="pc" :data="data_touch"></DepartmentsDataPresent>
     </JHCard>
     <JHCard title="小弘工作室" type="small">
-      <DepartmentsDataPresent :data="data_xh"></DepartmentsDataPresent>
+      <DepartmentsDataPresent type="pc" :data="data_xh"></DepartmentsDataPresent>
     </JHCard>
     <JHCard title="编辑工作室" type="small">
-      <DepartmentsDataPresent :data="data_bj"></DepartmentsDataPresent>
+      <DepartmentsDataPresent type="pc" :data="data_bj"></DepartmentsDataPresent>
     </JHCard>
     <JHCard title="视觉影像部" type="small">
-      <DepartmentsDataPresent :data="data_sj"></DepartmentsDataPresent>
+      <DepartmentsDataPresent type="pc" :data="data_sj"></DepartmentsDataPresent>
     </JHCard>
     <JHCard title="开发部" type="small">
-      <DepartmentsDataPresent :data="data_kfb"></DepartmentsDataPresent>
+      <DepartmentsDataPresent type="pc" :data="data_kfb"></DepartmentsDataPresent>
     </JHCard>
     <JHCard title="易班文化工作站" type="small">
-      <DepartmentsDataPresent :data="data_yb"></DepartmentsDataPresent>
+      <DepartmentsDataPresent type="pc" :data="data_yb"></DepartmentsDataPresent>
     </JHCard>
   </div>
 </template> 
