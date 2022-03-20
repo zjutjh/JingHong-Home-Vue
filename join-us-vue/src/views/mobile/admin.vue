@@ -155,7 +155,7 @@ var option = ref({
   tooltip: {},
   xAxis: {
     type: "category",
-    data: ['办公室', '活动部', '秘书处', 'Touch产品部', '小弘工作室', '编辑工作室', '视觉影像部', '开发部', '易班文化工作站']
+    data: ['办', '活', '秘', '产', '弘', '编', '视', '开', '易']
   },
   yAxis: { type: "value" },
   grid: { bottom: 30 },
@@ -326,76 +326,68 @@ const data_yb = computed(() => {
 })
 </script>
 <template>
+  <div style="height:100px"></div>
   <div class="pwd">
     输入密码:
     <input v-model="pwd" />
-    <button @click="submitClicked">提交</button>
+    <button @click="submitClicked">刷新</button>
   </div>
-  {{ data }}
-  <br />
-  {{ option }}
-  <!-- <div class="lable_center">招新情况</div> -->
   <JHLabel type="big">招新情况</JHLabel>
-  <div class="total"></div>
-  <div class="graph"></div>
-  <div class="departments"></div>
-  <JHCard title="总览" type="large">
+  <JHCard title="总览" type="large-m">
     <div class="cards">
-      <JHDataPresent type="pc" title="报名总数">{{ data.total }}</JHDataPresent>
-      <JHDataPresent type="pc" title="朝晖">{{ data.total_zh }}</JHDataPresent>
+      <JHDataPresent type="mob" title="报名总数">{{ data.total }}</JHDataPresent>
+      <JHDataPresent type="mob" title="朝晖">{{ data.total_zh }}</JHDataPresent>
       <span />
-      <JHDataPresent type="pc" title="屏峰">{{ data.total_pf }}</JHDataPresent>
-      <JHDataPresent type="pc" title="今日增加">{{ data.total_today }}</JHDataPresent>
-      <JHDataPresent type="pc" title="莫干山">{{ data.total_mgs }}</JHDataPresent>
+      <JHDataPresent type="mob" title="屏峰">{{ data.total_pf }}</JHDataPresent>
+      <JHDataPresent type="mob" title="今日增加">{{ data.total_today }}</JHDataPresent>
+      <JHDataPresent type="mob" title="莫干山">{{ data.total_mgs }}</JHDataPresent>
     </div>
   </JHCard>
-  <JHCard title="统计图" type="large">
+  <JHCard title="统计图" type="large-m">
     <v-chart class="chart" :option="option" id="chart" ref="chart" />
   </JHCard>
   <div class="cards">
-    <JHCard title="办公室" type="small">
-      <DepartmentsDataPresent :data="data_bgs"></DepartmentsDataPresent>
+    <JHCard title="办公室" type="small-m">
+      <DepartmentsDataPresent :data="data_bgs" type="mob"></DepartmentsDataPresent>
     </JHCard>
-    <JHCard title="活动部" type="small">
-      <DepartmentsDataPresent :data="data_hdb"></DepartmentsDataPresent>
+    <JHCard title="活动部" type="small-m">
+      <DepartmentsDataPresent :data="data_hdb" type="mob"></DepartmentsDataPresent>
     </JHCard>
-    <JHCard title="秘书处" type="small">
-      <DepartmentsDataPresent :data="data_msc"></DepartmentsDataPresent>
+    <JHCard title="秘书处" type="small-m">
+      <DepartmentsDataPresent :data="data_msc" type="mob"></DepartmentsDataPresent>
     </JHCard>
-    <JHCard title="Touch产品部" type="small">
-      <DepartmentsDataPresent :data="data_touch"></DepartmentsDataPresent>
+    <JHCard title="Touch产品部" type="small-m">
+      <DepartmentsDataPresent :data="data_touch" type="mob"></DepartmentsDataPresent>
     </JHCard>
-    <JHCard title="小弘工作室" type="small">
-      <DepartmentsDataPresent :data="data_xh"></DepartmentsDataPresent>
+    <JHCard title="小弘工作室" type="small-m">
+      <DepartmentsDataPresent :data="data_xh" type="mob"></DepartmentsDataPresent>
     </JHCard>
-    <JHCard title="编辑工作室" type="small">
-      <DepartmentsDataPresent :data="data_bj"></DepartmentsDataPresent>
+    <JHCard title="编辑工作室" type="small-m">
+      <DepartmentsDataPresent :data="data_bj" type="mob"></DepartmentsDataPresent>
     </JHCard>
-    <JHCard title="视觉影像部" type="small">
-      <DepartmentsDataPresent :data="data_sj"></DepartmentsDataPresent>
+    <JHCard title="视觉影像部" type="small-m">
+      <DepartmentsDataPresent :data="data_sj" type="mob"></DepartmentsDataPresent>
     </JHCard>
-    <JHCard title="开发部" type="small">
-      <DepartmentsDataPresent :data="data_kfb"></DepartmentsDataPresent>
+    <JHCard title="开发部" type="small-m">
+      <DepartmentsDataPresent :data="data_kfb" type="mob"></DepartmentsDataPresent>
     </JHCard>
-    <JHCard title="易班文化工作站" type="small">
-      <DepartmentsDataPresent :data="data_yb"></DepartmentsDataPresent>
+    <JHCard title="易班文化工作站" type="small-m">
+      <DepartmentsDataPresent :data="data_yb" type="mob"></DepartmentsDataPresent>
     </JHCard>
   </div>
-</template> 
-
+</template>
 <style scoped>
 .cards {
   margin: 3vw;
   padding: 3vw;
   display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: repeat(5, 20%);
+  grid-template-rows: repeat(10, 10%);
   grid-row-gap: 20px;
   grid-column-gap: 20px;
-  /* font-size: x-large; */
+  padding-top: 10vw;
 }
 .chart {
-  padding-top: 100px;
+  padding-top: 10vw;
   height: 400px;
 }
 </style>

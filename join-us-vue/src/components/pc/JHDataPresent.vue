@@ -2,13 +2,14 @@
 import JHLabel from './JHLabel.vue';
 const prop = defineProps<{
   title: string,
+  type: string,
   // number: string,
 }>();
 </script>
 <template>
-  <div class="base">
-    <div class="label">{{ prop.title }}</div>
-    <div class="number">
+  <div :class="{ 'base': prop.type == 'pc', 'base-m': prop.type == 'mob' }">
+    <div :class="{ 'label': prop.type == 'pc', 'label-m': prop.type == 'mob' }">{{ prop.title }}</div>
+    <div :class="{ 'number': prop.type == 'pc', 'number-m': prop.type == 'mob' }">
       <slot></slot>
     </div>
   </div>
@@ -33,5 +34,26 @@ const prop = defineProps<{
 .number {
   color: red;
   font-size: x-large;
+}
+.base-m {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+.label-m {
+  background-color: #d20001;
+  height: 30px;
+  width: 20vw;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 15px;
+  padding-inline: 10px;
+}
+.number-m {
+  color: red;
+  font-size: x-large;
+  padding-left: 20vw;
 }
 </style>
