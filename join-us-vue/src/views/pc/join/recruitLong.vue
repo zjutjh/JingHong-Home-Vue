@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
+import Footer from '../../../components/pc/Footer.vue'
+import JHLabel from '../../../components/pc/JHLabel.vue'
+import JHCard from '../../../components/pc/JHCard.vue';
+import JHButton from '../../../components/pc/JHButton.vue';
 const router = useRouter();
 function developClicked() {
   router.push('/recruit_develop');
@@ -10,12 +14,11 @@ function returnClicked() {
 </script>
 <template>
   <!-- 组件内容 -->
-  <Nav_bar1 page_now="4"></Nav_bar1>
+
   <div style="height: 120px;"></div>
   <!-- TODO NO style for this -->
-  <div class="label_1">长期招新</div>
-  <div class="des_box">
-    <Des_label2 content="开发部"></Des_label2>
+  <JHLabel type="big">长期招新</JHLabel>
+  <JHCard title="开发部" type="large">
     <div class="des_jishu_content">
       <div class="des_jishu_00">招新范围：</div>
       <div class="des_jishu_01">浙工大全体学院、全体年级的学生</div>
@@ -25,12 +28,11 @@ function returnClicked() {
       <div class="des_jishu_21">2)能够独立撰写说明文档</div>
       <div class="des_jishu_31">3)能够使用git进行团队协作交互</div>
     </div>
-    <div class="button1" @click="developClicked">报名</div>
-  </div>
-  <!-- TODO NO style for this -->
-  <div class="button1" @click="returnClicked">返回</div>
-
-  <Footer></Footer>
+    <JHButton @click="developClicked">报名</JHButton>
+    <!-- <div class="button1" @click="developClicked">报名</div> -->
+  </JHCard>
+  <JHButton @click="returnClicked">返回</JHButton>
+  <Footer />
 </template>
 
 <style>

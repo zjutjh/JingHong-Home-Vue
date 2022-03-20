@@ -94,9 +94,9 @@ const persons = [
 
 
 function yixing_before() {
-  clearInterval(timer1);
+  window.clearInterval(timer1);
   let i = 0;
-  timer1 = setInterval(() => {
+  timer1 = window.setInterval(() => {
     if (i > 0) {
       yixing_before();
     }
@@ -107,9 +107,9 @@ function yixing_before() {
 }
 
 function yixing_after() {
-  clearInterval(timer1);
+  window.clearInterval(timer1);
   let i = 0;
-  timer1 = setInterval(() => {
+  timer1 = window.setInterval(() => {
     if (i > 0) {
       yixing_before();
     }
@@ -130,9 +130,9 @@ function changePicture(e: MouseEvent) {
 }
 
 function yuren_before() {
-  clearInterval(timer2);
+  window.clearInterval(timer2);
   let i = 0;
-  timer2 = setInterval(() => {
+  timer2 = window.setInterval(() => {
     if (i > 0) {
       yuren_after();
     }
@@ -143,9 +143,9 @@ function yuren_before() {
 }
 
 function yuren_after() {
-  clearInterval(timer2);
+  window.clearInterval(timer2);
   let i = 0;
-  timer2 = setInterval(() => {
+  timer2 = window.setInterval(() => {
     if (i > 0) {
       yuren_before();
     }
@@ -198,9 +198,9 @@ function a() {
   now.value = 2;
 }
 function before(className: string) {
-  clearInterval(timer.value);
+  window.clearInterval(timer.value);
   let i = 0;
-  timer.value = setInterval(() => {
+  timer.value = window.setInterval(() => {
     if (i > 0) {
       before("yixing_classes");
       before("yuren_classes");
@@ -209,9 +209,9 @@ function before(className: string) {
   }, 1500);
 }
 function after(className: string) {
-  clearInterval(timer.value);
+  window.clearInterval(timer.value);
   let i = 0;
-  timer.value = setInterval(() => {
+  timer.value = window.setInterval(() => {
     if (i > 0) {
       before("yixing_classes");
       before("yuren_classes");
@@ -245,10 +245,10 @@ function change(e: MouseEvent, className: string) {
 onMounted(() => {
   store.pageNow = 1;
   document.title = "我们的故事";
-  timer1 = setInterval(() => {
+  timer1 = window.setInterval(() => {
     yixing_before();
   }, 3000);
-  timer2 = setInterval(() => {
+  timer2 = window.setInterval(() => {
     yixing_before();
   }, 3000);
 });

@@ -21,6 +21,7 @@ const prop = defineProps<{
   background-color: white;
   margin: 3vw auto 0;
   box-shadow: 0 5px 10px #999999;
+  padding: 2vw;
 }
 .title-large {
   width: 12vw;
@@ -28,7 +29,7 @@ const prop = defineProps<{
   background-color: #d20001;
   position: relative;
   top: 2rem;
-  left: -2%;
+  left: -5%;
   font-size: xx-large;
   color: white;
   font-weight: bolder;

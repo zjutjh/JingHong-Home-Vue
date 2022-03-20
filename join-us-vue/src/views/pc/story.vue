@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, reactive, ref } from 'vue';
 import { usePageStore } from '../../stores/pages';
+import Footer from '../../components/pc/Footer.vue';
 const store = usePageStore();
 var timer1: number;
 var timer2: number;
@@ -89,9 +90,9 @@ const persons = [
 
 
 function yixing_before() {
-  clearInterval(timer1);
+  window.clearInterval(timer1);
   let i = 0;
-  timer1 = setInterval(() => {
+  timer1 = window.setInterval(() => {
     if (i > 0) {
       yixing_before();
     }
@@ -102,9 +103,9 @@ function yixing_before() {
 }
 
 function yixing_after() {
-  clearInterval(timer1);
+  window.clearInterval(timer1);
   let i = 0;
-  timer1 = setInterval(() => {
+  timer1 = window.setInterval(() => {
     if (i > 0) {
       yixing_before();
     }
@@ -127,7 +128,7 @@ function changePicture(e: MouseEvent) {
 function yuren_before() {
   clearInterval(timer2);
   let i = 0;
-  timer2 = setInterval(() => {
+  timer2 = window.setInterval(() => {
     if (i > 0) {
       yuren_after();
     }
@@ -140,7 +141,7 @@ function yuren_before() {
 function yuren_after() {
   clearInterval(timer2);
   let i = 0;
-  timer2 = setInterval(() => {
+  timer2 = window.setInterval(() => {
     if (i > 0) {
       yuren_before();
     }
@@ -193,10 +194,10 @@ function jiyu_after() {
 onMounted(() => {
   store.pageNow = 1;
   document.title = "我们的故事";
-  timer1 = setInterval(() => {
+  timer1 = window.setInterval(() => {
     yixing_before();
   }, 3000);
-  timer2 = setInterval(() => {
+  timer2 = window.setInterval(() => {
     yixing_before();
   }, 3000);
 });
@@ -360,7 +361,7 @@ onBeforeUnmount(() => {
         </div>
       </router-link>
     </div>
-    <div class="footer">©2021 浙江工业大学-精弘网络</div>
+    <Footer />
   </div>
 </template>
 

@@ -1,10 +1,13 @@
-import { createRouter, createWebHistory, RouteLocationNormalized, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHistory, createWebHashHistory } from "vue-router";
 import NavBarPC from "../components/pc/NavBar.vue"
 import NavBarMob from "../components/mobile/NavBar.vue"
 import { usePageStore } from "../stores/pages";
 import store from "../stores/store";
 import { isMobile } from "../utils/device";
+
 const pageStore = usePageStore(store);
+// NavBarPC.displayName = 'NavbarPc';
+// NavBarMob.displayName = 'NavBarMob';
 
 const routes = [
   {
@@ -12,7 +15,7 @@ const routes = [
     name: 'index',
     components: {
       default: () => import('../views/pc/index.vue'),
-      navbar: () => NavBarPC,
+      navbar: () => import('../components/pc/NavBar.vue'),
     }
   },
   {
@@ -20,7 +23,7 @@ const routes = [
     name: 'story',
     components: {
       default: () => import('../views/pc/story.vue'),
-      navbar: () => NavBarPC,
+      navbar: () => import('../components/pc/NavBar.vue'),
     }
   },
   {
@@ -28,7 +31,7 @@ const routes = [
     name: 'product',
     components: {
       default: () => import('../views/pc/product.vue'),
-      navbar: () => NavBarPC,
+      navbar: () => import('../components/pc/NavBar.vue'),
     }
   },
   {
@@ -36,7 +39,7 @@ const routes = [
     name: 'department',
     components: {
       default: () => import('../views/pc/department.vue'),
-      navbar: () => NavBarPC,
+      navbar: () => import('../components/pc/NavBar.vue'),
     },
   },
   {
@@ -44,7 +47,7 @@ const routes = [
     name: 'changwu',
     components: {
       default: () => import('../views/pc/departments/changwu.vue'),
-      navbar: () => NavBarPC,
+      navbar: () => import('../components/pc/NavBar.vue'),
     },
   },
   {
@@ -52,7 +55,7 @@ const routes = [
     name: 'jishu',
     components: {
       default: () => import('../views/pc/departments/jishu.vue'),
-      navbar: () => NavBarPC,
+      navbar: () => import('../components/pc/NavBar.vue'),
     },
   },
   {
@@ -60,7 +63,7 @@ const routes = [
     name: 'yunying',
     components: {
       default: () => import('../views/pc/departments/yunying.vue'),
-      navbar: () => NavBarPC,
+      navbar: () => import('../components/pc/NavBar.vue'),
     },
   },
   {
@@ -68,7 +71,7 @@ const routes = [
     name: 'sheji',
     components: {
       default: () => import('../views/pc/departments/sheji.vue'),
-      navbar: () => NavBarPC,
+      navbar: () => import('../components/pc/NavBar.vue'),
     },
   },
   {
@@ -76,7 +79,7 @@ const routes = [
     name: 'xinmeiti',
     components: {
       default: () => import('../views/pc/departments/xinmeiti.vue'),
-      navbar: () => NavBarPC,
+      navbar: () => import('../components/pc/NavBar.vue'),
     },
   },
   {
@@ -84,7 +87,7 @@ const routes = [
     name: 'yiban',
     components: {
       default: () => import('../views/pc/departments/yiban.vue'),
-      navbar: () => NavBarPC,
+      navbar: () => import('../components/pc/NavBar.vue'),
     },
   },
   {
@@ -92,7 +95,7 @@ const routes = [
     name: 'join',
     components: {
       default: () => import('../views/pc/join.vue'),
-      navbar: () => NavBarPC,
+      navbar: () => import('../components/pc/NavBar.vue'),
     }
   },
   {
@@ -100,7 +103,7 @@ const routes = [
     name: 'recruit',
     components: {
       default: () => import('../views/pc/join/recruit.vue'),
-      navbar: () => NavBarPC,
+      navbar: () => import('../components/pc/NavBar.vue'),
     }
   },
   {
@@ -108,7 +111,7 @@ const routes = [
     name: 'recruit_long',
     components: {
       default: () => import('../views/pc/join/recruitLong.vue'),
-      navbar: () => NavBarPC,
+      navbar: () => import('../components/pc/NavBar.vue'),
     }
   },
   {
@@ -116,7 +119,7 @@ const routes = [
     name: 'recruit_develop',
     components: {
       default: () => import('../views/pc/join/recruitDevelop.vue'),
-      navbar: () => NavBarPC,
+      navbar: () => import('../components/pc/NavBar.vue'),
     }
   },
 
@@ -125,7 +128,7 @@ const routes = [
     name: 'admin',
     components: {
       default: () => import('../views/pc/admin.vue'),
-      navbar: () => NavBarPC,
+      navbar: () => import('../components/pc/NavBar.vue'),
     }
   },
 
@@ -139,7 +142,7 @@ const routes = [
     name: 'm_index',
     components: {
       default: () => import('../views/mobile/index.vue'),
-      navbar: () => NavBarMob,
+      navbar: () => import('../components/mobile/NavBar.vue'),
     },
   },
   {
@@ -147,7 +150,7 @@ const routes = [
     name: 'm_join',
     components: {
       default: () => import('../views/mobile/join.vue'),
-      navbar: () => NavBarMob,
+      navbar: () => import('../components/mobile/NavBar.vue'),
     },
   },
 
@@ -156,7 +159,7 @@ const routes = [
     name: 'm_story',
     components: {
       default: () => import('../views/mobile/story.vue'),
-      navbar: () => NavBarMob,
+      navbar: () => import('../components/mobile/NavBar.vue'),
     }
   },
   {
@@ -164,7 +167,7 @@ const routes = [
     name: 'm_product',
     components: {
       default: () => import('../views/mobile/product.vue'),
-      navbar: () => NavBarMob,
+      navbar: () => import('../components/mobile/NavBar.vue'),
     }
   },
   {
@@ -172,7 +175,7 @@ const routes = [
     name: 'm_department',
     components: {
       default: () => import('../views/mobile/department.vue'),
-      navbar: () => NavBarMob,
+      navbar: () => import('../components/mobile/NavBar.vue'),
     }
   },
   {
@@ -180,7 +183,7 @@ const routes = [
     name: 'm_changwu',
     components: {
       default: () => import('../views/mobile/departments/changwu.vue'),
-      navbar: () => NavBarMob,
+      navbar: () => import('../components/mobile/NavBar.vue'),
     }
   },
   {
@@ -188,7 +191,7 @@ const routes = [
     name: 'm_jishu',
     components: {
       default: () => import('../views/mobile/departments/jishu.vue'),
-      navbar: () => NavBarMob,
+      navbar: () => import('../components/mobile/NavBar.vue'),
     }
   },
   {
@@ -196,7 +199,7 @@ const routes = [
     name: 'm_sheji',
     components: {
       default: () => import('../views/mobile/departments/sheji.vue'),
-      navbar: () => NavBarMob,
+      navbar: () => import('../components/mobile/NavBar.vue'),
     }
   },
   {
@@ -204,7 +207,7 @@ const routes = [
     name: 'm_xinmeiti',
     components: {
       default: () => import('../views/mobile/departments/xinmeiti.vue'),
-      navbar: () => NavBarMob,
+      navbar: () => import('../components/mobile/NavBar.vue'),
     }
   },
   {
@@ -212,7 +215,7 @@ const routes = [
     name: 'm_yiban',
     components: {
       default: () => import('../views/mobile/departments/yiban.vue'),
-      navbar: () => NavBarMob,
+      navbar: () => import('../components/mobile/NavBar.vue'),
     }
   },
   {
@@ -220,7 +223,7 @@ const routes = [
     name: 'm_yunying',
     components: {
       default: () => import('../views/mobile/departments/yunying.vue'),
-      navbar: () => NavBarMob,
+      navbar: () => import('../components/mobile/NavBar.vue'),
     }
   },
   {
@@ -228,7 +231,7 @@ const routes = [
     name: 'm_recruit',
     components: {
       default: () => import('../views/mobile/join/recruit.vue'),
-      navbar: () => NavBarMob,
+      navbar: () => import('../components/mobile/NavBar.vue'),
     },
   },
   {
@@ -236,7 +239,7 @@ const routes = [
     name: 'm_recruite_long',
     components: {
       default: () => import('../views/mobile/join/recruitLong.vue'),
-      navbar: () => NavBarMob,
+      navbar: () => import('../components/mobile/NavBar.vue'),
     },
   },
   {
@@ -244,7 +247,7 @@ const routes = [
     name: 'm_recruit_develop',
     components: {
       default: () => import('../views/mobile/join/recruitDevelop.vue'),
-      navbar: () => NavBarMob,
+      navbar: () => import('../components/mobile/NavBar.vue'),
     },
   },
   {
@@ -252,7 +255,7 @@ const routes = [
     name: 'm_admin',
     components: {
       default: () => import('../views/mobile/admin.vue'),
-      navbar: () => NavBarMob,
+      navbar: () => import('../components/mobile/NavBar.vue'),
     },
   },
   // 404 

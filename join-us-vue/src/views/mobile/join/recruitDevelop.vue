@@ -7,6 +7,7 @@ import { IDevelopForm } from '../../../types/forms';
 import { reactive } from 'vue';
 import { regions } from '../../../utils/const';
 import Footer1 from '../../../components/pc/Footer.vue';
+import JHButton from '../../../components/pc/JHButton.vue';
 const router = useRouter();
 const form = reactive(<IDevelopForm>{
   name: '',
@@ -103,8 +104,8 @@ async function submitClicked() {
       <input class="mob_capability_2" v-model="form.feedback" />
     </div>
     <div style="display:flex;">
-      <div class="mob_button1" @click="returnClicked">返回</div>
-      <div class="mob_button1" @click="submitClicked">提交</div>
+      <JHButton @click="returnClicked">返回</JHButton>
+      <JHButton @click="submitClicked">提交</JHButton>
     </div>
   </div>
   <Footer />

@@ -7,7 +7,7 @@ import { RouterLink } from 'vue-router';
   </div>
 </template>
 
-<style>
+<style scoped>
 .footer {
   margin-top: 2rem;
   width: 100%;

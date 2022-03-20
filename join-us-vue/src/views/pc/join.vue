@@ -20,7 +20,7 @@ onMounted(() => {
 <template>
   <div style="margin-top: 50px;"></div>
   <div class="des_box">
-    <Des_label2 content="加入我们"></Des_label2>
+    <!-- <Des_label2 content="加入我们"></Des_label2> -->
     <div style="display: flex; margin-top: 30px;">
       <div style="width: 60%;">
         <div class="join_poster"></div>
@@ -88,7 +88,7 @@ onMounted(() => {
   </div>
 
   <div class="des_box">
-    <Des_label2 content="部门结构一览图"></Des_label2>
+    <!-- <Des_label2 content="部门结构一览图"></Des_label2> -->
     <div class="department_structure_overview_diagram"></div>
   </div>
 
@@ -120,7 +120,7 @@ template {
   background-color: aqua;
   /* margin: 0px auto 20px; */
 
-  background: url(photo/haibao/diannao.jpg) center/cover;
+  background: url(/photo/haibao/diannao.jpg) center/cover;
 }
 .join_label {
   width: 100px;
@@ -201,7 +201,7 @@ template {
   width: 694px;
   height: 229px;
   margin: 20px auto;
-  background: url(photo/haibao/structPc.png) center/cover;
+  background: url(/photo/haibao/structPc.png) center/cover;
   background-color: aqua;
 }
 </style>

@@ -329,12 +329,8 @@ const data_yb = computed(() => {
   <div class="pwd">
     输入密码:
     <input v-model="pwd" />
-    <button @click="submitClicked">提交</button>
+    <button @click="submitClicked">刷新</button>
   </div>
-  {{ data }}
-  <br />
-  {{ option }}
-  <!-- <div class="lable_center">招新情况</div> -->
   <JHLabel type="big">招新情况</JHLabel>
   <div class="total"></div>
   <div class="graph"></div>

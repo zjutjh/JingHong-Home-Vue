@@ -6,6 +6,8 @@ import { isPhone, isStuId } from '../../../utils/valid';
 import { IDevelopForm } from '../../../types/forms';
 import { reactive } from 'vue';
 import { regions } from '../../../utils/const';
+import JHButton from '../../../components/pc/JHButton.vue'
+import JHLabel from '../../../components/pc/JHLabel.vue';
 const router = useRouter();
 const form = reactive(<IDevelopForm>{
   name: '',
@@ -50,10 +52,8 @@ async function submitClicked() {
 }
 </script>
 <template>
-  <!-- TODO remove this test. -->
-  {{ form }}
   <div style="margin-top: 10px;"></div>
-  <div class="label_1">开发部长期招新</div>
+  <JHLabel type="big">开发部长期招新</JHLabel>
   <div class="basic_info">
     <div class="item_name">姓名</div>
     <input class="item_content" v-model="form.name" />
@@ -81,7 +81,7 @@ async function submitClicked() {
     </select>
   </div>
   <div class="other_info">
-    <div class="label_2">必要能力勾选</div>
+    <JHLabel type="middle">必要能力勾选</JHLabel>
     <div style="padding-bottom: 20px;border-bottom: 1px black solid;">
       <div class="capability_1">
         <div>
@@ -97,16 +97,16 @@ async function submitClicked() {
           <input type="checkbox" v-model="form.ability.git" />能够使用git进行团队协作交互
         </div>
       </div>
-      <div class="label_2">其他能力</div>
+      <JHLabel type="middle">其他能力</JHLabel>
       <input class="capability_2" v-model="form.ability_other" />
     </div>
-    <div class="label_2">有什么想对开发部说的话，可以在这里告诉我们</div>
+    <JHLabel type="middle">有什么想对开发部说的话，可以在这里告诉我们</JHLabel>
     <input class="capability_2" v-model="form.feedback" />
   </div>
   <div style="display:flex;">
     <!-- TODO no style for this -->
-    <div class="button1" @click="returnClicked">返回</div>
-    <div class="button1" @click="submitClicked">提交</div>
+    <JHButton @click="returnClicked">返回</JHButton>
+    <JHButton @click="submitClicked">提交</JHButton>
   </div>
   <!-- </div> -->
   <Footer />

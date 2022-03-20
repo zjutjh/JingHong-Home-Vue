@@ -21,20 +21,24 @@ const prop = defineProps<{
 }
 .label {
   background-color: #d20001;
-  height: 30px;
-  width: fit-content + 50px;
+  height: 80px;
+  width: 200px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 15px;
+  font-size: 30px;
   padding-inline: 10px;
 }
 .number {
   color: red;
-  font-size: x-large;
+  font-size: xx-large;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
 }
+
 .base-m {
   display: grid;
   grid-template-columns: 20% 80%;

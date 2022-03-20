@@ -8,6 +8,7 @@ import { isPhone, isStuId } from "../../../utils/valid";
 import { NormalForm } from "../../../apis/forms";
 import { regions, choices } from '../../../utils/const';
 import Label from "../../../components/pc/JHLabel.vue";
+import JHButton from "../../../components/pc/JHButton.vue";
 const store = usePageStore();
 const router = useRouter();
 const form = reactive(<INormalForm>{
@@ -60,7 +61,7 @@ onMounted(() => {
 
 <template>
   <!-- ! TODO 测试数据, 移除这一行. -->
-  {{ form }}
+  <!-- {{ form }} -->
   <div style="margin-top: 10px;"></div>
   <!-- <div class="des_label_1">报名表</div> -->
   <Label type="middle">报名表</Label>
@@ -126,8 +127,8 @@ onMounted(() => {
   </div>
   <div style="display:flex; center">
     <!-- TODO: 缺少样式 -->
-    <div class="button1" @click="returnClicked">返回</div>
-    <div class="button1" @click="submitClicked">提交</div>
+    <JHButton @click="returnClicked">返回</JHButton>
+    <JHButton @click="submitClicked">提交</JHButton>
   </div>
   <!-- </div> -->
   <Footer></Footer>
