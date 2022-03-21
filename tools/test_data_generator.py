@@ -1,8 +1,10 @@
 import requests
 import json
 import random
+from threading import Thread
 
-for i in range(1000):
+
+def f():
     name = str(random.randint(1, 1000000))
     stuId = str(random.randint(100000000000, 999999999999))
     gender = random.randint(0, 2)
@@ -55,6 +57,11 @@ for i in range(1000):
     print(json.dumps(data))
     headers = {'Content-Type': 'application/json',
                'Authorization': '123'}
-    response = requests.post('http://localhost:8888/api/new_normal',
+    response = requests.post('http://101.34.27.200:8888/api/new_normal',
                              headers=headers,
                              data=json.dumps(data))
+
+
+for i in range(500):
+    t = Thread(target=f)
+    t.start()
