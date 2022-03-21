@@ -187,7 +187,7 @@ onUnmounted(() => {
   <Footer />
 </template>
 
-<style>
+<style scoped>
 @font-face {
   font-family: "song";
   src: url("/font/逐浪雅宋体.ttf");
@@ -226,50 +226,6 @@ body {
   box-shadow: 0 1px 10px #999999;
 }
 
-#nav * {
-  border-radius: 0;
-}
-.img {
-  float: left;
-}
-.button-on {
-  position: relative;
-  float: right;
-  top: 1rem;
-  right: 1rem;
-  height: 2rem;
-  width: 2rem;
-  background-image: url(/photo/svg/mulu.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 90%;
-}
-.button-off {
-  position: relative;
-  float: right;
-  top: 1rem;
-  right: 1rem;
-  height: 2rem;
-  width: 2rem;
-  background-image: url(/photo/svg/关闭.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 90%;
-}
-#nav img {
-  height: 100%;
-  float: left;
-  transform: scale(0.8);
-}
-
-.start {
-  height: 100vh;
-  overflow: hidden;
-  background: url(/photo/index/shouji.jpg) no-repeat;
-  background-size: cover;
-  background-position: 0 0;
-  border-radius: 0;
-}
 .start-title {
   width: 18rem;
   height: 6.6rem;
@@ -283,87 +239,12 @@ body {
   text-indent: 0.25em;
 }
 
-.start-img {
-  position: absolute;
-  left: 50%;
-  bottom: 5rem;
-  transform: translate(-50%);
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  /* background-color:; */
-  margin: auto;
-  background-image: url(/photo/svg/下箭头.svg);
-  background-size: 80%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
 .start-img-content {
   position: absolute;
   left: 50%;
   bottom: 4rem;
   color: white;
   transform: translate(-50%);
-  /* width: 4rem; */
-  /* height: 4rem; */
-}
-
-.topshow {
-  position: fixed;
-  left: 0;
-  top: 0rem;
-  width: 100%;
-  height: 4rem;
-  /* background: #d20001; */
-  transition: top linear 0.3s;
-  z-index: 1000000;
-  /* box-shadow: 0 1px 5px #999999; */
-}
-.tophide {
-  position: fixed;
-  left: 0;
-  top: -8rem;
-  width: 100%;
-  height: 4rem;
-  /* background: #d20001; */
-  transition: top linear 0.3s;
-  z-index: 1000000;
-  box-shadow: 0 1px 5px #999999;
-}
-.Nav-hide {
-  position: fixed;
-  left: 0;
-  top: -100%;
-  width: 100%;
-  height: 100%;
-  background: white;
-  transition: left linear 0.3s;
-}
-.Nav-show {
-  position: fixed;
-  left: 0rem;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: white;
-  transition: left linear 0.3s;
-  z-index: 1000001;
-}
-
-.nav-list {
-  margin: 4rem 4%;
-  width: 92%;
-  height: 45%;
-}
-.nav-list div {
-  width: 100%;
-  height: 20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  margin: 0;
-  border-bottom: 0.1rem solid #efefef;
 }
 
 .introduce {

@@ -18,25 +18,17 @@
 <style>
 /* 样式 */
 .start {
-  /* width: 100vw;
-    height: 50vw; */
-  height: 63vw;
+  height: 100vh;
   overflow: hidden;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(/photo/index/diannao.jpg) no-repeat;
-  background-size: contain;
+    url(/photo/index/shouji.jpg) no-repeat;
+  background-size: cover;
   background-position: 0 0;
-  max-width: 100%;
-  max-height: 100%;
   border-radius: 0;
-  /* background:; */
-  /* filter:brightness(50%) */
-
-  display: flex;
   justify-content: center;
   align-items: center;
+  display: flex;
 }
-
 .content1 {
   font-size: 6vw;
   color: white;
@@ -62,14 +54,18 @@
   float: left;
 }
 .start-img {
-  width: 4vw;
-  height: 4vw;
+  position: absolute;
+  left: 50%;
+  bottom: 5rem;
+  transform: translate(-50%);
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
-
   background-color: #d20001;
-  background-size: 80%;
+  margin: auto;
   background-image: url(/photo/svg/下箭头.svg);
-  background-repeat: no-repeat;
+  background-size: 80%;
   background-position: center;
+  background-repeat: no-repeat;
 }
 </style>

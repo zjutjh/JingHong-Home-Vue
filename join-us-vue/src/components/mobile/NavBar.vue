@@ -88,13 +88,14 @@ watch(initialScrollTop, (newValue, oldValue) => {
   </div>
 </template>
 
-<style>
+<style scoped>
 #nav * {
   border-radius: 0;
 }
-.img {
+#nav .img {
   float: left;
 }
+
 .button-on {
   position: relative;
   float: right;
