@@ -29,7 +29,7 @@ func NewNormalForm(c *gin.Context) {
 		Profile:  postData.Profile,
 		Feedback: postData.Feedback,
 	}
-	res := initial.DB.Create(&normalForm)
+	res := initial.DB.Save(&normalForm)
 	if res.RowsAffected == 0 {
 		utility.ResponseError(c, "Database Error")
 	} else {
