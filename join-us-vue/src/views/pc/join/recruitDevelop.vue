@@ -105,8 +105,8 @@ async function submitClicked() {
   </div>
   <div style="display:flex;">
     <!-- TODO no style for this -->
-    <JHButton @click="returnClicked">返回</JHButton>
-    <JHButton @click="submitClicked">提交</JHButton>
+    <JHButton type="small" @click="returnClicked">返回</JHButton>
+    <JHButton type="small" @click="submitClicked">提交</JHButton>
   </div>
   <!-- </div> -->
   <Footer />

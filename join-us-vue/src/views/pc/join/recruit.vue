@@ -127,8 +127,8 @@ onMounted(() => {
   </div>
   <div style="display:flex; center">
     <!-- TODO: 缺少样式 -->
-    <JHButton @click="returnClicked">返回</JHButton>
-    <JHButton @click="submitClicked">提交</JHButton>
+    <JHButton type="small" @click="returnClicked">返回</JHButton>
+    <JHButton type="small" @click="submitClicked">提交</JHButton>
   </div>
   <!-- </div> -->
   <Footer></Footer>

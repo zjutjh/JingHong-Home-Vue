@@ -1,6 +1,9 @@
 <script setup lang="ts">import { onMounted } from 'vue';
 import { usePageStore } from '../../stores/pages';
 import { products } from '../../utils/const';
+import { RouterLink } from 'vue-router';
+import JHButton from '../../components/pc/JHButton.vue';
+import Footer from '../../components/pc/Footer.vue';
 const pageStore = usePageStore();
 
 onMounted(() => {
@@ -33,6 +36,17 @@ onMounted(() => {
         </div>
       </div>
     </div>
+    <router-link to="/department">
+      <JHButton type="medium">
+        我们的部门
+        <img
+          src="/photo/svg/右箭头.svg"
+          data-v-5bbff373
+          style="float: right; transform: scale(0.5);"
+        />
+      </JHButton>
+    </router-link>
+    <Footer />
   </div>
 </template>
 <style scoped>

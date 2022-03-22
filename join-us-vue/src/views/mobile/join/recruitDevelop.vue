@@ -104,8 +104,8 @@ async function submitClicked() {
       <input class="mob_capability_2" v-model="form.feedback" />
     </div>
     <div style="display:flex;">
-      <JHButton @click="returnClicked">返回</JHButton>
-      <JHButton @click="submitClicked">提交</JHButton>
+      <JHButton type="small" @click="returnClicked">返回</JHButton>
+      <JHButton type="small" @click="submitClicked">提交</JHButton>
     </div>
   </div>
   <Footer />

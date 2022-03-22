@@ -1,17 +1,13 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
 import { onMounted, ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import router from '../../router';
 import { usePageStore } from '../../stores/pages';
-const store = usePageStore();
-// const props = defineProps(['pageNow'])
-
-// Should use State Manager.
-// Should use one var to include following vars.
-const { initialScrollTop } = storeToRefs(store);
+const pageStore = usePageStore();
+const initialScrollTop = ref(0);
 const show = ref(true);
 const hide = ref(false);
+const top = ref(true);
 
 const pages = [
   { name: "首页", href: "/index" },
@@ -20,8 +16,8 @@ const pages = [
   { name: "我们的部门", href: "/department" },
   { name: "加入我们", href: "/join" },
 ];
+
 function scrolling() {
-  // alert("Scrolling")
   let scrollTop = window.pageYOffset
     || document.documentElement.scrollTop
     || document.body.scrollTop;
@@ -30,9 +26,7 @@ function scrolling() {
   if (scrollStep <= 0) {
     show.value = true;
     hide.value = false;
-    // console.log("Scrolling Up")
   } else {
-    // console.log("Scrolling Down")
     show.value = false;
     hide.value = true;
   }
@@ -41,14 +35,26 @@ function scrolling() {
 function logoClicked() {
   router.push('/index');
 }
+function changePage(index: number) {
+  console.log(initialScrollTop.value, pageStore.pageNow)
+  if (initialScrollTop.value == 0 && index == 0) {
+    top.value = true;
+  } else {
+    top.value = false;
+  }
+}
 
 watch(initialScrollTop, (newValue, oldValue) => {
-  // console.log("reset: " + initialScrollTop.value)
   if (newValue == 0) {
-    console.log("reset")
+    if (pageStore.pageNow == 0) {
+      top.value = true;
+    }
     document.documentElement.scrollTop = 0;
+  } else {
+    top.value = false;
   }
 })
+
 onMounted(() => {
   initialScrollTop.value = window.pageYOffset
     || document.documentElement.scrollTop
@@ -59,51 +65,63 @@ onMounted(() => {
 </script>
 
 <template>
-  <div :class="{ topShow: show, topHide: hide }">
+  <div :class="{ topShow: show && !top, topHide: hide, atTop: top }">
     <img src="/photo/top/logo.png" @click.native="logoClicked" />
     <nav>
       <div class="nav-list">
         <div
           v-for="page, index in pages"
-          :class="store.pageNow == index ? 'page_selected' : 'page_unselected'"
+          :class="pageStore.pageNow == index ? 'page_selected' : 'page_unselected'"
         >
-          <!-- TODO : Should not us a. -->
-          <!-- <a :href="page.href" style="height: 100%">{{ page.name }}</a> -->
-          <router-link :to="page.href">{{ page.name }}</router-link>
+          <router-link :to="page.href" @click="changePage(index)">{{ page.name }}</router-link>
         </div>
       </div>
     </nav>
   </div>
 </template>
 
-<style>
+<style scoped>
+* {
+  font-size: x-large;
+}
 a {
   text-decoration: none;
 }
-.topShow {
-  position: sticky;
-  /* left: 0; */
+.atTop {
+  position: fixed;
   left: auto;
   top: 0rem;
   width: 100%;
   min-width: 900px;
-  height: 96px;
+  height: 16vh;
+  transition: top linear 0.3s;
+  border-radius: 0;
+  background: transparent;
+  /* background-color: #ffffff; */
+  z-index: 10;
+}
+.topShow {
+  position: fixed;
+  left: auto;
+  top: 0rem;
+  width: 100%;
+  min-width: 900px;
+  height: 16vh;
   transition: top linear 0.3s;
   border-radius: 0;
   background-color: #d20001;
   z-index: 10;
+  box-shadow: 0 5px 10px #999999;
 }
+.atTop img,
 .topShow img,
 .topHide img {
-  width: 139px;
-  height: 58px;
-  margin-top: 20px;
-  margin-left: 36px;
   float: left;
-  transform: scale(1.2);
+  transform: scale(0.8);
 }
+
 .topHide {
-  position: sticky;
+  position: fixed;
   left: 0;
   top: -16vh;
   width: 100%;
@@ -120,6 +138,7 @@ img {
   float: left;
   height: 100%;
 }
+
 nav {
   width: 70%;
   height: 100%;

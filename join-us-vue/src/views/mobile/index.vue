@@ -86,7 +86,7 @@ function handleScrollx() {
 onMounted(() => {
   window.addEventListener("scroll", handleScrollx, true);
   document.title = '精弘首页';
-  let timer = setInterval(() => {
+  let timer = window.setInterval(() => {
     if (loading_width.value >= 0) {
       loading_width.value = -100;
     } else {

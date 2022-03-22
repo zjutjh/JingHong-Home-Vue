@@ -28,10 +28,10 @@ function returnClicked() {
       <div class="des_jishu_21">2)能够独立撰写说明文档</div>
       <div class="des_jishu_31">3)能够使用git进行团队协作交互</div>
     </div>
-    <JHButton @click="developClicked">报名</JHButton>
+    <JHButton type="small" @click="developClicked">报名</JHButton>
     <!-- <div class="button1" @click="developClicked">报名</div> -->
   </JHCard>
-  <JHButton @click="returnClicked">返回</JHButton>
+  <JHButton type="small" @click="returnClicked">返回</JHButton>
   <Footer />
 </template>
 

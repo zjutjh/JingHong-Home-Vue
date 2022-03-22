@@ -3,17 +3,66 @@ import { usePageStore } from '../../stores/pages';
 // import NavBar from '../../components/pc/NavBar.vue';
 import Start from '../../components/pc/Start.vue';
 import Footer from '../../components/pc/Footer.vue';
-import { onMounted } from 'vue';
-const store = usePageStore();
+import JHLabel from '../../components/pc/JHLabel.vue';
+import { onMounted, ref } from 'vue';
+const pageStore = usePageStore();
+const loading_width = ref(0);
+
 onMounted(
   () => {
-    store.pageNow = 0;
+    pageStore.pageNow = 0;
+    let timer = window.setInterval(() => {
+      if (loading_width.value >= 0) {
+        loading_width.value = -100;
+      } else {
+        loading_width.value += 0.2;
+      }
+    }, 10);
   }
+
 )
+const now = ref(0);
+const sites = [
+  { img: "/photo/index/story1.png", name: "精弘网络", content: ["2002年5月", "精弘网络成立"] },
+  {
+    img: "/photo/index/story2.png",
+    name: "精弘论坛",
+    content: ["2003年5月", "推出精弘论坛\nbbs.zjut.com"]
+  },
+  {
+    img: "/photo/index/story3.png",
+    name: "Feel电台",
+    content: ["2004年10月", "Feel电台创立\nradio.zjut.com"],
+  },
+  {
+    img: "/photo/index/story4.png",
+    name: "学术邮箱",
+    content: ["2005年5月", "推出第一版学生邮箱\nmail.zjut.com"],
+  },
+  { img: "/photo/index/story5.jpg", name: "精弘毅行", content: ["2012年3月", "第一届精弘毅行"] },
+  {
+    img: "/photo/index/story6.png",
+    name: "百佳网站",
+    content: ['2012年12月', '荣获第五届"全国高校\n百佳网站"的荣誉称号'],
+  },
+  {
+    img: "/photo/index/story7.jpg",
+    name: "网络安全宣传",
+    content: ['2015年12月', '承办浙江工业大学首届\n"网络安全宣传月"活动'],
+  },
+  {
+    img: "/photo/index/story8.jpg",
+    name: "微信服务号",
+    content: ['2016年8月', '精弘网络微信服务号\n"获全国高校东部地区榜亚军"'],
+  },
+  { img: "/photo/index/story9.png", name: "微精弘", content: ["2017年2月", "微精弘改版正式上线"] },
+  { img: "/photo/index/story5.jpg", name: "精弘毅行", content: ["2020年", "第十三届精弘毅行"] },
+];
 </script>
+
 <template>
-  <!-- <NavBar page-now="0" /> -->
   <Start />
+
   <div class="introduce">
     <img class="introduce-img2" src="/photo/index/taiquandao.png" />
     <div class="introduce-content">
@@ -32,8 +81,39 @@ onMounted(
     </div>
     <img class="introduce-img1" src="/photo/index/muqiu.png" />
   </div>
+
+  <div>
+    <div class="history">
+      <JHLabel type="title">精弘大事记</JHLabel>
+      <div class="qufudong">
+        <div class="history-left">
+          <div
+            class="history-img"
+            v-bind:style="{ 'background-image': 'url(' + sites[now].img + ')' }"
+          ></div>
+          <div class="history-img-name">{{ sites[now].name }}</div>
+        </div>
+        <div class="history-right">
+          <div class="time">{{ sites[now].content[0] }}</div>
+          <div class="event">{{ sites[now].content[1] }}</div>
+          <div class="history-right-img"></div>
+        </div>
+      </div>
+      <div class="history-choice">
+        <div class="red-line"></div>
+        <div class="choices" v-for="(site, index) in sites" v-on:click="now = index">
+          <div
+            :class="index == now ? 'big-ball' : 'ball'"
+            v-bind:style="{ 'background-image': 'url(' + site.img + ')', 'border-color': (index % 2 == 1 ? '#D20001' : '#fab3b3') }"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="story">
-    <div class="img"></div>
+    <!-- <div class="img"></div> -->
+    <img src="/photo/index/story.jpg" class="img" />
 
     <div class="content">
       <router-link to="/story">
@@ -48,7 +128,6 @@ onMounted(
 
   <div class="end">
     <div class="end-1">
-      <!-- TODO Wechat contact -->
       <a>
         <div class="follow-img1"></div>
       </a>
@@ -75,8 +154,7 @@ onMounted(
         <img src="/photo/index/2021.png" />
       </div>
       <div class="loading-border">
-        <!-- <div id="loading-img" class="loading-img" v-bind:style="{ left: loading_width + '%' }"></div> -->
-        <div id="loading-img" class="loading-img" style="{ left: -100 + '%' }"></div>
+        <div id="loading-img" class="loading-img" :style="{ left: loading_width + '%' }"></div>
       </div>
       <div class="loading-text">
         <img src="/photo/index/loading.png" />
@@ -96,6 +174,13 @@ onMounted(
   src: url("/font/SourceHanSansSC-VF.otf");
 }
 
+.red-line {
+  position: absolute;
+  width: 90%;
+  height: 0.7rem;
+  background-color: #d20001;
+  z-index: 1; /*置于下方*/
+}
 * {
   text-align: center;
   /* border-radius: 1rem; */
@@ -109,14 +194,15 @@ body {
   margin: 0;
   background-color: #efefef;
 }
-
+.introduce-content {
+  border-radius: 1rem;
+}
 .introduce-content .content {
   text-align: center;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  border-radius: 1rem;
 }
 .introduce-content .title {
-  margin-bottom: 50em;
+  border-radius: 1rem;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -126,7 +212,6 @@ body {
   padding: 15px 50px;
   height: 60vh;
   display: flex;
-
   position: relative;
   overflow: hidden;
 }
@@ -301,19 +386,13 @@ body {
   align-items: center;
   justify-content: center;
 }
-.red-line {
-  position: absolute;
-  width: 90%;
-  height: 0.7rem;
-  background-color: #d20001;
-  z-index: -1; /*置于下方*/
-}
 .choices {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
 }
 .ball {
   width: 4vw;
@@ -347,15 +426,14 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  border-radius: 1rem;
   box-shadow: 0 2px 20px #999999;
 }
+
 .story .img {
-  width: 80%;
-  height: 52%;
-  background-size: contain;
-  background-color: aqua;
-  background-image: url(/photo/index/story.jpg);
-  background-repeat: no-repeat;
+  /* padding: 2vw; */
+  height: 60vh;
+  border-radius: 1rem;
 }
 .story .content {
   width: 70%;
@@ -403,9 +481,11 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  border-radius: 1rem;
 }
 
 .end-1 {
+  border-radius: 1rem;
   width: 44%;
   height: 100%;
   display: flex;
@@ -452,6 +532,7 @@ body {
 }
 
 .end-recruit {
+  border-radius: 1rem;
   height: 100%;
   width: 19%;
   display: flex;
@@ -462,6 +543,7 @@ body {
   box-shadow: 0 5px 10px #999999;
 }
 .recruit-button {
+  border-radius: 1rem;
   font-size: 20px;
   color: white;
   padding: 10px;
@@ -480,6 +562,7 @@ body {
 }
 
 .loading {
+  border-radius: 1rem;
   width: 19%;
   height: 100%;
   display: flex;

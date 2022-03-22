@@ -30,7 +30,7 @@ const yuren_classes = reactive([
   "after1",
   "after2",
 ]);
-const shenghuo_seen = ref(true);
+const shenghuo_seen = ref(false);
 const shenghuo_selected = ref(0);
 const jiyu_classes = reactive(["jiyuleft", "jiyucenter", "jiyuright", "jiyuafter"]);
 
@@ -188,9 +188,6 @@ function jiyu_after() {
   }, 10);
 }
 
-
-
-
 onMounted(() => {
   store.pageNow = 1;
   document.title = "我们的故事";
@@ -205,6 +202,7 @@ onBeforeUnmount(() => {
   clearInterval(timer1);
   clearInterval(timer2);
 });
+
 </script>
 <template>
   <div id="body">
@@ -228,7 +226,7 @@ onBeforeUnmount(() => {
         <br />
         <span>浙工大易班官方机构号、知乎官方机构号、</span>
         <br />
-        <span>邮件系统(https:/mai©.zjut.edu.cn/)、</span>
+        <span>邮件系统(https://mail.zjut.edu.cn/)、</span>
         <br />
         <span>工大云盘(http://pan.zjut.edu.cn/)、</span>
         <br />

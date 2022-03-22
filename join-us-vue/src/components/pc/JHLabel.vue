@@ -8,22 +8,34 @@ const prop = defineProps<{
 
 <template>
   <div :class="prop.type">
-    <slot></slot>
+    <h1>
+      <slot></slot>
+    </h1>
   </div>
 </template>
 
 <style scoped>
 .title {
-  width: 15%;
-  font-size: 10rpx;
+  width: 20%;
+  height: 80px;
+  align-items: center;
+  font-family: "SC-VF";
   padding: 1% 0;
-  margin: 0 8% 3%;
+  margin: 0 7.5% 3%;
   background-color: #d20001;
   color: white;
-  border-radius: 1rem;
   box-shadow: 0 5px 10px #999999;
+  border-radius: 1rem;
 }
-
+.title .h1 {
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
 .big {
   width: 15rem;
   height: 5rem;
