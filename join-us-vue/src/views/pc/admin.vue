@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { GetDataTotal } from '../../apis/admin';
 import { IFormsData, INormalForm } from '../../types/forms';
 import JHLabel from '../../components/pc/JHLabel.vue';
@@ -16,6 +16,8 @@ import 'echarts/lib/component/grid';
 import DepartmentsData1 from '../../components/pc/DepartmentsDataPresent.vue';
 // import echarts from 'echarts/dist/'
 import { DepartmentsData } from '../../types/components';
+import { usePageStore } from '../../stores/pages';
+const pageStore = usePageStore();
 use([CanvasRenderer,
   BarChart,
   TitleComponent,
@@ -323,6 +325,9 @@ const data_yb = computed(() => {
     total: data.value.yb.total,
     today: data.value.yb.today,
   };
+})
+onMounted(() => {
+  pageStore.pageNow = 4;
 })
 </script>
 <template>

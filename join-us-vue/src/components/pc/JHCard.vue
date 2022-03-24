@@ -30,7 +30,7 @@ const prop = defineProps<{
   position: relative;
   top: 2rem;
   left: -5%;
-  font-size: xx-large;
+  font-size: 2.3vw;
   color: white;
   font-weight: bolder;
   display: flex;

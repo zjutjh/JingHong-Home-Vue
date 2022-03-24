@@ -19,11 +19,11 @@ const form = reactive(<INormalForm>{
   campus: "",
   phone: "",
   qq: "",
-  region: "",
+  region: "no",
   profile: "",
   feedback: "",
-  want1: "",
-  want2: "",
+  want1: "no",
+  want2: "no",
 });
 
 function regionChanged() {
@@ -60,7 +60,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div style="margin-top: 10px;"></div>
+  <div style="margin-top: 20vh;"></div>
   <Label type="middle">报名表</Label>
   <div class="basic_info">
     <div class="item_name">姓名</div>
@@ -84,45 +84,48 @@ onMounted(() => {
     <input class="item_content" v-model="form.college" />
     <div class="item_name">校区</div>
     <select class="item_content" v-model="form.region" @change="regionChanged">
-      <option style="display: none;">选择后显示志愿</option>
+      <option value="no">选择后显示志愿</option>
       <option v-for="region in regions" :value="region">{{ region }}</option>
     </select>
   </div>
   <div class="other_info">
-    <div
-      style="padding: 20px 0;border-bottom: 1px black solid;display: flex;justify-content: space-between;"
-    >
-      <div class="item_name">第一志愿</div>
-      <select class="item_content" v-model="form.want1" :disabled="(form.region == '')">
-        <option
-          v-for="(item) in choices[regions.indexOf(form.region)]"
-          :value="item"
-          :disabled="'disabled' ? item == form.want2 : 'true'"
-        >{{ item }}</option>
-      </select>
+    <div class="item_name">第一志愿</div>
+    <select class="item_content" v-model="form.want1" :disabled="(form.region == '')">
+      <option value="no">请先选择校区</option>
+      <option
+        v-for="(item) in choices[regions.indexOf(form.region)]"
+        :value="item"
+        :disabled="'disabled' ? item == form.want2 : 'true'"
+      >{{ item }}</option>
+    </select>
 
-      <div class="item_name">第二志愿</div>
-      <select class="item_content" v-model="form.want2" :disabled="(form.region == '')">
-        <!-- <option style="display: none;">请先选择志愿</option> -->
-        <option
-          v-for="item in choices[regions.indexOf(form.region)]"
-          :value="item"
-          :disabled="'disabled' ? item == form.want1 : 'true'"
-        >{{ item }}</option>
-      </select>
+    <div class="item_name">第二志愿</div>
+
+    <select class="item_content" v-model="form.want2" :disabled="(form.region == '')">
+      <option value="no">请先选择校区</option>
+      <option
+        v-for="item in choices[regions.indexOf(form.region)]"
+        :value="item"
+        :disabled="'disabled' ? item == form.want1 : 'true'"
+      >{{ item }}</option>
+    </select>
+  </div>
+  <div class="selfIntroduce">
+    <div>
+      <Label type="small">来一段简单的自我介绍吧！</Label>
+      <input class="capability_2" v-model="form.profile" />
     </div>
-    <!-- <div class="des_label_2">来一段简单的自我介绍吧！</div> -->
-    <Label type="small">来一段简单的自我介绍吧！</Label>
-    <input class="capability_2" v-model="form.profile" />
 
-    <!-- <div class="des_label_2">最后，有什么想对精弘网络说的话，可以在这里畅所欲言哦~</div> -->
-    <Label type="small">最后，有什么想对精弘网络说的话，可以在这里畅所欲言哦~</Label>
-    <input class="capability_2" v-model="form.feedback" />
+    <div>
+      <Label type="small">最后，有什么想对精弘网络说的话，可以在这里畅所欲言哦~</Label>
+      <input class="capability_2" v-model="form.feedback" />
+    </div>
   </div>
   <div style="display:flex; center">
     <JHButton type="small" @click="returnClicked">返回</JHButton>
     <JHButton type="small" @click="submitClicked">提交</JHButton>
   </div>
+
   <Footer></Footer>
 </template>
 
@@ -130,10 +133,17 @@ onMounted(() => {
 template {
   min-width: 900px;
 }
+.selfIntroduce {
+  width: 70vw;
+  margin: auto;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  padding: 2vh;
+}
 .basic_info {
   display: grid;
   width: 70%;
-  grid-template-columns: 13% 33% 13% 33%;
+  grid-template-columns: 10% 90%;
   grid-template-rows: repeat(4, 30px);
   grid-gap: 20px 2.8%;
 
@@ -151,7 +161,7 @@ template {
   justify-content: center;
 
   color: white;
-  font-size: 15px;
+  font-size: 1vw;
 }
 
 .item_content {
@@ -167,11 +177,20 @@ template {
   line-height: 20px;
   font-weight: 600;
   border: none;
+  width: 60vw;
+  box-shadow: 0 5px 10px #999999;
 }
 
 .other_info {
-  width: 70%;
+  display: grid;
+  width: 70vw;
+  grid-row-gap: 2vh;
+  grid-column-gap: 1vw;
+  grid-template-rows: 50% 50%;
+  grid-template-columns: 15% 85%;
   margin: auto;
+  padding: 3vh;
+  border-bottom: 1px black solid;
 }
 
 .capability_1 {
@@ -205,20 +224,19 @@ template {
   padding: 5px 5px;
   font-size: 12px;
   font-weight: 600;
+  box-shadow: 0 5px 10px #999999;
 }
 .other_info .item_name {
-  width: 15%;
+  width: 10vw;
   height: 40px;
+  display: flex;
+  display: inline-flex;
 }
 
 .other_info .item_content {
-  width: 30%;
+  width: 58vw;
 }
 
-.other_info {
-  width: 70%;
-  margin: auto;
-}
 .other_info option {
   width: 10px;
 }

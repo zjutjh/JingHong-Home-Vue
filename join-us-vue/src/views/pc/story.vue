@@ -329,7 +329,6 @@ onBeforeUnmount(() => {
     <div class="jiyu-out">
       <div style="width: 85%;position: relative;margin: 2rem auto;">
         <div class="title">前辈寄语</div>
-        {{ jiyuDisabled }}
       </div>
       <div class="jiyu">
         <div class="jiyu-content">
@@ -407,7 +406,7 @@ body {
   position: absolute;
   top: 2rem;
   left: -2%;
-  font-size: xx-large;
+  font-size: 2.5vw;
   font-weight: bolder;
   display: flex;
   justify-content: center;

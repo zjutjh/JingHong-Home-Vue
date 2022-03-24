@@ -18,4 +18,9 @@ import { RouterLink } from 'vue-router';
   border-radius: 0;
   box-shadow: 0 -1px 20px #999999;
 }
+
+router-link {
+  color: black;
+  text-decoration: none;
+}
 </style>

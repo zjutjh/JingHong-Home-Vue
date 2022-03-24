@@ -217,13 +217,13 @@ body {
 }
 .introduce-img1 {
   margin-top: 2%;
-  height: 80%;
+  height: 45vh;
   position: absolute;
   right: -80px;
 }
 .introduce-img2 {
   margin-top: 2%;
-  height: 80%;
+  height: 45vh;
   position: absolute;
   left: -80px;
 }

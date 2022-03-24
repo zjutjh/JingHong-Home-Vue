@@ -8,9 +8,9 @@ const prop = defineProps<{
 
 <template>
   <div :class="prop.type">
-    <h1>
+    <div class="h">
       <slot></slot>
-    </h1>
+    </div>
   </div>
 </template>
 
@@ -27,7 +27,7 @@ const prop = defineProps<{
   box-shadow: 0 5px 10px #999999;
   border-radius: 1rem;
 }
-.title .h1 {
+.title .h {
   display: block;
   font-size: 2em;
   margin-block-start: 0.67em;
@@ -48,9 +48,9 @@ const prop = defineProps<{
   box-shadow: 0 5px 10px #999999;
 }
 .middle {
-  min-width: 90px;
+  min-width: 10vw;
   width: fit-content;
-  height: 35px;
+  height: 5vh;
   padding: 0 20px;
   margin: 15px auto;
   border-radius: 20px;
@@ -58,9 +58,8 @@ const prop = defineProps<{
   background-color: #d20001;
 
   color: white;
-  font-size: 18px;
+  font-size: 1.5vw;
   line-height: 30px;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,7 +74,17 @@ const prop = defineProps<{
   justify-content: center;
   color: white;
   /* font-size: 15px; */
+  font-size: 1vw;
   padding-inline: 20px;
+  margin: 1vh;
+}
+.small .h {
+  display: block;
+  font-size: 1vw;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
 .nano {
   height: 20px;

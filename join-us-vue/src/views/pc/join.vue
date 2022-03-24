@@ -19,10 +19,10 @@ onMounted(() => {
 })
 </script>
 <template>
-  <JHCard title="加入我们" type="large" style="margin-top:30vh">
+  <JHCard title="加入我们" type="large" style="margin-top:20vh">
     <!-- <Des_label2 content="加入我们"></Des_label2> -->
-    <div style="display: flex; margin-top: 30px;">
-      <div style="width: 60%;">
+    <div style="display: flex; margin-top: 10vh;">
+      <div style="width: 60vw;">
         <div class="join_poster"></div>
         <div style="margin: auto;">
           <div class="join_label">最新动态</div>

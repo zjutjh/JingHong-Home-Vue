@@ -92,7 +92,6 @@ a {
   left: auto;
   top: 0rem;
   width: 100%;
-  min-width: 900px;
   height: 16vh;
   transition: top linear 0.3s;
   border-radius: 0;
@@ -105,7 +104,6 @@ a {
   left: auto;
   top: 0rem;
   width: 100%;
-  min-width: 900px;
   height: 16vh;
   transition: top linear 0.3s;
   border-radius: 0;
@@ -118,6 +116,7 @@ a {
 .topHide img {
   float: left;
   transform: scale(0.8);
+  width: 20vw;
 }
 
 .topHide {
@@ -125,7 +124,6 @@ a {
   left: 0;
   top: -16vh;
   width: 100%;
-  min-width: 1000px;
   height: 16vh;
   /* background: white; */
   transition: top linear 0.3s;
