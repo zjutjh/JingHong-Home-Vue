@@ -90,31 +90,17 @@ const persons = [
 
 
 function yixing_before() {
-  window.clearInterval(timer1);
-  let i = 0;
-  timer1 = window.setInterval(() => {
-    if (i > 0) {
-      yixing_before();
-    }
-    i++;
-  }, 1500);
+  _resetTimer1();
   let last = yixing_classes.pop() as string;
   yixing_classes.unshift(last);
 }
 
 function yixing_after() {
-  window.clearInterval(timer1);
-  let i = 0;
-  timer1 = window.setInterval(() => {
-    if (i > 0) {
-      yixing_before();
-    }
-    i++;
-  }, 1500);
-
+  _resetTimer1();
   let first = yixing_classes.shift() as string;
   yixing_classes.push(first);
 }
+
 function changePicture(e: MouseEvent) {
   if (((e.target as HTMLElement).parentNode as HTMLElement).classList.contains("left")) {
     yixing_after();
@@ -126,43 +112,45 @@ function changePicture(e: MouseEvent) {
 }
 
 function yuren_before() {
-  clearInterval(timer2);
-  let i = 0;
-  timer2 = window.setInterval(() => {
-    if (i > 0) {
-      yuren_after();
-    }
-    i++;
-  }, 1500);
+  _resetTimer2();
   let last = yuren_classes.pop() as string;
   yuren_classes.unshift(last);
 }
 
 function yuren_after() {
-  clearInterval(timer2);
-  let i = 0;
-  timer2 = window.setInterval(() => {
-    if (i > 0) {
-      yuren_before();
-    }
-    i++;
-  }, 1500);
+  _resetTimer2();
   let first = yuren_classes.shift() as string;
   yuren_classes.push(first);
 }
 
 function toggle_on(n: number) {
-  // console.log("toggle_on");
   shenghuo_seen.value = true;
   shenghuo_selected.value = n;
 }
+
 function toggle_off() {
-  // console.log("toggle_off");
   shenghuo_seen.value = false;
 }
 var index = 3;
+
+function _resetTimer1() {
+  clearInterval(timer1);
+  timer1 = window.setInterval(() => {
+    yixing_before();
+  }, 3000);
+}
+var jiyuDisabled = ref(false);
+
+function _resetTimer2() {
+  clearInterval(timer2);
+  timer2 = window.setInterval(() => {
+    yuren_before();
+  }, 3000);
+}
 function jiyu_before() {
-  // console.log("jiyu_before");
+  if (jiyuDisabled.value) {
+    return;
+  }
   jiyu_classes[index] = "jiyubefore";
   let last = jiyu_classes.pop() as string;
   jiyu_classes.unshift(last);
@@ -173,10 +161,16 @@ function jiyu_before() {
     jiyu_classes.unshift(last);
     jiyu_classes[index] = "jiyuafteractive";
   }, 500);
+  jiyuDisabled.value = true;
+  setTimeout(() => {
+    jiyuDisabled.value = false;
+  }, 500)
 }
 
 function jiyu_after() {
-  // console.log("jiyu_after");
+  if (jiyuDisabled.value) {
+    return;
+  }
   let last = jiyu_classes.shift() as string;
   jiyu_classes.unshift(last);
   jiyu_classes[index] = "jiyubeforeactive";
@@ -185,7 +179,11 @@ function jiyu_after() {
     let last = jiyu_classes.shift() as string;
     jiyu_classes.push(last);
     index = (index + 3) % 4;
-  }, 10);
+  }, 500);
+  jiyuDisabled.value = true;
+  setTimeout(() => {
+    jiyuDisabled.value = false;
+  }, 500)
 }
 
 onMounted(() => {
@@ -195,9 +193,10 @@ onMounted(() => {
     yixing_before();
   }, 3000);
   timer2 = window.setInterval(() => {
-    yixing_before();
+    yuren_before();
   }, 3000);
 });
+
 onBeforeUnmount(() => {
   clearInterval(timer1);
   clearInterval(timer2);
@@ -330,6 +329,7 @@ onBeforeUnmount(() => {
     <div class="jiyu-out">
       <div style="width: 85%;position: relative;margin: 2rem auto;">
         <div class="title">前辈寄语</div>
+        {{ jiyuDisabled }}
       </div>
       <div class="jiyu">
         <div class="jiyu-content">

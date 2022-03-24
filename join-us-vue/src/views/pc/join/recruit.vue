@@ -60,19 +60,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- ! TODO 测试数据, 移除这一行. -->
-  <!-- {{ form }} -->
   <div style="margin-top: 10px;"></div>
-  <!-- <div class="des_label_1">报名表</div> -->
   <Label type="middle">报名表</Label>
-  <!-- <div class="box"> -->
   <div class="basic_info">
     <div class="item_name">姓名</div>
     <input class="item_content" v-model="form.name" />
     <div class="item_name">专业</div>
     <input class="item_content" v-model="form.campus" />
     <div class="item_name">性别</div>
-    <!-- <div class="item_content" ></div> -->
     <select class="item_content" v-model="form.gender">
       <option value="0">男</option>
       <option value="1">女</option>
@@ -99,7 +94,6 @@ onMounted(() => {
     >
       <div class="item_name">第一志愿</div>
       <select class="item_content" v-model="form.want1" :disabled="(form.region == '')">
-        <!-- <option style="display: none;">请先选择志愿</option> -->
         <option
           v-for="(item) in choices[regions.indexOf(form.region)]"
           :value="item"
@@ -126,11 +120,9 @@ onMounted(() => {
     <input class="capability_2" v-model="form.feedback" />
   </div>
   <div style="display:flex; center">
-    <!-- TODO: 缺少样式 -->
     <JHButton type="small" @click="returnClicked">返回</JHButton>
     <JHButton type="small" @click="submitClicked">提交</JHButton>
   </div>
-  <!-- </div> -->
   <Footer></Footer>
 </template>
 

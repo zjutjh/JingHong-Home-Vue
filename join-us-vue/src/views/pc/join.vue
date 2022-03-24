@@ -3,6 +3,7 @@ import Footer from '../../components/pc/Footer.vue';
 import { usePageStore } from '../../stores/pages';
 import { useRouter } from 'vue-router';
 import { onMounted } from 'vue';
+import JHCard from '../../components/pc/JHCard.vue';
 const store = usePageStore();
 const router = useRouter();
 function To_recruit() {
@@ -18,8 +19,7 @@ onMounted(() => {
 })
 </script>
 <template>
-  <div style="margin-top: 50px;"></div>
-  <div class="des_box">
+  <JHCard title="加入我们" type="large" style="margin-top:30vh">
     <!-- <Des_label2 content="加入我们"></Des_label2> -->
     <div style="display: flex; margin-top: 30px;">
       <div style="width: 60%;">
@@ -85,11 +85,12 @@ onMounted(() => {
         </div>
       </div>
     </div>
-  </div>
+  </JHCard>
 
   <div class="des_box">
     <!-- <Des_label2 content="部门结构一览图"></Des_label2> -->
-    <div class="department_structure_overview_diagram"></div>
+    <!--<div class="department_structure_overview_diagram"></div> -->
+    <img src="/photo/haibao/structPc.png" style="width:75vw" />
   </div>
 
   <Footer />
@@ -101,9 +102,10 @@ template {
   min-width: 900px;
 }
 .des_box {
-  width: 70%;
+  width: 80vw;
   background-color: white;
   margin: auto;
+  margin-top: 10vh;
   margin-bottom: 40px;
   padding: 30px;
   border-radius: 10px;
