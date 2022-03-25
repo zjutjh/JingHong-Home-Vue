@@ -6,17 +6,16 @@ import JHLabel from '../../components/pc/JHLabel.vue';
 import JHCard from '../../components/pc/JHCard.vue';
 import JHDataPresent from '../../components/pc/JHDataPresent.vue';
 import DepartmentsDataPresent from '../../components/pc/DepartmentsDataPresent.vue'
-// import JHLabel1 from '../../components/pc/JHLabel.vue';
-import VChart from 'vue-echarts';
 import { use } from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 import { BarChart } from 'echarts/charts';
 import { TitleComponent, TooltipComponent, LegendComponent } from 'echarts/components';
 import 'echarts/lib/component/grid';
-import DepartmentsData1 from '../../components/pc/DepartmentsDataPresent.vue';
-// import echarts from 'echarts/dist/'
 import { DepartmentsData } from '../../types/components';
 import { usePageStore } from '../../stores/pages';
+import { init } from 'echarts/core';
+import VChart from 'vue-echarts';
+
 const pageStore = usePageStore();
 use([CanvasRenderer,
   BarChart,
@@ -143,11 +142,7 @@ const data = ref(<IFormsData>{
 
 async function submitClicked() {
   const res = await GetDataTotal(pwd.value);
-  // console.log(res);
-  // alert(res.message);
-  // data = res.data.data;
   data.value = res.data.data;
-  // console.log(data);
 }
 
 var option = ref({
@@ -157,10 +152,15 @@ var option = ref({
   tooltip: {},
   xAxis: {
     type: "category",
-    data: ['办公室', '活动部', '秘书处', 'Touch产品部', '小弘工作室', '编辑工作室', '视觉影像部', '开发部', '易班文化工作站']
+    data: ['办公室', '活动部', '秘书处', 'Touch产品部', '小弘工作室', '编辑工作室', '视觉影像部', '开发部', '易班文化工作站'],
+    axisLabel: {
+      rotate: 40,
+      interval: 0,
+    },
+    grid: { bottom: 30 },
   },
   yAxis: { type: "value" },
-  grid: { bottom: 30 },
+
   series: ref([
     {
       color: "red",
@@ -177,8 +177,12 @@ var option = ref({
         data.value.kfb.want1,
         data.value.yb.want1,]
       }),
-      // data: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-      // showBackground: true,
+
+      label: {
+        show: true,
+        position: 'top',
+
+      },
     },
     {
       color: "pink",
@@ -196,7 +200,12 @@ var option = ref({
         data.value.yb.want2,
         ]
       }),
-      // showBackground: true,
+
+      label: {
+        show: true,
+        position: 'top',
+
+      },
     },
   ])
 })
@@ -328,14 +337,20 @@ const data_yb = computed(() => {
 })
 onMounted(() => {
   pageStore.pageNow = 4;
+  // const charts = init(document.getElementById("charts")!);
+
+  // window.onresize = function () {
+  //   charts.resize();
 })
 </script>
 <template>
+  <div style="height:20vh;"></div>
   <div class="pwd">
     输入密码:
     <input v-model="pwd" />
     <button @click="submitClicked">刷新</button>
   </div>
+  <div style="height:5vh;"></div>
   <JHLabel type="big">招新情况</JHLabel>
   <div class="total"></div>
   <div class="graph"></div>
@@ -343,17 +358,18 @@ onMounted(() => {
   <JHCard title="总览" type="large">
     <div class="cards">
       <JHDataPresent type="pc" title="报名总数">{{ data.total }}</JHDataPresent>
-      <JHDataPresent type="pc" title="朝晖">{{ data.total_zh }}</JHDataPresent>
       <span />
-      <JHDataPresent type="pc" title="屏峰">{{ data.total_pf }}</JHDataPresent>
       <JHDataPresent type="pc" title="今日增加">{{ data.total_today }}</JHDataPresent>
+
+      <JHDataPresent type="pc" title="朝晖">{{ data.total_zh }}</JHDataPresent>
+      <JHDataPresent type="pc" title="屏峰">{{ data.total_pf }}</JHDataPresent>
       <JHDataPresent type="pc" title="莫干山">{{ data.total_mgs }}</JHDataPresent>
     </div>
   </JHCard>
   <JHCard title="统计图" type="large">
-    <v-chart class="chart" :option="option" id="chart" ref="chart" />
+    <v-chart class="chart" :option="option" :autoresize="true" />
   </JHCard>
-  <div class="cards">
+  <div class="cards2">
     <JHCard title="办公室" type="small">
       <DepartmentsDataPresent type="pc" :data="data_bgs"></DepartmentsDataPresent>
     </JHCard>
@@ -389,14 +405,25 @@ onMounted(() => {
   margin: 3vw;
   padding: 3vw;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 33% 33% 33%;
   grid-template-rows: repeat(5, 20%);
   grid-row-gap: 20px;
   grid-column-gap: 20px;
   /* font-size: x-large; */
 }
 .chart {
-  padding-top: 100px;
+  padding: 5vh;
   height: 400px;
+  width: 80vw;
+}
+
+.cards2 {
+  margin: 3vw;
+  padding: 3vw;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: repeat(5, 20%);
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
 }
 </style>

@@ -13,29 +13,31 @@ function returnClicked() {
 }
 </script>
 <template>
-  <!-- 组件内容 -->
-
-  <div style="height: 120px;"></div>
-  <!-- TODO NO style for this -->
+  <div style="height: 20vh;"></div>
   <JHLabel type="big">长期招新</JHLabel>
-  <JHCard title="开发部" type="large">
-    <div class="des_jishu_content">
-      <div class="des_jishu_00">招新范围：</div>
-      <div class="des_jishu_01">浙工大全体学院、全体年级的学生</div>
-      <br />
-      <div class="des_jishu_10">能力要求：</div>
-      <div class="des_jishu_11">1)能够独立开发api或使用前端框架</div>
-      <div class="des_jishu_21">2)能够独立撰写说明文档</div>
-      <div class="des_jishu_31">3)能够使用git进行团队协作交互</div>
+  <JHCard title="开发部" type="large" style="width:70vw;">
+    <div style="display: inline-block;">
+      <div class="des_jishu_content">
+        <div class="des_jishu_00">招新范围：</div>
+        <div class="des_jishu_01">浙工大全体学院、全体年级的学生</div>
+        <br />
+        <div class="des_jishu_10">能力要求：</div>
+        <div class="des_jishu_11">1)能够独立开发api或使用前端框架</div>
+        <div class="des_jishu_21">2)能够独立撰写说明文档</div>
+        <div class="des_jishu_31">3)能够使用git进行团队协作交互</div>
+      </div>
     </div>
+    <img src="/photo/index/jingxiaohong.png" class="img" />
     <JHButton type="small" @click="developClicked">报名</JHButton>
     <!-- <div class="button1" @click="developClicked">报名</div> -->
   </JHCard>
+
   <JHButton type="small" @click="returnClicked">返回</JHButton>
+  <div style="height:30vh"></div>
   <Footer />
 </template>
 
-<style>
+<style scoped>
 /* 样式 */
 template {
   min-width: 900px;
@@ -43,11 +45,11 @@ template {
 .des_jishu_content {
   margin: 50px;
   text-align: left;
-
   font-size: 20px;
   display: grid;
   grid-template-rows: repeat(4, 30px);
-  grid-template-columns: 100px;
+  grid-template-columns: 20% 80%;
+  width: 40vw;
   /* grid-gap: 50px 100px; */
 }
 .des_jishu_00 {
@@ -85,5 +87,10 @@ template {
   grid-column-end: 3;
   grid-row-start: 5;
   grid-row-end: 6;
+}
+.img {
+  height: 20vh;
+  /* width: vw; */
+  float: right;
 }
 </style>

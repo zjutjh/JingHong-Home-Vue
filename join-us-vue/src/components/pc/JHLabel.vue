@@ -66,7 +66,7 @@ const prop = defineProps<{
 }
 .small {
   background-color: #d20001;
-  height: 30px;
+  /* height: 30px; */
   width: fit-content;
   border-radius: 5px;
   display: flex;
@@ -92,6 +92,5 @@ const prop = defineProps<{
   background-color: #d20001;
   color: white;
   border-radius: 2px;
-  padding-inline: 15px;
 }
 </style>

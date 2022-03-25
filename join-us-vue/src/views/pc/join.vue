@@ -4,6 +4,7 @@ import { usePageStore } from '../../stores/pages';
 import { useRouter } from 'vue-router';
 import { onMounted } from 'vue';
 import JHCard from '../../components/pc/JHCard.vue';
+import { ENV } from '../../utils/const';
 const store = usePageStore();
 const router = useRouter();
 function To_recruit() {
@@ -11,7 +12,11 @@ function To_recruit() {
 }
 
 function To_long() {
-  router.push('/recruit_long');
+  if (ENV == 'dev') {
+    router.push('/recruit_long');
+  } else {
+    return false;
+  }
 }
 
 onMounted(() => {
@@ -20,7 +25,6 @@ onMounted(() => {
 </script>
 <template>
   <JHCard title="加入我们" type="large" style="margin-top:20vh">
-    <!-- <Des_label2 content="加入我们"></Des_label2> -->
     <div style="display: flex; margin-top: 10vh;">
       <div style="width: 60vw;">
         <div class="join_poster"></div>

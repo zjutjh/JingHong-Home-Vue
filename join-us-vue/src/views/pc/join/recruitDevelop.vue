@@ -52,8 +52,8 @@ async function submitClicked() {
 }
 </script>
 <template>
-  <div style="margin-top: 10px;"></div>
-  <JHLabel type="big">开发部长期招新</JHLabel>
+  <div style="height:20vh"></div>
+  <JHLabel type="middle">开发部长期招新</JHLabel>
   <div class="basic_info">
     <div class="item_name">姓名</div>
     <input class="item_content" v-model="form.name" />
@@ -81,7 +81,7 @@ async function submitClicked() {
     </select>
   </div>
   <div class="other_info">
-    <JHLabel type="middle">必要能力勾选</JHLabel>
+    <JHLabel type="small">必要能力勾选</JHLabel>
     <div style="padding-bottom: 20px;border-bottom: 1px black solid;">
       <div class="capability_1">
         <div>
@@ -97,11 +97,12 @@ async function submitClicked() {
           <input type="checkbox" v-model="form.ability.git" />能够使用git进行团队协作交互
         </div>
       </div>
-      <JHLabel type="middle">其他能力</JHLabel>
-      <input class="capability_2" v-model="form.ability_other" />
+      <JHLabel type="small">其他能力</JHLabel>
+      <textarea class="capability_2" v-model="form.ability_other" placeholder="在这里输入你拥有的其他能力" />
     </div>
-    <JHLabel type="middle">有什么想对开发部说的话，可以在这里告诉我们</JHLabel>
-    <input class="capability_2" v-model="form.feedback" />
+
+    <JHLabel type="small">有什么想对开发部说的话，可以在这里告诉我们</JHLabel>
+    <textarea class="capability_2" v-model="form.feedback" placeholder="暂时想不到可以填无" />
   </div>
   <div style="display:flex;">
     <!-- TODO no style for this -->
@@ -111,18 +112,19 @@ async function submitClicked() {
   <!-- </div> -->
   <Footer />
 </template>
-<style>
+<style scoped>
 template {
   min-width: 900px;
 }
 .basic_info {
   display: grid;
-  width: 70%;
+  width: 70vw;
   grid-template-columns: 13% 33% 13% 33%;
   grid-template-rows: repeat(4, 30px);
   grid-gap: 20px 2.8%;
 
   margin: auto;
+  padding-top: 5vh;
   padding-bottom: 20px;
   border-bottom: 1px black solid;
 }
@@ -136,7 +138,7 @@ template {
   justify-content: center;
 
   color: white;
-  font-size: 15px;
+  font-size: 1vw;
 }
 
 .item_content {
@@ -148,15 +150,10 @@ template {
 
   box-sizing: border-box;
   padding: 5px 10px;
-  font-size: 12px;
+  font-size: 1vw;
   line-height: 20px;
   font-weight: 600;
   border: none;
-}
-
-.other_info {
-  width: 70%;
-  margin: auto;
 }
 
 .capability_1 {
@@ -201,7 +198,7 @@ template {
 }
 
 .other_info {
-  width: 70%;
+  width: 70vw;
   margin: auto;
 }
 .other_info option {

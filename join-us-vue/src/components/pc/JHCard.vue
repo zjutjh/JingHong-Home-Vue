@@ -22,6 +22,7 @@ const prop = defineProps<{
   margin: 3vw auto 0;
   box-shadow: 0 5px 10px #999999;
   padding: 2vw;
+  border-radius: 10px;
 }
 .title-large {
   width: 12vw;
@@ -30,7 +31,7 @@ const prop = defineProps<{
   position: relative;
   top: 2rem;
   left: -5%;
-  font-size: 2.3vw;
+  font-size: 2vw;
   color: white;
   font-weight: bolder;
   display: flex;
@@ -41,17 +42,19 @@ const prop = defineProps<{
 
 .container-small {
   width: 30vw;
+  height: 50vh;
   background-color: white;
   margin: 3vw auto 0;
   box-shadow: 0 5px 10px #999999;
+  border-radius: 10px;
 }
 
 .title-small {
-  width: 8vw;
-  height: 2rem;
+  width: 10vw;
+  height: 3vh;
   background-color: #d20001;
   position: relative;
-  top: 1rem;
+  top: 2vh;
   left: -2%;
 
   font-size: large;

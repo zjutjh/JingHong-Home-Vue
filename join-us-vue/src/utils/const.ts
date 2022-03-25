@@ -1,3 +1,4 @@
+export const ENV = 'dev';
 export const regions = ["朝晖", "屏峰", "莫干山"];
 export const choices = [
   ["办公室", "活动部",

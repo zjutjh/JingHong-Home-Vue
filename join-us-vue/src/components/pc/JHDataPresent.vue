@@ -20,15 +20,15 @@ const prop = defineProps<{
   grid-template-columns: 20% 80%;
 }
 .label {
-  background-color: #d20001;
+  /* background-color: #d20001; */
   height: 80px;
   width: 200px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 30px;
+  /* color: white; */
+  font-size: 1.5vw;
   padding-inline: 10px;
 }
 .number {

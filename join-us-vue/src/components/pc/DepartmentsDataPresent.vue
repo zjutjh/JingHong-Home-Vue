@@ -10,12 +10,12 @@ const props = defineProps<{
   <div :class="{ 'base': type == 'pc', 'base-m': type == 'mob' }">
     <div class="item">
       <JHLabel type="small" class="label">第一志愿</JHLabel>
-      <br />
+
       <div class="number">{{ props.data.want1 }}</div>
     </div>
     <div class="item">
       <JHLabel type="small" class="label">第二志愿</JHLabel>
-      <br />
+
       <div class="number">{{ props.data.want2 }}</div>
     </div>
     <div class="item">
@@ -44,12 +44,12 @@ const props = defineProps<{
     </div>
     <div class="item">
       <JHLabel type="small" class="label">总数</JHLabel>
-      <br />
+
       <div class="number">{{ props.data.total }}</div>
     </div>
     <div class="item">
       <JHLabel type="small" class="label">今日增加</JHLabel>
-      <br />
+
       <div class="number">{{ props.data.today }}</div>
     </div>
   </div>
@@ -57,12 +57,13 @@ const props = defineProps<{
 <style scoped>
 .base {
   display: grid;
-  height: 15vw;
+  height: 40vh;
   margin-top: 35px;
   margin-inline: 10px;
   grid-template-columns: 50% 50%;
   grid-template-rows: 35% 10% 10% 10% 35%;
   align-items: center;
+  justify-items: start;
 }
 .base-m {
   display: grid;
@@ -72,13 +73,16 @@ const props = defineProps<{
   grid-template-columns: 50% 50%;
   grid-template-rows: 35% 10% 10% 10% 35%;
   align-items: center;
+  justify-items: start;
 }
 .item {
   align-items: start;
   text-align: center;
 }
 .label {
-  display: inline;
+  display: inline-block;
+  background-color: white;
+  color: black;
 }
 .number {
   margin-inline: 10px;
