@@ -51,6 +51,9 @@ async function submitClicked() {
     return;
   }
 }
+function closeNoticeShow() {
+  noticeShow.value = false;
+}
 </script>
 <template>
   <!-- 组件内容 -->
