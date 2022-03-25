@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { productsMobile, product_details } from "../../utils/const";
 import { RouterLink } from "vue-router";
-import Footer from "../../components/pc/Footer.vue";
+import Footer from "../../components/mobile/Footer.vue";
 const seen_pro = ref(false);
 const seen = ref(false);
 const now = ref(0);
@@ -55,6 +55,7 @@ function product_hide() {
       </div>
     </router-link>
   </div>
+  <div style="height:10vh"></div>
   <Footer />
 </template>
 <style scoped>

@@ -2,7 +2,7 @@
 import { onBeforeUnmount, onMounted, reactive, ref } from 'vue';
 import { usePageStore } from '../../stores/pages';
 import { RouterLink } from 'vue-router';
-import Footer from '../../components/pc/Footer.vue';
+import Footer from '../../components/mobile/Footer.vue';
 const store = usePageStore();
 var timer1: number;
 var timer2: number;
@@ -92,30 +92,12 @@ const persons = [
   },
 ];
 
-
 function yixing_before() {
-  window.clearInterval(timer1);
-  let i = 0;
-  timer1 = window.setInterval(() => {
-    if (i > 0) {
-      yixing_before();
-    }
-    i++;
-  }, 1500);
   let last = yixing_classes.pop() as string;
   yixing_classes.unshift(last);
 }
 
 function yixing_after() {
-  window.clearInterval(timer1);
-  let i = 0;
-  timer1 = window.setInterval(() => {
-    if (i > 0) {
-      yixing_before();
-    }
-    i++;
-  }, 1500);
-
   let first = yixing_classes.shift() as string;
   yixing_classes.push(first);
 }
@@ -155,70 +137,46 @@ function yuren_after() {
   yuren_classes.push(first);
 }
 
-function toggle_on(n: number) {
-  // console.log("toggle_on");
-  shenghuo_seen.value = true;
-  shenghuo_selected.value = n;
-}
-function toggle_off() {
-  // console.log("toggle_off");
-  shenghuo_seen.value = false;
-}
 var index = 3;
-function jiyu_before() {
-  // console.log("jiyu_before");
-  jiyu_classes[index] = "jiyubefore";
-  let last = jiyu_classes.pop() as string;
-  jiyu_classes.unshift(last);
-  index = (index + 1) % 4;
 
-  setTimeout(() => {
-    let last = jiyu_classes.shift() as string;
-    jiyu_classes.unshift(last);
-    jiyu_classes[index] = "jiyuafteractive";
-  }, 500);
-}
-
-function jiyu_after() {
-  // console.log("jiyu_after");
-  let last = jiyu_classes.shift() as string;
-  jiyu_classes.unshift(last);
-  jiyu_classes[index] = "jiyubeforeactive";
-  setTimeout(() => {
-    jiyu_classes[index] = "jiyuafter";
-    let last = jiyu_classes.shift() as string;
-    jiyu_classes.push(last);
-    index = (index + 3) % 4;
-  }, 10);
-}
 const now = ref(0);
 const startx = ref(0);
 const timer = ref(0);
 function a() {
   now.value = 2;
 }
+function _resetTimer1() {
+  clearInterval(timer1);
+  timer1 = window.setInterval(() => {
+    yixing_before();
+  }, 3000);
+}
+function _resetTimer2() {
+  clearInterval(timer2);
+  timer2 = window.setInterval(() => {
+    yuren_before();
+  }, 3000);
+}
 function before(className: string) {
-  window.clearInterval(timer.value);
-  let i = 0;
-  timer.value = window.setInterval(() => {
-    if (i > 0) {
-      before("yixing_classes");
-      before("yuren_classes");
-    }
-    i++;
-  }, 1500);
+  if (className == "yixing_classes") {
+    _resetTimer1();
+    yixing_before();
+  } else if (className == "yuren_classes") {
+    _resetTimer2();
+    yuren_before();
+  }
 }
+
 function after(className: string) {
-  window.clearInterval(timer.value);
-  let i = 0;
-  timer.value = window.setInterval(() => {
-    if (i > 0) {
-      before("yixing_classes");
-      before("yuren_classes");
-    }
-    i++;
-  }, 1500);
+  if (className == "yixing_classes") {
+    _resetTimer1();
+    yixing_after();
+  } else if (className == "yuren_classes") {
+    _resetTimer2();
+    yuren_after();
+  }
 }
+
 function touchstart(e: TouchEvent) {
   startx.value = e.touches[0].pageX;
 }
@@ -233,6 +191,7 @@ function touchmove(e: TouchEvent, className: string) {
 }
 
 function change(e: MouseEvent, className: string) {
+  console.log(className);
   if (((e.target as HTMLElement).parentNode as HTMLElement).classList.contains("left")) {
     after(className);
   } else if (((e.target as HTMLElement).parentNode as HTMLElement).classList.contains("right")) {
@@ -245,13 +204,15 @@ function change(e: MouseEvent, className: string) {
 onMounted(() => {
   store.pageNow = 1;
   document.title = "我们的故事";
+
   timer1 = window.setInterval(() => {
     yixing_before();
   }, 3000);
   timer2 = window.setInterval(() => {
-    yixing_before();
+    yuren_before();
   }, 3000);
 });
+
 onBeforeUnmount(() => {
   clearInterval(timer1);
   clearInterval(timer2);
@@ -259,135 +220,133 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div id="body" ref="pronbit">
-    <div class="title-style">我们的故事</div>
-    <div class="shiming">
-      <div class="img" style="background-image: url(/photo/index/ziyou.png)"></div>
-      <div class="img" style="background-image: url(/photo/index/gongxiang.png)"></div>
-      <div class="img" style="background-image: url(/photo/index/tuanjie.png)"></div>
-      <div class="img" style="background-image: url(/photo/index/chuangxin.png)"></div>
+  <div class="title-style">我们的故事</div>
+  <div class="shiming">
+    <div class="img" style="background-image: url(/photo/index/ziyou.png)"></div>
+    <div class="img" style="background-image: url(/photo/index/gongxiang.png)"></div>
+    <div class="img" style="background-image: url(/photo/index/tuanjie.png)"></div>
+    <div class="img" style="background-image: url(/photo/index/chuangxin.png)"></div>
+  </div>
+  <div class="platform">
+    <div class="platform-title">相关平台⼁Related Platform</div>
+    <div class="platform-content">
+      <p>精弘网络采用朝晖、屏峰、莫干山三校区共同建制</p>
+      <p>目前运营和维护的平台包括但不仅限</p>
+      <p>浙江工业大学精弘网络微信服务号、</p>
+      <p>精小弘在线微信服务号、微精弘微信小程序、</p>
+      <p>浙工大易班官方机构号、知乎官方机构号、</p>
+      <p>邮件系统(https:/mai©.zjut.edu.cn/)、</p>
+      <p>工大云盘(http://pan.zjut.edu.cn/)、</p>
+      <p>精弘论坛、精弘直播、Feel电台等。</p>
     </div>
-    <div class="platform">
-      <div class="platform-title">相关平台⼁Related Platform</div>
-      <div class="platform-content">
-        <p>精弘网络采用朝晖、屏峰、莫干山三校区共同建制</p>
-        <p>目前运营和维护的平台包括但不仅限</p>
-        <p>浙江工业大学精弘网络微信服务号、</p>
-        <p>精小弘在线微信服务号、微精弘微信小程序、</p>
-        <p>浙工大易班官方机构号、知乎官方机构号、</p>
-        <p>邮件系统(https:/mai©.zjut.edu.cn/)、</p>
-        <p>工大云盘(http://pan.zjut.edu.cn/)、</p>
-        <p>精弘论坛、精弘直播、Feel电台等。</p>
-      </div>
-    </div>
+  </div>
 
-    <div class="yixing">
-      <div class="title">精弘毅行</div>
+  <div class="yixing">
+    <div class="title">精弘毅行</div>
 
-      <div
-        class="carousel"
-        ref="carousel"
-        id="carousel"
-        @touchstart="touchstart($event)"
-        @touchend="touchmove($event, 'yixing_classes')"
-      >
-        <div class="whole">
-          <div class="roll-img">
-            <ul type>
-              <li
-                @click="change($event, 'yixing_classes')"
-                v-for="(item, index) in yixing_imgs"
-                :class="yixing_classes[index]"
-              >
-                <img :src="item" />
-                <div></div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="content"
-      >每年一度的"精弘毅行"始于2012年，是浙江工业大学的一次盛会，超过8000位师生校友从学校出发，徒步行走十公里或以上的路程后回到学校。“精弘毅行"鼓励工大学子暂离网络，走出宿舍，以最原始的徒步行走的方式亲近自然，感受青春的活力和朝气。因此，精弘毅行也是每届精弘人必要经历的一次挑战。</div>
-    </div>
-
-    <div class="shenghuo">
-      <div class="title">生活社交</div>
-      <div class="img" style="background-image: url(/photo/story/shenghuo/shenghuo1.jpg)"></div>
-      <div class="content">精弘还定期举行素质拓展，各种小游戏需要每一位成员的通力合作，在游戏中互相了解，感受精弘大家庭的温暖。</div>
-      <div class="img" style="background-image: url(/photo/story/shenghuo/shenghuo2.jpg)"></div>
-      <div class="content">在每年一度的年会上，精弘网络的每个部门都准备了具有特色的节目，既是对过去工作生活的总结，也是对来年生活的美好祝愿。</div>
-      <div class="img1">
-        <div class="img11" style="background-image: url(/photo/story/shenghuo/shenghuo3.jpg)"></div>
-        <div class="img12" style="background-image: url(/photo/story/shenghuo/shenghuo4.jpg)"></div>
-        <div class="img13" style="background-image: url(/photo/story/shenghuo/shenghuo5.jpg)"></div>
-      </div>
-      <div class="content">在各个部门内还有各式各样的轰趴活动，聚餐、唱K或是游西湖。在精弘，绝不是只有工作，还有数不清的快乐。</div>
-    </div>
-
-    <div class="yuren">
-      <div class="title">网络育人</div>
-      <div
-        class="carousel"
-        ref="carousel"
-        id="carousel2"
-        @touchstart="touchstart($event)"
-        @touchend="touchmove($event, 'yuren_classes')"
-      >
-        <div class="whole">
-          <div class="roll-img">
-            <ul type>
-              <li
-                @click="change($event, 'yuren_classes')"
-                v-for="(item, index) in yuren_imgs"
-                :class="yuren_classes[index]"
-              >
-                <img :src="item" />
-                <div></div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="content">“网络安全宣传教育月”的系列活动⸺技术分享会、线下游园、人物访谈和拍摄防范网络诈骗微电影等由浙江工业大学精弘网络于全校范围内组织 承办。</div>
-    </div>
-
-    <div class="jiyu">
-      <div class="title">前辈寄语</div>
-      <div class="jiyu-content">
-        <div class="choice">
-          <div style="height: 100%; width: 100%; position: relative">
-            <div
-              :class="now === index ? 'person-name-selected' : 'person-name'"
-              v-on:click="now = index;"
-              v-for="person, index in persons"
-              v-bind:style="{ left: index * 23 + '%', 'z-index': 4 - index }"
-            >{{ person.name }}</div>
-          </div>
-        </div>
-
-        <div class="person-card">
-          <div class="img" v-bind:style="{ 'background-image': 'url(' + persons[now].img + ')' }"></div>
-          <div style="width: 40%; height: 30%; float: left; margin-bottom: 20px">
-            <div class="realname">{{ persons[now].realname }}</div>
-            <div class="introduction">{{ persons[now].introduction }}</div>
-          </div>
-          <div class="neirong">
-            <span>{{ persons[now].content }}</span>
-          </div>
+    <div
+      class="carousel"
+      ref="carousel"
+      id="carousel"
+      @touchstart="touchstart($event)"
+      @touchend="touchmove($event, 'yixing_classes')"
+    >
+      <div class="whole">
+        <div class="roll-img">
+          <ul type>
+            <li
+              @click="change($event, 'yixing_classes')"
+              v-for="(item, index) in yixing_imgs"
+              :class="yixing_classes[index]"
+            >
+              <img :src="item" />
+              <div></div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <div class="product">
-      <router-link to="/m/product">
-        <div class="product-button">
-          我们的产品
-          <img src="/photo/svg/右箭头.svg" style="float: right;" />
-        </div>
-      </router-link>
+    <div
+      class="content"
+    >每年一度的"精弘毅行"始于2012年，是浙江工业大学的一次盛会，超过8000位师生校友从学校出发，徒步行走十公里或以上的路程后回到学校。“精弘毅行"鼓励工大学子暂离网络，走出宿舍，以最原始的徒步行走的方式亲近自然，感受青春的活力和朝气。因此，精弘毅行也是每届精弘人必要经历的一次挑战。</div>
+  </div>
+
+  <div class="shenghuo">
+    <div class="title">生活社交</div>
+    <div class="img" style="background-image: url(/photo/story/shenghuo/shenghuo1.jpg)"></div>
+    <div class="content">精弘还定期举行素质拓展，各种小游戏需要每一位成员的通力合作，在游戏中互相了解，感受精弘大家庭的温暖。</div>
+    <div class="img" style="background-image: url(/photo/story/shenghuo/shenghuo2.jpg)"></div>
+    <div class="content">在每年一度的年会上，精弘网络的每个部门都准备了具有特色的节目，既是对过去工作生活的总结，也是对来年生活的美好祝愿。</div>
+    <div class="img1">
+      <div class="img11" style="background-image: url(/photo/story/shenghuo/shenghuo3.jpg)"></div>
+      <div class="img12" style="background-image: url(/photo/story/shenghuo/shenghuo4.jpg)"></div>
+      <div class="img13" style="background-image: url(/photo/story/shenghuo/shenghuo5.jpg)"></div>
     </div>
+    <div class="content">在各个部门内还有各式各样的轰趴活动，聚餐、唱K或是游西湖。在精弘，绝不是只有工作，还有数不清的快乐。</div>
+  </div>
+
+  <div class="yuren">
+    <div class="title">网络育人</div>
+    <div
+      class="carousel"
+      ref="carousel"
+      id="carousel2"
+      @touchstart="touchstart($event)"
+      @touchend="touchmove($event, 'yuren_classes')"
+    >
+      <div class="whole">
+        <div class="roll-img">
+          <ul type>
+            <li
+              @click="change($event, 'yuren_classes')"
+              v-for="(item, index) in yuren_imgs"
+              :class="yuren_classes[index]"
+            >
+              <img :src="item" />
+              <div></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="content">“网络安全宣传教育月”的系列活动⸺技术分享会、线下游园、人物访谈和拍摄防范网络诈骗微电影等由浙江工业大学精弘网络于全校范围内组织 承办。</div>
+  </div>
+
+  <div class="jiyu">
+    <div class="title">前辈寄语</div>
+    <div class="jiyu-content">
+      <div class="choice">
+        <div style="height: 100%; width: 100%; position: relative">
+          <div
+            :class="now === index ? 'person-name-selected' : 'person-name'"
+            v-on:click="now = index;"
+            v-for="person, index in persons"
+            v-bind:style="{ left: index * 23 + '%', 'z-index': 4 - index }"
+          >{{ person.name }}</div>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="img" v-bind:style="{ 'background-image': 'url(' + persons[now].img + ')' }"></div>
+        <div style="width: 40%; height: 30%; float: left; margin-bottom: 20px">
+          <div class="realname">{{ persons[now].realname }}</div>
+          <div class="introduction">{{ persons[now].introduction }}</div>
+        </div>
+        <div class="neirong">
+          <span>{{ persons[now].content }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product">
+    <router-link to="/m/product">
+      <div class="product-button">
+        我们的产品
+        <img src="/photo/svg/右箭头.svg" style="float: right;" />
+      </div>
+    </router-link>
   </div>
   <Footer />
 </template>

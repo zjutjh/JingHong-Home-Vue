@@ -9,7 +9,7 @@ function admin() {
   <div class="footer" @click="admin">©2021 浙江工业大学-精弘网络</div>
 </template>
 
-<style>
+<style scoped>
 .footer {
   margin-top: 2rem;
   width: 100%;

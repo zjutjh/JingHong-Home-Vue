@@ -36,10 +36,12 @@ function returnClicked() {
 }
 const phoneValid = ref(false);
 const stuIDValid = ref(false);
+const wantValid = ref(false);
 async function submitClicked() {
   phoneValid.value = isPhone(form.phone);
   stuIDValid.value = isStuId(form.stu_id);
-  if (!(phoneValid.value && stuIDValid.value)) {
+  wantValid.value = form.want1 != "no" && form.want2 != "no";
+  if (!(phoneValid.value && stuIDValid.value && wantValid.value)) {
     noticeShow.value = true;
     return;
   }
@@ -67,7 +69,7 @@ onMounted(() => {
   <div style="margin-top: 20vh;"></div>
   <!-- {{ form }} -->
   <Label type="middle">报名表</Label>
-  <JHNotice :show="noticeShow" @changeShow="closeNoticeShow">请将信息正确填写完整再提交</JHNotice>
+  <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" type="pc">请将信息正确填写完整再提交</JHNotice>
   <div class="basic_info">
     <div class="item_name">姓名</div>
     <input class="item_content" v-model="form.name" />

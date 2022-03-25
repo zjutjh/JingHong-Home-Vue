@@ -61,7 +61,7 @@
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
-  background-color: #d20001;
+  /* background-color: #d20001; */
   margin: auto;
   background-image: url(/photo/svg/下箭头.svg);
   background-size: 80%;

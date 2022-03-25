@@ -68,22 +68,20 @@ const prop = defineProps<{
 
 .container-large-m {
   width: 80vw;
-  /* height: 40vw; */
   background-color: white;
   margin: 3vw auto 0;
   box-shadow: 0 5px 10px #999999;
 }
 
 .title-large-m {
-  width: 30vw;
-  height: 4rem;
+  width: 20vw;
+  height: 5vh;
   background-color: #d20001;
   position: relative;
   top: 2rem;
   left: -2%;
-  font-size: xx-large;
+  font-size: 5vw;
   color: white;
-  font-weight: bolder;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, reactive, watch } from "vue";
+import { onMounted, reactive, ref, watch } from "vue";
 import Footer from "../../../components/pc/Footer.vue"
 import { useRouter } from "vue-router";
 import { usePageStore } from "../../../stores/pages";
@@ -8,6 +8,7 @@ import { isPhone, isStuId } from "../../../utils/valid";
 import { NormalForm } from "../../../apis/forms";
 import { regions, choices } from '../../../utils/const';
 import Label from '../../../components/pc/JHLabel.vue'
+import JHNotice from "../../../components/pc/JHNotice.vue";
 const store = usePageStore();
 const router = useRouter();
 const form = reactive(<INormalForm>{
@@ -18,11 +19,11 @@ const form = reactive(<INormalForm>{
   campus: "",
   phone: "",
   qq: "",
-  region: "",
+  region: "no",
   profile: "",
   feedback: "",
-  want1: "",
-  want2: "",
+  want1: "no",
+  want2: "no",
 });
 
 function regionChanged() {
@@ -32,29 +33,36 @@ function regionChanged() {
 function returnClicked() {
   router.push('/m/join');
 }
+const phoneValid = ref(false);
+const stuIDValid = ref(false);
+const wantValid = ref(false);
+const noticeShow = ref(false);
 async function submitClicked() {
-  if (!isPhone(form.phone)) {
-    alert("电话号码有误");
+  phoneValid.value = isPhone(form.phone);
+  stuIDValid.value = isStuId(form.stu_id);
+  wantValid.value = form.want1 != "no" && form.want2 != "no";
+  if (!(phoneValid.value && stuIDValid.value && wantValid.value)) {
+    noticeShow.value = true;
     return;
   }
-  if (!isStuId(form.stu_id)) {
-    alert("学号输入有误");
-    return;
-  }
-  // TODO submit
   var res = await NormalForm(form);
   if (res.message == "ok") {
     alert("提交成功!");
-    router.push('/m/join');
+    router.push('/join');
   } else {
     alert(res.message);
   }
 }
+function closeNoticeShow() {
+  noticeShow.value = false;
+}
+
 onMounted(() => {
   store.pageNow = 4;
 })
 </script>
 <template>
+  <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" type="mob">请将信息正确填写完整再提交</JHNotice>
   <!-- {{ form }} -->
   <div style="margin-top: 80px;"></div>
   <div class="mob_label_1">报名表</div>
@@ -81,6 +89,7 @@ onMounted(() => {
       <input class="mob_item_content" v-model="form.campus" />
       <div class="mob_item_name">校区</div>
       <select class="mob_item_content" v-model="form.region">
+        <option value="no">选择后显示志愿</option>
         <option v-for="region in regions" :value="region">{{ region }}</option>
       </select>
     </div>
@@ -88,6 +97,7 @@ onMounted(() => {
       <div class="mob_choice">
         <div class="mob_item_name">第一志愿</div>
         <select class="mob_item_content" v-model="form.want1">
+          <option value="no">请先选择校区</option>
           <option
             v-for="(item) in choices[regions.indexOf(form.region)]"
             :value="item"
@@ -97,6 +107,7 @@ onMounted(() => {
 
         <div class="mob_item_name">第二志愿</div>
         <select class="mob_item_content" v-model="form.want2">
+          <option value="no">请先选择校区</option>
           <option
             v-for="(item) in choices[regions.indexOf(form.region)]"
             :value="item"
@@ -105,20 +116,21 @@ onMounted(() => {
         </select>
       </div>
       <div class="mob_label_2">来一段简单的自我介绍吧！</div>
-      <input class="mob_capability_2" v-model="form.profile" />
+      <textarea class="mob_capability_2" v-model="form.profile" />
 
       <div class="mob_label_2">最后，有什么想对精弘网络说的话，可以在这里畅所欲言哦~</div>
-      <input class="mob_capability_2" v-model="form.feedback" />
+      <textarea class="mob_capability_2" v-model="form.feedback" />
     </div>
     <div style="display:flex;">
       <div class="mob_button1" @click="returnClicked">返回</div>
       <div class="mob_button1" @click="submitClicked">提交</div>
     </div>
   </div>
+  <div style="height:20vh"></div>
   <Footer />
 </template>
 
-<style>
+<style scoped>
 /* 样式 */
 
 .mob_capability_2 {
@@ -225,7 +237,7 @@ onMounted(() => {
   font-size: 8px;
 }
 .mob_item_content {
-  background-color: #dfdfdf;
+  /* background-color: #dfdfdf; */
   width: 100%;
   height: 100%;
   border-radius: 5px;

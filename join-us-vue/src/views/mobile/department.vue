@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 import { departments } from '../../utils/const'
+import Footer from '../../components/mobile/Footer.vue';
 </script>
 <template>
   <div id="body" ref="pronbit">
@@ -16,6 +17,7 @@ import { departments } from '../../utils/const'
       </router-link>
     </div>
   </div>
+  <Footer />
 </template>
 
 <style scoped>

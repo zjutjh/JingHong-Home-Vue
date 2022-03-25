@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
+import JHCard from '../../../components/pc/JHCard.vue';
+import Footer from '../../../components/mobile/Footer.vue';
+import JHButton from '../../../components/pc/JHButton.vue';
+import JHLabel from '../../../components/pc/JHLabel.vue';
 const router = useRouter();
 function developClicked() {
   router.push('/m/recruit_develop');
@@ -9,28 +13,36 @@ function returnClicked() {
 }
 </script>
 <template>
-  <!-- 组件内容 -->
-  <Nav_bar2 page_now="4"></Nav_bar2>
   <div style="height: 70px;"></div>
-  <div class="mob_label_1">长期招新</div>
-  <div class="mob_box">
-    <Des_label2 content="开发部"></Des_label2>
-    <div class="jishu_content">
-      <div class="jishu_00">招新范围：</div>
-      <div class="jishu_01">浙工大全体学院、全体年级的学生</div>
-      <br />
-      <div class="jishu_10">能力要求：</div>
-      <div class="jishu_11">1)能够独立开发api或使用前端框架</div>
-      <div class="jishu_21">2)能够独立撰写说明文档</div>
-      <div class="jishu_31">3)能够使用git进行团队协作交互</div>
-    </div>
-    <div class="mob_button1" @click="developClicked">报名</div>
-  </div>
+  <JHLabel type="middle" style="font-size:3vw;">长期招新</JHLabel>
+  <JHCard type="large-m" style="font-size:3vw;" title="开发部">
+    <div class="mob_box">
+      <div class="jishu_content">
+        <div class="jishu_00">招新范围：</div>
+        <div class="jishu_01">浙工大全体学院、全体年级的学生</div>
+        <br />
+        <div class="jishu_10">能力要求：</div>
+        <div class="jishu_11">1)能够独立开发api或使用前端框架</div>
+        <div class="jishu_21">2)能够独立撰写说明文档</div>
+        <div class="jishu_31">3)能够使用git进行团队协作交互</div>
+      </div>
+      <!-- <div class="mob_button1" @click="developClicked">报名</div> -->
+      <JHButton type="small" @click="developClicked">报名</JHButton>
+    </div>d = ref(false);
+    const stuIDValid = ref(false);
+    const wantValid = ref(false);
+    const noticeShow = ref(false);d = ref(false);
+    const stuIDValid = ref(false);
+    const wantValid = ref(false);
+    const noticeShow = ref(false);
+  </JHCard>
+  <div style="height:30vh"></div>
+  <JHButton type="small" @click="returnClicked" style="margin: 15px auto;">返回</JHButton>
 
-  <div class="mob_button1" @click="returnClicked">返回</div>
+  <Footer />
 </template>
 
-<style>
+<style scoped>
 /* 样式 */
 .jishu_content {
   margin: 10px;
@@ -77,5 +89,8 @@ function returnClicked() {
   grid-column-end: 3;
   grid-row-start: 5;
   grid-row-end: 6;
+}
+.mob_box {
+  padding: 5vh;
 }
 </style>

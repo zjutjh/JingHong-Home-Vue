@@ -151,16 +151,25 @@ async function submitClicked() {
 var option = ref({
   legend: {
     data: ['第一志愿', '第二志愿'],
+    selected: {
+      '第一志愿': true,
+      '第二志愿': false,
+    }
   },
   tooltip: {},
   xAxis: {
     type: "category",
-    data: ['办', '活', '秘', '产', '弘', '编', '视', '开', '易']
+    data: ['办公室', '活动部', '秘书处', 'Touch产品部', '小弘工作室', '编辑工作室', '视觉影像部', '开发部', '易班文化工作站'],
+    axisLabel: {
+      rotate: 40,
+      interval: 0,
+    },
+    grid: { bottom: 50 },
   },
   yAxis: { type: "value" },
-  grid: { bottom: 30 },
   series: ref([
     {
+
       color: "red",
       name: "第一志愿",
       type: "bar",
@@ -175,6 +184,10 @@ var option = ref({
         data.value.kfb.want1,
         data.value.yb.want1,]
       }),
+      label: {
+        show: true,
+        position: 'top',
+      },
       // data: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       // showBackground: true,
     },
@@ -194,6 +207,11 @@ var option = ref({
         data.value.yb.want2,
         ]
       }),
+      label: {
+        show: true,
+        position: 'top',
+
+      },
       // showBackground: true,
     },
   ])
@@ -332,7 +350,7 @@ const data_yb = computed(() => {
     <input v-model="pwd" />
     <button @click="submitClicked">刷新</button>
   </div>
-  <JHLabel type="big">招新情况</JHLabel>
+  <JHLabel type="middle" style="font-size:3vw;">招新情况</JHLabel>
   <JHCard title="总览" type="large-m">
     <div class="cards">
       <JHDataPresent type="mob" title="报名总数">{{ data.total }}</JHDataPresent>
@@ -344,7 +362,7 @@ const data_yb = computed(() => {
     </div>
   </JHCard>
   <JHCard title="统计图" type="large-m">
-    <v-chart class="chart" :option="option" id="chart" ref="chart" />
+    <v-chart class="chart" :option="option" id="chart" ref="chart" :autoresize="true" />
   </JHCard>
   <div class="cards">
     <JHCard title="办公室" type="small-m">

@@ -4,10 +4,11 @@ import { useRouter } from 'vue-router';
 import { DevelopForm } from '../../../apis/forms';
 import { isPhone, isStuId } from '../../../utils/valid';
 import { IDevelopForm } from '../../../types/forms';
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import { regions } from '../../../utils/const';
 import JHButton from '../../../components/pc/JHButton.vue'
 import JHLabel from '../../../components/pc/JHLabel.vue';
+import JHNotice from '../../../components/pc/JHNotice.vue';
 const router = useRouter();
 const form = reactive(<IDevelopForm>{
   name: '',
@@ -30,14 +31,14 @@ const form = reactive(<IDevelopForm>{
 function returnClicked() {
   router.push('/join');
 }
-
+const phoneValid = ref(false);
+const stuIDValid = ref(false);
+const noticeShow = ref(false);
 async function submitClicked() {
-  if (!isPhone(form.phone)) {
-    alert("手机号错误")
-    return;
-  }
-  if (!isStuId(form.stu_id)) {
-    alert("学号错误")
+  phoneValid.value = isPhone(form.phone);
+  stuIDValid.value = isStuId(form.stu_id);
+  if (!(phoneValid.value && stuIDValid.value)) {
+    noticeShow.value = true;
     return;
   }
   var res = await DevelopForm(form);
@@ -50,8 +51,12 @@ async function submitClicked() {
     return;
   }
 }
+function closeNoticeShow() {
+  noticeShow.value = false;
+}
 </script>
 <template>
+  <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" type="pc">请将信息正确填写完整再提交</JHNotice>
   <div style="height:20vh"></div>
   <JHLabel type="middle">开发部长期招新</JHLabel>
   <div class="basic_info">

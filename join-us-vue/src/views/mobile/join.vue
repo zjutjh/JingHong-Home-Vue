@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import Footer from '../../components/mobile/Footer.vue'
 import { useRouter } from "vue-router";
+import JHLabel from '../../components/pc/JHLabel.vue';
 const router = useRouter();
 function To_recruit() {
   router.push("/m/recruit");
@@ -12,7 +14,7 @@ function To_long() {
 <template>
   <div style="margin-top: 90px;"></div>
   <div class="mob_box">
-    <Des_label2 content="加入我们"></Des_label2>
+    <div class="title">加入我们</div>
     <div style="margin-top: 20px;"></div>
 
     <div class="mob_join_poster">
@@ -85,9 +87,21 @@ function To_long() {
     <div class="mob_department_structure_overview_diagram"></div>
   </div>
 
-  <Footer></Footer>
+  <Footer />
 </template>
 <style scoped>
+.title {
+  background: #d20001;
+  width: 30vw;
+  color: white;
+  height: 5vh;
+  font-size: 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: -15%;
+  position: relative;
+}
 .mob_box {
   width: 90%;
   background-color: white;
