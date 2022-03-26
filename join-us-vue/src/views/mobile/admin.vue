@@ -159,7 +159,7 @@ var option = ref({
   tooltip: {},
   xAxis: {
     type: "category",
-    data: ['办公室', '活动部', '秘书处', 'Touch产品部', '小弘工作室', '编辑工作室', '视觉影像部', '开发部', '易班文化工作站'],
+    data: ['办公室', '活动部', '秘书处', 'Touch产品部', '小弘工作室', '编辑工作室', '视觉影像部', '技术部', '易班文化工作站'],
     axisLabel: {
       rotate: 40,
       interval: 0,
@@ -386,7 +386,7 @@ const data_yb = computed(() => {
     <JHCard title="视觉影像部" type="small-m">
       <DepartmentsDataPresent :data="data_sj" type="mob"></DepartmentsDataPresent>
     </JHCard>
-    <JHCard title="开发部" type="small-m">
+    <JHCard title="技术部" type="small-m">
       <DepartmentsDataPresent :data="data_kfb" type="mob"></DepartmentsDataPresent>
     </JHCard>
     <JHCard title="易班文化工作站" type="small-m">

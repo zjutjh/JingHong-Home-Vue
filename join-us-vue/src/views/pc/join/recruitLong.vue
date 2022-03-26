@@ -15,7 +15,7 @@ function returnClicked() {
 <template>
   <div style="height: 20vh;"></div>
   <JHLabel type="big">长期招新</JHLabel>
-  <JHCard title="开发部" type="large" style="width:70vw;">
+  <JHCard title="技术部" type="large" style="width:70vw;">
     <div style="display: inline-block;">
       <div class="des_jishu_content">
         <div class="des_jishu_00">招新范围：</div>

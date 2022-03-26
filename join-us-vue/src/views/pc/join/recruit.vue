@@ -79,7 +79,7 @@ onMounted(() => {
     <select class="item_content" v-model="form.gender">
       <option value="0">男</option>
       <option value="1">女</option>
-      <option value="2">其他</option>
+      <option value="2">保密</option>
     </select>
 
     <div class="item_name">联系电话</div>

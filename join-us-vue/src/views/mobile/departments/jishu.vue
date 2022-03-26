@@ -15,7 +15,7 @@ function closeWindow() {
     <div class="jishu">
       <div class="jishu-left">
         <div class="kaifa">
-          <div class="title">开发部</div>
+          <div class="title">技术部</div>
           <div class="content-title">{{ mokuai[1].content[0].title }}</div>
           <div class="content-content">{{ mokuai[1].content[0].content }}</div>
         </div>

@@ -59,7 +59,7 @@ function closeNoticeShow() {
   <!-- 组件内容 -->
   <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" type="pc">请将信息正确填写完整再提交</JHNotice>
   <div style="margin-top: 80px;"></div>
-  <div class="mob_label_1">开发部长期招新</div>
+  <div class="mob_label_1">技术部长期招新</div>
   <div style="width:90%;margin: auto;">
     <div class="mob_basic_info">
       <div class="mob_item_name">姓名</div>
@@ -70,7 +70,7 @@ function closeNoticeShow() {
       <select class="mob_item_content" v-model="form.gender">
         <option value="0">男</option>
         <option value="1">女</option>
-        <option value="2">其他</option>
+        <option value="2">保密</option>
       </select>
       <div class="mob_item_name">联系电话</div>
       <input class="mob_item_content" v-model="form.phone" />
@@ -105,7 +105,7 @@ function closeNoticeShow() {
         <div class="mob_label_2">其他能力</div>
         <input class="mob_capability_2" v-model="form.ability_other" />
       </div>
-      <div class="mob_label_2">有什么想对开发部说的话，可以在这里告诉我们</div>
+      <div class="mob_label_2">有什么想对技术部说的话，可以在这里告诉我们</div>
       <input class="mob_capability_2" v-model="form.feedback" />
     </div>
     <div style="display:flex;">

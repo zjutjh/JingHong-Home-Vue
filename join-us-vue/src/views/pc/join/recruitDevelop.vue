@@ -58,7 +58,7 @@ function closeNoticeShow() {
 <template>
   <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" type="pc">请将信息正确填写完整再提交</JHNotice>
   <div style="height:20vh"></div>
-  <JHLabel type="middle">开发部长期招新</JHLabel>
+  <JHLabel type="middle">技术部长期招新</JHLabel>
   <div class="basic_info">
     <div class="item_name">姓名</div>
     <input class="item_content" v-model="form.name" />
@@ -68,7 +68,7 @@ function closeNoticeShow() {
     <select class="item_content" v-model="form.gender">
       <option value="0">男</option>
       <option value="1">女</option>
-      <option value="2">其他</option>
+      <option value="2">保密</option>
     </select>
     <div class="item_name">联系电话</div>
     <input class="item_content" v-model="form.phone" />
@@ -106,7 +106,7 @@ function closeNoticeShow() {
       <textarea class="capability_2" v-model="form.ability_other" placeholder="在这里输入你拥有的其他能力" />
     </div>
 
-    <JHLabel type="small">有什么想对开发部说的话，可以在这里告诉我们</JHLabel>
+    <JHLabel type="small">有什么想对技术部说的话，可以在这里告诉我们</JHLabel>
     <textarea class="capability_2" v-model="form.feedback" placeholder="暂时想不到可以填无" />
   </div>
   <div style="display:flex;">
