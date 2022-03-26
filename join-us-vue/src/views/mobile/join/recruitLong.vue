@@ -28,13 +28,7 @@ function returnClicked() {
       </div>
       <!-- <div class="mob_button1" @click="developClicked">报名</div> -->
       <JHButton type="small" @click="developClicked">报名</JHButton>
-    </div>d = ref(false);
-    const stuIDValid = ref(false);
-    const wantValid = ref(false);
-    const noticeShow = ref(false);d = ref(false);
-    const stuIDValid = ref(false);
-    const wantValid = ref(false);
-    const noticeShow = ref(false);
+    </div>
   </JHCard>
   <div style="height:30vh"></div>
   <JHButton type="small" @click="returnClicked" style="margin: 15px auto;">返回</JHButton>
