@@ -174,6 +174,7 @@ template {
 
 .item_content {
   /* background-color: #dfdfdf; */
+  outline: none;
   background-color: white;
 
   border-radius: 10px;
@@ -202,8 +203,9 @@ template {
 }
 
 .capability_1 {
+  outline: none;
   width: 100%;
-  height: 80px;
+  height: 150px;
   /* background-color: #dfdfdf; */
 
   background-color: white;
@@ -214,6 +216,7 @@ template {
   grid-template-rows: repeat(2, 40px);
 }
 .capability_1 div {
+  outline: none;
   display: flex;
   align-items: center;
   margin: 20px;
@@ -221,13 +224,12 @@ template {
 }
 .capability_2 {
   width: 100%;
-  height: 100px;
   /* background-color: #dfdfdf; */
   background-color: white;
-
+  height: 150px;
   border-radius: 10px;
   text-align: left;
-
+  outline: none;
   box-sizing: border-box;
   padding: 5px 5px;
   font-size: 12px;
