@@ -271,7 +271,9 @@ const router = createRouter(
 
 // 全局导航守卫
 router.beforeEach((to, from, next) => {
-  pageStore.initialScrollTop = 0;
+  window.scrollTo(0, 0);
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
   if (isMobile()) {
     pageStore.isMobile = true;
   } else {

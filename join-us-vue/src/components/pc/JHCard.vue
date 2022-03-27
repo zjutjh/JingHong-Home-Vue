@@ -11,7 +11,9 @@ const prop = defineProps<{
     <div
       :class="{ 'title-large': type == 'large', 'title-small': type == 'small', 'title-large-m': type == 'large-m', 'title-small-m': type == 'small-m' }"
     >{{ prop.title }}</div>
-    <slot></slot>
+    <div class="content">
+      <slot></slot>
+    </div>
   </div>
 </template>
 <style scoped>
@@ -25,7 +27,8 @@ const prop = defineProps<{
   border-radius: 10px;
 }
 .title-large {
-  width: 12vw;
+  width: fit-content;
+  padding: 1vw;
   height: 4rem;
   background-color: #d20001;
   position: relative;
@@ -51,7 +54,7 @@ const prop = defineProps<{
 
 .title-small {
   width: 10vw;
-  height: 3vh;
+  height: 5vh;
   background-color: #d20001;
   position: relative;
   top: 2vh;
@@ -111,5 +114,8 @@ const prop = defineProps<{
   justify-content: center;
   align-items: center;
   border-radius: 0;
+}
+.content {
+  margin-top: 5vh;
 }
 </style>

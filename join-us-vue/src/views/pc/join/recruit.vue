@@ -28,8 +28,8 @@ const form = reactive(<INormalForm>{
 });
 
 function regionChanged() {
-  form.want1 = "";
-  form.want2 = "";
+  form.want1 = "no";
+  form.want2 = "no";
 }
 function returnClicked() {
   router.push('/join');
@@ -92,14 +92,14 @@ onMounted(() => {
     <input class="item_content" v-model="form.college" />
     <div class="item_name">校区</div>
     <select class="item_content" v-model="form.region" @change="regionChanged">
-      <option value="no">选择后显示志愿</option>
+      <option value="no" disabled="true">选择后显示志愿</option>
       <option v-for="region in regions" :value="region">{{ region }}</option>
     </select>
   </div>
   <div class="other_info">
     <div class="item_name">第一志愿</div>
-    <select class="item_content" v-model="form.want1" :disabled="(form.region == '')">
-      <option value="no">请先选择校区</option>
+    <select class="item_content" v-model="form.want1" :disabled="(form.region == 'no')">
+      <option value="no" disabled="true">{{ form.region == 'no' ? '请先选择校区' : '未选择' }}</option>
       <option
         v-for="(item) in choices[regions.indexOf(form.region)]"
         :value="item"
@@ -109,8 +109,8 @@ onMounted(() => {
 
     <div class="item_name">第二志愿</div>
 
-    <select class="item_content" v-model="form.want2" :disabled="(form.region == '')">
-      <option value="no">请先选择校区</option>
+    <select class="item_content" v-model="form.want2" :disabled="(form.region == 'no')">
+      <option value="no" disabled="true">{{ form.region == 'no' ? '请先选择校区' : '未选择' }}</option>
       <option
         v-for="item in choices[regions.indexOf(form.region)]"
         :value="item"
@@ -121,12 +121,12 @@ onMounted(() => {
   <div class="selfIntroduce">
     <div>
       <Label type="small">来一段简单的自我介绍吧！</Label>
-      <textarea class="capability_2" v-model="form.profile" />
+      <textarea class="capability_2" v-model="form.profile" placeholder="还可以加入你的特长、爱好、职位相关经历哦～" />
     </div>
 
     <div>
       <Label type="small">最后，有什么想对精弘网络说的话，可以在这里畅所欲言哦~</Label>
-      <textarea class="capability_2" v-model="form.feedback" />
+      <textarea class="capability_2" v-model="form.feedback" placeholder="暂时想不到可以填写无" />
     </div>
   </div>
   <div style="display:flex; center">
@@ -137,7 +137,7 @@ onMounted(() => {
   <Footer></Footer>
 </template>
 
-<style>
+<style scoped>
 template {
   min-width: 900px;
 }

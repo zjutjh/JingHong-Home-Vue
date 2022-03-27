@@ -13,7 +13,7 @@ function closeWindow() {
   <div id="body" ref="pronbit">
     <div class="mokuai-title">易班文化工作站</div>
     <div class="yiban">
-      <div class="title">易班文化工作站</div>
+      <div class="title" style="font-size: 1.5vw">易班文化工作站</div>
       <div class="neikuang">
         <div class="img1">
           <div

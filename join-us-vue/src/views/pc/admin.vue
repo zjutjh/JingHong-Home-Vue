@@ -357,13 +357,16 @@ onMounted(() => {
   <div class="departments"></div>
   <JHCard title="总览" type="large">
     <div class="cards">
-      <JHDataPresent type="pc" title="报名总数">{{ data.total }}</JHDataPresent>
-      <span />
-      <JHDataPresent type="pc" title="今日增加">{{ data.total_today }}</JHDataPresent>
+      <JHDataPresent type="pc" title="报名总数:" style="grid-column:1/3; grid-row:1">{{ data.total }}</JHDataPresent>
+      <JHDataPresent
+        type="pc"
+        title="今日增加:"
+        style="grid-column:4/6; grid-row:1"
+      >{{ data.total_today }}</JHDataPresent>
 
-      <JHDataPresent type="pc" title="朝晖">{{ data.total_zh }}</JHDataPresent>
-      <JHDataPresent type="pc" title="屏峰">{{ data.total_pf }}</JHDataPresent>
-      <JHDataPresent type="pc" title="莫干山">{{ data.total_mgs }}</JHDataPresent>
+      <JHDataPresent type="pc" title="朝晖:" style="grid-column:1/2; grid-row:2">{{ data.total_zh }}</JHDataPresent>
+      <JHDataPresent type="pc" title="屏峰:" style="grid-column:3/4; grid-row:2">{{ data.total_pf }}</JHDataPresent>
+      <JHDataPresent type="pc" title="莫干山:" style="grid-column:5/6; grid-row:2">{{ data.total_mgs }}</JHDataPresent>
     </div>
   </JHCard>
   <JHCard title="统计图" type="large">
@@ -405,8 +408,8 @@ onMounted(() => {
   margin: 3vw;
   padding: 3vw;
   display: grid;
-  grid-template-columns: 33% 33% 33%;
-  grid-template-rows: repeat(5, 20%);
+  grid-template-columns: repeat(6, 16.7);
+  grid-template-rows: repeat(2, 50%);
   grid-row-gap: 20px;
   grid-column-gap: 20px;
   /* font-size: x-large; */

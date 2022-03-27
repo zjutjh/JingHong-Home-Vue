@@ -88,5 +88,6 @@ const props = defineProps<{
   margin-inline: 10px;
   display: inline;
   font-size: 24px;
+  color: red;
 }
 </style>

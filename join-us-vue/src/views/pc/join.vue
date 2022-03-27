@@ -91,12 +91,9 @@ onMounted(() => {
     </div>
   </JHCard>
 
-  <div class="des_box">
-    <!-- <Des_label2 content="部门结构一览图"></Des_label2> -->
-    <!--<div class="department_structure_overview_diagram"></div> -->
+  <JHCard title="部门结构一览图" type="large">
     <img src="/photo/haibao/structPc.png" style="width:75vw" />
-  </div>
-
+  </JHCard>
   <Footer />
 </template>
 
@@ -124,19 +121,16 @@ template {
   min-height: 501px;
   /* height: 645px; */
   background-color: aqua;
-  /* margin: 0px auto 20px; */
-
+  margin: 0px auto 20px;
   background: url(/photo/haibao/diannao.jpg) center/cover;
 }
 .join_label {
-  width: 100px;
-  height: 26px;
-  line-height: 26px;
+  width: 8vw;
+  height: 3vh;
   border-radius: 4px;
-
   background-color: #d20001;
   color: white;
-  font-size: 15px;
+  font-size: 1vw;
 
   margin: 10px 0;
 }
