@@ -1,4 +1,4 @@
-export const ENV = 'dev';
+export var ENV = 'dev';
 // dev 开发模式
 // pro 生产模式
 export const regions = ["朝晖", "屏峰", "莫干山"];
