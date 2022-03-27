@@ -49,7 +49,6 @@ watch(initialScrollTop, (newValue, oldValue) => {
     if (pageStore.pageNow == 0) {
       top.value = true;
     }
-    document.documentElement.scrollTop = 0;
   } else {
     top.value = false;
   }

@@ -2,7 +2,9 @@
 import { computed, CSSProperties, onMounted, onUnmounted, ref } from 'vue';
 import { RouterView, RouterLink } from 'vue-router';
 import Footer from '../../components/mobile/Footer.vue'
-import Start from '../../components/mobile/Start.vue'
+import Start from '../../components/mobile/Start.vue';
+import { usePageStore } from '../../stores/pages';
+const pageStore = usePageStore();
 const items = [
   {
     id: 0,
@@ -64,6 +66,7 @@ const items = [
     content: "第十三届精弘毅行",
   },
 ];
+
 const loading_width = ref(-100);
 const angle = (Math.atan(0.5) * 180) / Math.PI + "deg";
 const angle2 = (-Math.atan(0.5) * 180) / Math.PI + "deg";
@@ -80,12 +83,14 @@ const styleVal = (function (index: number): CSSProperties {
     '--line_seen': index === 9 ? 'none' : 'block',
   }
 })
+
 function handleScrollx() {
   top111.value = historyline.value.getBoundingClientRect().top;
 }
 onMounted(() => {
   window.addEventListener("scroll", handleScrollx, true);
   document.title = '精弘首页';
+  pageStore.pageNow = 0;
   let timer = window.setInterval(() => {
     if (loading_width.value >= 0) {
       loading_width.value = -100;

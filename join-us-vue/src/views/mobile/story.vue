@@ -220,7 +220,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="title-style">我们的故事</div>
+  <div class="title-style" style="margin-top: 8vh;">我们的故事</div>
   <div class="shiming">
     <div class="img" style="background-image: url(/photo/index/ziyou.png)"></div>
     <div class="img" style="background-image: url(/photo/index/gongxiang.png)"></div>

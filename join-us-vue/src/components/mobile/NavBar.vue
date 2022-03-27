@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
 import { onMounted, ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import router from '../../router';
 import { usePageStore } from '../../stores/pages';
-const store = usePageStore();
-const { initialScrollTop } = storeToRefs(store);
+const pageStore = usePageStore();
+const initialScrollTop = ref(0);
 const show = ref(true);
 const hide = ref(false);
 const slideNav = ref("mob_Nav-hide");
+const top = ref(true);
+
 const seen = ref(true);
 const pages = [
   { name: "首页", href: "/m/index" },
@@ -34,9 +35,18 @@ function scrolling() {
     hide.value = true;
   }
 }
+watch(initialScrollTop, (newValue, oldValue) => {
+  if (newValue == 0) {
+    if (pageStore.pageNow == 0) {
+      top.value = true;
+    }
+  } else {
+    top.value = false;
+  }
+})
 
 function logoClicked() {
-  router.push('/index');
+  router.push('/m/index');
 }
 function show1() {
   slideNav.value = "mob_Nav-show";
@@ -52,26 +62,27 @@ onMounted(() => {
     || document.body.scrollTop;
   window.addEventListener("scroll", scrolling);
 })
-
-watch(initialScrollTop, (newValue, oldValue) => {
-  // console.log("reset: " + initialScrollTop.value)
-  if (newValue == 0) {
-    console.log("reset")
-    document.documentElement.scrollTop = 0;
+function changePage(index: number) {
+  pageStore.pageNow = index;
+  hide1();
+  if (initialScrollTop.value == 0 && index == 0) {
+    top.value = true;
+  } else {
+    top.value = false;
   }
-})
+}
 </script>
 
 <template>
   <div id="nav">
     <div
-      v-bind:class="{ mob_topshow: show, mob_tophide: hide }"
-      :style="{ 'background': initialScrollTop < 1 ? 'transparent' : '#D20001', 'box-shadow': initialScrollTop < 1 ? '' : '0 5px 10px #999999' }"
+      v-bind:class="{ mob_topshow: show && !top, mob_tophide: hide, atTop: (top && pageStore.pageNow == 0) }"
     >
-      <img class="img" src="/photo/top/logo.png" v-show="seen" />
+      <img class="img" src="/photo/top/logo.png" v-show="seen" @click.native="logoClicked" />
       <div class="button-on" @click="show1" @touchmove.prevent v-show="seen"></div>
     </div>
-    <div v-bind:class="slideNav" @touchmove.prevent @mousewheel.prevent>
+
+    <div v-bind:class="slideNav" @touchmove.prevent @mousewheel.prevent v-show="!seen">
       <div
         v-bind:class="{ mob_topshow: show, mob_tophide: hide }"
         :style="{ 'background': '#D20001' }"
@@ -80,8 +91,8 @@ watch(initialScrollTop, (newValue, oldValue) => {
         <img class="img" src="/photo/top/logo.png" v-show="!seen" />
       </div>
       <div class="mob-nav-list">
-        <div v-for="page in pages">
-          <router-link :to="page.href" @click="hide1">{{ page.name }}</router-link>
+        <div v-for="page, index in pages">
+          <router-link :to="page.href" @click="changePage(index)">{{ page.name }}</router-link>
         </div>
       </div>
     </div>
@@ -95,7 +106,16 @@ watch(initialScrollTop, (newValue, oldValue) => {
 #nav .img {
   float: left;
 }
-
+.atTop {
+  position: fixed;
+  left: 0;
+  top: 0rem;
+  width: 100%;
+  height: 4rem;
+  background: transparent;
+  transition: top linear 0.3s;
+  z-index: 1000000;
+}
 .button-on {
   position: relative;
   float: right;
@@ -132,7 +152,7 @@ watch(initialScrollTop, (newValue, oldValue) => {
   top: 0rem;
   width: 100%;
   height: 4rem;
-  /* background: #d20001; */
+  background: #d20001;
   transition: top linear 0.3s;
   z-index: 1000000;
   /* box-shadow: 0 1px 5px #999999; */
