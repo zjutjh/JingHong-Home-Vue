@@ -1,6 +1,6 @@
 server/config/config.yaml
 server/.vim/coc-settings.json
 
-join-us-vue/public/**/*.*
+# join-us-vue/public/**/*.*
 **/*.zip
 /server/main

@@ -2,11 +2,15 @@
 import Footer from '../../components/mobile/Footer.vue'
 import { useRouter } from "vue-router";
 import JHLabel from '../../components/pc/JHLabel.vue';
+import { ENV } from '../../utils/const';
 const router = useRouter();
 function To_recruit() {
   router.push("/m/recruit");
 }
 function To_long() {
+  if (ENV == 'pro') {
+    return;
+  }
   router.push("/m/recruit_long");
 }
 

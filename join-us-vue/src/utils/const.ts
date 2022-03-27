@@ -1,4 +1,6 @@
 export const ENV = 'dev';
+// dev 开发模式
+// pro 生产模式
 export const regions = ["朝晖", "屏峰", "莫干山"];
 export const choices = [
   ["办公室", "活动部",

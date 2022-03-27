@@ -1,23 +1,24 @@
+# config.example.yaml 请**不要**上传您的config.yaml文件
 server:
-    port: "8888" # type: string
-    jwt:
-        expires: 48 # hours
+    port: "8888"                        # type: string 服务器监听的端口
+    jwt:                                # 本项目没有用到jwt
+        expires: 48 # hours 
         issuer: "string"
         secret: "string"
 
-database:
-    username: "username"
-    password: "password"
-    address: "address:port"
-    dbname: "databaseName"
+database:                               # 数据库
+    username: "username"                # 数据库用户
+    password: "password"                # 密码
+    address: "address:port"             # 数据库地址
+    dbname: "databaseName"              # 数据表名
 
-secret: "something"
+secret: "something"                     # 用于管理员查看招新信息的密码，确定好后通过其他方式发送给内部人员。
 
-email:
-    sender: "example@example.com"
-    pwd: "your email token"
-    smtp_addr: "smtp.qq.com"
-    smtp_port: 25
-    receiver: "another email"
+email:                                  # 配置邮件发送
+    sender: "example@example.com"       # 发信信箱
+    pwd: "your email token"             # 发信信箱秘密啊
+    smtp_addr: "smtp.qq.com"            # 默认为qq邮箱
+    smtp_port: 25                       # qq邮箱的端口是25
+    receiver: "another email"           # 接受信息的管理员邮箱
 
-env: "dev"  # 环境 dev for 开发环境; pro for 生产环境
+env: "dev"                              # 环境 dev for 开发环境; pro for 生产环境
