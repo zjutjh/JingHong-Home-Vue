@@ -18,6 +18,7 @@ const prop = defineProps<{
 .base {
   display: grid;
   grid-template-columns: 20% 80%;
+  align-items: center;
 }
 .label {
   /* background-color: #d20001; */
@@ -36,7 +37,7 @@ const prop = defineProps<{
   font-size: xx-large;
   align-items: center;
   justify-content: center;
-  padding-top: 20px;
+  /* padding-top: 20px; */
 }
 
 .base-m {

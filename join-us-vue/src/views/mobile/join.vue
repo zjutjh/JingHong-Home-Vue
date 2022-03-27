@@ -79,20 +79,23 @@ function To_long() {
   </div>
 
   <div class="mob_box">
-    <Des_label2 content="部门结构一览图"></Des_label2>
     <!-- <div>
       <img src="/photo/product/10.png" />
     </div>-->
-
-    <div class="mob_department_structure_overview_diagram"></div>
+    <div class="title">部门结构一览图</div>
+    <img src="/photo/haibao/structMob.png" class="img" />
   </div>
 
   <Footer />
 </template>
 <style scoped>
+.img {
+  width: 80vw;
+}
 .title {
   background: #d20001;
-  width: 30vw;
+  width: fit-content;
+  padding-inline: 5vw;
   color: white;
   height: 5vh;
   font-size: 5vw;
@@ -196,13 +199,5 @@ function To_long() {
   /* height: 170px; */
   /* background-color: bisque; */
   /* margin-left: 50px; */
-}
-
-.mob_department_structure_overview_diagram {
-  width: 310px;
-  height: 310px;
-  margin: 20px auto;
-  background: url(/photo/haibao/structMob.png) center/cover;
-  background-color: aqua;
 }
 </style>

@@ -12,7 +12,7 @@ const router = useRouter();
 const form = reactive(<IDevelopForm>{
   name: '',
   college: '',
-  gender: 0,
+  gender: -1,
   phone: '',
   stu_id: '',
   qq: '',
@@ -57,7 +57,7 @@ function closeNoticeShow() {
 </script>
 <template>
   <!-- 组件内容 -->
-  <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" type="pc">请将信息正确填写完整再提交</JHNotice>
+  <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" type="mob">请将信息正确填写完整再提交</JHNotice>
   <div style="margin-top: 80px;"></div>
   <div class="mob_label_1">技术部长期招新</div>
   <div style="width:90%;margin: auto;">
@@ -103,10 +103,14 @@ function closeNoticeShow() {
           </div>
         </div>
         <div class="mob_label_2">其他能力</div>
-        <input class="mob_capability_2" v-model="form.ability_other" />
+        <textarea
+          class="mob_capability_2"
+          v-model="form.ability_other"
+          placeholder="在这里输入你拥有的其他能力"
+        />
       </div>
       <div class="mob_label_2">有什么想对技术部说的话，可以在这里告诉我们</div>
-      <input class="mob_capability_2" v-model="form.feedback" />
+      <textarea class="mob_capability_2" v-model="form.feedback" placeholder="暂时想不到可以填无" />
     </div>
     <div style="display:flex;">
       <JHButton type="small" @click="returnClicked">返回</JHButton>
@@ -201,8 +205,7 @@ option {
 }
 .mob_capability_2 {
   width: 100%;
-  height: 100px;
-  background-color: #dfdfdf;
+  height: 150px;
 
   border-radius: 10px;
   text-align: left;
@@ -236,30 +239,28 @@ option {
 
   color: white;
   font-size: 8px;
+  border-radius: 10px;
+  border: none;
 }
 .mob_item_content {
-  background-color: #dfdfdf;
   width: 100%;
   height: 100%;
   border-radius: 5px;
 
   text-align: left;
   box-sizing: border-box;
-  /* width: 100%; */
-  /* min-height: 60px; */
-  /* max-height: 88px; */
   line-height: 20px;
   padding: 0 5px;
   resize: none;
   outline: none;
-  /* background-color: #f0f1f4; */
-  /* border-radius: 10px; */
   font-size: 10px;
 
   white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
-  /* border: 1px white solid; */
+  box-shadow: 0 2px 5px #999999;
+  border: none;
+  background-color: white;
 }
 .mob_item_content:focus {
   border: 1px #ff8200 solid;
@@ -278,7 +279,7 @@ option {
 .mob_capability_1 {
   width: 100%;
   /* height: 80px; */
-  background-color: #dfdfdf;
+  background-color: white;
 
   border-radius: 10px;
 
@@ -292,16 +293,45 @@ option {
   padding: 10px 30px;
   /* justify-content: center; */
 }
-.mob_capability_2 {
-  width: 100%;
-  height: 100px;
-  background-color: #dfdfdf;
 
-  border-radius: 10px;
+.mob_label_1 {
+  min-width: 90px;
+  width: fit-content;
+  height: 35px;
+  padding: 0 20px;
+  margin: 15px auto;
+  border-radius: 20px;
+
+  background-color: #d20001;
+
+  color: white;
+  font-size: 18px;
+  line-height: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* box-shadow: 0 5px 10px #999999; */
+}
+
+.mob_label_2 {
+  width: fit-content;
+  height: fit-content;
+  margin: 10px 0;
+  padding: 0 10px;
+  border-radius: 5px;
+
+  background-color: #d20001;
+
+  color: white;
+  font-size: 12px;
+  line-height: 30px;
   text-align: left;
 
-  box-sizing: border-box;
-  padding: 5px 5px;
-  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* box-shadow: 0 5px 10px #999999; */
 }
 </style>

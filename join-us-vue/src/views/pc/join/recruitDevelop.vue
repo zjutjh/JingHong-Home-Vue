@@ -13,12 +13,12 @@ const router = useRouter();
 const form = reactive(<IDevelopForm>{
   name: '',
   college: '',
-  gender: 0,
+  gender: -1,
   phone: '',
   stu_id: '',
   qq: '',
   campus: '',
-  region: '',
+  region: 'no',
   ability: {
     api: false,
     front_end: false,

@@ -14,7 +14,7 @@ const router = useRouter();
 const form = reactive(<INormalForm>{
   name: "",
   stu_id: "",
-  gender: 0,
+  gender: -1,
   college: "",
   campus: "",
   phone: "",
@@ -63,10 +63,8 @@ onMounted(() => {
 </script>
 <template>
   <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" type="mob">请将信息正确填写完整再提交</JHNotice>
-  <!-- {{ form }} -->
   <div style="margin-top: 80px;"></div>
   <div class="mob_label_1">报名表</div>
-  <!-- <Label type="middle">报名表</Label> -->
   <div style="width: 90%;margin: auto;">
     <div class="mob_basic_info">
       <div class="mob_item_name">姓名</div>
@@ -89,15 +87,15 @@ onMounted(() => {
       <input class="mob_item_content" v-model="form.campus" />
       <div class="mob_item_name">校区</div>
       <select class="mob_item_content" v-model="form.region">
-        <option value="no">选择后显示志愿</option>
+        <option value="no" disabled="true">选择后显示志愿</option>
         <option v-for="region in regions" :value="region">{{ region }}</option>
       </select>
     </div>
     <div class="mob_other_info">
       <div class="mob_choice">
         <div class="mob_item_name">第一志愿</div>
-        <select class="mob_item_content" v-model="form.want1">
-          <option value="no">请先选择校区</option>
+        <select class="mob_item_content" v-model="form.want1" :disabled="(form.region == 'no')">
+          <option value="no" disabled="true">{{ form.region == 'no' ? '请先选择校区' : '未选择' }}</option>
           <option
             v-for="(item) in choices[regions.indexOf(form.region)]"
             :value="item"
@@ -106,8 +104,8 @@ onMounted(() => {
         </select>
 
         <div class="mob_item_name">第二志愿</div>
-        <select class="mob_item_content" v-model="form.want2">
-          <option value="no">请先选择校区</option>
+        <select class="mob_item_content" v-model="form.want2" :disabled="(form.region == 'no')">
+          <option value="no" disabled="true">{{ form.region == 'no' ? '请先选择校区' : '未选择' }}</option>
           <option
             v-for="(item) in choices[regions.indexOf(form.region)]"
             :value="item"
@@ -132,15 +130,6 @@ onMounted(() => {
 
 <style scoped>
 /* 样式 */
-
-.mob_capability_2 {
-  width: 100%;
-  height: 100px;
-  background-color: #dfdfdf;
-
-  border-radius: 10px;
-}
-
 .mob_choice {
   padding: 20px 0;
   border-bottom: 1px black solid;
@@ -209,6 +198,7 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   /* box-shadow: 0 5px 10px #999999; */
+  box-shadow: 0 2px 5px #999999;
 }
 .mob_basic_info {
   display: grid;
@@ -235,30 +225,28 @@ onMounted(() => {
 
   color: white;
   font-size: 8px;
+  border-radius: 10px;
+  border: none;
 }
 .mob_item_content {
-  /* background-color: #dfdfdf; */
   width: 100%;
   height: 100%;
   border-radius: 5px;
 
   text-align: left;
   box-sizing: border-box;
-  /* width: 100%; */
-  /* min-height: 60px; */
-  /* max-height: 88px; */
   line-height: 20px;
   padding: 0 5px;
   resize: none;
   outline: none;
-  /* background-color: #f0f1f4; */
-  /* border-radius: 10px; */
   font-size: 10px;
 
   white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
-  /* border: 1px white solid; */
+  box-shadow: 0 2px 5px #999999;
+  border: none;
+  background-color: white;
 }
 .mob_item_content:focus {
   border: 1px #ff8200 solid;
@@ -274,27 +262,9 @@ option {
   margin: auto;
 }
 
-.mob_capability_1 {
-  width: 100%;
-  /* height: 80px; */
-  background-color: #dfdfdf;
-
-  border-radius: 10px;
-
-  /* display: grid; */
-  /* grid-template-columns: 50% 50%; */
-  /* grid-template-rows: repeat(2, 40px); */
-}
-.mob_capability_1 div {
-  display: flex;
-  align-items: center;
-  padding: 10px 30px;
-  /* justify-content: center; */
-}
 .mob_capability_2 {
   width: 100%;
-  height: 100px;
-  background-color: #dfdfdf;
+  height: 150px;
 
   border-radius: 10px;
   text-align: left;
