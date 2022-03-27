@@ -10,7 +10,6 @@ const props = defineProps<{
   <div :class="{ 'base': type == 'pc', 'base-m': type == 'mob' }">
     <div class="item">
       <JHLabel type="small" class="label">第一志愿</JHLabel>
-
       <div class="number">{{ props.data.want1 }}</div>
     </div>
     <div class="item">
@@ -67,7 +66,7 @@ const props = defineProps<{
 }
 .base-m {
   display: grid;
-  height: 60vw;
+  height: 80vw;
   margin-top: 35px;
   margin-inline: 10px;
   grid-template-columns: 50% 50%;
@@ -75,14 +74,21 @@ const props = defineProps<{
   align-items: center;
   justify-items: start;
 }
+
 .item {
-  align-items: start;
+  display: flex;
+  align-items: center;
+  justify-items: center;
   text-align: center;
+  margin: auto;
 }
 .label {
   display: inline-block;
   background-color: white;
   color: black;
+  width: 15vw;
+  margin: auto;
+  padding: 10px;
 }
 .number {
   margin-inline: 10px;

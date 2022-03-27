@@ -93,7 +93,7 @@ const prop = defineProps<{
 
 .container-small-m {
   width: 80vw;
-  height: 80vw;
+  height: 100vw;
   background-color: white;
   margin: 3vw auto 0;
   box-shadow: 0 5px 10px #999999;

@@ -169,7 +169,6 @@ var option = ref({
   yAxis: { type: "value" },
   series: ref([
     {
-
       color: "red",
       name: "第一志愿",
       type: "bar",
@@ -354,10 +353,10 @@ const data_yb = computed(() => {
   <JHCard title="总览" type="large-m">
     <div class="cards">
       <JHDataPresent type="mob" title="报名总数">{{ data.total }}</JHDataPresent>
-      <JHDataPresent type="mob" title="朝晖">{{ data.total_zh }}</JHDataPresent>
+      <JHDataPresent type="mob" title="今日增加">{{ data.total_today }}</JHDataPresent>
       <span />
       <JHDataPresent type="mob" title="屏峰">{{ data.total_pf }}</JHDataPresent>
-      <JHDataPresent type="mob" title="今日增加">{{ data.total_today }}</JHDataPresent>
+      <JHDataPresent type="mob" title="朝晖">{{ data.total_zh }}</JHDataPresent>
       <JHDataPresent type="mob" title="莫干山">{{ data.total_mgs }}</JHDataPresent>
     </div>
   </JHCard>
