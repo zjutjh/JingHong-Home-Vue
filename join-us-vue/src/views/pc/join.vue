@@ -9,6 +9,9 @@ const store = usePageStore();
 const router = useRouter();
 function To_recruit() {
   router.push('/recruit');
+  // let route = router.resolve("/recruit");
+  // window.open(route.href, "_blank");
+
 }
 
 function To_long() {
@@ -138,17 +141,12 @@ template {
 .join_code_outlines {
   width: 100%;
   display: flex;
-  justify-content: center;
-
+  justify-content: start;
+  padding-inline: 10vw;
+  margin: 0 10px;
   margin-top: 20px;
 }
 
-.join_code_outline {
-  width: 100px;
-  margin: 0 10px;
-  /* display: flex;
-    justify-content: center; */
-}
 /* 二维码外框 */
 .join_code {
   width: 100px;

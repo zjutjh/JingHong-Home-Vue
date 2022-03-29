@@ -44,9 +44,8 @@ function returnClicked() {
 
   font-size: 10px;
   display: grid;
-  grid-template-rows: repeat(4, 30px);
+  grid-template-rows: repeat(4, 40px);
   grid-template-columns: 60px;
-  /* grid-gap: 50px 100px; */
 }
 .jishu_00 {
   grid-column-start: 1;

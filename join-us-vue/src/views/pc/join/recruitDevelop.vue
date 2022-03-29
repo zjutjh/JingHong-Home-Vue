@@ -54,6 +54,8 @@ async function submitClicked() {
 function closeNoticeShow() {
   noticeShow.value = false;
 }
+const textarea1Focused = ref(false);
+const textarea2Focused = ref(false);
 </script>
 <template>
   <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" type="pc">请将信息正确填写完整再提交</JHNotice>
@@ -103,11 +105,23 @@ function closeNoticeShow() {
         </div>
       </div>
       <JHLabel type="small">其他能力</JHLabel>
-      <textarea class="capability_2" v-model="form.ability_other" placeholder="在这里输入你拥有的其他能力" />
+      <textarea
+        class="capability_2"
+        v-model="form.ability_other"
+        :placeholder="textarea1Focused ? '' : '在这里输入你拥有的其他能力'"
+        @focusin="textarea1Focused = true"
+        @focusout="textarea1Focused = false"
+      />
     </div>
 
     <JHLabel type="small">有什么想对技术部说的话，可以在这里告诉我们</JHLabel>
-    <textarea class="capability_2" v-model="form.feedback" placeholder="暂时想不到可以填无" />
+    <textarea
+      class="capability_2"
+      v-model="form.feedback"
+      :placeholder="textarea2Focused ? '' : '暂时想不到可以填写“无”'"
+      @focusin="textarea2Focused = true"
+      @focusout="textarea2Focused = false"
+    />
   </div>
   <div style="display:flex;">
     <!-- TODO no style for this -->
@@ -159,6 +173,8 @@ template {
   line-height: 20px;
   font-weight: 600;
   border: none;
+  outline: none;
+  box-shadow: 0 5px 10px #999999;
 }
 
 .capability_1 {
@@ -170,13 +186,17 @@ template {
   border-radius: 10px;
 
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(2, 40px);
+  /* padding-inline: 1vw; */
+  box-shadow: 0 5px 10px #999999;
 }
 .capability_1 div {
   display: flex;
+  width: fit-content;
   align-items: center;
   margin: 20px;
+  padding-inline: 5vw;
   /* justify-content: center; */
 }
 .capability_2 {
@@ -192,6 +212,7 @@ template {
   padding: 5px 5px;
   font-size: 12px;
   font-weight: 600;
+  outline: none;
 }
 .other_info .item_name {
   width: 15%;

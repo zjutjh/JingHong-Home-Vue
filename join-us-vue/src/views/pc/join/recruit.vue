@@ -6,10 +6,11 @@ import { usePageStore } from "../../../stores/pages";
 import { INormalForm } from "../../../types/forms";
 import { isPhone, isStuId } from "../../../utils/valid";
 import { NormalForm } from "../../../apis/forms";
-import { regions, choices } from '../../../utils/const';
 import Label from "../../../components/pc/JHLabel.vue";
 import JHButton from "../../../components/pc/JHButton.vue";
 import JHNotice from "../../../components/pc/JHNotice.vue";
+import JHInput from "../../../components/pc/JHInput.vue";
+import JHSelect from "../../../components/pc/JHSelect.vue";
 const store = usePageStore();
 const router = useRouter();
 const form = reactive(<INormalForm>{
@@ -34,13 +35,18 @@ function regionChanged() {
 function returnClicked() {
   router.push('/join');
 }
-const phoneValid = ref(false);
-const stuIDValid = ref(false);
+const nameValid = ref(true);
+const phoneValid = ref(true);
+const stuIDValid = ref(true);
 const wantValid = ref(false);
+const submitted = ref(false);
 async function submitClicked() {
+  submitted.value = true;
+  nameValid.value = form.name.length > 2 && form.name.length < 12;
   phoneValid.value = isPhone(form.phone);
   stuIDValid.value = isStuId(form.stu_id);
   wantValid.value = form.want1 != "no" && form.want2 != "no";
+
   if (!(phoneValid.value && stuIDValid.value && wantValid.value)) {
     noticeShow.value = true;
     return;
@@ -63,6 +69,28 @@ function closeNoticeShow() {
 onMounted(() => {
   store.pageNow = 4;
 })
+
+const textarea1Focused = ref(false);
+const textarea2Focused = ref(false);
+const genderOptions = [
+  { label: "男", value: 0 },
+  { label: "女", value: 1 },
+];
+const regions = [
+  "朝晖", "屏峰", "莫干山",
+];
+
+const choices = [
+  ["办公室", "活动部",
+    "Touch产品部", "编辑工作室",
+    "视觉影像部", "技术部",
+    "易班文化工作站", "小弘工作室",],
+  ["办公室", "活动部",
+    "Touch产品部", "小弘工作室",
+    "编辑工作室", "视觉影像部",
+    "技术部", "易班文化工作站"],
+  ["秘书处", "小弘工作室", "编辑工作室", "视觉影像部", "技术部",],
+];
 </script>
 
 <template>
@@ -71,62 +99,97 @@ onMounted(() => {
   <Label type="middle">报名表</Label>
   <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" type="pc">请将信息正确填写完整再提交</JHNotice>
   <div class="basic_info">
-    <div class="item_name">姓名</div>
-    <input class="item_content" v-model="form.name" />
-    <div class="item_name">专业</div>
-    <input class="item_content" v-model="form.campus" />
-    <div class="item_name">性别</div>
-    <select class="item_content" v-model="form.gender">
+    <!-- <div class="item_name">姓名</div> -->
+    <!-- <input class="item_content" v-model="form.name" /> -->
+    <JHInput label="姓名" v-model="form.name" :valid="nameValid" notice="姓名长度2-12"></JHInput>
+    <JHInput label="专业" v-model="form.campus" :valid="!(form.campus == '' && submitted)"></JHInput>
+    <!-- <div class="item_base">
+      <div class="item_name">性别</div>
+      <select class="item_content" v-model="form.gender">
+        <option value="0">男</option>
+        <option value="1">女</option>
+        <option value="2">保密</option>
+      </select>
+    </div>-->
+    <JHSelect
+      label="性别"
+      v-model="form.gender"
+      :valid="!(form.gender == -1 && submitted)"
+      :disabled="false"
+    >
       <option value="0">男</option>
       <option value="1">女</option>
-      <option value="2">保密</option>
-    </select>
+    </JHSelect>
 
-    <div class="item_name">联系电话</div>
-    <input class="item_content" v-model="form.phone" />
-    <div class="item_name">学号</div>
-    <input class="item_content" v-model="form.stu_id" />
-    <div class="item_name">QQ</div>
-    <input class="item_content" v-model="form.qq" />
-    <div class="item_name">学院</div>
-    <input class="item_content" v-model="form.college" />
-    <div class="item_name">校区</div>
-    <select class="item_content" v-model="form.region" @change="regionChanged">
-      <option value="no" disabled="true">选择后显示志愿</option>
+    <JHInput label="联系电话" v-model="form.phone" :valid="phoneValid" notice="电话号码11位"></JHInput>
+    <JHInput label="学号" v-model="form.stu_id" :valid="stuIDValid" notice="学号12位"></JHInput>
+    <JHInput label="QQ" v-model="form.qq" :valid="!(form.qq == '' && submitted)"></JHInput>
+    <JHInput label="学院" v-model="form.college" :valid="!(form.college == '' && submitted)"></JHInput>
+
+    <JHSelect
+      label="校区"
+      v-model="form.region"
+      @change="regionChanged"
+      :valid="!(form.region == 'no' && submitted)"
+      :disabled="false"
+    >
+      <option value="no" selected disabled>选择校区后才能选择志愿</option>
       <option v-for="region in regions" :value="region">{{ region }}</option>
-    </select>
+    </JHSelect>
   </div>
+
   <div class="other_info">
-    <div class="item_name">第一志愿</div>
-    <select class="item_content" v-model="form.want1" :disabled="(form.region == 'no')">
+    <JHSelect
+      label="第一志愿"
+      v-model="form.want1"
+      :disabled="form.region == 'no'"
+      :valid="!(form.want1 == 'no' && submitted)"
+    >
       <option value="no" disabled="true">{{ form.region == 'no' ? '请先选择校区' : '未选择' }}</option>
       <option
         v-for="(item) in choices[regions.indexOf(form.region)]"
         :value="item"
         :disabled="'disabled' ? item == form.want2 : 'true'"
       >{{ item }}</option>
-    </select>
+    </JHSelect>
 
-    <div class="item_name">第二志愿</div>
-
-    <select class="item_content" v-model="form.want2" :disabled="(form.region == 'no')">
+    <JHSelect
+      label="第二志愿"
+      v-model="form.want2"
+      :disabled="form.region == 'no'"
+      :valid="!(form.want2 == 'no' && submitted)"
+      notice="此项不为空"
+    >
       <option value="no" disabled="true">{{ form.region == 'no' ? '请先选择校区' : '未选择' }}</option>
       <option
-        v-for="item in choices[regions.indexOf(form.region)]"
+        v-for="(item) in choices[regions.indexOf(form.region)]"
         :value="item"
         :disabled="'disabled' ? item == form.want1 : 'true'"
       >{{ item }}</option>
-    </select>
+    </JHSelect>
   </div>
+
   <div class="selfIntroduce">
     <div>
       <Label type="small">来一段简单的自我介绍吧！</Label>
-      <textarea class="capability_2" v-model="form.profile" placeholder="还可以加入你的特长、爱好、职位相关经历哦～" />
+      <textarea
+        class="capability_2"
+        v-model="form.profile"
+        :placeholder="textarea1Focused ? '' : '还可以加入你的特长、爱好、职位相关经历哦～'"
+        @focusin="textarea1Focused = true"
+        @focusout="textarea1Focused = false"
+      />
     </div>
 
     <div>
       <Label type="small">最后，有什么想对精弘网络说的话，可以在这里畅所欲言哦~</Label>
-      <textarea class="capability_2" v-model="form.feedback" placeholder="暂时想不到可以填写无" />
+      <textarea
+        class="capability_2"
+        v-model="form.feedback"
+        :placeholder="textarea2Focused ? '' : '暂时想不到可以填写“无”'"
+        @focusin="textarea2Focused = true"
+        @focusout="textarea2Focused = false"
+      />
     </div>
   </div>
   <div style="display:flex; center">
@@ -141,6 +204,12 @@ onMounted(() => {
 template {
   min-width: 900px;
 }
+.item_base {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 70% 30%;
+  grid-column-gap: 20px;
+}
 .selfIntroduce {
   width: 70vw;
   margin: auto;
@@ -151,8 +220,8 @@ template {
 .basic_info {
   display: grid;
   width: 70%;
-  grid-template-columns: 10% 40% 10% 50%;
-  grid-template-rows: repeat(4, 30px);
+  grid-template-columns: 50% 50%;
+  grid-template-rows: repeat(4, 40px);
   grid-gap: 20px 2.8%;
 
   margin: auto;
@@ -193,10 +262,9 @@ template {
 .other_info {
   display: grid;
   width: 70vw;
-  grid-row-gap: 2vh;
+  grid-row-gap: 4vh;
   grid-column-gap: 1vw;
-  grid-template-rows: 50% 50%;
-  grid-template-columns: 15% 85%;
+  grid-template-rows: 40px 40px;
   margin: auto;
   padding: 5vh;
   border-bottom: 1px black solid;

@@ -29,6 +29,7 @@ const prop = defineProps<{
 .title-large {
   width: fit-content;
   padding: 1vw;
+  padding-inline: 3vw;
   height: 4rem;
   background-color: #d20001;
   position: relative;

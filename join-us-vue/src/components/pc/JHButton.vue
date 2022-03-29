@@ -18,19 +18,20 @@ const prop = defineProps<{
 <style scoped>
 .button-small {
   width: 120px;
-  height: 30px;
+  height: 40px;
+  /* padding: 0 20px; */
   margin: 15px auto;
   border-radius: 20px;
-
   background-color: #d20001;
-
   color: white;
   font-size: 15px;
   line-height: 30px;
-
   display: flex;
   justify-content: center;
   align-items: center;
+  /* box-shadow: 0 5px 10px #999999; */
+  box-shadow: 0 2px 5px #999999;
+  border: none;
 }
 .button-medium {
   /* position: absolute; */

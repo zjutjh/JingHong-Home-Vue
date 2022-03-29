@@ -15,7 +15,7 @@ function returnClicked() {
 <template>
   <div style="height: 20vh;"></div>
   <JHLabel type="big">长期招新</JHLabel>
-  <JHCard title="技术部" type="large" style="width:70vw;">
+  <JHCard title="技术部" type="large">
     <div style="display: inline-block;">
       <div class="des_jishu_content">
         <div class="des_jishu_00">招新范围：</div>
@@ -50,6 +50,7 @@ template {
   grid-template-rows: repeat(4, 30px);
   grid-template-columns: 20% 80%;
   width: 40vw;
+  /* position: relative; */
   /* grid-gap: 50px 100px; */
 }
 .des_jishu_00 {
@@ -92,5 +93,7 @@ template {
   height: 20vh;
   /* width: vw; */
   float: right;
+  margin-right: 10vw;
+  position: relative;
 }
 </style>

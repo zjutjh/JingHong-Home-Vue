@@ -1,34 +1,38 @@
 <script setup lang="ts">
 interface Props {
-  type: string,
-  modelValue: string,
   label: string,
-  notice: string,
+  type: string,
+  modelValue: string | number,
   valid: boolean,
+  notice: string,
+  disabled: boolean,
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  type: "normal",
   label: "label",
-  notice: "此项不为空",
+  type: "normal",
   valid: true,
+  notice: "此项不为空",
 });
 
 </script>
 <template>
   <div class="base" :class="type">
     <div class="label" :class="type">{{ props.label }}</div>
-    <input
-      class="input"
-      :class="type, (valid ? 'valid' : 'invalid')"
+    <select
+      class="select"
+      :class="type, valid ? 'valid' : 'invalid'"
       :value="modelValue"
       @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
-    />
+      :disabled="disabled"
+    >
+      <slot></slot>
+    </select>
     <span></span>
     <div class="notice" :class="type, valid ? 'valid' : 'invalid'">* {{ props.notice }}</div>
-    <!-- {{ props }} -->
   </div>
 </template>
+
 <style scoped>
 .base.normal {
   display: grid;
@@ -40,18 +44,16 @@ const props = withDefaults(defineProps<Props>(), {
 .label.normal {
   background-color: #d20001;
   height: 30px;
-
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: white;
   font-size: 1vw;
-  /* width: 8vw; */
+  max-width: 25vw;
 }
 
-.input.normal {
+.select.normal {
   outline: none;
   background-color: white;
 
@@ -63,14 +65,16 @@ const props = withDefaults(defineProps<Props>(), {
   font-size: 12px;
   line-height: 20px;
   font-weight: 600;
-  width: 22vw;
+  width: 80%;
   box-shadow: 0 5px 10px #999999;
   height: 30px;
 }
-.input.normal.valid {
+
+.select.normal.valid {
   border: none;
 }
-.input.normal.invalid {
+.select.long.invalid,
+.select.normal.invalid {
   border: solid red;
   border-width: 2px;
 }
@@ -83,5 +87,11 @@ const props = withDefaults(defineProps<Props>(), {
 
 .notice.normal.valid {
   display: none;
+}
+
+.label.long {
+}
+
+.select.long {
 }
 </style>
