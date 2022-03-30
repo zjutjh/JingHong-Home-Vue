@@ -99,9 +99,11 @@ onMounted(() => {
     }
   }, 10);
 })
+
 onUnmounted(() => {
   window.removeEventListener("scroll", handleScrollx, true);
 })
+
 </script>
 <template>
   <div class="content">
@@ -111,7 +113,6 @@ onUnmounted(() => {
   <div id="body" ref="pronbit">
     <div class="introduce" id="introduce">
       <div class="title">精弘网络⼁Jinghong Union</div>
-
       <div class="content">
         成立于2002年5月，
         <br />精弘的名字取自工大学风“取精用弘”，
@@ -274,7 +275,7 @@ body {
   background-color: white;
   border-radius: 0;
   white-space: pre-line;
-  font-size: xx-small;
+  font-size: 5vw;
   text-align: left;
 }
 .introduce p {

@@ -1,7 +1,7 @@
 export interface INormalForm {
   name: string;
   stu_id: string;
-  gender: number;
+  gender: string;
   college: string;
   campus: string;
   phone: string;
@@ -16,7 +16,7 @@ export interface INormalForm {
 export interface IDevelopForm {
   name: string;
   stu_id: string;
-  gender: number;
+  gender: string;
   college: string;
   campus: string;
   phone: string;

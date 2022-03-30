@@ -120,7 +120,7 @@ function closeNoticeShow() {
   <div style="height:20vh"></div>
   <Footer />
 </template>
-<style>
+<style scoped>
 /* 样式 */
 .mob_basic_info {
   display: grid;

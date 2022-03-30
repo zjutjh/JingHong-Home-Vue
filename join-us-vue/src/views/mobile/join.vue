@@ -100,13 +100,14 @@ function To_long() {
   background: #d20001;
   width: fit-content;
   padding-inline: 5vw;
+  padding-block: 1vh;
   color: white;
   height: 5vh;
   font-size: 5vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  left: -15%;
+  left: -10%;
   position: relative;
 }
 .mob_box {

@@ -38,14 +38,19 @@ const stuIDValid = ref(false);
 const wantValid = ref(false);
 const noticeShow = ref(false);
 async function submitClicked() {
+  console.log(form);
+
   phoneValid.value = isPhone(form.phone);
   stuIDValid.value = isStuId(form.stu_id);
   wantValid.value = form.want1 != "no" && form.want2 != "no";
+
   if (!(phoneValid.value && stuIDValid.value && wantValid.value)) {
     noticeShow.value = true;
     return;
   }
+
   var res = await NormalForm(form);
+
   if (res.message == "ok") {
     alert("提交成功!");
     router.push('/join');
@@ -53,6 +58,7 @@ async function submitClicked() {
     alert(res.message);
   }
 }
+
 function closeNoticeShow() {
   noticeShow.value = false;
 }

@@ -137,7 +137,7 @@ a {
   left: 0rem;
   bottom: 0;
   width: 100%;
-  height: 120vw;
+  height: 80vh;
   background: white;
   border-radius: 1rem;
   transition: left linear 0.3s;
@@ -151,7 +151,7 @@ a {
 .mengban {
   position: fixed;
   top: 0;
-  bottom: 120vw;
+  bottom: 80vh;
   left: 0;
   right: 0;
   width: 100vw;

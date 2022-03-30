@@ -230,14 +230,14 @@ onBeforeUnmount(() => {
   <div class="platform">
     <div class="platform-title">相关平台⼁Related Platform</div>
     <div class="platform-content">
-      <p>精弘网络采用朝晖、屏峰、莫干山三校区共同建制</p>
-      <p>目前运营和维护的平台包括但不仅限</p>
-      <p>浙江工业大学精弘网络微信服务号、</p>
-      <p>精小弘在线微信服务号、微精弘微信小程序、</p>
-      <p>浙工大易班官方机构号、知乎官方机构号、</p>
-      <p>邮件系统(https:/mai©.zjut.edu.cn/)、</p>
-      <p>工大云盘(http://pan.zjut.edu.cn/)、</p>
-      <p>精弘论坛、精弘直播、Feel电台等。</p>
+      精弘网络采用朝晖、屏峰、莫干山三校区共同建制
+      <br />目前运营和维护的平台包括但不仅限
+      <br />浙江工业大学精弘网络微信服务号、
+      <br />精小弘在线微信服务号、微精弘微信小程序、
+      <br />浙工大易班官方机构号、知乎官方机构号、
+      <br />邮件系统(https:/mai©.zjut.edu.cn/)、
+      <br />工大云盘(http://pan.zjut.edu.cn/)、
+      <br />精弘论坛、精弘直播、Feel电台等。
     </div>
   </div>
 
@@ -461,11 +461,7 @@ a {
   white-space: pre-line;
 
   text-align: left;
-}
-.platform p {
-  line-height: 0.5rem;
-  font-size: xx-small;
-  text-align: left;
+  font-size: 5vw;
 }
 
 .yixing {
@@ -715,9 +711,9 @@ ul li {
   font-size: 10px;
 }
 .jiyu .neirong {
-  height: 45%;
-  font-size: 4vw;
-  line-height: 25px;
+  /* height: 45%; */
+  font-size: 2vw;
+  /* line-height: 25px; */
   text-align: left;
   white-space: pre-wrap;
   border-radius: 0;

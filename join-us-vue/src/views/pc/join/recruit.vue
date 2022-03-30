@@ -16,7 +16,7 @@ const router = useRouter();
 const form = reactive(<INormalForm>{
   name: "",
   stu_id: "",
-  gender: -1,
+  gender: "-1",
   college: "",
   campus: "",
   phone: "",
@@ -48,15 +48,26 @@ async function submitClicked() {
   wantValid.value = form.want1 != "no" && form.want2 != "no";
 
   if (!(phoneValid.value && stuIDValid.value && wantValid.value)) {
+    noticeMessage.value = "请将信息正确填写完整再提交";
     noticeShow.value = true;
     return;
   }
   var res = await NormalForm(form);
+
   if (res.message == "ok") {
-    alert("提交成功!");
+    noticeMessage.value = "提交成功";
+    noticeShow.value = true;
+    while (true) {
+      await new Promise(resolve => setTimeout(resolve, 3000));
+      if (noticeShow.value) {
+        noticeShow.value = false;
+        break;
+      }
+    }
     router.push('/join');
   } else {
-    alert(res.message);
+    noticeMessage.value = res.message;
+    noticeShow.value = true;
   }
 }
 
@@ -91,40 +102,49 @@ const choices = [
     "技术部", "易班文化工作站"],
   ["秘书处", "小弘工作室", "编辑工作室", "视觉影像部", "技术部",],
 ];
+const noticeMessage = ref<string>('请将信息正确填写完整再提交');
 </script>
 
 <template>
   <div style="margin-top: 20vh;"></div>
-  <!-- {{ form }} -->
   <Label type="middle">报名表</Label>
-  <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" type="pc">请将信息正确填写完整再提交</JHNotice>
+  <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" type="pc">{{ noticeMessage }}</JHNotice>
+
   <div class="basic_info">
-    <!-- <div class="item_name">姓名</div> -->
-    <!-- <input class="item_content" v-model="form.name" /> -->
-    <JHInput label="姓名" v-model="form.name" :valid="nameValid" notice="姓名长度2-12"></JHInput>
-    <JHInput label="专业" v-model="form.campus" :valid="!(form.campus == '' && submitted)"></JHInput>
-    <!-- <div class="item_base">
-      <div class="item_name">性别</div>
-      <select class="item_content" v-model="form.gender">
-        <option value="0">男</option>
-        <option value="1">女</option>
-        <option value="2">保密</option>
-      </select>
-    </div>-->
+    <JHInput label="姓名" v-model="form.name" :valid="nameValid" notice="姓名长度2-12" type="normal"></JHInput>
+    <JHInput
+      label="专业"
+      v-model="form.campus"
+      :valid="!(form.campus == '' && submitted)"
+      type="normal"
+      notice="此项不为空"
+    ></JHInput>
     <JHSelect
       label="性别"
-      v-model="form.gender"
-      :valid="!(form.gender == -1 && submitted)"
+      v-model.number:value="form.gender"
+      :valid="!(form.gender == '-1' && submitted)"
       :disabled="false"
+      type="normal"
+      notice="此项不为空"
     >
-      <option value="0">男</option>
-      <option value="1">女</option>
+      <option v-for="gender in genderOptions" :value="gender.value">{{ gender.label }}</option>
     </JHSelect>
 
-    <JHInput label="联系电话" v-model="form.phone" :valid="phoneValid" notice="电话号码11位"></JHInput>
-    <JHInput label="学号" v-model="form.stu_id" :valid="stuIDValid" notice="学号12位"></JHInput>
-    <JHInput label="QQ" v-model="form.qq" :valid="!(form.qq == '' && submitted)"></JHInput>
-    <JHInput label="学院" v-model="form.college" :valid="!(form.college == '' && submitted)"></JHInput>
+    <JHInput label="联系电话" v-model="form.phone" :valid="phoneValid" notice="电话号码11位" type="normal"></JHInput>
+    <JHInput label="学号" v-model="form.stu_id" :valid="stuIDValid" notice="学号12位" type="normal"></JHInput>
+    <JHInput
+      label="QQ"
+      v-model="form.qq"
+      :valid="!(form.qq == '' && submitted)"
+      type="normal"
+      notice="此项不为空"
+    ></JHInput>
+    <JHInput
+      label="学院"
+      v-model="form.college"
+      :valid="!(form.college == '' && submitted)"
+      type="normal"
+    ></JHInput>
 
     <JHSelect
       label="校区"
@@ -132,6 +152,7 @@ const choices = [
       @change="regionChanged"
       :valid="!(form.region == 'no' && submitted)"
       :disabled="false"
+      notice="此项不为空"
     >
       <option value="no" selected disabled>选择校区后才能选择志愿</option>
       <option v-for="region in regions" :value="region">{{ region }}</option>
@@ -144,6 +165,8 @@ const choices = [
       v-model="form.want1"
       :disabled="form.region == 'no'"
       :valid="!(form.want1 == 'no' && submitted)"
+      notice="此项不为空"
+      type="normal"
     >
       <option value="no" disabled="true">{{ form.region == 'no' ? '请先选择校区' : '未选择' }}</option>
       <option
@@ -159,6 +182,7 @@ const choices = [
       :disabled="form.region == 'no'"
       :valid="!(form.want2 == 'no' && submitted)"
       notice="此项不为空"
+      type="normal"
     >
       <option value="no" disabled="true">{{ form.region == 'no' ? '请先选择校区' : '未选择' }}</option>
       <option

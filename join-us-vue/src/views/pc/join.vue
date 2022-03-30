@@ -9,9 +9,6 @@ const store = usePageStore();
 const router = useRouter();
 function To_recruit() {
   router.push('/recruit');
-  // let route = router.resolve("/recruit");
-  // window.open(route.href, "_blank");
-
 }
 
 function To_long() {
@@ -101,7 +98,7 @@ onMounted(() => {
 </template>
 
 
-<style>
+<style scoped>
 template {
   min-width: 900px;
 }

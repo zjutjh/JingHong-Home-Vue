@@ -14,7 +14,9 @@ const props = withDefaults(defineProps<Props>(), {
   valid: true,
   notice: "此项不为空",
 });
-
+function handleInput(event: Event) {
+  var v = event.target as HTMLInputElement;
+}
 </script>
 <template>
   <div class="base" :class="type">
@@ -23,7 +25,7 @@ const props = withDefaults(defineProps<Props>(), {
       class="select"
       :class="type, valid ? 'valid' : 'invalid'"
       :value="modelValue"
-      @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
+      @input="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
       :disabled="disabled"
     >
       <slot></slot>
@@ -87,11 +89,5 @@ const props = withDefaults(defineProps<Props>(), {
 
 .notice.normal.valid {
   display: none;
-}
-
-.label.long {
-}
-
-.select.long {
 }
 </style>
