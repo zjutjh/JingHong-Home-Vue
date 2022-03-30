@@ -7,7 +7,7 @@ type NormalForm struct {
 	Name      string    `gorm:"not null" json:"name"`
 	UpdatedAt time.Time `gorm:"not null" json:"updated"`
 	StuID     string    `gorm:"primaryKey" json:"stu_id"`
-	Gender    uint8     `gorm:"not null" json:"gender"`
+	Gender    string    `gorm:"not null" json:"gender"`
 	College   string    `gorm:"not null" json:"college"`
 	Campus    string    `gorm:"not null" json:"campus"`
 	Phone     string    `gorm:"not null" json:"phone"`
@@ -23,7 +23,7 @@ type DeveloperForm struct {
 	// 开发部招新申请表
 	Name     string `gorm:"not null" json:"name"`
 	StuID    string `gorm:"primaryKey" json:"stu_id"`
-	Gender   uint8  `gorm:"not null" json:"gender"`
+	Gender   string `gorm:"not null" json:"gender"`
 	College  string `gorm:"not null" json:"college"`
 	Campus   string `gorm:"not null" json:"campus"`
 	Phone    string `gorm:"not null" json:"phone"`

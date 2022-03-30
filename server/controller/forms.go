@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"time"
 	"zjutjh/Join-Us/model"
 	"zjutjh/Join-Us/utility"
@@ -12,7 +13,9 @@ import (
 func NewNormalForm(c *gin.Context) {
 	postData := model.NormalForm{}
 	err := c.ShouldBindJSON(&postData)
+	fmt.Println(postData)
 	if err != nil {
+		fmt.Println(err)
 		utility.ResponseError(c, "Post Data Error")
 	}
 	normalForm := model.NormalForm{

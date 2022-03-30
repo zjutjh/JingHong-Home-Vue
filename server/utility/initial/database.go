@@ -12,10 +12,6 @@ import (
 var DB *gorm.DB
 
 func DatabaseInit() {
-	// username := Config.GetString("database.username")
-	// password := Config.GetString("database.password")
-	// address := Config.GetString("database.address")
-	// dbname := Config.GetString("database.dbname")
 	username := Config.Database.Username
 	password := Config.Database.Password
 	address := Config.Database.Address
