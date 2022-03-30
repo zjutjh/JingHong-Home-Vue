@@ -14,7 +14,7 @@ const router = useRouter();
 const form = reactive(<INormalForm>{
   name: "",
   stu_id: "",
-  gender: -1,
+  gender: "-1",
   college: "",
   campus: "",
   phone: "",
@@ -119,6 +119,7 @@ onMounted(() => {
           >{{ item }}</option>
         </select>
       </div>
+
       <div class="mob_label_2">来一段简单的自我介绍吧！</div>
       <textarea class="mob_capability_2" v-model="form.profile" />
 

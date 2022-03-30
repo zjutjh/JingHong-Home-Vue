@@ -9,11 +9,13 @@ import { regions } from '../../../utils/const';
 import JHButton from '../../../components/pc/JHButton.vue'
 import JHLabel from '../../../components/pc/JHLabel.vue';
 import JHNotice from '../../../components/pc/JHNotice.vue';
+import JHSelect from '../../../components/pc/JHSelect.vue';
+import JHInput from '../../../components/pc/JHInput.vue';
 const router = useRouter();
 const form = reactive(<IDevelopForm>{
   name: '',
   college: '',
-  gender: -1,
+  gender: '-1',
   phone: '',
   stu_id: '',
   qq: '',
@@ -31,21 +33,47 @@ const form = reactive(<IDevelopForm>{
 function returnClicked() {
   router.push('/join');
 }
-const phoneValid = ref(false);
-const stuIDValid = ref(false);
+
+const phoneValid = ref(true);
+const stuIDValid = ref(true);
 const noticeShow = ref(false);
+const nameValid = ref(true);
+const submitted = ref(false);
+
 async function submitClicked() {
   phoneValid.value = isPhone(form.phone);
   stuIDValid.value = isStuId(form.stu_id);
-  if (!(phoneValid.value && stuIDValid.value)) {
+  nameValid.value = form.name.length > 2 && form.name.length < 12;
+  submitted.value = true;
+  if (!(phoneValid.value && stuIDValid.value && nameValid.value)) {
+    noticeMessage.value = "请将信息正确填写完整再提交"
     noticeShow.value = true;
     return;
   }
+  var ability = 0;
+  Object.values(form.ability).forEach(v => {
+    if (v) ability++;
+  });
+  if (ability < 2) {
+    noticeMessage.value = "请至少选择两项能力"
+    noticeShow.value = true;
+    return;
+  }
+
+
   var res = await DevelopForm(form);
   if (res.message == "ok") {
-    alert("提交成功");
-    returnClicked();
-    return;
+    noticeMessage.value = "提交成功";
+    noticeShow.value = true;
+
+    while (true) {
+      await new Promise(resolve => setTimeout(resolve, 3000));
+      if (noticeShow.value) {
+        noticeShow.value = false;
+        break;
+      }
+      router.push('/join');
+    }
   } else {
     alert(res.message);
     return;
@@ -56,37 +84,67 @@ function closeNoticeShow() {
 }
 const textarea1Focused = ref(false);
 const textarea2Focused = ref(false);
+
+const noticeMessage = ref<string>("");
+
+const genderOptions = [
+  { label: "男", value: 0 },
+  { label: "女", value: 1 },
+];
 </script>
 <template>
-  <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" type="pc">请将信息正确填写完整再提交</JHNotice>
+  <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" type="pc">{{ noticeMessage }}</JHNotice>
+
   <div style="height:20vh"></div>
   <JHLabel type="middle">技术部长期招新</JHLabel>
   <div class="basic_info">
-    <div class="item_name">姓名</div>
-    <input class="item_content" v-model="form.name" />
-    <div class="item_name">专业</div>
-    <input class="item_content" v-model="form.college" />
-    <div class="item_name">性别</div>
-    <select class="item_content" v-model="form.gender">
-      <option value="0">男</option>
-      <option value="1">女</option>
-      <option value="2">保密</option>
-    </select>
-    <div class="item_name">联系电话</div>
-    <input class="item_content" v-model="form.phone" />
-    <div class="item_name">学号</div>
-    <input class="item_content" v-model="form.stu_id" />
-    <div class="item_name">QQ</div>
-    <input class="item_content" v-model="form.qq" />
+    <JHInput label="姓名" v-model="form.name" :valid="nameValid" notice="姓名长度2-12" type="normal"></JHInput>
+    <JHInput
+      label="专业"
+      v-model="form.campus"
+      :valid="!(form.campus == '' && submitted)"
+      type="normal"
+      notice="此项不为空"
+    ></JHInput>
+    <JHSelect
+      label="性别"
+      v-model.number:value="form.gender"
+      :valid="!(form.gender == '-1' && submitted)"
+      :disabled="false"
+      type="normal"
+      notice="此项不为空"
+    >
+      <option v-for="gender in genderOptions" :value="gender.value">{{ gender.label }}</option>
+    </JHSelect>
 
-    <div class="item_name">学院</div>
-    <input class="item_content" v-model="form.campus" />
-    <div class="item_name">校区</div>
-    <select class="item_content" v-model="form.region">
-      <!-- <option value="0" style="display: none;">选择校区</option> -->
+    <JHInput label="联系电话" v-model="form.phone" :valid="phoneValid" notice="电话号码11位" type="normal"></JHInput>
+    <JHInput label="学号" v-model="form.stu_id" :valid="stuIDValid" notice="学号12位" type="normal"></JHInput>
+    <JHInput
+      label="QQ"
+      v-model="form.qq"
+      :valid="!(form.qq == '' && submitted)"
+      type="normal"
+      notice="此项不为空"
+    ></JHInput>
+    <JHInput
+      label="学院"
+      v-model="form.college"
+      :valid="!(form.college == '' && submitted)"
+      notice="此项不为空"
+      type="normal"
+    ></JHInput>
+
+    <JHSelect
+      label="校区"
+      v-model="form.region"
+      :valid="!(form.region == 'no' && submitted)"
+      :disabled="false"
+      notice="此项不为空"
+    >
       <option v-for="region in regions" :value="region">{{ region }}</option>
-    </select>
+    </JHSelect>
   </div>
+
   <div class="other_info">
     <JHLabel type="small">必要能力勾选</JHLabel>
     <div style="padding-bottom: 20px;border-bottom: 1px black solid;">
@@ -104,6 +162,7 @@ const textarea2Focused = ref(false);
           <input type="checkbox" v-model="form.ability.git" />能够使用git进行团队协作交互
         </div>
       </div>
+
       <JHLabel type="small">其他能力</JHLabel>
       <textarea
         class="capability_2"
@@ -124,11 +183,9 @@ const textarea2Focused = ref(false);
     />
   </div>
   <div style="display:flex;">
-    <!-- TODO no style for this -->
     <JHButton type="small" @click="returnClicked">返回</JHButton>
     <JHButton type="small" @click="submitClicked">提交</JHButton>
   </div>
-  <!-- </div> -->
   <Footer />
 </template>
 <style scoped>
@@ -137,13 +194,25 @@ template {
 }
 .basic_info {
   display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 70% 30%;
+  grid-column-gap: 20px;
+}
+.selfIntroduce {
   width: 70vw;
-  grid-template-columns: 13% 33% 13% 33%;
-  grid-template-rows: repeat(4, 30px);
+  margin: auto;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  padding: 2vh;
+}
+.basic_info {
+  display: grid;
+  width: 70%;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: repeat(4, 40px);
   grid-gap: 20px 2.8%;
 
   margin: auto;
-  padding-top: 5vh;
   padding-bottom: 20px;
   border-bottom: 1px black solid;
 }
@@ -161,7 +230,6 @@ template {
 }
 
 .item_content {
-  /* background-color: #dfdfdf; */
   background-color: white;
 
   border-radius: 10px;
@@ -180,7 +248,6 @@ template {
 .capability_1 {
   width: 100%;
   height: 80px;
-  /* background-color: #dfdfdf; */
 
   background-color: white;
   border-radius: 10px;
@@ -188,7 +255,6 @@ template {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(2, 40px);
-  /* padding-inline: 1vw; */
   box-shadow: 0 5px 10px #999999;
 }
 .capability_1 div {
@@ -197,7 +263,7 @@ template {
   align-items: center;
   margin: 20px;
   padding-inline: 5vw;
-  /* justify-content: center; */
+  font-size: 1.3vw;
 }
 .capability_2 {
   width: 100%;

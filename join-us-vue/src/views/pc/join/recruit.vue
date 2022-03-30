@@ -143,6 +143,7 @@ const noticeMessage = ref<string>('请将信息正确填写完整再提交');
       label="学院"
       v-model="form.college"
       :valid="!(form.college == '' && submitted)"
+      notice="此项不为空"
       type="normal"
     ></JHInput>
 
