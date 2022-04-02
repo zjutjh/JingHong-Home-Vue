@@ -71,23 +71,61 @@ function handleInput(event: Event) {
   box-shadow: 0 5px 10px #999999;
   height: 30px;
 }
-
+.select.mob.valid,
 .select.normal.valid {
   border: none;
 }
+.select.mob.invalid,
 .select.long.invalid,
 .select.normal.invalid {
   border: solid red;
   border-width: 2px;
 }
+.notice.mob,
 .notice.normal {
   color: red;
   font-size: 0.5vw;
   text-align: start;
   padding: 5px;
 }
-
+.notice.mob.valid,
 .notice.normal.valid {
   display: none;
+}
+.base.mob {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: 70% 30%;
+  grid-column-gap: 3%;
+}
+.label.mob {
+  background-color: #d20001;
+  height: 100%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 8px;
+  border-radius: 10px;
+  border: none;
+}
+.select.mob {
+  width: 90%;
+  height: 100%;
+  border-radius: 5px;
+  text-align: left;
+  box-sizing: border-box;
+  line-height: 20px;
+  padding: 0 5px;
+  resize: none;
+  outline: none;
+  font-size: 10px;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  box-shadow: 0 2px 5px #999999;
+  border: none;
+  background-color: white;
 }
 </style>

@@ -1,8 +1,8 @@
 export var ENV = 'dev';
 // dev 开发模式
 // pro 生产模式
-export const BASE_URL = 'http://localhost:8888/'
-// export const BASE_URL = 'http://101.34.27.200:8888/'
+// export const BASE_URL = 'http://localhost:8888/'
+export const BASE_URL = 'http://101.34.27.200:8888/'
 export const regions = ["朝晖", "屏峰", "莫干山"];
 export const choices = [
   ["办公室", "活动部",

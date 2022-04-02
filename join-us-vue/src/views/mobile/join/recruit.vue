@@ -9,8 +9,14 @@ import { NormalForm } from "../../../apis/forms";
 import { regions, choices } from '../../../utils/const';
 import Label from '../../../components/pc/JHLabel.vue'
 import JHNotice from "../../../components/pc/JHNotice.vue";
+import JHInput from "../../../components/pc/JHInput.vue";
+import JHSelect from "../../../components/pc/JHSelect.vue";
 const store = usePageStore();
 const router = useRouter();
+const genderOptions = [
+  { label: "男", value: 0 },
+  { label: "女", value: 1 },
+];
 const form = reactive(<INormalForm>{
   name: "",
   stu_id: "",
@@ -33,29 +39,40 @@ function regionChanged() {
 function returnClicked() {
   router.push('/m/join');
 }
-const phoneValid = ref(false);
-const stuIDValid = ref(false);
+const phoneValid = ref(true);
+const stuIDValid = ref(true);
 const wantValid = ref(false);
 const noticeShow = ref(false);
+const noticeMessage = ref<string>('请将信息正确填写完整再提交');
+const nameValid = ref(true);
 async function submitClicked() {
-  console.log(form);
-
+  submitted.value = true;
+  nameValid.value = form.name.length > 2 && form.name.length < 12;
   phoneValid.value = isPhone(form.phone);
   stuIDValid.value = isStuId(form.stu_id);
   wantValid.value = form.want1 != "no" && form.want2 != "no";
 
   if (!(phoneValid.value && stuIDValid.value && wantValid.value)) {
+    noticeMessage.value = "请将信息正确填写完整再提交";
     noticeShow.value = true;
     return;
   }
-
   var res = await NormalForm(form);
 
   if (res.message == "ok") {
-    alert("提交成功!");
+    noticeMessage.value = "提交成功";
+    noticeShow.value = true;
+    while (true) {
+      await new Promise(resolve => setTimeout(resolve, 3000));
+      if (noticeShow.value) {
+        noticeShow.value = false;
+        break;
+      }
+    }
     router.push('/join');
   } else {
-    alert(res.message);
+    noticeMessage.value = res.message;
+    noticeShow.value = true;
   }
 }
 
@@ -66,70 +83,107 @@ function closeNoticeShow() {
 onMounted(() => {
   store.pageNow = 4;
 })
+const submitted = ref(false);
 </script>
 <template>
-  <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" type="mob">请将信息正确填写完整再提交</JHNotice>
+  <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" type="mob">{{ noticeMessage }}</JHNotice>
   <div style="margin-top: 80px;"></div>
   <div class="mob_label_1">报名表</div>
   <div style="width: 90%;margin: auto;">
     <div class="mob_basic_info">
-      <div class="mob_item_name">姓名</div>
-      <input class="mob_item_content" v-model="form.name" />
-      <div class="mob_item_name">专业</div>
-      <input class="mob_item_content" v-model="form.college" />
-      <div class="mob_item_name">性别</div>
-      <select class="mob_item_content" v-model="form.gender">
-        <option value="0">男</option>
-        <option value="1">女</option>
-        <option value="2">保密</option>
-      </select>
-      <div class="mob_item_name">联系电话</div>
-      <input class="mob_item_content" v-model="form.phone" />
-      <div class="mob_item_name">学号</div>
-      <input class="mob_item_content" v-model="form.stu_id" />
-      <div class="mob_item_name">QQ</div>
-      <input class="mob_item_content" v-model="form.qq" />
-      <div class="mob_item_name">学院</div>
-      <input class="mob_item_content" v-model="form.campus" />
-      <div class="mob_item_name">校区</div>
-      <select class="mob_item_content" v-model="form.region">
+      <JHInput label="姓名" type="mob" v-model="form.name" notice="姓名长度2-12" :valid="nameValid"></JHInput>
+      <JHInput
+        label="专业"
+        type="mob"
+        v-model="form.college"
+        notice="此项不为空"
+        :valid="!(form.college == '' && submitted)"
+      ></JHInput>
+      <JHSelect
+        label="性别"
+        v-model.number:value="form.gender"
+        :valid="!(form.gender == '-1' && submitted)"
+        :disabled="false"
+        type="mob"
+        notice="此项不为空"
+      >
+        <option v-for="gender in genderOptions" :value="gender.value">{{ gender.label }}</option>
+      </JHSelect>
+
+      <JHInput label="联系电话" type="mob" v-model="form.phone" notice="电话号码11位" :valid="phoneValid"></JHInput>
+      <JHInput label="学号" type="mob" v-model="form.stu_id" notice="学号12位" :valid="stuIDValid"></JHInput>
+      <JHInput
+        label="QQ"
+        type="mob"
+        v-model="form.qq"
+        notice="此项不为空"
+        :valid="!(form.qq == '' && submitted)"
+      ></JHInput>
+      <JHInput
+        label="学院"
+        v-model.number:value="form.campus"
+        :valid="!(form.campus == '' && submitted)"
+        :disabled="false"
+        type="mob"
+        notice="此项不为空"
+      ></JHInput>
+      <JHSelect
+        label="校区"
+        v-model.number:value="form.region"
+        :valid="!(form.region == 'no' && submitted)"
+        :disabled="false"
+        type="mob"
+        notice="此项不为空"
+        @change="regionChanged"
+      >
         <option value="no" disabled="true">选择后显示志愿</option>
         <option v-for="region in regions" :value="region">{{ region }}</option>
-      </select>
+      </JHSelect>
     </div>
+
     <div class="mob_other_info">
-      <div class="mob_choice">
-        <div class="mob_item_name">第一志愿</div>
-        <select class="mob_item_content" v-model="form.want1" :disabled="(form.region == 'no')">
-          <option value="no" disabled="true">{{ form.region == 'no' ? '请先选择校区' : '未选择' }}</option>
-          <option
-            v-for="(item) in choices[regions.indexOf(form.region)]"
-            :value="item"
-            :disabled="'disabled' ? item == form.want2 : 'true'"
-          >{{ item }}</option>
-        </select>
+      <JHSelect
+        label="第一志愿"
+        v-model="form.want1"
+        :disabled="form.region == 'no'"
+        :valid="!(form.want1 == 'no' && submitted)"
+        notice="此项不为空"
+        type="normal"
+      >
+        <option value="no" disabled="true">{{ form.region == 'no' ? '请先选择校区' : '未选择' }}</option>
+        <option
+          v-for="(item) in choices[regions.indexOf(form.region)]"
+          :value="item"
+          :disabled="'disabled' ? item == form.want2 : 'true'"
+        >{{ item }}</option>
+      </JHSelect>
 
-        <div class="mob_item_name">第二志愿</div>
-        <select class="mob_item_content" v-model="form.want2" :disabled="(form.region == 'no')">
-          <option value="no" disabled="true">{{ form.region == 'no' ? '请先选择校区' : '未选择' }}</option>
-          <option
-            v-for="(item) in choices[regions.indexOf(form.region)]"
-            :value="item"
-            :disabled="'disabled' ? item == form.want1 : 'true'"
-          >{{ item }}</option>
-        </select>
-      </div>
-
-      <div class="mob_label_2">来一段简单的自我介绍吧！</div>
-      <textarea class="mob_capability_2" v-model="form.profile" />
-
-      <div class="mob_label_2">最后，有什么想对精弘网络说的话，可以在这里畅所欲言哦~</div>
-      <textarea class="mob_capability_2" v-model="form.feedback" />
+      <JHSelect
+        label="第二志愿"
+        v-model="form.want2"
+        :disabled="form.region == 'no'"
+        :valid="!(form.want2 == 'no' && submitted)"
+        notice="此项不为空"
+        type="normal"
+      >
+        <option value="no" disabled="true">{{ form.region == 'no' ? '请先选择校区' : '未选择' }}</option>
+        <option
+          v-for="(item) in choices[regions.indexOf(form.region)]"
+          :value="item"
+          :disabled="'disabled' ? item == form.want1 : 'true'"
+        >{{ item }}</option>
+      </JHSelect>
     </div>
-    <div style="display:flex;">
-      <div class="mob_button1" @click="returnClicked">返回</div>
-      <div class="mob_button1" @click="submitClicked">提交</div>
-    </div>
+
+    <div class="mob_label_2">来一段简单的自我介绍吧！</div>
+    <textarea class="mob_capability_2" v-model="form.profile" />
+
+    <div class="mob_label_2">最后，有什么想对精弘网络说的话，可以在这里畅所欲言哦~</div>
+    <textarea class="mob_capability_2" v-model="form.feedback" />
+  </div>
+  <div style="display:flex;">
+    <div class="mob_button1" @click="returnClicked">返回</div>
+    <div class="mob_button1" @click="submitClicked">提交</div>
   </div>
   <div style="height:20vh"></div>
   <Footer />
@@ -210,8 +264,8 @@ onMounted(() => {
 .mob_basic_info {
   display: grid;
   width: 100%;
-  grid-template-columns: 20% 27% 20% 27%;
-  grid-template-rows: repeat(4, 20px);
+  grid-template-columns: 50% 50%;
+  grid-template-rows: repeat(4, 40px);
   grid-gap: 10px 2%;
 
   margin: auto;
@@ -267,6 +321,10 @@ option {
 .mob_other_info {
   width: 100%;
   margin: auto;
+  margin-top: 10px;
+  display: grid;
+  grid-template-rows: repeat(2, 40px);
+  grid-gap: 10px;
 }
 
 .mob_capability_2 {

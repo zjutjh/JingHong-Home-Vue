@@ -22,7 +22,6 @@ export interface IDevelopForm {
   phone: string;
   qq: string;
   region: string;
-  profile: string;
   feedback: string;
   ability_other: string;
   ability: {

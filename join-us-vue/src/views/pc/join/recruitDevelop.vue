@@ -21,6 +21,7 @@ const form = reactive(<IDevelopForm>{
   qq: '',
   campus: '',
   region: 'no',
+
   ability: {
     api: false,
     front_end: false,
@@ -28,6 +29,7 @@ const form = reactive(<IDevelopForm>{
     git: false,
   },
   ability_other: '',
+  feedback: '',
 })
 
 function returnClicked() {
@@ -59,8 +61,6 @@ async function submitClicked() {
     noticeShow.value = true;
     return;
   }
-
-
   var res = await DevelopForm(form);
   if (res.message == "ok") {
     noticeMessage.value = "提交成功";
@@ -140,6 +140,7 @@ const genderOptions = [
       :valid="!(form.region == 'no' && submitted)"
       :disabled="false"
       notice="此项不为空"
+      type="normal"
     >
       <option v-for="region in regions" :value="region">{{ region }}</option>
     </JHSelect>
