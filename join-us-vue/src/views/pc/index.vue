@@ -194,13 +194,6 @@ body {
   margin: 0;
   background-color: #efefef;
 }
-.introduce-content {
-  border-radius: 1rem;
-}
-.introduce-content .content {
-  text-align: center;
-  border-radius: 1rem;
-}
 .introduce-content .title {
   border-radius: 1rem;
   border-bottom-left-radius: 0;
@@ -209,8 +202,8 @@ body {
 
 .introduce {
   margin: 35px 0;
-  padding: 15px 50px;
-  height: 60vh;
+  padding: 20px 60px;
+  /* height: 60vh; */
   display: flex;
   position: relative;
   overflow: hidden;
@@ -230,7 +223,6 @@ body {
 .introduce-content {
   margin: 0 auto;
   width: 80%;
-  box-shadow: 0 5px 10px #999999;
 }
 .introduce .title {
   height: 25%;
@@ -244,7 +236,7 @@ body {
 }
 .introduce .content {
   height: 75%;
-  padding: 0 0 0 13%;
+  padding: 5px 5px 5px 13%;
   text-align: left;
   font-size: 35px;
   line-height: 50px;
@@ -252,6 +244,7 @@ body {
   display: flex;
   align-items: center;
   /* white-space:pre-wrap; */
+  box-shadow: 0 5px 10px #999999;
 }
 .introduce p {
   text-align: left;
@@ -352,7 +345,7 @@ body {
 }
 .history-right .event {
   width: 17vw;
-  font-size: 1.7vw;
+  font-size: 1.7rem;
   line-height: 3vw;
   text-align: left;
   margin: 0 0 0 1vw;

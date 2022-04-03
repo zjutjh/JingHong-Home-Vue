@@ -19,7 +19,9 @@
     url(/photo/index/diannao.jpg) no-repeat;
   background-size: contain;
   background-position: 0 0;
-  max-width: 100%;
+  width: 100vw;
+  min-width: 1020px;
+  min-height: 650px;
   max-height: 100%;
   border-radius: 0;
   display: flex;
@@ -27,7 +29,7 @@
   align-items: center;
 }
 .content1 {
-  font-size: 6vw;
+  font-size: 4rem;
   color: white;
   letter-spacing: 1vw;
   padding: 10px;
@@ -51,8 +53,8 @@
   float: left;
 }
 .start-img {
-  width: 4vw;
-  height: 4vw;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 
   background-color: #d20001;

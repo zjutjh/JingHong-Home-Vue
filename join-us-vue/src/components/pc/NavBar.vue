@@ -91,6 +91,7 @@ a {
   left: auto;
   top: 0rem;
   width: 100%;
+  min-width: 1200px;
   height: 16vh;
   transition: top linear 0.3s;
   border-radius: 0;
@@ -109,13 +110,14 @@ a {
   background-color: #d20001;
   z-index: 10;
   box-shadow: 0 5px 10px #999999;
+  min-width: 1200px;
 }
 .atTop img,
 .topShow img,
 .topHide img {
   float: left;
   transform: scale(0.8);
-  width: 20vw;
+  width: 20%;
 }
 
 .topHide {
@@ -128,7 +130,7 @@ a {
   transition: top linear 0.3s;
   border-radius: 0;
   background-color: #d20001;
-
+  min-width: 1200px;
   z-index: 10;
 }
 img {
