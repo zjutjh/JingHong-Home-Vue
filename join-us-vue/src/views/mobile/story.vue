@@ -220,6 +220,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
+<div>
   <div class="title-style" style="margin-top: 8vh;">我们的故事</div>
   <div class="shiming">
     <div class="img" style="background-image: url(/photo/index/ziyou.png)"></div>
@@ -348,6 +349,7 @@ onBeforeUnmount(() => {
       </div>
     </router-link>
   </div>
+ </div>
   <Footer />
 </template>
 
@@ -712,7 +714,7 @@ ul li {
 }
 .jiyu .neirong {
   /* height: 45%; */
-  font-size: 2vw;
+  font-size: 2.5vw;
   /* line-height: 25px; */
   text-align: left;
   white-space: pre-wrap;
