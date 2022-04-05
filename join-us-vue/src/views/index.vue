@@ -4,6 +4,6 @@ import Introduce from '../components/Introduce.vue';
 </script>
 <template>
   <start />
-
+  <introduce />
   <div style="height:300px"></div>
 </template>
