@@ -267,6 +267,8 @@ body {
 }
 .qufudong {
   width: auto;
+  align-items: center;
+  justify-content: center;
   height: 50%;
 }
 .qufudong::after {

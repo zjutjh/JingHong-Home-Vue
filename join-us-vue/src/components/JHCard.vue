@@ -18,8 +18,8 @@ const prop = defineProps<{
 </template>
 <style scoped>
 .container-large {
-  width: 80vw;
-  /* height: 40vw; */
+  margin: 20px;
+  width: 80%;
   background-color: white;
   margin: 3vw auto 0;
   box-shadow: 0 5px 10px #999999;
@@ -29,13 +29,13 @@ const prop = defineProps<{
 .title-large {
   width: fit-content;
   padding: 1vw;
-  padding-inline: 3vw;
-  height: 4rem;
+  padding-inline: 10px;
+  height: 50px;
   background-color: #d20001;
   position: relative;
   top: 2rem;
   left: -5%;
-  font-size: 2vw;
+  font-size: x-large;
   color: white;
   font-weight: bolder;
   display: flex;

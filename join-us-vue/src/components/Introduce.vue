@@ -27,6 +27,8 @@ const pageStore = usePageStore();
   display: grid;
   grid-template-columns: 20% 60% 20%;
   margin-top: 50px;
+  margin-bottom: 100px;
+  align-items: center;
 }
 .base.mini {
   display: unset;
@@ -34,28 +36,31 @@ const pageStore = usePageStore();
 .introduce {
   display: grid;
   grid-template-rows: 20% 80%;
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
 }
 
 .title {
   background-color: #d6d6d6;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  font-size: xx-large;
-  /* height: fit-content; */
+  font-size: x-large;
+  white-space: pre-line;
 }
 .content {
   background-color: white;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   box-shadow: 0 5px 10px #999;
-  font-size: x-large;
+  font-size: large;
   justify-content: start;
   text-align: left;
   padding: 40px;
   height: fit-content;
+  margin-bottom: 100px;
 }
 img {
   width: 100%;
-  /* height: 300px; */
 }
 </style>

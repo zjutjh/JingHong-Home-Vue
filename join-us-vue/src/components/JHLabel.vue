@@ -1,4 +1,5 @@
-<script setup lang="ts">import { HTMLAttributes } from 'vue';
+<script setup lang="ts">
+import { HTMLAttributes } from 'vue';
 
 const prop = defineProps<{
   type: string,
@@ -16,11 +17,11 @@ const prop = defineProps<{
 
 <style scoped>
 .title {
-  width: 20%;
-  height: 80px;
+  width: fit-content;
+  padding: 10px;
+  /* height: 80px; */
   align-items: center;
   font-family: "SC-VF";
-  padding: 1% 0;
   margin: 0 7.5% 3%;
   background-color: #d20001;
   color: white;
@@ -29,7 +30,7 @@ const prop = defineProps<{
 }
 .title .h {
   display: block;
-  font-size: 2em;
+  font-size: x-large;
   margin-block-start: 0.67em;
   margin-block-end: 0.67em;
   margin-inline-start: 0px;
