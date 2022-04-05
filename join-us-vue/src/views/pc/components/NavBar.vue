@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
-import router from '../../router';
-import { usePageStore } from '../../stores/pages';
+import { usePageStore } from '../../../stores/pages';
 const pageStore = usePageStore();
 const initialScrollTop = ref(0);
 const show = ref(true);

@@ -19,7 +19,7 @@
     url(/photo/index/diannao.jpg) no-repeat;
   background-size: contain;
   background-position: 0 0;
-  width: 100vw;
+  width: 100%;
   min-width: 1020px;
   min-height: 650px;
   max-height: 100%;
