@@ -9,9 +9,10 @@ const btnOn = ref<boolean>(false);
 const listShow = ref<boolean>(false);
 const oldScrollPosition = ref<number>(0);
 const hide = ref<boolean>(false);
+
 function handleScroll() {
   let nowScrollPosition = window.pageYOffset;
-  if (window.pageYOffset == 0) {
+  if (nowScrollPosition < 300) {
     isAtTop.value = true;
   } else {
     isAtTop.value = false;

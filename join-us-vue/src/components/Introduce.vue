@@ -45,8 +45,11 @@ const pageStore = usePageStore();
   background-color: #d6d6d6;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  font-size: x-large;
+  font-size: xx-large;
   white-space: pre-line;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 .content {
   background-color: white;
