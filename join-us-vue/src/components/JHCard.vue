@@ -21,7 +21,8 @@ const prop = defineProps<{
 <style scoped>
 .container-large {
   margin: 20px;
-  width: 80%;
+  width: 90%;
+  height: fit-content + 10px;
   background-color: white;
   margin: 3vw auto 0;
   box-shadow: 0 5px 10px #999999;

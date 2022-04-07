@@ -19,5 +19,6 @@ function admin() {
   line-height: 2rem;
   border-radius: 0;
   box-shadow: 0 -1px 20px #999999;
+  cursor: pointer;
 }
 </style>

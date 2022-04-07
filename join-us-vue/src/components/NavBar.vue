@@ -2,17 +2,17 @@
 import { onMounted, ref, watch } from 'vue';
 import { usePageStore } from '../stores/pages';
 import { RouterLink } from 'vue-router';
+import store from "../stores/store";
 const base = ref<HTMLDivElement>();
 const isAtTop = ref<boolean>(true);
-const pageStore = usePageStore();
+const pageStore = usePageStore(store);
 const btnOn = ref<boolean>(false);
 const listShow = ref<boolean>(false);
 const oldScrollPosition = ref<number>(0);
 const hide = ref<boolean>(false);
-
 function handleScroll() {
   let nowScrollPosition = window.pageYOffset;
-  if (nowScrollPosition < 300) {
+  if (nowScrollPosition < 300 && pageStore.pageNow == 0) {
     isAtTop.value = true;
   } else {
     isAtTop.value = false;
@@ -47,7 +47,7 @@ function listBtnClicked() {
 </script>
 <template>
   <div
-    :class="isAtTop ? 'atTop' : 'notAtTop', pageStore.pageType, hide ? 'hide' : ''"
+    :class="isAtTop && pageStore.pageNow == 0 && btnOn == false ? 'atTop' : 'notAtTop', pageStore.pageType, hide ? 'hide' : ''"
     class="base"
     ref="base"
   >
