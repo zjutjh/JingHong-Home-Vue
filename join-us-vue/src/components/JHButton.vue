@@ -8,7 +8,7 @@ const prop = defineProps<{
   <button
     :class="{
       'button-small': type == 'small',
-      'button-medium': type == 'medium',
+      'button-middle': type == 'middle',
     }"
   >
     <slot></slot>
@@ -17,9 +17,8 @@ const prop = defineProps<{
 
 <style scoped>
 .button-small {
-  width: 120px;
+  width: fit-content;
   height: 40px;
-  /* padding: 0 20px; */
   margin: 15px auto;
   border-radius: 20px;
   background-color: #d20001;
@@ -29,26 +28,21 @@ const prop = defineProps<{
   display: flex;
   justify-content: center;
   align-items: center;
-  /* box-shadow: 0 5px 10px #999999; */
   box-shadow: 0 2px 5px #999999;
   border: none;
 }
-.button-medium {
-  /* position: absolute; */
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.button-middle {
+  width: fit-content;
+  padding: 10px;
+  padding-inline: 20px;
   margin: auto;
-  width: 25%;
-  height: 4vw;
   background-color: #d20001;
-  border-radius: 4vw;
-  font-size: 1.8vw;
+  border-radius: 30px;
+  font-size: x-large;
   color: white;
-  line-height: 4vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
 }
 </style>

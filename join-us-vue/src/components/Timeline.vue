@@ -74,16 +74,16 @@ const styleVal = (function (index: number): CSSProperties {
   }
 });
 const top111 = ref(0);
-function handleScrollx() {
-  top111.value = historyline.value.getBoundingClientRect().top;
+function handleScrollX() {
+  top111.value = historyLine.value.getBoundingClientRect().top;
 }
-const historyline = ref(<Element>{});
+const historyLine = ref(<Element>{});
 onMounted(() => {
-  window.addEventListener("scroll", handleScrollx, true);
+  window.addEventListener("scroll", handleScrollX, true);
 })
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", handleScrollx, true);
+  window.removeEventListener("scroll", handleScrollX, true);
 })
 </script>
 <style scoped>
@@ -171,9 +171,9 @@ onUnmounted(() => {
 }
 </style>
 <template>
-  <JHCard title="精弘成长史" type="large">
+  <JHCard title="精弘成长史" type="large" :is-title="true">
     <div class="history" ref="history">
-      <div class="history-line" ref="historyline">
+      <div class="history-line" ref="historyLine">
         <div class="history-item" v-for="item, index in items" :style="styleVal(index)">
           <div
             class="img"

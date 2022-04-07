@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router'
 const router = useRouter();
 function admin() {
-  router.push('/m/admin');
+  router.push('/admin');
 }
 </script>
 <template>
@@ -11,7 +11,7 @@ function admin() {
 
 <style scoped>
 .footer {
-  margin-top: 2rem;
+  margin-top: 10%;
   width: 100%;
   font-size: xx-small;
   background-color: white;
