@@ -1,14 +1,13 @@
-<script lang="ts" setup>import { onMounted, reactive } from 'vue';
+<script lang="ts" setup>
+import { onMounted, reactive } from 'vue';
 
 interface Props {
   imgs: string[];
 }
-
 const props = defineProps<Props>();
-
 const carouselClass = reactive(['left', 'center', 'right']);
-// var imgs = reactive(props.imgs.slice(0, 3));
 var timer: number;
+
 function _resetTimer() {
   clearInterval(timer);
   timer = window.setInterval(() => {
@@ -26,6 +25,7 @@ function before() {
   let last = carouselClass.pop() as string;
   carouselClass.unshift(last);
 }
+
 function changePicture(e: MouseEvent) {
   if (((e.target as HTMLElement).parentNode as HTMLElement).classList.contains("left")) {
     after();
@@ -43,6 +43,10 @@ function touchMove(e: TouchEvent) {
 
 }
 onMounted(() => {
+  for (var i = 0; i < props.imgs.length - 3; i++) {
+    carouselClass.push('after');
+  }
+
   timer = window.setInterval(() => {
     before();
   }, 3000);
@@ -66,7 +70,7 @@ onMounted(() => {
   width: 90%;
   margin: 0 auto;
   border-bottom: 0.2rem solid #efefef;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
 }
 .carousel .whole {
   width: 60%;
@@ -114,6 +118,13 @@ ul li {
   background: rgb(0, 0, 0);
   transition: all 0.5s ease;
 }
+.after {
+  left: 0;
+  top: 0;
+  visibility: hidden;
+  transform: scale(0);
+  z-index: -3;
+}
 .left div,
 .right div {
   z-index: 5;
@@ -125,14 +136,6 @@ ul li {
   top: 0;
   transition: all 0.3s ease;
 }
-
-.after {
-  left: 0;
-  top: 0;
-  visibility: hidden;
-  transform: scale(0);
-  z-index: -3;
-}
 </style>
 
 <template>
@@ -143,7 +146,7 @@ ul li {
           <li
             @click="changePicture($event)"
             v-for="(item, index) in props.imgs"
-            :class="index < 3 ? carouselClass[index] : 'after'"
+            :class="carouselClass[index]"
           >
             <img :src="item" />
             <div></div>
