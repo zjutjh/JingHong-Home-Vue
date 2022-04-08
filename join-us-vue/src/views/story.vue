@@ -3,7 +3,21 @@ import JHLabel from '../components/JHLabel.vue';
 import JHCard from '../components/JHCard.vue';
 import Footer from '../components/Footer.vue';
 import { usePageStore } from '../stores/pages';
+import CarouselPictures from '../components/CarouselPicturesBig.vue';
+// import { Picture } from '../components/CarouselPictures.vue';
 const pageStore = usePageStore();
+const yixingImgs = [
+  "/photo/yixing/1.jpg",
+  "/photo/yixing/2.jpg",
+  "/photo/yixing/3.jpg",
+];
+const yurenImgs = [
+  "/photo/yuren/1.jpg",
+  "/photo/yuren/2.jpg",
+  "/photo/yuren/3.jpg",
+  "/photo/yuren/4.jpg",
+  "/photo/yuren/5.jpg",
+];
 </script>
 <style scoped>
 .shiming-base.normal {
@@ -57,6 +71,45 @@ const pageStore = usePageStore();
 .jiyu {
   margin-top: 20px;
 }
+.yixing-content {
+  text-align: start;
+  text-decoration: none;
+  font-size: 24px;
+  text-indent: 48px;
+  width: 80%;
+  margin: auto;
+}
+.yixing-content.mini {
+  font-size: 15px;
+  text-indent: 30px;
+}
+.shenghuo {
+  width: 80%;
+  display: grid;
+  grid-template-rows: 300px 150px 300px 150px 300px 300px 150px;
+  grid-gap: 10px;
+  margin: auto;
+}
+.shenghuo img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.shenghuo .content {
+  font-size: 20px;
+}
+
+.shenghuo-imgs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.shenghuo-imgs img {
+  height: 60%;
+}
 </style>
 <template>
   <div style="height:100px"></div>
@@ -85,11 +138,42 @@ const pageStore = usePageStore();
       </div>
     </div>
   </JHCard>
-  <JHCard type="large" title="精弘毅行" :isTitle="true"></JHCard>
-  <JHCard type="large" title="网络育人" :isTitle="true"></JHCard>
-  <JHCard type="large" title="生活社交" :isTitle="true"></JHCard>
+  <JHCard type="large" title="精弘毅行" :isTitle="true">
+    <CarouselPictures :imgs="yixingImgs"></CarouselPictures>
+    <div
+      class="yixing-content"
+      :class="pageStore.pageType"
+    >毅行，顾名思义，就是考验毅力的徒步活动。参与毅行活动并走完全程对很多人来讲都是一种挑战，但是有很多人也正是因为毅行的体验，才发觉自己也会有无限可能。</div>
+    <div
+      class="yixing-content"
+      :class="pageStore.pageType"
+    >每年一度的"精弘毅行"始于2012年，是浙江工业大学的一次盛会，超过8000位师生校友从学校出发，徒步行走十公里或以上的路程后回到学校。“精弘毅行"鼓励工大学子暂离网络，走出宿舍，以最原始的徒步行走的方式亲近自然，感受青春的活力和朝气。因此，精弘毅行也是每届精弘人必要经历的一次挑战。</div>
+  </JHCard>
+  <JHCard type="large" title="网络育人" :isTitle="true">
+    <CarouselPictures :imgs="yurenImgs"></CarouselPictures>
+    <div
+      class="yixing-content"
+      :class="pageStore.pageType"
+    >为深入贯彻落实习近平总书记在全国网络安全和信息化工作会议上的重要讲话精神、增强广大师生安全意识和网络素质、营造安全健康文明的网络环境，积极响应国家网络安全的号召，结合我校实际情况，于全校开展“网络安全宣传教育月”系列活动。由浙江工业大学精弘网络参与承办，通过技术分享会、线下游园活动，人物访谈和拍摄防范网络诈骗微电影等方式达到宣传网络安全知识的目的。</div>
+  </JHCard>
+  <JHCard type="large" title="生活社交" :isTitle="true">
+    <div class="shenghuo">
+      <img src="/photo/story/shenghuo/shenghuo1.jpg" />
+      <div class="content">精弘还定期举行素质拓展，各种小游戏需要每一位成员的通力合作，在游戏中互相了解，感受精弘大家庭的温暖。</div>
+      <img src="/photo/story/shenghuo/shenghuo2.jpg" />
+      <div class="content">在每年一度的年会上，精弘网络的每个部门都准备了具有特色的节目，既是对过去工作生活的总结，也是对来年生活的美好祝愿。</div>
+      <img src="/photo/story/shenghuo/shenghuo3.jpg" />
+      <div class="shenghuo-imgs">
+        <img src="/photo/story/shenghuo/shenghuo4.jpg" />
+        <img src="/photo/story/shenghuo/shenghuo5.jpg" />
+      </div>
+      <div class="content">在各个部门内还有各式各样的轰趴活动，聚餐、唱K或是游西湖。在精弘，绝不是只有工作，还有数不清的快乐。</div>
+    </div>
+  </JHCard>
+
   <div class="jiyu">
     <JHLabel type="title">前辈寄语</JHLabel>
+    <div class="jiyu-base" :class="pageStore.pageType"></div>
   </div>
   <Footer />
 </template>

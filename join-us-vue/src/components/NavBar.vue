@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-import { onMounted, ref, watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { usePageStore } from '../stores/pages';
 import { RouterLink } from 'vue-router';
 import store from "../stores/store";
+import { storeToRefs } from 'pinia';
 const base = ref<HTMLDivElement>();
 const isAtTop = ref<boolean>(true);
 const pageStore = usePageStore(store);
@@ -10,6 +11,11 @@ const btnOn = ref<boolean>(false);
 const listShow = ref<boolean>(false);
 const oldScrollPosition = ref<number>(0);
 const hide = ref<boolean>(false);
+const { pageNow } = storeToRefs(pageStore);
+watch(pageNow, () => {
+  handleScroll();
+  //! For refresh the isAtTop status;
+})
 function handleScroll() {
   let nowScrollPosition = window.pageYOffset;
   if (nowScrollPosition < 300 && pageStore.pageNow == 0) {

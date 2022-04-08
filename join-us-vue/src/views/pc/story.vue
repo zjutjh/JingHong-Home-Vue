@@ -203,165 +203,6 @@ onBeforeUnmount(() => {
 });
 
 </script>
-<template>
-  <div id="body">
-    <div class="title-style">
-      <h1>我们的故事</h1>
-    </div>
-
-    <div class="shiming">
-      <div class="title">我们的使命</div>
-      <div class="img" style="background-image: url(/photo/index/shiming.png)"></div>
-      <div class="Separator"></div>
-      <div class="content">
-        <div class="before">相关平台 | Related Platform</div>
-        <span>精弘网络采用朝晖、屏峰、莫干山三个校区共同建制</span>
-        <br />
-        <span>目前运营和维护的平台包括但不仅限</span>
-        <br />
-        <span>浙江工业大学精弘网络微信服务号、</span>
-        <br />
-        <span>精小弘在线微信服务号、微精弘微信小程序、</span>
-        <br />
-        <span>浙工大易班官方机构号、知乎官方机构号、</span>
-        <br />
-        <span>邮件系统(https://mail.zjut.edu.cn/)、</span>
-        <br />
-        <span>工大云盘(http://pan.zjut.edu.cn/)、</span>
-        <br />
-        <span>精弘论坛、精弘直播、Feel电台等。</span>
-        <br />
-      </div>
-    </div>
-
-    <div class="yixing">
-      <div class="title">精弘毅行</div>
-      <div class="carousel" ref="carousel">
-        <div class="whole">
-          <div class="roll-img">
-            <ul type>
-              <li
-                @click="changePicture($event)"
-                v-for="(item, index) in yixing_imgs"
-                :class="yixing_classes[index]"
-              >
-                <img :src="item" />
-                <div></div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="content">
-        <div>毅行，顾名思义，就是考验毅力的徒步活动。参与毅行活动并走完全程对很多人来讲都是一种挑战，但是有很多人也正是因为毅行的体验，才发觉自己也会有无限可能。</div>
-        <div>"精弘毅行"全称为浙江工业大学精弘毅行，始于2012年，这次已是第⼗三届毅行活动。它是由浙江工业大学党委学工部指导下的A类社团精弘网络发起并和杭州北风户外俱乐部共同组织的一项师生远⾜活动，由北风户外俱乐部护航队全程保障，是一项考验耐力与毅力的户外运动。“精弘毅行"鼓励工大学子暂离网络，走出宿舍，以最原始的徒步行走的方式亲近自然，感受青春的活力和朝气。</div>
-      </div>
-    </div>
-
-    <div class="yuren">
-      <div class="title">网络育人</div>
-      <div class="carousel2" ref="carousel">
-        <div class="whole">
-          <div class="roll-img">
-            <ul type>
-              <li v-for="(item, index) in yuren_imgs" :class="yuren_classes[index]">
-                <img :src="item" />
-                <div></div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="yuren-left" @click="yuren_after"></div>
-          <div class="yuren-right" @click="yuren_before"></div>
-        </div>
-        <div class="list">
-          <span
-            class="btn"
-            v-for="(item, index) in yuren_classes"
-            :key="index"
-            :class="[item == 'center' ? 'active' : '']"
-          ></span>
-        </div>
-      </div>
-      <div class="Separator"></div>
-      <div class="content">
-        <span>
-          为深入贯彻落实习近平总书记在全国网络
-          安全和信息化工作会议上的重要讲话精神、增
-          强广大师生安全意识和网络素质、营造安全健
-          康文明的网络环境，积极响应国家网络安全的
-          号召，结合我校实际情况，于全校开展“网络
-          安全宣传教育月”系列活动。由浙江工业大学
-          精弘网络参与承办，通过技术分享会、线下游
-          园活动，人物访谈和拍摄防范网络诈骗微电影
-          等方式达到宣传网络安全知识的目的。
-        </span>
-        <br />
-      </div>
-    </div>
-
-    <div class="shenghuo">
-      <div class="title">生活社交</div>
-      <div class="shenghuo-content">
-        <div
-          class="shenghuo-img"
-          v-for="photo, n in photos"
-          :style="{
-            zIndex: photo[5] as number,
-            top: photo[1] + 'px',
-            left: photo[0] + 'px',
-            width: photo[2] + 'px',
-            height: photo[3] + 'px',
-            background: 'center/cover no-repeat url(' + photo[4] + ')'
-          }"
-          @click="toggle_on(n)"
-        ></div>
-      </div>
-      <div class="toggle" v-if="shenghuo_seen" v-on:click="toggle_off">
-        <div class="timg">
-          <div
-            :style="{ background: 'center/cover no-repeat url(' + photos[shenghuo_selected][4] + ')' }"
-          ></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="jiyu-out">
-      <div style="width: 85%;position: relative;margin: 2rem auto;">
-        <div class="title">前辈寄语</div>
-      </div>
-      <div class="jiyu">
-        <div class="jiyu-content">
-          <div
-            class="person-card"
-            v-for="(person, index) in persons.slice(0, 4)"
-            :class="jiyu_classes[index]"
-          >
-            <div class="img" v-bind:style="{ 'background-image': 'url(' + person.img + ')' }"></div>
-            <div class="introduction">{{ person.introduction }}</div>
-            <div class="neirong">
-              <span>{{ person.content }}</span>
-            </div>
-          </div>
-        </div>
-        <div></div>
-      </div>
-      <div class="jiyu-left" @click.native="jiyu_after"></div>
-      <div class="jiyu-right" @click.native="jiyu_before"></div>
-    </div>
-
-    <div class="product">
-      <router-link to="/product">
-        <div class="product-button">
-          我们的产品
-          <img src="/photo/svg/右箭头.svg" style="float: right; transform: scale(0.5)" />
-        </div>
-      </router-link>
-    </div>
-    <Footer />
-  </div>
-</template>
-
 <style scoped>
 @font-face {
   font-family: "song";
@@ -1023,3 +864,163 @@ ul li {
   cursor: pointer;
 }
 </style>
+
+<template>
+  <div id="body">
+    <div class="title-style">
+      <h1>我们的故事</h1>
+    </div>
+
+    <div class="shiming">
+      <div class="title">我们的使命</div>
+      <div class="img" style="background-image: url(/photo/index/shiming.png)"></div>
+      <div class="Separator"></div>
+      <div class="content">
+        <div class="before">相关平台 | Related Platform</div>
+        <span>精弘网络采用朝晖、屏峰、莫干山三个校区共同建制</span>
+        <br />
+        <span>目前运营和维护的平台包括但不仅限</span>
+        <br />
+        <span>浙江工业大学精弘网络微信服务号、</span>
+        <br />
+        <span>精小弘在线微信服务号、微精弘微信小程序、</span>
+        <br />
+        <span>浙工大易班官方机构号、知乎官方机构号、</span>
+        <br />
+        <span>邮件系统(https://mail.zjut.edu.cn/)、</span>
+        <br />
+        <span>工大云盘(http://pan.zjut.edu.cn/)、</span>
+        <br />
+        <span>精弘论坛、精弘直播、Feel电台等。</span>
+        <br />
+      </div>
+    </div>
+
+    <div class="yixing">
+      <div class="title">精弘毅行</div>
+
+      <div class="carousel" ref="carousel">
+        <div class="whole">
+          <div class="roll-img">
+            <ul type>
+              <li
+                @click="changePicture($event)"
+                v-for="(item, index) in yixing_imgs"
+                :class="yixing_classes[index]"
+              >
+                <img :src="item" />
+                <div></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div>毅行，顾名思义，就是考验毅力的徒步活动。参与毅行活动并走完全程对很多人来讲都是一种挑战，但是有很多人也正是因为毅行的体验，才发觉自己也会有无限可能。</div>
+        <div>"精弘毅行"全称为浙江工业大学精弘毅行，始于2012年，这次已是第⼗三届毅行活动。它是由浙江工业大学党委学工部指导下的A类社团精弘网络发起并和杭州北风户外俱乐部共同组织的一项师生远⾜活动，由北风户外俱乐部护航队全程保障，是一项考验耐力与毅力的户外运动。“精弘毅行"鼓励工大学子暂离网络，走出宿舍，以最原始的徒步行走的方式亲近自然，感受青春的活力和朝气。</div>
+      </div>
+    </div>
+
+    <div class="yuren">
+      <div class="title">网络育人</div>
+      <div class="carousel2" ref="carousel">
+        <div class="whole">
+          <div class="roll-img">
+            <ul type>
+              <li v-for="(item, index) in yuren_imgs" :class="yuren_classes[index]">
+                <img :src="item" />
+                <div></div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="yuren-left" @click="yuren_after"></div>
+          <div class="yuren-right" @click="yuren_before"></div>
+        </div>
+        <div class="list">
+          <span
+            class="btn"
+            v-for="(item, index) in yuren_classes"
+            :key="index"
+            :class="[item == 'center' ? 'active' : '']"
+          ></span>
+        </div>
+      </div>
+      <div class="Separator"></div>
+      <div class="content">
+        <span>
+          为深入贯彻落实习近平总书记在全国网络
+          安全和信息化工作会议上的重要讲话精神、增
+          强广大师生安全意识和网络素质、营造安全健
+          康文明的网络环境，积极响应国家网络安全的
+          号召，结合我校实际情况，于全校开展“网络
+          安全宣传教育月”系列活动。由浙江工业大学
+          精弘网络参与承办，通过技术分享会、线下游
+          园活动，人物访谈和拍摄防范网络诈骗微电影
+          等方式达到宣传网络安全知识的目的。
+        </span>
+        <br />
+      </div>
+    </div>
+
+    <div class="shenghuo">
+      <div class="title">生活社交</div>
+      <div class="shenghuo-content">
+        <div
+          class="shenghuo-img"
+          v-for="photo, n in photos"
+          :style="{
+            zIndex: photo[5] as number,
+            top: photo[1] + 'px',
+            left: photo[0] + 'px',
+            width: photo[2] + 'px',
+            height: photo[3] + 'px',
+            background: 'center/cover no-repeat url(' + photo[4] + ')'
+          }"
+          @click="toggle_on(n)"
+        ></div>
+      </div>
+      <div class="toggle" v-if="shenghuo_seen" v-on:click="toggle_off">
+        <div class="timg">
+          <div
+            :style="{ background: 'center/cover no-repeat url(' + photos[shenghuo_selected][4] + ')' }"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jiyu-out">
+      <div style="width: 85%;position: relative;margin: 2rem auto;">
+        <div class="title">前辈寄语</div>
+      </div>
+      <div class="jiyu">
+        <div class="jiyu-content">
+          <div
+            class="person-card"
+            v-for="(person, index) in persons.slice(0, 4)"
+            :class="jiyu_classes[index]"
+          >
+            <div class="img" v-bind:style="{ 'background-image': 'url(' + person.img + ')' }"></div>
+            <div class="introduction">{{ person.introduction }}</div>
+            <div class="neirong">
+              <span>{{ person.content }}</span>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+      <div class="jiyu-left" @click.native="jiyu_after"></div>
+      <div class="jiyu-right" @click.native="jiyu_before"></div>
+    </div>
+
+    <div class="product">
+      <router-link to="/product">
+        <div class="product-button">
+          我们的产品
+          <img src="/photo/svg/右箭头.svg" style="float: right; transform: scale(0.5)" />
+        </div>
+      </router-link>
+    </div>
+    <Footer />
+  </div>
+</template>
