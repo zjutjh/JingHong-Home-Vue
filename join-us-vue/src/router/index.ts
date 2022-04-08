@@ -33,7 +33,7 @@ const router = createRouter(
 router.beforeEach((to, from) => {
   const pageStore = usePageStore();
   console.log(to.fullPath, pageStore.pageNow)
-  window.screenY = 0;
+  window.scrollTo({ top: 0 })
   if (to.fullPath == '/index') {
     pageStore.pageNow = 0;
     document.title = "精弘首页";
