@@ -76,5 +76,10 @@ const router = useRouter();
       <JHButton type="small" @click="router.push('/department/yiban')">易班文化工作站</JHButton>
     </div>
   </div>
+  <div style="height:50px"></div>
+  <JHButton type="middle" @click="router.push('/join')">
+    加入我们
+    <img src="/photo/svg/rightArrow.svg" style="width:20px; margin-left:20px;" />
+  </JHButton>
   <Footer />
 </template>

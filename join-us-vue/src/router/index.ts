@@ -86,7 +86,14 @@ const routes = [
       navbar: () => import('../components/NavBar.vue'),
     }
   },
-
+  {
+    path: '/join',
+    name: 'join',
+    components: {
+      default: () => import('../views/join.vue'),
+      navbar: () => import('../components/NavBar.vue'),
+    }
+  },
 ]
 
 const router = createRouter(

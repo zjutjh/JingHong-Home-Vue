@@ -9,6 +9,7 @@ const prop = defineProps<{
     :class="{
       'button-small': type == 'small',
       'button-middle': type == 'middle',
+      'button-middle-disabled': type == 'middle-disabled',
     }"
   >
     <slot></slot>
@@ -46,5 +47,20 @@ const prop = defineProps<{
   align-items: center;
   border: none;
   cursor: pointer;
+}
+.button-middle-disabled {
+  width: fit-content;
+  padding: 10px;
+  padding-inline: 20px;
+  margin: auto;
+  background-color: #999999;
+  border-radius: 30px;
+  font-size: x-large;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: not-allowed;
 }
 </style>

@@ -159,7 +159,7 @@ function toDepartment() {
         </div>
         <div class="product-item">
           <img src="/photo/product/3.jpg" />
-          <JHButton type="middle" @click="isVisual = true">视觉影响</JHButton>
+          <JHButton type="middle" @click="isVisual = true">视觉影像</JHButton>
         </div>
         <div class="product-item">
           <img src="/photo/product/4.png" />
