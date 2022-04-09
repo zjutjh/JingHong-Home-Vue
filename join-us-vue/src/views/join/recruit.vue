@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref, watch } from "vue";
-import Footer from "../../../components/pc/Footer.vue"
+import Footer from "../../components/Footer.vue"
 import { useRouter } from "vue-router";
-import { usePageStore } from "../../../stores/pages";
-import { INormalForm } from "../../../types/forms";
-import { isPhone, isStuId } from "../../../utils/valid";
-import { NormalForm } from "../../../apis/forms";
-import Label from "../../../components/pc/JHLabel.vue";
-import JHButton from "../../../components/pc/JHButton.vue";
-import JHNotice from "../../../components/pc/JHNotice.vue";
-import JHInput from "../../../components/pc/JHInput.vue";
-import JHSelect from "../../../components/pc/JHSelect.vue";
-const store = usePageStore();
+import { usePageStore } from "../../stores/pages";
+import { INormalForm } from "../../types/forms";
+import { isPhone, isStuId } from "../../utils/valid";
+import { NormalForm } from "../../apis/forms";
+import Label from "../../components/JHLabel.vue";
+import JHButton from "../../components/JHButton.vue";
+import JHNotice from "../../components/JHNotice.vue";
+import JHInput from "../../components/JHInput.vue";
+import JHSelect from "../../components/JHSelect.vue";
+const pageStore = usePageStore();
 const router = useRouter();
 const form = reactive(<INormalForm>{
   name: "",
@@ -77,10 +77,6 @@ function closeNoticeShow() {
   noticeShow.value = false;
 }
 
-onMounted(() => {
-  store.pageNow = 4;
-})
-
 const textarea1Focused = ref(false);
 const textarea2Focused = ref(false);
 const genderOptions = [
@@ -108,15 +104,25 @@ const noticeMessage = ref<string>('请将信息正确填写完整再提交');
 <template>
   <div style="margin-top: 20vh;"></div>
   <Label type="middle">报名表</Label>
-  <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" type="pc">{{ noticeMessage }}</JHNotice>
+  <JHNotice
+    :show="noticeShow"
+    @changeShow="closeNoticeShow"
+    :type="pageStore.pageType == 'normal' ? 'pc' : 'mob'"
+  >{{ noticeMessage }}</JHNotice>
 
-  <div class="basic_info">
-    <JHInput label="姓名" v-model="form.name" :valid="nameValid" notice="姓名长度2-12" type="normal"></JHInput>
+  <div class="basic_info" :class="pageStore.pageType">
+    <JHInput
+      label="姓名"
+      v-model="form.name"
+      :valid="nameValid"
+      notice="姓名长度2-12"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
+    ></JHInput>
     <JHInput
       label="专业"
       v-model="form.campus"
       :valid="!(form.campus == '' && submitted)"
-      type="normal"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
       notice="此项不为空"
     ></JHInput>
     <JHSelect
@@ -124,19 +130,31 @@ const noticeMessage = ref<string>('请将信息正确填写完整再提交');
       v-model.number:value="form.gender"
       :valid="!(form.gender == '-1' && submitted)"
       :disabled="false"
-      type="normal"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
       notice="此项不为空"
     >
       <option v-for="gender in genderOptions" :value="gender.value">{{ gender.label }}</option>
     </JHSelect>
 
-    <JHInput label="联系电话" v-model="form.phone" :valid="phoneValid" notice="电话号码11位" type="normal"></JHInput>
-    <JHInput label="学号" v-model="form.stu_id" :valid="stuIDValid" notice="学号12位" type="normal"></JHInput>
+    <JHInput
+      label="联系电话"
+      v-model="form.phone"
+      :valid="phoneValid"
+      notice="电话号码11位"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
+    ></JHInput>
+    <JHInput
+      label="学号"
+      v-model="form.stu_id"
+      :valid="stuIDValid"
+      notice="学号12位"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
+    ></JHInput>
     <JHInput
       label="QQ"
       v-model="form.qq"
       :valid="!(form.qq == '' && submitted)"
-      type="normal"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
       notice="此项不为空"
     ></JHInput>
     <JHInput
@@ -144,7 +162,7 @@ const noticeMessage = ref<string>('请将信息正确填写完整再提交');
       v-model="form.college"
       :valid="!(form.college == '' && submitted)"
       notice="此项不为空"
-      type="normal"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
     ></JHInput>
 
     <JHSelect
@@ -154,6 +172,7 @@ const noticeMessage = ref<string>('请将信息正确填写完整再提交');
       :valid="!(form.region == 'no' && submitted)"
       :disabled="false"
       notice="此项不为空"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
     >
       <option value="no" selected disabled>选择校区后才能选择志愿</option>
       <option v-for="region in regions" :value="region">{{ region }}</option>
@@ -167,7 +186,7 @@ const noticeMessage = ref<string>('请将信息正确填写完整再提交');
       :disabled="form.region == 'no'"
       :valid="!(form.want1 == 'no' && submitted)"
       notice="此项不为空"
-      type="normal"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
     >
       <option value="no" disabled="true">{{ form.region == 'no' ? '请先选择校区' : '未选择' }}</option>
       <option
@@ -183,7 +202,7 @@ const noticeMessage = ref<string>('请将信息正确填写完整再提交');
       :disabled="form.region == 'no'"
       :valid="!(form.want2 == 'no' && submitted)"
       notice="此项不为空"
-      type="normal"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
     >
       <option value="no" disabled="true">{{ form.region == 'no' ? '请先选择校区' : '未选择' }}</option>
       <option
@@ -249,6 +268,16 @@ template {
   grid-template-rows: repeat(4, 40px);
   grid-gap: 20px 2.8%;
 
+  margin: auto;
+  padding-bottom: 20px;
+  border-bottom: 1px black solid;
+}
+.basic_info.mini {
+  display: grid;
+  width: 90%;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: repeat(4, 40px);
+  grid-gap: 10px 2%;
   margin: auto;
   padding-bottom: 20px;
   border-bottom: 1px black solid;

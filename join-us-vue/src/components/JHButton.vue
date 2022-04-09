@@ -19,6 +19,7 @@ const prop = defineProps<{
 <style scoped>
 .button-small {
   width: fit-content;
+  padding-inline: 30px;
   height: 40px;
   margin: 15px auto;
   border-radius: 20px;

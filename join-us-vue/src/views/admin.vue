@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { GetDataTotal } from '../../apis/admin';
-import { IFormsData, INormalForm } from '../../types/forms';
-import JHLabel from '../../components/pc/JHLabel.vue';
-import JHCard from '../../components/pc/JHCard.vue';
-import JHDataPresent from '../../components/pc/JHDataPresent.vue';
-import DepartmentsDataPresent from '../../components/pc/DepartmentsDataPresent.vue'
+import { GetDataTotal } from '../apis/admin';
+import { IFormsData, INormalForm } from '../types/forms';
+import JHLabel from '../components/JHLabel.vue';
+import JHCard from '../components/JHCard.vue';
+import JHDataPresent from '../components/JHDataPresent.vue';
+import DepartmentsDataPresent from '../components/DepartmentsDataPresent.vue'
 // import JHLabel1 from '../../components/pc/JHLabel.vue';
 import VChart from 'vue-echarts';
 import { use } from 'echarts/core';
@@ -15,7 +15,7 @@ import { TitleComponent, TooltipComponent, LegendComponent } from 'echarts/compo
 import 'echarts/lib/component/grid';
 import DepartmentsData1 from '../../components/pc/DepartmentsDataPresent.vue';
 // import echarts from 'echarts/dist/'
-import { DepartmentsData } from '../../types/components';
+import { DepartmentsData } from '../types/components';
 use([CanvasRenderer,
   BarChart,
   TitleComponent,
@@ -141,11 +141,7 @@ const data = ref(<IFormsData>{
 
 async function submitClicked() {
   const res = await GetDataTotal(pwd.value);
-  // console.log(res);
-  // alert(res.message);
-  // data = res.data.data;
   data.value = res.data.data;
-  // console.log(data);
 }
 
 var option = ref({
@@ -349,8 +345,9 @@ const data_yb = computed(() => {
     <input v-model="pwd" />
     <button @click="submitClicked">刷新</button>
   </div>
-  <JHLabel type="middle" style="font-size:3vw;">招新情况</JHLabel>
-  <JHCard title="总览" type="large-m">
+  <div style="height:50px"></div>
+  <JHLabel type="big">招新情况</JHLabel>
+  <JHCard title="总览" type="large" :is-title="true">
     <div class="cards">
       <JHDataPresent type="mob" title="报名总数">{{ data.total }}</JHDataPresent>
       <JHDataPresent type="mob" title="今日增加">{{ data.total_today }}</JHDataPresent>
@@ -360,51 +357,53 @@ const data_yb = computed(() => {
       <JHDataPresent type="mob" title="莫干山">{{ data.total_mgs }}</JHDataPresent>
     </div>
   </JHCard>
-  <JHCard title="统计图" type="large-m">
+  <JHCard title="统计图" type="large" :is-title="true">
     <v-chart class="chart" :option="option" id="chart" ref="chart" :autoresize="true" />
   </JHCard>
   <div class="cards">
-    <JHCard title="办公室" type="small-m">
+    <JHCard title="办公室" type="small" :is-title="true">
       <DepartmentsDataPresent :data="data_bgs" type="mob"></DepartmentsDataPresent>
     </JHCard>
-    <JHCard title="活动部" type="small-m">
+    <JHCard title="活动部" type="small" :is-title="true">
       <DepartmentsDataPresent :data="data_hdb" type="mob"></DepartmentsDataPresent>
     </JHCard>
-    <JHCard title="秘书处" type="small-m">
+    <JHCard title="秘书处" type="small" :is-title="true">
       <DepartmentsDataPresent :data="data_msc" type="mob"></DepartmentsDataPresent>
     </JHCard>
-    <JHCard title="Touch产品部" type="small-m">
+    <JHCard title="Touch产品部" type="small" :is-title="true">
       <DepartmentsDataPresent :data="data_touch" type="mob"></DepartmentsDataPresent>
     </JHCard>
-    <JHCard title="小弘工作室" type="small-m">
+    <JHCard title="小弘工作室" type="small" :is-title="true">
       <DepartmentsDataPresent :data="data_xh" type="mob"></DepartmentsDataPresent>
     </JHCard>
-    <JHCard title="编辑工作室" type="small-m">
+    <JHCard title="编辑工作室" type="small" :is-title="true">
       <DepartmentsDataPresent :data="data_bj" type="mob"></DepartmentsDataPresent>
     </JHCard>
-    <JHCard title="视觉影像部" type="small-m">
+    <JHCard title="视觉影像部" type="small" :is-title="true">
       <DepartmentsDataPresent :data="data_sj" type="mob"></DepartmentsDataPresent>
     </JHCard>
-    <JHCard title="技术部" type="small-m">
+    <JHCard title="技术部" type="small" :is-title="true">
       <DepartmentsDataPresent :data="data_kfb" type="mob"></DepartmentsDataPresent>
     </JHCard>
-    <JHCard title="易班文化工作站" type="small-m">
+    <JHCard title="易班文化工作站" type="small" :is-title="true">
       <DepartmentsDataPresent :data="data_yb" type="mob"></DepartmentsDataPresent>
     </JHCard>
   </div>
 </template>
 <style scoped>
 .cards {
-  margin: 3vw;
-  padding: 3vw;
+  /* margin: 3vw; */
+  /* padding: 3vw; */
   display: grid;
   grid-template-rows: repeat(10, 10%);
   grid-row-gap: 20px;
   grid-column-gap: 20px;
-  padding-top: 10vw;
+  width: 90%;
+  margin: auto;
+  /* padding-top: 10vw; */
 }
 .chart {
-  padding-top: 10vw;
+  /* padding-top: 10vw; */
   height: 400px;
 }
 </style>

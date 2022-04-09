@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import JHLabel from './JHLabel.vue';
-import { DepartmentsData } from '../../types/components';
+import { DepartmentsData } from '../types/components';
 const props = defineProps<{
   data: DepartmentsData,
   type: string,
 }>();
 </script>
 <template>
-  <div :class="{ 'base': type == 'pc', 'base-m': type == 'mob' }">
+  <div class="base">
     <div class="item">
       <div class="label">第一志愿</div>
       <div class="number">{{ props.data.want1 }}</div>
@@ -42,6 +42,7 @@ const props = defineProps<{
       <div class="number">{{ props.data.want2_mgs }}</div>
     </div>
     <div class="item">
+      招新情况
       <div class="label">总数</div>
 
       <div class="number">{{ props.data.total }}</div>
@@ -55,17 +56,7 @@ const props = defineProps<{
 <style scoped>
 .base {
   display: grid;
-  height: 40vh;
-  margin-top: 35px;
-  margin-inline: 10px;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 35% 10% 10% 10% 35%;
-  align-items: center;
-  justify-items: start;
-}
-.base-m {
-  display: grid;
-  height: 80vw;
+  height: 400px;
   margin-top: 35px;
   margin-inline: 10px;
   grid-template-columns: 50% 50%;

@@ -37,8 +37,9 @@ function confirmClicked() {
   z-index: 10;
 }
 .pc .notice {
-  height: 30vh;
-  width: 30vw;
+  /* height: 30vh; */
+  height: 200px;
+  width: 30%;
   background-color: #d20001;
   border-radius: 10px;
   display: grid;
@@ -52,10 +53,10 @@ function confirmClicked() {
   font-size: 1.3vw;
 }
 .pc .button {
-  height: 3vh;
-  width: 5vw;
+  width: fit-content;
   border-radius: 10px;
   margin: auto;
+  margin-bottom: 10px;
 }
 
 .mob .back {
@@ -71,8 +72,8 @@ function confirmClicked() {
   z-index: 10;
 }
 .mob .notice {
-  height: 20vh;
-  width: 60vw;
+  height: 200px;
+  width: 60%;
   background-color: #d20001;
   border-radius: 10px;
   display: grid;
@@ -86,8 +87,7 @@ function confirmClicked() {
   font-size: 4vw;
 }
 .mob .button {
-  height: 3vh;
-  width: 20vw;
+  width: fit-content;
   border-radius: 10px;
   margin: auto;
 }
