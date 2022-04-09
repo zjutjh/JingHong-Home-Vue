@@ -58,8 +58,9 @@ const prop = defineProps<{
 }
 
 .title-small {
-  width: 10vw;
-  height: 5vh;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px;
   background-color: #d20001;
   position: relative;
   top: 2vh;

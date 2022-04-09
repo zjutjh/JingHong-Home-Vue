@@ -94,6 +94,38 @@ const routes = [
       navbar: () => import('../components/NavBar.vue'),
     }
   },
+  {
+    path: '/join/recruit',
+    name: 'join/recruit',
+    components: {
+      default: () => import('../views/join/recruit.vue'),
+      navbar: () => import('../components/NavBar.vue'),
+    }
+  },
+  {
+    path: '/join/long',
+    name: 'join/long',
+    components: {
+      default: () => import('../views/join/recruitLong.vue'),
+      navbar: () => import('../components/NavBar.vue'),
+    }
+  },
+  {
+    path: '/join/develop',
+    name: 'join/develop',
+    components: {
+      default: () => import('../views/join/recruitDevelop.vue'),
+      navbar: () => import('../components/NavBar.vue'),
+    }
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    components: {
+      default: () => import('../views/admin.vue'),
+      navbar: () => import('../components/NavBar.vue'),
+    }
+  },
 ]
 
 const router = createRouter(
@@ -116,12 +148,15 @@ router.beforeEach((to, from) => {
   } else if (to.fullPath == '/product') {
     pageStore.pageNow = 2;
     document.title = "我们的产品";
-  } else if (to.fullPath == '/join') {
+  } else if (to.fullPath.split('/')[1] == 'join') {
     pageStore.pageNow = 4;
     document.title = "加入我们";
   } else if (to.fullPath.split('/')[1] == 'department') {
     pageStore.pageNow = 3;
     document.title = "我们的部门";
+  } else if (to.fullPath == '/admin') {
+    pageStore.pageNow = 4;
+    document.title = "管理页面";
   }
 })
 export default router;

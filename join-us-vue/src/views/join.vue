@@ -9,11 +9,11 @@ import JHLabel from '../components/JHLabel.vue';
 const pageStore = usePageStore();
 const router = useRouter();
 function toRecruit() {
-  window.open('/recruit');
+  window.open('/join/recruit');
 }
 function toLong() {
   if (ENV == 'dev') {
-    window.open('/recruit_long');
+    window.open('/join/long');
   } else {
     return false;
   }

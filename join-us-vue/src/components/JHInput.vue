@@ -63,7 +63,7 @@ const props = withDefaults(defineProps<Props>(), {
   font-size: 12px;
   line-height: 20px;
   font-weight: 600;
-  width: 22vw;
+  width: 80%;
   box-shadow: 0 5px 10px #999999;
   height: 30px;
 }

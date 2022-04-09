@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import Footer from '../../../components/pc/Footer.vue'
-import JHLabel from '../../../components/pc/JHLabel.vue'
-import JHCard from '../../../components/pc/JHCard.vue';
-import JHButton from '../../../components/pc/JHButton.vue';
+import Footer from '../../components/Footer.vue'
+import JHLabel from '../../components/JHLabel.vue'
+import JHCard from '../../components/JHCard.vue';
+import JHButton from '../../components/JHButton.vue';
+import { usePageStore } from '../../stores/pages';
 const router = useRouter();
+const pageStore = usePageStore();
 function developClicked() {
-  router.push('/recruit_develop');
+  router.push('/join/develop');
 }
 function returnClicked() {
   router.push('/join');
@@ -15,7 +17,7 @@ function returnClicked() {
 <template>
   <div style="height: 20vh;"></div>
   <JHLabel type="big">长期招新</JHLabel>
-  <JHCard title="技术部" type="large">
+  <JHCard title="技术部" type="large" :is-title="true">
     <div style="display: inline-block;">
       <div class="des_jishu_content">
         <div class="des_jishu_00">招新范围：</div>
@@ -27,9 +29,8 @@ function returnClicked() {
         <div class="des_jishu_31">3)能够使用git进行团队协作交互</div>
       </div>
     </div>
-    <img src="/photo/index/jingxiaohong.png" class="img" />
+    <img src="/photo/index/jingxiaohong.png" class="img" v-if="pageStore.pageType == 'normal'" />
     <JHButton type="small" @click="developClicked">报名</JHButton>
-    <!-- <div class="button1" @click="developClicked">报名</div> -->
   </JHCard>
 
   <JHButton type="small" @click="returnClicked">返回</JHButton>
@@ -43,15 +44,12 @@ template {
   min-width: 900px;
 }
 .des_jishu_content {
-  margin: 50px;
+  margin: 20px;
   text-align: left;
-  font-size: 20px;
+  font-size: 18px;
   display: grid;
-  grid-template-rows: repeat(4, 30px);
-  grid-template-columns: 20% 80%;
-  width: 40vw;
-  /* position: relative; */
-  /* grid-gap: 50px 100px; */
+  grid-template-rows: repeat(4, 60px);
+  grid-template-columns: 100px;
 }
 .des_jishu_00 {
   grid-column-start: 1;
@@ -90,7 +88,7 @@ template {
   grid-row-end: 6;
 }
 .img {
-  height: 20vh;
+  width: 20%;
   /* width: vw; */
   float: right;
   margin-right: 10vw;

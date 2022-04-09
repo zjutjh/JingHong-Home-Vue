@@ -1,17 +1,19 @@
 <script setup lang="ts">
-import Footer from '../../../components/pc/Footer.vue';
+import Footer from '../../components/Footer.vue';
 import { useRouter } from 'vue-router';
-import { DevelopForm } from '../../../apis/forms';
-import { isPhone, isStuId } from '../../../utils/valid';
-import { IDevelopForm } from '../../../types/forms';
+import { DevelopForm } from '../../apis/forms';
+import { isPhone, isStuId } from '../../utils/valid';
+import { IDevelopForm } from '../../types/forms';
 import { reactive, ref } from 'vue';
-import { regions } from '../../../utils/const';
-import JHButton from '../../../components/pc/JHButton.vue'
-import JHLabel from '../../../components/pc/JHLabel.vue';
-import JHNotice from '../../../components/pc/JHNotice.vue';
-import JHSelect from '../../../components/pc/JHSelect.vue';
-import JHInput from '../../../components/pc/JHInput.vue';
+import { regions } from '../../utils/const';
+import JHButton from '../../components/JHButton.vue'
+import JHLabel from '../../components/JHLabel.vue';
+import JHNotice from '../../components/JHNotice.vue';
+import JHSelect from '../../components/JHSelect.vue';
+import JHInput from '../../components/JHInput.vue';
+import { usePageStore } from '../../stores/pages';
 const router = useRouter();
+const pageStore = usePageStore();
 const form = reactive(<IDevelopForm>{
   name: '',
   college: '',
@@ -93,17 +95,28 @@ const genderOptions = [
 ];
 </script>
 <template>
-  <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" type="pc">{{ noticeMessage }}</JHNotice>
+  <JHNotice
+    :show="noticeShow"
+    :type="pageStore.pageType == 'normal' ? 'pc' : 'mob'"
+    @changeShow="closeNoticeShow"
+    type="pc"
+  >{{ noticeMessage }}</JHNotice>
 
   <div style="height:20vh"></div>
   <JHLabel type="middle">技术部长期招新</JHLabel>
   <div class="basic_info">
-    <JHInput label="姓名" v-model="form.name" :valid="nameValid" notice="姓名长度2-12" type="normal"></JHInput>
+    <JHInput
+      label="姓名"
+      v-model="form.name"
+      :valid="nameValid"
+      notice="姓名长度2-12"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
+    ></JHInput>
     <JHInput
       label="专业"
       v-model="form.campus"
       :valid="!(form.campus == '' && submitted)"
-      type="normal"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
       notice="此项不为空"
     ></JHInput>
     <JHSelect
@@ -111,19 +124,31 @@ const genderOptions = [
       v-model.number:value="form.gender"
       :valid="!(form.gender == '-1' && submitted)"
       :disabled="false"
-      type="normal"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
       notice="此项不为空"
     >
       <option v-for="gender in genderOptions" :value="gender.value">{{ gender.label }}</option>
     </JHSelect>
 
-    <JHInput label="联系电话" v-model="form.phone" :valid="phoneValid" notice="电话号码11位" type="normal"></JHInput>
-    <JHInput label="学号" v-model="form.stu_id" :valid="stuIDValid" notice="学号12位" type="normal"></JHInput>
+    <JHInput
+      label="联系电话"
+      v-model="form.phone"
+      :valid="phoneValid"
+      notice="电话号码11位"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
+    ></JHInput>
+    <JHInput
+      label="学号"
+      v-model="form.stu_id"
+      :valid="stuIDValid"
+      notice="学号12位"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
+    ></JHInput>
     <JHInput
       label="QQ"
       v-model="form.qq"
       :valid="!(form.qq == '' && submitted)"
-      type="normal"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
       notice="此项不为空"
     ></JHInput>
     <JHInput
@@ -131,7 +156,7 @@ const genderOptions = [
       v-model="form.college"
       :valid="!(form.college == '' && submitted)"
       notice="此项不为空"
-      type="normal"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
     ></JHInput>
 
     <JHSelect
@@ -140,7 +165,7 @@ const genderOptions = [
       :valid="!(form.region == 'no' && submitted)"
       :disabled="false"
       notice="此项不为空"
-      type="normal"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
     >
       <option v-for="region in regions" :value="region">{{ region }}</option>
     </JHSelect>
@@ -149,7 +174,7 @@ const genderOptions = [
   <div class="other_info">
     <JHLabel type="small">必要能力勾选</JHLabel>
     <div style="padding-bottom: 20px;border-bottom: 1px black solid;">
-      <div class="capability_1">
+      <div class="capability_1" :class="pageStore.pageType">
         <div>
           <input type="checkbox" v-model="form.ability.api" />能够独立开发api
         </div>
@@ -199,13 +224,7 @@ template {
   grid-template-rows: 70% 30%;
   grid-column-gap: 20px;
 }
-.selfIntroduce {
-  width: 70vw;
-  margin: auto;
-  display: grid;
-  grid-template-rows: 50% 50%;
-  padding: 2vh;
-}
+
 .basic_info {
   display: grid;
   width: 70%;
@@ -216,34 +235,6 @@ template {
   margin: auto;
   padding-bottom: 20px;
   border-bottom: 1px black solid;
-}
-.item_name {
-  background-color: #d20001;
-  height: 30px;
-
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: white;
-  font-size: 1vw;
-}
-
-.item_content {
-  background-color: white;
-
-  border-radius: 10px;
-  text-align: left;
-
-  box-sizing: border-box;
-  padding: 5px 10px;
-  font-size: 1vw;
-  line-height: 20px;
-  font-weight: 600;
-  border: none;
-  outline: none;
-  box-shadow: 0 5px 10px #999999;
 }
 
 .capability_1 {
@@ -258,12 +249,19 @@ template {
   grid-template-rows: repeat(2, 40px);
   box-shadow: 0 5px 10px #999999;
 }
+
+.capability_1.mini,
+.capability_1.middle {
+  width: 100%;
+  height: 180px;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, 40px);
+}
 .capability_1 div {
   display: flex;
   width: fit-content;
   align-items: center;
   margin: 20px;
-  padding-inline: 5vw;
   font-size: 1.3vw;
 }
 .capability_2 {
@@ -280,6 +278,7 @@ template {
   font-size: 12px;
   font-weight: 600;
   outline: none;
+  box-shadow: 0 5px 10px #999999;
 }
 .other_info .item_name {
   width: 15%;
@@ -291,7 +290,7 @@ template {
 }
 
 .other_info {
-  width: 70vw;
+  width: 70%;
   margin: auto;
 }
 .other_info option {
