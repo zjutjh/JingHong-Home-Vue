@@ -9,7 +9,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 const pageStore = usePageStore();
 const isWechat = ref<boolean>(false);
-const isWejh = ref<boolean>(true);
+const isWejh = ref<boolean>(false);
 const isVisual = ref<boolean>(false);
 const isEmail = ref<boolean>(false);
 function toDepartment() {
@@ -22,7 +22,7 @@ function toDepartment() {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-gap: 20px;
+  grid-column-gap: 10%;
   width: 80%;
   margin: auto;
 }

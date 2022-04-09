@@ -52,7 +52,7 @@ const prop = defineProps<{
   min-width: 10vw;
   width: fit-content;
   height: 5vh;
-  padding: 0 20px;
+  padding: 10px;
   margin: 15px auto;
   border-radius: 20px;
 
