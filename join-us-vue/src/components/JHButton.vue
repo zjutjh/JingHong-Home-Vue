@@ -30,6 +30,7 @@ const prop = defineProps<{
   align-items: center;
   box-shadow: 0 2px 5px #999999;
   border: none;
+  cursor: pointer;
 }
 .button-middle {
   width: fit-content;
@@ -44,5 +45,6 @@ const prop = defineProps<{
   justify-content: center;
   align-items: center;
   border: none;
+  cursor: pointer;
 }
 </style>

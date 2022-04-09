@@ -78,6 +78,7 @@ function listBtnClicked() {
         v-for="(l, index) in links"
         class="listItem"
         :class="index == pageStore.pageNow ? 'select' : 'notSelect'"
+        @click="listBtnClicked"
       >
         <router-link :to="l.link">{{ l.name }}</router-link>
       </div>
@@ -156,6 +157,7 @@ a {
   background-color: white;
   border-radius: 20px;
   padding: 5px;
+  transition: background-color 0.5s;
 }
 .link.select a {
   color: #d20001;
@@ -163,11 +165,8 @@ a {
 .link.select::after {
   display: block;
   content: "";
-  /* width: 30px; */
   width: 100%;
   position: relative;
-  /* bottom: -10px; */
-  /* bottom: 10x; */
   top: 20px;
   border-bottom: 3px solid white;
 }
@@ -197,6 +196,7 @@ a {
   background-color: white;
   align-items: center;
   justify-items: center;
+  transition: all 0.5s;
 }
 .list.middle {
   top: 90px;

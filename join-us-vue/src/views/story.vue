@@ -6,6 +6,9 @@ import { usePageStore } from '../stores/pages';
 import CarouselPictures from '../components/CarouselPicturesBig.vue';
 // import { Picture } from '../components/CarouselPictures.vue';
 import CarouselCards from '../components/CarouselCards.vue';
+import JHButton from '../components/JHButton.vue';
+import { useRouter } from 'vue-router';
+const router = useRouter();
 const pageStore = usePageStore();
 const yixingImgs = [
   "/photo/yixing/1.jpg",
@@ -49,6 +52,9 @@ const persons = [
       "转眼已经从精弘“毕业”好多年，从大一的办公室干事，到大二的活动部部长，再到大三的新媒体总监，在精弘，你会遇见一群最青春可爱的人，拥有最深刻独特的集体归属感，也会发掘自己无限的可能性。精弘大家庭欢迎你的到来！",
   },
 ];
+function toProduct() {
+  router.push('/product');
+}
 </script>
 <style scoped>
 .shiming-base.normal {
@@ -209,6 +215,11 @@ const persons = [
     </div>
     <div class="jiyu-base" :class="pageStore.pageType" v-if="pageStore.pageType != 'normal'"></div>
   </div>
+
   <div style="height:200px"></div>
+  <JHButton type="middle" @click="toProduct">
+    我们的产品
+    <img src="/photo/svg/rightArrow.svg" style="width:20px; margin-left:20px;" />
+  </JHButton>
   <Footer />
 </template>
