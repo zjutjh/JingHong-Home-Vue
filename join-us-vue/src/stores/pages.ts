@@ -5,8 +5,8 @@ export const usePageStore = defineStore(
     state: () => {
       return {
         pageNow: 0,
-        isMobile: false,
-        initialScrollTop: 0,
+        oldScrollPosition: 0,
+        pageType: 'normal',
       }
     }
   },

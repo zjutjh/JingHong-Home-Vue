@@ -1,41 +1,50 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import { RouterView, useRouter } from 'vue-router';
-import { isMobile } from './utils/device'
+import { onMounted, ref, toRef } from 'vue';
+import { RouterView } from 'vue-router';
 import { usePageStore } from './stores/pages';
-import store from './stores/store';
-const router = useRouter();
-const pageStore = usePageStore(store);
-onMounted(() => {
-  if (isMobile()) {
-    pageStore.isMobile = true;
-    router.push('/m/index');
+const pageStore = usePageStore();
+var pageSize = ref(1440);
+function handleResize() {
+  let width = document.documentElement.clientWidth
+  if (width >= 1024) {
+    pageStore.pageType = 'normal';
+    document.querySelector('body')?.setAttribute('style', 'min-width: 1440px')
+  } else if (width >= 420) {
+    pageStore.pageType = 'middle';
+    document.querySelector('body')?.setAttribute('style', 'min-width: 420px')
   } else {
-    pageStore.isMobile = false;
-    router.push('/index');
+    pageStore.pageType = 'mini';
+    document.querySelector('body')?.setAttribute('style', 'min-width: 300px')
   }
-})
+}
+onMounted(() => {
+  window.onresize = () => {
+    handleResize();
+  };
+  handleResize();
+});
 </script>
 
 <template>
-  <!-- {{ pageStore }} -->
   <router-view name="navbar" />
   <router-view />
 </template>
 
 <style>
+.root {
+  --body-min-width: v-bind("pageSize");
+}
 @font-face {
   font-family: "SC-VF";
   src: url("/font/SourceHanSansSC-VF.otf");
 }
+
 #app {
   width: 100%;
-  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   font-family: "SC-VF";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  /* margin-top: 60px; */
 }
 </style>

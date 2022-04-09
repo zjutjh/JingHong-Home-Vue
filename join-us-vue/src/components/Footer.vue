@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
+import { useRouter } from 'vue-router'
+const router = useRouter();
+function admin() {
+  router.push('/admin');
+}
 </script>
 <template>
-  <div class="footer">
-    <router-link to="/admin">©2021 浙江工业大学-精弘网络</router-link>
-  </div>
+  <div class="footer" @click="admin">©2021 浙江工业大学-精弘网络</div>
 </template>
 
 <style scoped>
 .footer {
-  margin-top: 2rem;
+  margin-top: 10%;
   width: 100%;
   font-size: xx-small;
   background-color: white;
@@ -17,10 +19,6 @@ import { RouterLink } from 'vue-router';
   line-height: 2rem;
   border-radius: 0;
   box-shadow: 0 -1px 20px #999999;
-}
-
-router-link {
-  color: black;
-  text-decoration: none;
+  cursor: pointer;
 }
 </style>

@@ -2,6 +2,7 @@
 const prop = defineProps<{
   title: string;
   type: string;
+  isTitle: boolean;
 }>();
 </script>
 <template>
@@ -10,6 +11,7 @@ const prop = defineProps<{
   >
     <div
       :class="{ 'title-large': type == 'large', 'title-small': type == 'small', 'title-large-m': type == 'large-m', 'title-small-m': type == 'small-m' }"
+      v-show="isTitle"
     >{{ prop.title }}</div>
     <div class="content">
       <slot></slot>
@@ -18,8 +20,9 @@ const prop = defineProps<{
 </template>
 <style scoped>
 .container-large {
-  width: 80vw;
-  /* height: 40vw; */
+  margin: 20px;
+  width: 90%;
+  height: fit-content + 10px;
   background-color: white;
   margin: 3vw auto 0;
   box-shadow: 0 5px 10px #999999;
@@ -29,13 +32,13 @@ const prop = defineProps<{
 .title-large {
   width: fit-content;
   padding: 1vw;
-  padding-inline: 3vw;
-  height: 4rem;
+  padding-inline: 10px;
+  height: 50px;
   background-color: #d20001;
   position: relative;
-  top: 2rem;
-  left: -5%;
-  font-size: 2vw;
+  top: 10px;
+  left: -4vw;
+  font-size: x-large;
   color: white;
   font-weight: bolder;
   display: flex;
@@ -45,10 +48,11 @@ const prop = defineProps<{
 }
 
 .container-small {
-  width: 30vw;
-  height: 50vh;
+  width: 100%;
+  min-height: 100px;
   background-color: white;
   margin: 3vw auto 0;
+  padding-block: 20px;
   box-shadow: 0 5px 10px #999999;
   border-radius: 10px;
 }
