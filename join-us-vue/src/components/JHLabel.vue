@@ -15,8 +15,7 @@ const prop = defineProps<{
   </div>
 </template>
 
-<style scoped>
-.title {
+<style scoped>.title {
   width: fit-content;
   padding: 10px;
   /* height: 80px; */
@@ -28,6 +27,7 @@ const prop = defineProps<{
   box-shadow: 0 5px 10px #999999;
   border-radius: 1rem;
 }
+
 .title .h {
   display: block;
   font-size: x-large;
@@ -37,6 +37,7 @@ const prop = defineProps<{
   margin-inline-end: 0px;
   font-weight: bold;
 }
+
 .big {
   width: 15rem;
   height: 5rem;
@@ -48,6 +49,7 @@ const prop = defineProps<{
   margin: 0 auto 3vw auto;
   box-shadow: 0 5px 10px #999999;
 }
+
 .middle {
   min-width: 10vw;
   width: fit-content;
@@ -59,12 +61,13 @@ const prop = defineProps<{
   background-color: #d20001;
 
   color: white;
-  font-size: 1.5vw;
+  font-size: 20px;
   line-height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .small {
   background-color: #d20001;
   /* height: 30px; */
@@ -79,6 +82,7 @@ const prop = defineProps<{
   padding-inline: 20px;
   margin: 1vh;
 }
+
 .small .h {
   display: block;
   font-size: 1vw;
@@ -87,11 +91,11 @@ const prop = defineProps<{
   margin-inline-start: 0px;
   margin-inline-end: 0px;
 }
+
 .nano {
   height: 20px;
   width: fit-content;
   background-color: #d20001;
   color: white;
   border-radius: 2px;
-}
-</style>
+}</style>

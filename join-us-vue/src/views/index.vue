@@ -17,7 +17,10 @@ function toStory() {
   router.push("/story");
 }
 function toGithub() {
-  window.open('https://www.github.com', '_blank');
+  window.open('https://www.github.com/zjutjh', '_blank');
+}
+function toJoin() {
+  router.push("/join");
 }
 onMounted(() => {
   loadingBarTimer.value = window.setInterval(() => {
@@ -29,12 +32,12 @@ onMounted(() => {
   }, 10);
 })
 </script>
-<style scoped>
-.story img {
+<style scoped>.story img {
   width: 60%;
   height: 60%;
   border-radius: 15px;
 }
+
 .story-content {
   margin-top: 10px;
   font-size: large;
@@ -47,6 +50,7 @@ onMounted(() => {
   grid-template-columns: 40% 10% 25% 25%;
   grid-column-gap: 20px;
 }
+
 .contact-base.middle,
 .contact-base.mini {
   width: 80%;
@@ -56,27 +60,34 @@ onMounted(() => {
   grid-template-rows: 1fr 1fr;
   grid-column-gap: 20px;
 }
+
 .contact-us {
   display: grid;
   grid-template-columns: 20% 60% 20%;
 }
+
 .contact-us.middle h1 {
   font-size: large;
 }
+
 .contact-us.mini h1 {
   font-size: 15px;
 }
+
 .contact-us.middle h4 {
   font-size: small;
 }
+
 .contact-us.mini h1 {
   font-size: 15px;
 }
+
 .contact-us.normal img {
   width: 80px;
   height: 80px;
   margin: auto;
 }
+
 .contact-us.middle img,
 .contact-us.mini img {
   width: 40px;
@@ -84,15 +95,17 @@ onMounted(() => {
   margin: auto;
   background-color: white;
 }
+
 .contact-base .jh {
   width: 100px;
   height: 100px;
   margin: auto;
-  margin-top: 70px;
+  margin-top: 70%;
   border-radius: 50%;
   border-color: white;
   box-shadow: 0 1px 5px #999;
 }
+
 .join {
   font-size: x-large;
   border-bottom: 2px solid black;
@@ -100,10 +113,13 @@ onMounted(() => {
   margin: auto;
   margin-bottom: 20px;
 }
+
 .loading {
+  height: 140px;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
 }
+
 .loading .loading-bar-border {
   width: 80%;
   height: 50%;
@@ -119,13 +135,13 @@ onMounted(() => {
   height: 100%;
   background-color: #d20001;
 }
+
 .loading img {
   border-radius: 0;
-  width: 60%;
+  width: 50%;
   margin: auto;
   /* height: 70%; */
-}
-</style>
+}</style>
 <template>
   <start />
   <introduce />
@@ -147,13 +163,13 @@ onMounted(() => {
           <h1>联系我们 | 关注我们</h1>
           <h4>jhwl@zjut.edu.cn</h4>
         </div>
-        <img src="/photo/svg/LogoGitHub.svg" @click="toGithub" />
+        <img src="/photo/svg/LogoGitHub.svg" style="cursor:pointer" @click="toGithub" />
       </div>
     </JHCard>
     <img class="jh" src="/photo/index/story1.png" border="5" />
     <JHCard type="small" :is-title="false" title="no">
       <div class="join">精弘诚聘</div>
-      <JHButton type="middle">加入我们</JHButton>
+      <JHButton type="middle" @click="toJoin">加入我们</JHButton>
     </JHCard>
     <JHCard type="small" :is-title="false" title="no">
       <div class="loading">
