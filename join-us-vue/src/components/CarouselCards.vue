@@ -52,8 +52,10 @@ onMounted(() => {
 
 .carousel {
   height: 600px;
-  /* display: flex; */
-  /* width: 100%; */
+}
+
+.carousel.middle {
+  height: 800px;
 }
 
 .carousel.mini {

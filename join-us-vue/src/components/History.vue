@@ -32,23 +32,18 @@ const eventNow = ref<number>(0);
   </div>
   <div class="history-choice">
     <div class="red-line"></div>
-    <div
-      class="item"
-      v-for="item, index in Events"
-      :class="{ 'select': eventNow == index }"
-      v-bind:style="{ 'background-image': 'url(' + item[2] + ')' }"
-      @click="eventNow = index"
-    ></div>
+    <div class="item" v-for="item, index in Events" :class="{ 'select': eventNow == index }"
+      v-bind:style="{ 'background-image': 'url(' + item[2] + ')' }" @click="eventNow = index"></div>
   </div>
 </template>
-<style scoped>
-.base-pc {
+<style scoped>.base-pc {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-inline: 10vw;
   border-radius: 15px;
   box-shadow: 0 5px 10px #999999;
 }
+
 .history-left {
   background-color: #e25f54;
   height: 300px;
@@ -59,6 +54,7 @@ const eventNow = ref<number>(0);
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
 }
+
 .history-left img {
   height: 150px;
   width: 150px;
@@ -67,6 +63,7 @@ const eventNow = ref<number>(0);
   border-radius: 50%;
   background-color: white;
 }
+
 .history-right {
   background-color: white;
   border-top-right-radius: 15px;
@@ -78,6 +75,7 @@ const eventNow = ref<number>(0);
   float: right;
   position: relative;
 }
+
 .history-right.normal::before {
   content: "";
   position: absolute;
@@ -88,6 +86,7 @@ const eventNow = ref<number>(0);
   border-right: black solid 3px;
   border-top: black solid 3px;
 }
+
 .history-right.normal::after {
   content: "";
   position: absolute;
@@ -98,6 +97,7 @@ const eventNow = ref<number>(0);
   border-left: black solid 3px;
   border-bottom: black solid 3px;
 }
+
 .event-name {
   color: white;
   font-size: 20px;
@@ -112,9 +112,11 @@ const eventNow = ref<number>(0);
   border-bottom: black solid 3px;
   width: fit-content;
 }
+
 .content {
   text-align: left;
   font-size: x-large;
+  width: 40%;
 }
 
 .history-right img {
@@ -153,18 +155,20 @@ const eventNow = ref<number>(0);
   justify-content: center;
   z-index: 2;
 }
+
 .history-choice img {
   width: 80%;
 }
+
 .history-choice .item.select {
   width: 7vw;
   height: 7vw;
 }
+
 .red-line {
   position: absolute;
-  width: 70%;
+  width: 60%;
   height: 0.7rem;
   background-color: #d20001;
   z-index: 1;
-}
-</style>
+}</style>

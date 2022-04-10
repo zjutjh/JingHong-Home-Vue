@@ -104,136 +104,66 @@ const noticeMessage = ref<string>('请将信息正确填写完整再提交');
 <template>
   <div style="margin-top: 20vh;"></div>
   <Label type="middle">报名表</Label>
-  <JHNotice
-    :show="noticeShow"
-    @changeShow="closeNoticeShow"
-    :type="pageStore.pageType == 'normal' ? 'pc' : 'mob'"
-  >{{ noticeMessage }}</JHNotice>
+  <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" :type="pageStore.pageType == 'normal' ? 'pc' : 'mob'">{{
+    noticeMessage
+  }}</JHNotice>
 
   <div class="basic_info" :class="pageStore.pageType">
-    <JHInput
-      label="姓名"
-      v-model="form.name"
-      :valid="nameValid"
-      notice="姓名长度2-12"
-      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
-    ></JHInput>
-    <JHInput
-      label="专业"
-      v-model="form.campus"
-      :valid="!(form.campus == '' && submitted)"
-      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
-      notice="此项不为空"
-    ></JHInput>
-    <JHSelect
-      label="性别"
-      v-model.number:value="form.gender"
-      :valid="!(form.gender == '-1' && submitted)"
-      :disabled="false"
-      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
-      notice="此项不为空"
-    >
+    <JHInput label="姓名" v-model="form.name" :valid="nameValid" notice="姓名长度2-12"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"></JHInput>
+    <JHInput label="专业" v-model="form.campus" :valid="!(form.campus == '' && submitted)"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'" notice="此项不为空"></JHInput>
+    <JHSelect label="性别" v-model.number:value="form.gender" :valid="!(form.gender == '-1' && submitted)"
+      :disabled="false" :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'" notice="此项不为空">
       <option v-for="gender in genderOptions" :value="gender.value">{{ gender.label }}</option>
     </JHSelect>
 
-    <JHInput
-      label="联系电话"
-      v-model="form.phone"
-      :valid="phoneValid"
-      notice="电话号码11位"
-      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
-    ></JHInput>
-    <JHInput
-      label="学号"
-      v-model="form.stu_id"
-      :valid="stuIDValid"
-      notice="学号12位"
-      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
-    ></JHInput>
-    <JHInput
-      label="QQ"
-      v-model="form.qq"
-      :valid="!(form.qq == '' && submitted)"
-      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
-      notice="此项不为空"
-    ></JHInput>
-    <JHInput
-      label="学院"
-      v-model="form.college"
-      :valid="!(form.college == '' && submitted)"
-      notice="此项不为空"
-      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
-    ></JHInput>
+    <JHInput label="联系电话" v-model="form.phone" :valid="phoneValid" notice="电话号码11位"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"></JHInput>
+    <JHInput label="学号" v-model="form.stu_id" :valid="stuIDValid" notice="学号12位"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"></JHInput>
+    <JHInput label="QQ" v-model="form.qq" :valid="!(form.qq == '' && submitted)"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'" notice="此项不为空"></JHInput>
+    <JHInput label="学院" v-model="form.college" :valid="!(form.college == '' && submitted)" notice="此项不为空"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"></JHInput>
 
-    <JHSelect
-      label="校区"
-      v-model="form.region"
-      @change="regionChanged"
-      :valid="!(form.region == 'no' && submitted)"
-      :disabled="false"
-      notice="此项不为空"
-      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
-    >
+    <JHSelect label="校区" v-model="form.region" @change="regionChanged" :valid="!(form.region == 'no' && submitted)"
+      :disabled="false" notice="此项不为空" :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'">
       <option value="no" selected disabled>选择校区后才能选择志愿</option>
       <option v-for="region in regions" :value="region">{{ region }}</option>
     </JHSelect>
   </div>
 
   <div class="other_info">
-    <JHSelect
-      label="第一志愿"
-      v-model="form.want1"
-      :disabled="form.region == 'no'"
-      :valid="!(form.want1 == 'no' && submitted)"
-      notice="此项不为空"
-      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
-    >
+    <JHSelect label="第一志愿" v-model="form.want1" :disabled="form.region == 'no'"
+      :valid="!(form.want1 == 'no' && submitted)" notice="此项不为空"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'">
       <option value="no" disabled="true">{{ form.region == 'no' ? '请先选择校区' : '未选择' }}</option>
-      <option
-        v-for="(item) in choices[regions.indexOf(form.region)]"
-        :value="item"
-        :disabled="'disabled' ? item == form.want2 : 'true'"
-      >{{ item }}</option>
+      <option v-for="(item) in choices[regions.indexOf(form.region)]" :value="item"
+        :disabled="'disabled' ? item == form.want2 : 'true'">{{ item }}</option>
     </JHSelect>
 
-    <JHSelect
-      label="第二志愿"
-      v-model="form.want2"
-      :disabled="form.region == 'no'"
-      :valid="!(form.want2 == 'no' && submitted)"
-      notice="此项不为空"
-      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
-    >
+    <JHSelect label="第二志愿" v-model="form.want2" :disabled="form.region == 'no'"
+      :valid="!(form.want2 == 'no' && submitted)" notice="此项不为空"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'">
       <option value="no" disabled="true">{{ form.region == 'no' ? '请先选择校区' : '未选择' }}</option>
-      <option
-        v-for="(item) in choices[regions.indexOf(form.region)]"
-        :value="item"
-        :disabled="'disabled' ? item == form.want1 : 'true'"
-      >{{ item }}</option>
+      <option v-for="(item) in choices[regions.indexOf(form.region)]" :value="item"
+        :disabled="'disabled' ? item == form.want1 : 'true'">{{ item }}</option>
     </JHSelect>
   </div>
 
   <div class="selfIntroduce">
     <div>
       <Label type="small">来一段简单的自我介绍吧！</Label>
-      <textarea
-        class="capability_2"
-        v-model="form.profile"
-        :placeholder="textarea1Focused ? '' : '还可以加入你的特长、爱好、职位相关经历哦～'"
-        @focusin="textarea1Focused = true"
-        @focusout="textarea1Focused = false"
-      />
+      <textarea class="capability_2" v-model="form.profile"
+        :placeholder="textarea1Focused ? '' : '还可以加入你的特长、爱好、职位相关经历哦～'" @focusin="textarea1Focused = true"
+        @focusout="textarea1Focused = false" />
     </div>
 
     <div>
       <Label type="small">最后，有什么想对精弘网络说的话，可以在这里畅所欲言哦~</Label>
-      <textarea
-        class="capability_2"
-        v-model="form.feedback"
-        :placeholder="textarea2Focused ? '' : '暂时想不到可以填写“无”'"
-        @focusin="textarea2Focused = true"
-        @focusout="textarea2Focused = false"
-      />
+      <textarea class="capability_2" v-model="form.feedback" :placeholder="textarea2Focused ? '' : '暂时想不到可以填写“无”'"
+        @focusin="textarea2Focused = true" @focusout="textarea2Focused = false" />
     </div>
   </div>
   <div style="display:flex; center">
@@ -244,16 +174,17 @@ const noticeMessage = ref<string>('请将信息正确填写完整再提交');
   <Footer></Footer>
 </template>
 
-<style scoped>
-template {
+<style scoped>template {
   min-width: 900px;
 }
+
 .item_base {
   display: grid;
   grid-template-columns: 20% 80%;
   grid-template-rows: 70% 30%;
   grid-column-gap: 20px;
 }
+
 .selfIntroduce {
   width: 70vw;
   margin: auto;
@@ -261,6 +192,7 @@ template {
   grid-template-rows: 50% 50%;
   padding: 2vh;
 }
+
 .basic_info {
   display: grid;
   width: 70%;
@@ -272,6 +204,7 @@ template {
   padding-bottom: 20px;
   border-bottom: 1px black solid;
 }
+
 .basic_info.mini {
   display: grid;
   width: 90%;
@@ -282,6 +215,7 @@ template {
   padding-bottom: 20px;
   border-bottom: 1px black solid;
 }
+
 .item_name {
   background-color: #d20001;
   height: 30px;
@@ -337,6 +271,7 @@ template {
   grid-template-columns: 50% 50%;
   grid-template-rows: repeat(2, 40px);
 }
+
 .capability_1 div {
   outline: none;
   display: flex;
@@ -344,6 +279,7 @@ template {
   margin: 20px;
   /* justify-content: center; */
 }
+
 .capability_2 {
   width: 100%;
   /* background-color: #dfdfdf; */
@@ -354,10 +290,11 @@ template {
   outline: none;
   box-sizing: border-box;
   padding: 5px 5px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   box-shadow: 0 5px 10px #999999;
 }
+
 .other_info .item_name {
   width: 10vw;
   height: 40px;
@@ -372,6 +309,7 @@ template {
 .other_info option {
   width: 10px;
 }
+
 .des_label_1 {
   min-width: 90px;
   width: fit-content;
@@ -390,6 +328,7 @@ template {
   justify-content: center;
   align-items: center;
 }
+
 .des_label_2 {
   width: fit-content;
   height: fit-content;
@@ -407,5 +346,4 @@ template {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-</style>
+}</style>

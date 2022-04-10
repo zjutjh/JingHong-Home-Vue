@@ -56,14 +56,14 @@ function toProduct() {
   router.push('/product');
 }
 </script>
-<style scoped>
-.shiming-base.normal {
+<style scoped>.shiming-base.normal {
   width: 80%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: auto;
   grid-column-gap: 10%;
 }
+
 .shiming-base.middle {
   width: 80%;
   display: grid;
@@ -71,6 +71,7 @@ function toProduct() {
   margin: auto;
   grid-row-gap: 50px;
 }
+
 .shiming-base.mini {
   width: 80%;
   display: grid;
@@ -78,19 +79,23 @@ function toProduct() {
   margin: auto;
   grid-row-gap: 10px;
 }
+
 .shiming-imgs {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 10%;
 }
+
 .shiming-imgs-img {
   width: 100%;
   /* min-width: 64px; */
 }
+
 .shiming-base .shiming-img {
   width: 80%;
   min-width: 200px;
 }
+
 .shiming {
   text-align: start;
   padding: 20px;
@@ -102,12 +107,15 @@ function toProduct() {
 .shiming.mini {
   border-left: none;
 }
+
 .shiming h2 {
   border-bottom: 3px solid #d20001;
 }
+
 .jiyu {
   margin-top: 20px;
 }
+
 .yixing-content {
   text-align: start;
   text-decoration: none;
@@ -116,20 +124,23 @@ function toProduct() {
   width: 80%;
   margin: auto;
 }
+
 .yixing-content.mini {
   font-size: 15px;
   text-indent: 30px;
 }
+
 .shenghuo {
-  width: 80%;
+  width: 90%;
   display: grid;
-  grid-template-rows: 300px 150px 300px 150px 300px 300px 150px;
+  grid-template-rows: 200px 150px 200px 150px 200px 150px 150px;
   grid-gap: 10px;
   margin: auto;
 }
+
 .shenghuo img {
   width: 100%;
-  height: 80%;
+  height: 100%;
   object-fit: cover;
   border-radius: 15px;
 }
@@ -141,23 +152,19 @@ function toProduct() {
 .shenghuo-imgs {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
+  grid-gap: 10px;
 }
 
 .shenghuo-imgs img {
   height: 60%;
-}
-</style>
+}</style>
 <template>
   <div style="height:100px"></div>
   <JHLabel type="title">我们的故事</JHLabel>
   <JHCard type="large" title="我们的使命" :isTitle="true">
     <div class="shiming-base" :class="pageStore.pageType">
       <img class="shiming-img" src="/photo/index/shiming.png" v-if="pageStore.pageType == 'normal'" />
-      <div
-        class="shiming-imgs"
-        v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'"
-      >
+      <div class="shiming-imgs" v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'">
         <img class="shiming-imgs-img" src="/photo/index/shiming1.png" />
         <img class="shiming-imgs-img" src="/photo/index/shiming2.png" />
         <img class="shiming-imgs-img" src="/photo/index/shiming3.png" />
@@ -177,21 +184,17 @@ function toProduct() {
   </JHCard>
   <JHCard type="large" title="精弘毅行" :isTitle="true">
     <CarouselPictures :imgs="yixingImgs"></CarouselPictures>
-    <div
-      class="yixing-content"
-      :class="pageStore.pageType"
-    >毅行，顾名思义，就是考验毅力的徒步活动。参与毅行活动并走完全程对很多人来讲都是一种挑战，但是有很多人也正是因为毅行的体验，才发觉自己也会有无限可能。</div>
-    <div
-      class="yixing-content"
-      :class="pageStore.pageType"
-    >每年一度的"精弘毅行"始于2012年，是浙江工业大学的一次盛会，超过8000位师生校友从学校出发，徒步行走十公里或以上的路程后回到学校。“精弘毅行"鼓励工大学子暂离网络，走出宿舍，以最原始的徒步行走的方式亲近自然，感受青春的活力和朝气。因此，精弘毅行也是每届精弘人必要经历的一次挑战。</div>
+    <div class="yixing-content" :class="pageStore.pageType">
+      毅行，顾名思义，就是考验毅力的徒步活动。参与毅行活动并走完全程对很多人来讲都是一种挑战，但是有很多人也正是因为毅行的体验，才发觉自己也会有无限可能。</div>
+    <div class="yixing-content" :class="pageStore.pageType">
+      每年一度的"精弘毅行"始于2012年，是浙江工业大学的一次盛会，超过8000位师生校友从学校出发，徒步行走十公里或以上的路程后回到学校。“精弘毅行"鼓励工大学子暂离网络，走出宿舍，以最原始的徒步行走的方式亲近自然，感受青春的活力和朝气。因此，精弘毅行也是每届精弘人必要经历的一次挑战。
+    </div>
   </JHCard>
   <JHCard type="large" title="网络育人" :isTitle="true">
     <CarouselPictures :imgs="yurenImgs"></CarouselPictures>
-    <div
-      class="yixing-content"
-      :class="pageStore.pageType"
-    >为深入贯彻落实习近平总书记在全国网络安全和信息化工作会议上的重要讲话精神、增强广大师生安全意识和网络素质、营造安全健康文明的网络环境，积极响应国家网络安全的号召，结合我校实际情况，于全校开展“网络安全宣传教育月”系列活动。由浙江工业大学精弘网络参与承办，通过技术分享会、线下游园活动，人物访谈和拍摄防范网络诈骗微电影等方式达到宣传网络安全知识的目的。</div>
+    <div class="yixing-content" :class="pageStore.pageType">
+      为深入贯彻落实习近平总书记在全国网络安全和信息化工作会议上的重要讲话精神、增强广大师生安全意识和网络素质、营造安全健康文明的网络环境，积极响应国家网络安全的号召，结合我校实际情况，于全校开展“网络安全宣传教育月”系列活动。由浙江工业大学精弘网络参与承办，通过技术分享会、线下游园活动，人物访谈和拍摄防范网络诈骗微电影等方式达到宣传网络安全知识的目的。
+    </div>
   </JHCard>
   <JHCard type="large" title="生活社交" :isTitle="true">
     <div class="shenghuo">

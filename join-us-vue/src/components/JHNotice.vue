@@ -23,8 +23,7 @@ function confirmClicked() {
     </div>
   </div>
 </template>
-<style scoped>
-.pc .back {
+<style scoped>.pc .back {
   position: fixed;
   left: 0;
   top: 0;
@@ -36,6 +35,7 @@ function confirmClicked() {
   align-items: center;
   z-index: 10;
 }
+
 .pc .notice {
   /* height: 30vh; */
   height: 200px;
@@ -52,11 +52,13 @@ function confirmClicked() {
   color: white;
   font-size: 1.3vw;
 }
+
 .pc .button {
   width: fit-content;
   border-radius: 10px;
   margin: auto;
   margin-bottom: 10px;
+  font-size: 20px;
 }
 
 .mob .back {
@@ -71,6 +73,7 @@ function confirmClicked() {
   align-items: center;
   z-index: 10;
 }
+
 .mob .notice {
   height: 200px;
   width: 60%;
@@ -86,9 +89,9 @@ function confirmClicked() {
   color: white;
   font-size: 4vw;
 }
+
 .mob .button {
   width: fit-content;
   border-radius: 10px;
   margin: auto;
-}
-</style>
+}</style>
