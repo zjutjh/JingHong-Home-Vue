@@ -6,21 +6,23 @@ interface Props {
 }
 const props = defineProps<Props>();
 const carouselClass = reactive(['left', 'center', 'right']);
+var touchStartPosition = 0;
+var touchEndPosition = 0;
 var timer: number;
 
 function _resetTimer() {
   clearInterval(timer);
   timer = window.setInterval(() => {
-    before();
+    after();
   }, 3000);
 }
 
-function after() {
+function before() {
   _resetTimer();
   let first = carouselClass.shift() as string;
   carouselClass.push(first);
 }
-function before() {
+function after() {
   _resetTimer();
   let last = carouselClass.pop() as string;
   carouselClass.unshift(last);
@@ -37,10 +39,17 @@ function changePicture(e: MouseEvent) {
 }
 
 function touchStart(e: TouchEvent) {
-
+  touchStartPosition = e.touches[0].clientX;
 }
 function touchMove(e: TouchEvent) {
-
+  touchEndPosition = e.touches[0].clientX;
+}
+function touchEnd(e: TouchEvent) {
+  if (touchEndPosition - touchStartPosition > 0) {
+    before();
+  } else {
+    after();
+  }
 }
 onMounted(() => {
   for (var i = 0; i < props.imgs.length - 3; i++) {
@@ -48,15 +57,15 @@ onMounted(() => {
   }
 
   timer = window.setInterval(() => {
-    before();
+    after();
   }, 3000);
 })
 </script>
 
-<style scoped>
-* {
+<style scoped>* {
   border-radius: 15px;
 }
+
 .carousel {
   margin: 1.5rem auto;
   width: 100%;
@@ -64,6 +73,7 @@ onMounted(() => {
   border-radius: 0;
   overflow: hidden;
 }
+
 .carousel::after {
   display: block;
   content: "";
@@ -72,31 +82,37 @@ onMounted(() => {
   border-bottom: 0.2rem solid #efefef;
   padding-bottom: 2rem;
 }
+
 .carousel .whole {
   width: 60%;
   height: 35vw;
   margin: 0 auto;
 }
+
 .carousel .whole .roll-img {
   width: 100%;
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
 }
+
 ul {
   margin: 0;
   list-style: none;
 }
+
 ul li {
   position: absolute;
   width: 100%;
   height: 100%;
   cursor: pointer;
 }
+
 .carousel img {
   width: 100%;
   margin: auto;
 }
+
 .left {
   left: -55vw;
   transform: scale(0.8);
@@ -104,6 +120,7 @@ ul li {
   background: rgb(0, 0, 0);
   transition: all 0.5s ease;
 }
+
 .center {
   z-index: 1;
   left: 0;
@@ -111,6 +128,7 @@ ul li {
   bottom: 10%;
   transition: all 0.5s ease;
 }
+
 .right {
   left: 55vw;
   transform: scale(0.8);
@@ -118,6 +136,7 @@ ul li {
   background: rgb(0, 0, 0);
   transition: all 0.5s ease;
 }
+
 .after {
   left: 0;
   top: 0;
@@ -125,6 +144,7 @@ ul li {
   transform: scale(0);
   z-index: -3;
 }
+
 .left div,
 .right div {
   z-index: 5;
@@ -135,19 +155,14 @@ ul li {
   left: 0;
   top: 0;
   transition: all 0.3s ease;
-}
-</style>
+}</style>
 
 <template>
-  <div class="carousel" @touchstart="touchStart($event)" @touchend="touchMove($event)">
+  <div class="carousel" @touchstart="touchStart($event)" @touchmove="touchMove($event)" @touchend="touchEnd($event)">
     <div class="whole">
       <div class="roll-img">
         <ul type>
-          <li
-            @click="changePicture($event)"
-            v-for="(item, index) in props.imgs"
-            :class="carouselClass[index]"
-          >
+          <li @click="changePicture($event)" v-for="(item, index) in props.imgs" :class="carouselClass[index]">
             <img :src="item" />
             <div></div>
           </li>
