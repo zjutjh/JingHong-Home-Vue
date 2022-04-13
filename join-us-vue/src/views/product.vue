@@ -26,6 +26,23 @@ function toDepartment() {
   width: 80%;
   margin: auto;
 }
+
+.base.middle {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 20px;
+  width: 80%;
+  margin: auto;
+}
+
+.base.mini {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 20px;
+  width: 95%;
+  margin: auto;
+}
+
 .wechat {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -33,6 +50,7 @@ function toDepartment() {
   align-items: center;
   justify-items: center;
 }
+
 .introduction {
   grid-column-start: 1;
   grid-column-end: 3;
@@ -50,14 +68,7 @@ function toDepartment() {
   width: 50%;
 }
 
-.base.middle,
-.base.mini {
-  display: grid;
-  grid-template-rows: repeat(4, 1fr);
-  grid-gap: 20px;
-  width: 80%;
-  margin: auto;
-}
+
 
 .product-item {
   display: grid;
@@ -119,9 +130,7 @@ function toDepartment() {
     </JHCard>
     <JHCard type="large" :is-title="true" title="微精弘">
       <div class="wejh">
-        <div
-          class="introduction"
-        >微精弘是专属于zjuter的微信小程序,集课表、成绩查询、考试安排、空教室查询、一卡通、借阅等功能于一身，是工大学子必不可少的一体化校园移动门户。</div>
+        <div class="introduction">微精弘是专属于zjuter的微信小程序,集课表、成绩查询、考试安排、空教室查询、一卡通、借阅等功能于一身，是工大学子必不可少的一体化校园移动门户。</div>
         <img src="/photo/product/1.png" />
       </div>
     </JHCard>
@@ -138,9 +147,7 @@ function toDepartment() {
     </JHCard>
     <JHCard type="large" :is-title="true" title="学生邮箱">
       <div class="email">
-        <div
-          class="introduction"
-        >学校为每一位学生提供邮箱,由精弘网络提供运营服务,是你参与学校工作、学习、生活等各类活动的官方邮箱,伴随你的大学四年乃至一生,毕业后仍可享受校方的服务。</div>
+        <div class="introduction">学校为每一位学生提供邮箱,由精弘网络提供运营服务,是你参与学校工作、学习、生活等各类活动的官方邮箱,伴随你的大学四年乃至一生,毕业后仍可享受校方的服务。</div>
         <img id="email-img" src="/photo/product/4.png" />
         <h3>邮箱网址：mail.zjut.edu.cn</h3>
       </div>
@@ -188,9 +195,7 @@ function toDepartment() {
     </div>
     <div class="detail" v-if="isEmail">
       <div class="title">学生邮箱</div>
-      <div
-        class="content"
-      >学校为每一位学生提供邮箱,由精弘网络提供运营服务,是你参与学校工作、学习、生活等各类活动的官方邮箱,伴随你的大学四年乃至一生,毕业后仍可享受校方的服务。</div>
+      <div class="content">学校为每一位学生提供邮箱,由精弘网络提供运营服务,是你参与学校工作、学习、生活等各类活动的官方邮箱,伴随你的大学四年乃至一生,毕业后仍可享受校方的服务。</div>
       <img src="/photo/svg/return.svg" @click="isEmail = false" />
     </div>
   </div>

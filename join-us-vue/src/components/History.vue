@@ -36,7 +36,8 @@ const eventNow = ref<number>(0);
       v-bind:style="{ 'background-image': 'url(' + item[2] + ')' }" @click="eventNow = index"></div>
   </div>
 </template>
-<style scoped>.base-pc {
+<style scoped>
+.base-pc {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-inline: 10vw;
@@ -171,4 +172,5 @@ const eventNow = ref<number>(0);
   height: 0.7rem;
   background-color: #d20001;
   z-index: 1;
-}</style>
+}
+</style>

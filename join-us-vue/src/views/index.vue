@@ -32,7 +32,8 @@ onMounted(() => {
   }, 10);
 })
 </script>
-<style scoped>.story img {
+<style scoped>
+.story img {
   width: 60%;
   height: 60%;
   border-radius: 15px;
@@ -115,9 +116,9 @@ onMounted(() => {
 }
 
 .loading {
-  height: 140px;
+  height: 180px;
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: 30% 40% 30%;
 }
 
 .loading .loading-bar-border {
@@ -138,10 +139,10 @@ onMounted(() => {
 
 .loading img {
   border-radius: 0;
-  width: 50%;
+  width: 30%;
   margin: auto;
-  /* height: 70%; */
-}</style>
+}
+</style>
 <template>
   <start />
   <introduce />

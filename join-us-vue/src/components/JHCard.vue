@@ -7,12 +7,10 @@ const prop = defineProps<{
 </script>
 <template>
   <div
-    :class="{ 'container-large': type == 'large', 'container-small': type == 'small', 'container-large-m': type == 'large-m', 'container-small-m': type == 'small-m' }"
-  >
+    :class="{ 'container-large': type == 'large', 'container-small': type == 'small', 'container-large-m': type == 'large-m', 'container-small-m': type == 'small-m' }">
     <div
       :class="{ 'title-large': type == 'large', 'title-small': type == 'small', 'title-large-m': type == 'large-m', 'title-small-m': type == 'small-m' }"
-      v-show="isTitle"
-    >{{ prop.title }}</div>
+      v-show="isTitle">{{ prop.title }}</div>
     <div class="content">
       <slot></slot>
     </div>
@@ -29,6 +27,7 @@ const prop = defineProps<{
   padding: 2vw;
   border-radius: 10px;
 }
+
 .title-large {
   width: fit-content;
   padding: 1vw;
@@ -49,9 +48,9 @@ const prop = defineProps<{
 
 .container-small {
   width: 100%;
-  min-height: 100px;
+  /* min-height: 100px; */
   background-color: white;
-  margin: 3vw auto 0;
+  margin: 10px auto 0;
   padding-block: 20px;
   box-shadow: 0 5px 10px #999999;
   border-radius: 10px;
@@ -121,7 +120,8 @@ const prop = defineProps<{
   align-items: center;
   border-radius: 0;
 }
+
 .content {
-  margin-top: 5vh;
+  margin-top: 10px;
 }
 </style>
