@@ -23,15 +23,16 @@ function before() {
 }
 function touchStart(e: TouchEvent) {
   touchStartPosition = e.touches[0].clientX;
+  touchEndPosition = e.touches[0].clientX;
 }
 function touchMove(e: TouchEvent) {
   touchEndPosition = e.touches[0].clientX;
 }
 function touchEnd(e: TouchEvent) {
-  if (touchEndPosition - touchStartPosition > 0) {
-    before();
-  } else {
+  if (touchEndPosition - touchStartPosition > 0 && Math.abs(touchEndPosition - touchStartPosition) > 50) {
     after();
+  } else if (touchEndPosition - touchStartPosition < 0 && Math.abs(touchEndPosition - touchStartPosition) > 50) {
+    before();
   }
 }
 onMounted(() => {
@@ -40,7 +41,8 @@ onMounted(() => {
   }
 })
 </script>
-<style scoped>* {
+<style scoped>
+* {
   border-radius: 15px;
 }
 
@@ -209,7 +211,8 @@ ul li {
   text-indent: 2em;
   word-wrap: break-word;
   word-break: break-all;
-}</style>
+}
+</style>
 <template>
   <div class="carousel" :class="type" @touchstart="touchStart($event)" @touchmove="touchMove($event)"
     @touchend="touchEnd($event)">

@@ -30,9 +30,9 @@ function after() {
 
 function changePicture(e: MouseEvent) {
   if (((e.target as HTMLElement).parentNode as HTMLElement).classList.contains("left")) {
-    after();
-  } else if (((e.target as HTMLElement).parentNode as HTMLElement).classList.contains("right")) {
     before();
+  } else if (((e.target as HTMLElement).parentNode as HTMLElement).classList.contains("right")) {
+    after();
   } else {
     return false;
   }
@@ -40,14 +40,15 @@ function changePicture(e: MouseEvent) {
 
 function touchStart(e: TouchEvent) {
   touchStartPosition = e.touches[0].clientX;
+  touchEndPosition = e.touches[0].clientX;
 }
 function touchMove(e: TouchEvent) {
   touchEndPosition = e.touches[0].clientX;
 }
 function touchEnd(e: TouchEvent) {
-  if (touchEndPosition - touchStartPosition > 0) {
+  if (touchEndPosition - touchStartPosition > 0 && Math.abs(touchEndPosition - touchStartPosition) > 50) {
     before();
-  } else {
+  } else if (touchEndPosition - touchStartPosition < 0 && Math.abs(touchEndPosition - touchStartPosition) > 50) {
     after();
   }
 }
@@ -62,7 +63,8 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>* {
+<style scoped>
+* {
   border-radius: 15px;
 }
 
@@ -155,7 +157,8 @@ ul li {
   left: 0;
   top: 0;
   transition: all 0.3s ease;
-}</style>
+}
+</style>
 
 <template>
   <div class="carousel" @touchstart="touchStart($event)" @touchmove="touchMove($event)" @touchend="touchEnd($event)">
