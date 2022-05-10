@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { usePageStore } from '../stores/pages';
-import store from "../stores/store";
 
 const routes = [
   {
@@ -108,7 +107,7 @@ const routes = [
     components: {
       default: () => import('../views/join/recruitLong.vue'),
       navbar: () => import('../components/NavBar.vue'),
-    }
+    },
   },
   {
     path: '/join/develop',
@@ -116,15 +115,15 @@ const routes = [
     components: {
       default: () => import('../views/join/recruitDevelop.vue'),
       navbar: () => import('../components/NavBar.vue'),
-    }
+    },
   },
   {
     path: '/admin',
     name: 'admin',
     components: {
       default: () => import('../views/admin.vue'),
-      navbar: () => import('../components/NavBar.vue'),
-    }
+      navbar: () => import('../components/NavBarAdmin.vue'),
+    },
   },
 ]
 
@@ -134,6 +133,7 @@ const router = createRouter(
     routes,
   },
 );
+
 router.beforeEach((to, from) => {
   const pageStore = usePageStore();
   console.log(to.fullPath.split('/'));
@@ -159,4 +159,5 @@ router.beforeEach((to, from) => {
     document.title = "管理页面";
   }
 })
+
 export default router;

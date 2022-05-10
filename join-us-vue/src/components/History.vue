@@ -142,8 +142,8 @@ const eventNow = ref<number>(0);
 }
 
 .history-choice .item {
-  width: 4vw;
-  height: 4vw;
+  width: 70px;
+  height: 70px;
   background-size: cover;
   background-color: #fff;
   border-radius: 50%;
@@ -162,13 +162,13 @@ const eventNow = ref<number>(0);
 }
 
 .history-choice .item.select {
-  width: 7vw;
-  height: 7vw;
+  width: 120px;
+  height: 120px;
 }
 
 .red-line {
   position: absolute;
-  width: 60%;
+  width: 1100px;
   height: 0.7rem;
   background-color: #d20001;
   z-index: 1;

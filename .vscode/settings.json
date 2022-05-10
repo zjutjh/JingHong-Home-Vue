@@ -2,5 +2,10 @@
     "cSpell.words": [
         "gomail",
         "zjutjh"
-    ]
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#233206",
+        "titleBar.activeBackground": "#314609",
+        "titleBar.activeForeground": "#F6FCE9"
+    }
 }

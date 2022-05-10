@@ -54,7 +54,7 @@ function toDepartment() {
 .introduction {
   grid-column-start: 1;
   grid-column-end: 3;
-  font-size: 18px;
+  font-size: 24px;
   text-indent: 2em;
   text-align: start;
 }
@@ -124,14 +124,25 @@ function toDepartment() {
     <JHCard type="large" :is-title="true" title="微信公众号">
       <div class="wechat">
         <div class="introduction">浙江工业大学精弘网络微信公众号,提供结合精弘网络产品的实用功能,推出微精弘板块等系列服务,是工大学子学习生活的好帮手。</div>
-        <img src="/photo/product/10.png" />
-        <img src="/photo/product/11.png" />
+        <div>
+          <img src="/photo/product/10.png" />
+          <h3>浙江工业大学精弘网络</h3>
+        </div>
+        <div>
+          <img src="/photo/product/11.png" />
+          <h3>精小弘在线</h3>
+        </div>
+
       </div>
     </JHCard>
     <JHCard type="large" :is-title="true" title="微精弘">
       <div class="wejh">
         <div class="introduction">微精弘是专属于zjuter的微信小程序,集课表、成绩查询、考试安排、空教室查询、一卡通、借阅等功能于一身，是工大学子必不可少的一体化校园移动门户。</div>
-        <img src="/photo/product/1.png" />
+        <div>
+          <img src="/photo/product/1.png" />
+          <h3>微精弘小程序</h3>
+        </div>
+
       </div>
     </JHCard>
     <JHCard type="large" :is-title="true" title="视觉影像">

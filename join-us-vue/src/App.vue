@@ -34,6 +34,7 @@ onMounted(() => {
 .root {
   --body-min-width: v-bind("pageSize");
 }
+
 @font-face {
   font-family: "SC-VF";
   src: url("/font/SourceHanSansSC-VF.otf");
