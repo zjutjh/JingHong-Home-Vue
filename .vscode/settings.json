@@ -1,11 +1,25 @@
 {
-    "cSpell.words": [
-        "gomail",
-        "zjutjh"
-    ],
-    "workbench.colorCustomizations": {
-        "activityBar.background": "#233206",
-        "titleBar.activeBackground": "#314609",
-        "titleBar.activeForeground": "#F6FCE9"
-    }
+  "cSpell.words": [
+    "changwu",
+    "echarts",
+    "haibao",
+    "jishu",
+    "jiyu",
+    "sheji",
+    "shenghuo",
+    "shiming",
+    "wejh",
+    "xinmeiti",
+    "yiban",
+    "yixing",
+    "yunying",
+    "yuren",
+    "zjut",
+    "zjuter"
+  ],
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#213309",
+    "titleBar.activeBackground": "#2E470C",
+    "titleBar.activeForeground": "#F6FCEE"
+  }
 }
