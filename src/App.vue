@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import { onMounted, ref, toRef } from 'vue';
-import { RouterView } from 'vue-router';
-import { usePageStore } from './stores/pages';
+import { onMounted, ref, toRef } from "vue";
+import { RouterView } from "vue-router";
+import { usePageStore } from "./stores/pages";
 const pageStore = usePageStore();
 var pageSize = ref(1440);
 function handleResize() {
-  let width = document.documentElement.clientWidth
+  let width = document.documentElement.clientWidth;
   if (width >= 1024) {
-    pageStore.pageType = 'normal';
-    document.querySelector('body')?.setAttribute('style', 'min-width: 1440px')
-  } else if (width >= 420) {
-    pageStore.pageType = 'middle';
-    document.querySelector('body')?.setAttribute('style', 'min-width: 420px')
+    pageStore.pageType = "normal";
+    document.querySelector("body")?.setAttribute("style", "min-width: 1440px");
+  } else if (width >= 768) {
+    pageStore.pageType = "middle";
+    document.querySelector("body")?.setAttribute("style", "min-width: 420px");
   } else {
-    pageStore.pageType = 'mini';
-    document.querySelector('body')?.setAttribute('style', 'min-width: 300px')
+    pageStore.pageType = "mini";
+    document.querySelector("body")?.setAttribute("style", "min-width: 320px");
   }
 }
 onMounted(() => {
+  handleResize();
   window.onresize = () => {
     handleResize();
   };
-  handleResize();
 });
 </script>
 

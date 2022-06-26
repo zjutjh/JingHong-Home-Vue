@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import JHLabel from '../components/JHLabel.vue';
-import { usePageStore } from '../stores/pages';
-import JHButton from '../components/JHButton.vue';
-import Footer from '../components/Footer.vue';
-import { useRouter } from 'vue-router';
+import JHLabel from "../components/JHLabel.vue";
+import { usePageStore } from "../stores/pages";
+import JHButton from "../components/JHButton.vue";
+import Footer from "../components/Footer.vue";
+import { useRouter } from "vue-router";
 const pageStore = usePageStore();
 const router = useRouter();
 </script>
@@ -25,7 +25,15 @@ const router = useRouter();
 .base.mini {
   grid-template-rows: repeat(6, 1fr);
 }
-
+.base.mini .item {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  align-items: center;
+}
+.base.mini .item .img {
+  width: 100px;
+  height: 100px;
+}
 .base .item .img {
   width: 200px;
   height: 200px;
@@ -43,43 +51,76 @@ const router = useRouter();
 }
 </style>
 <template>
-  <div style="height:100px"></div>
+  <div style="height: 100px"></div>
   <JHLabel type="title">我们的部门</JHLabel>
   <div class="base" :class="pageStore.pageType">
     <div class="item">
-      <div class="img" style="background-image: url(/photo/svg/changwu.svg);"></div>
-      <JHButton type="small" @click="router.push('/department/changwu')">常务版块</JHButton>
+      <div
+        class="img"
+        style="background-image: url(/photo/svg/changwu.svg)"
+      ></div>
+      <JHButton type="small" @click="router.push('/department/changwu')"
+        >常务版块</JHButton
+      >
     </div>
     <div class="item">
-      <div class="img" style="background-image: url(/photo/svg/jishu.svg);"></div>
+      <div
+        class="img"
+        style="background-image: url(/photo/svg/jishu.svg)"
+      ></div>
 
-      <JHButton type="small" @click="router.push('/department/jishu')">技术版块</JHButton>
+      <JHButton type="small" @click="router.push('/department/jishu')"
+        >技术版块</JHButton
+      >
     </div>
     <div class="item">
-      <div class="img" style="background-image: url(/photo/svg/yunying.svg);"></div>
+      <div
+        class="img"
+        style="background-image: url(/photo/svg/yunying.svg)"
+      ></div>
 
-      <JHButton type="small" @click="router.push('/department/yunying')">运营版块</JHButton>
+      <JHButton type="small" @click="router.push('/department/yunying')"
+        >运营版块</JHButton
+      >
     </div>
     <div class="item">
-      <div class="img" style="background-image: url(/photo/svg/sheji.svg);"></div>
+      <div
+        class="img"
+        style="background-image: url(/photo/svg/sheji.svg)"
+      ></div>
 
-      <JHButton type="small" @click="router.push('/department/sheji')">设计版块</JHButton>
+      <JHButton type="small" @click="router.push('/department/sheji')"
+        >设计版块</JHButton
+      >
     </div>
     <div class="item">
-      <div class="img" style="background-image: url(/photo/svg/xinmeiti.svg);"></div>
+      <div
+        class="img"
+        style="background-image: url(/photo/svg/xinmeiti.svg)"
+      ></div>
 
-      <JHButton type="small" @click="router.push('/department/xinmeiti')">新媒体版块</JHButton>
+      <JHButton type="small" @click="router.push('/department/xinmeiti')"
+        >新媒体版块</JHButton
+      >
     </div>
     <div class="item">
-      <div class="img" style="background-image: url(/photo/svg/yiban.svg);"></div>
+      <div
+        class="img"
+        style="background-image: url(/photo/svg/yiban.svg)"
+      ></div>
 
-      <JHButton type="small" @click="router.push('/department/yiban')">易班文化工作站</JHButton>
+      <JHButton type="small" @click="router.push('/department/yiban')"
+        >易班文化工作站</JHButton
+      >
     </div>
   </div>
-  <div style="height:50px"></div>
+  <div style="height: 50px"></div>
   <JHButton type="middle" @click="router.push('/join')">
     加入我们
-    <img src="/photo/svg/rightArrow.svg" style="width:20px; margin-left:20px;" />
+    <img
+      src="/photo/svg/rightArrow.svg"
+      style="width: 20px; margin-left: 20px"
+    />
   </JHButton>
   <Footer />
 </template>

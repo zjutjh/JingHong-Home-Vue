@@ -1,16 +1,22 @@
 <script lang="ts" setup>
-import { usePageStore } from '../stores/pages';
+import { usePageStore } from "../stores/pages";
 const pageStore = usePageStore();
-
 </script>
 <template>
   <div class="base" :class="pageStore.pageType">
-    <img src="/photo/index/xiaohongLeft.png" v-if="!(pageStore.pageType == 'mini')" />
+    <img
+      src="/photo/index/xiaohongLeft.png"
+      v-if="!(pageStore.pageType == 'mini')"
+    />
     <div class="introduce">
-      <div
-        class="title"
-      >{{ pageStore.pageType == 'mini' ? "精弘网络 \nJinghong Union" : "精弘网络⼁Jinghong Union" }}</div>
-      <div class="content">
+      <div class="title">
+        {{
+          pageStore.pageType == "mini"
+            ? "精弘网络 \nJinghong Union"
+            : "精弘网络⼁Jinghong Union"
+        }}
+      </div>
+      <div class="content" :class="pageStore.pageType">
         成立于2002年5月，
         <br />精弘的名字取自工大学风“取精用弘”，
         <br />是浙江工业大学的学术网络组织。
@@ -19,7 +25,10 @@ const pageStore = usePageStore();
         <br />和交流平台，收到了广泛好评。
       </div>
     </div>
-    <img src="/photo/index/xiaohongRight.png" v-if="!(pageStore.pageType == 'mini')" />
+    <img
+      src="/photo/index/xiaohongRight.png"
+      v-if="!(pageStore.pageType == 'mini')"
+    />
   </div>
 </template>
 <style scoped>
@@ -56,12 +65,16 @@ const pageStore = usePageStore();
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   box-shadow: 0 5px 10px #999;
-  font-size: large;
+  font-size: x-large;
   justify-content: start;
   text-align: left;
   padding: 40px;
   height: fit-content;
   margin-bottom: 100px;
+}
+
+.content.mini {
+  font-size: small;
 }
 img {
   width: 100%;

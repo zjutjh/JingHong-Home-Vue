@@ -1,24 +1,56 @@
 <script setup lang="ts">
-import JHLabel from './JHLabel.vue';
-import { usePageStore } from '../stores/pages';
-import { ref } from 'vue';
+import JHLabel from "./JHLabel.vue";
+import { usePageStore } from "../stores/pages";
+import { ref } from "vue";
 const pageStore = usePageStore();
 const Events = [
-  ['2002年5月', '精弘网络成立', '/photo/index/story1.png', '精弘网络'],
-  ['2003年5月', '推出精弘论坛\nbbs.zjut.com', '/photo/index/story2.png', '精弘论坛'],
-  ['2004年10月', 'Feel电台创立\n radio.zjut.com', '/photo/index/story3.png', 'Feel电台'],
-  ['2005年5月', '推出第一版学生邮箱\n mail.zjut.com', '/photo/index/story4.png', '学生邮箱'],
-  ['2012年3月', '第一届精弘毅行', '/photo/index/story5.jpg', '精弘毅行'],
-  ['2012年12月', '荣获第五届"全国高校百佳网站"的荣誉称号', '/photo/index/story6.png', '百佳网站'],
-  ['2015年12月', '承办浙江工业大学首届"网络安全宣传月"活动', '/photo/index/story7.jpg', '网络安全宣传'],
-  ['2016年8月', '精弘网络微信服务号"获全国高校东部地区榜亚军"', '/photo/index/story8.jpg', '微信服务号'],
-  ['2017年2月', '微精弘改版正式上线', '/photo/index/story9.png', '微精弘'],
-  ['2020年2月', '第十三届精弘毅行', '/photo/index/story5.jpg', '精弘毅行'],
-]
+  ["2002年5月", "精弘网络成立", "/photo/index/story1.png", "精弘网络"],
+  [
+    "2003年5月",
+    "推出精弘论坛\nbbs.zjut.com",
+    "/photo/index/story2.png",
+    "精弘论坛",
+  ],
+  [
+    "2004年10月",
+    "Feel电台创立\n radio.zjut.com",
+    "/photo/index/story3.png",
+    "Feel电台",
+  ],
+  [
+    "2005年5月",
+    "推出第一版学生邮箱\n mail.zjut.com",
+    "/photo/index/story4.png",
+    "学生邮箱",
+  ],
+  ["2012年3月", "第一届精弘毅行", "/photo/index/story5.jpg", "精弘毅行"],
+  [
+    "2012年12月",
+    '荣获第五届"全国高校百佳网站"的荣誉称号',
+    "/photo/index/story6.png",
+    "百佳网站",
+  ],
+  [
+    "2015年12月",
+    '承办浙江工业大学首届"网络安全宣传月"活动',
+    "/photo/index/story7.jpg",
+    "网络安全宣传",
+  ],
+  [
+    "2016年8月",
+    '精弘网络微信服务号"获全国高校东部地区榜亚军"',
+    "/photo/index/story8.jpg",
+    "微信服务号",
+  ],
+  ["2017年2月", "微精弘改版正式上线", "/photo/index/story9.png", "微精弘"],
+  ["2020年2月", "第十三届精弘毅行", "/photo/index/story5.jpg", "精弘毅行"],
+];
 const eventNow = ref<number>(0);
 </script>
 <template>
-  <JHLabel type="title" v-if="pageStore.pageType == 'normal'">精弘大事记</JHLabel>
+  <JHLabel type="title" v-if="pageStore.pageType == 'normal'"
+    >精弘大事记</JHLabel
+  >
   <div class="base-pc" v-if="pageStore.pageType == 'normal'">
     <div class="history-left">
       <img :src="Events[eventNow][2]" border="10" />
@@ -32,8 +64,13 @@ const eventNow = ref<number>(0);
   </div>
   <div class="history-choice">
     <div class="red-line"></div>
-    <div class="item" v-for="item, index in Events" :class="{ 'select': eventNow == index }"
-      v-bind:style="{ 'background-image': 'url(' + item[2] + ')' }" @click="eventNow = index"></div>
+    <div
+      class="item"
+      v-for="(item, index) in Events"
+      :class="{ select: eventNow == index }"
+      v-bind:style="{ 'background-image': 'url(' + item[2] + ')' }"
+      @click="eventNow = index"
+    ></div>
   </div>
 </template>
 <style scoped>
@@ -122,13 +159,13 @@ const eventNow = ref<number>(0);
 
 .history-right img {
   position: absolute;
-  width: 300px;
+  width: 250px;
+  height: 250px;
   border-color: #efefef;
   background-color: #efefef;
   border-radius: 50%;
   transform: rotate(-15deg);
-  right: 2vw;
-  top: 0;
+  top: 30px;
   bottom: 0;
 }
 

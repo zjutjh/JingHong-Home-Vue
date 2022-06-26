@@ -1,12 +1,13 @@
 <script setup lang="ts">
 const prop = defineProps<{
   type: string;
-}>()
+}>();
 </script>
 
 <template>
   <button
     :class="{
+      'button-mini': type == 'mini',
       'button-small': type == 'small',
       'button-middle': type == 'middle',
       'button-middle-disabled': type == 'middle-disabled',
@@ -19,20 +20,19 @@ const prop = defineProps<{
 <style scoped>
 .button-small {
   width: fit-content;
-  padding-inline: 30px;
+  padding-inline: 20px;
   height: 40px;
-  margin: 15px auto;
+  margin: auto;
   border-radius: 20px;
   background-color: #d20001;
   color: white;
   font-size: 15px;
-  line-height: 30px;
-  display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 2px 5px #999999;
   border: none;
   cursor: pointer;
+  white-space: nowrap;
 }
 .button-middle {
   width: fit-content;
@@ -63,5 +63,18 @@ const prop = defineProps<{
   align-items: center;
   border: none;
   cursor: not-allowed;
+}
+
+.button-mini {
+  width: fit-content;
+  border-radius: 30px;
+  font-size: small;
+  background-color: #d20001;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  margin: auto;
 }
 </style>

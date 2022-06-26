@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive } from "vue";
 export interface Card {
   img: string;
   introduction: string;
@@ -10,7 +10,7 @@ interface Props {
   type: string;
 }
 const props = defineProps<Props>();
-const carouselClass = reactive(['left', 'center', 'right']);
+const carouselClass = reactive(["left", "center", "right"]);
 var touchStartPosition = 0;
 var touchEndPosition = 0;
 function after() {
@@ -29,17 +29,23 @@ function touchMove(e: TouchEvent) {
   touchEndPosition = e.touches[0].clientX;
 }
 function touchEnd(e: TouchEvent) {
-  if (touchEndPosition - touchStartPosition > 0 && Math.abs(touchEndPosition - touchStartPosition) > 50) {
+  if (
+    touchEndPosition - touchStartPosition > 0 &&
+    Math.abs(touchEndPosition - touchStartPosition) > 50
+  ) {
     after();
-  } else if (touchEndPosition - touchStartPosition < 0 && Math.abs(touchEndPosition - touchStartPosition) > 50) {
+  } else if (
+    touchEndPosition - touchStartPosition < 0 &&
+    Math.abs(touchEndPosition - touchStartPosition) > 50
+  ) {
     before();
   }
 }
 onMounted(() => {
   for (var i = 0; i < props.card.length - 3; i++) {
-    carouselClass.push('after');
+    carouselClass.push("after");
   }
-})
+});
 </script>
 <style scoped>
 * {
@@ -48,7 +54,7 @@ onMounted(() => {
 
 .carousel {
   position: relative;
-  width: 90%;
+  width: 85%;
   margin: auto;
 }
 
@@ -214,12 +220,24 @@ ul li {
 }
 </style>
 <template>
-  <div class="carousel" :class="type" @touchstart="touchStart($event)" @touchmove="touchMove($event)"
-    @touchend="touchEnd($event)">
+  <div
+    class="carousel"
+    :class="type"
+    @touchstart="touchStart($event)"
+    @touchmove="touchMove($event)"
+    @touchend="touchEnd($event)"
+  >
     <div class="whole">
       <ul type :class="type">
-        <li class="card" :class="carouselClass[index], type" v-for="(item, index) in props.card">
-          <div class="img" v-bind:style="{ 'background-image': 'url(' + item.img + ')' }"></div>
+        <li
+          class="card"
+          :class="[carouselClass[index], type]"
+          v-for="(item, index) in props.card"
+        >
+          <div
+            class="img"
+            v-bind:style="{ 'background-image': 'url(' + item.img + ')' }"
+          ></div>
           <div class="introduction">{{ item.introduction }}</div>
           <div class="content">
             <div>{{ item.content }}</div>

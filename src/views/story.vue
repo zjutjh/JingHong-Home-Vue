@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import JHLabel from '../components/JHLabel.vue';
-import JHCard from '../components/JHCard.vue';
-import Footer from '../components/Footer.vue';
-import { usePageStore } from '../stores/pages';
-import CarouselPictures from '../components/CarouselPicturesBig.vue';
+import JHLabel from "../components/JHLabel.vue";
+import JHCard from "../components/JHCard.vue";
+import Footer from "../components/Footer.vue";
+import { usePageStore } from "../stores/pages";
+import CarouselPictures from "../components/CarouselPicturesBig.vue";
 // import { Picture } from '../components/CarouselPictures.vue';
-import CarouselCards from '../components/CarouselCards.vue';
-import JHButton from '../components/JHButton.vue';
-import { useRouter } from 'vue-router';
+import CarouselCards from "../components/CarouselCards.vue";
+import JHButton from "../components/JHButton.vue";
+import { useRouter } from "vue-router";
 const router = useRouter();
 const pageStore = usePageStore();
 const yixingImgs = [
@@ -53,10 +53,11 @@ const persons = [
   },
 ];
 function toProduct() {
-  router.push('/product');
+  router.push("/product");
 }
 </script>
-<style scoped>.shiming-base.normal {
+<style scoped>
+.shiming-base.normal {
   width: 80%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -75,9 +76,11 @@ function toProduct() {
 .shiming-base.mini {
   width: 80%;
   display: grid;
-  grid-template-rows: 10% 700px;
+  grid-template-rows: 10% 1fr;
   margin: auto;
-  grid-row-gap: 10px;
+  grid-row-gap: 5px;
+  align-items: center;
+  padding: 10px;
 }
 
 .shiming-imgs {
@@ -98,7 +101,6 @@ function toProduct() {
 
 .shiming {
   text-align: start;
-  padding: 20px;
   padding-left: 10%;
   border-left: 5px solid #d20001;
   height: fit-content;
@@ -157,21 +159,30 @@ function toProduct() {
 
 .shenghuo-imgs img {
   height: 60%;
-}</style>
+}
+</style>
 <template>
-  <div style="height:100px"></div>
+  <div style="height: 100px"></div>
   <JHLabel type="title">我们的故事</JHLabel>
   <JHCard type="large" title="我们的使命" :isTitle="true">
     <div class="shiming-base" :class="pageStore.pageType">
-      <img class="shiming-img" src="/photo/index/shiming.png" v-if="pageStore.pageType == 'normal'" />
-      <div class="shiming-imgs" v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'">
+      <img
+        class="shiming-img"
+        src="/photo/index/shiming.png"
+        v-if="pageStore.pageType == 'normal'"
+      />
+      <div
+        class="shiming-imgs"
+        v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'"
+      >
         <img class="shiming-imgs-img" src="/photo/index/shiming1.png" />
         <img class="shiming-imgs-img" src="/photo/index/shiming2.png" />
         <img class="shiming-imgs-img" src="/photo/index/shiming3.png" />
         <img class="shiming-imgs-img" src="/photo/index/shiming4.png" />
       </div>
       <div class="shiming" :class="pageStore.pageType">
-        <h2>相关平台 | Related Platform</h2>精弘网络采用朝晖、屏峰、莫干山三个校区共同建制
+        <h2>相关平台 | Related Platform</h2>
+        精弘网络采用朝晖、屏峰、莫干山三个校区共同建制
         <br />目前运营和维护的平台包括但不仅限
         <br />浙江工业大学精弘网络微信服务号、
         <br />精小弘在线微信服务号、微精弘微信小程序、
@@ -185,7 +196,8 @@ function toProduct() {
   <JHCard type="large" title="精弘毅行" :isTitle="true">
     <CarouselPictures :imgs="yixingImgs"></CarouselPictures>
     <div class="yixing-content" :class="pageStore.pageType">
-      毅行，顾名思义，就是考验毅力的徒步活动。参与毅行活动并走完全程对很多人来讲都是一种挑战，但是有很多人也正是因为毅行的体验，才发觉自己也会有无限可能。</div>
+      毅行，顾名思义，就是考验毅力的徒步活动。参与毅行活动并走完全程对很多人来讲都是一种挑战，但是有很多人也正是因为毅行的体验，才发觉自己也会有无限可能。
+    </div>
     <div class="yixing-content" :class="pageStore.pageType">
       每年一度的"精弘毅行"始于2012年，是浙江工业大学的一次盛会，超过8000位师生校友从学校出发，徒步行走十公里或以上的路程后回到学校。“精弘毅行"鼓励工大学子暂离网络，走出宿舍，以最原始的徒步行走的方式亲近自然，感受青春的活力和朝气。因此，精弘毅行也是每届精弘人必要经历的一次挑战。
     </div>
@@ -199,15 +211,21 @@ function toProduct() {
   <JHCard type="large" title="生活社交" :isTitle="true">
     <div class="shenghuo">
       <img src="/photo/story/shenghuo/shenghuo1.jpg" />
-      <div class="content">精弘还定期举行素质拓展，各种小游戏需要每一位成员的通力合作，在游戏中互相了解，感受精弘大家庭的温暖。</div>
+      <div class="content">
+        精弘还定期举行素质拓展，各种小游戏需要每一位成员的通力合作，在游戏中互相了解，感受精弘大家庭的温暖。
+      </div>
       <img src="/photo/story/shenghuo/shenghuo2.jpg" />
-      <div class="content">在每年一度的年会上，精弘网络的每个部门都准备了具有特色的节目，既是对过去工作生活的总结，也是对来年生活的美好祝愿。</div>
+      <div class="content">
+        在每年一度的年会上，精弘网络的每个部门都准备了具有特色的节目，既是对过去工作生活的总结，也是对来年生活的美好祝愿。
+      </div>
       <img src="/photo/story/shenghuo/shenghuo3.jpg" />
       <div class="shenghuo-imgs">
         <img src="/photo/story/shenghuo/shenghuo4.jpg" />
         <img src="/photo/story/shenghuo/shenghuo5.jpg" />
       </div>
-      <div class="content">在各个部门内还有各式各样的轰趴活动，聚餐、唱K或是游西湖。在精弘，绝不是只有工作，还有数不清的快乐。</div>
+      <div class="content">
+        在各个部门内还有各式各样的轰趴活动，聚餐、唱K或是游西湖。在精弘，绝不是只有工作，还有数不清的快乐。
+      </div>
     </div>
   </JHCard>
 
@@ -216,13 +234,20 @@ function toProduct() {
     <div class="jiyu-base" :class="pageStore.pageType">
       <CarouselCards :card="persons" :type="pageStore.pageType"></CarouselCards>
     </div>
-    <div class="jiyu-base" :class="pageStore.pageType" v-if="pageStore.pageType != 'normal'"></div>
+    <div
+      class="jiyu-base"
+      :class="pageStore.pageType"
+      v-if="pageStore.pageType != 'normal'"
+    ></div>
   </div>
 
-  <div style="height:200px"></div>
+  <div style="height: 200px"></div>
   <JHButton type="middle" @click="toProduct">
     我们的产品
-    <img src="/photo/svg/rightArrow.svg" style="width:20px; margin-left:20px;" />
+    <img
+      src="/photo/svg/rightArrow.svg"
+      style="width: 20px; margin-left: 20px"
+    />
   </JHButton>
   <Footer />
 </template>
