@@ -59,7 +59,7 @@ onMounted(() => {
 }
 
 .carousel {
-  height: 600px;
+  height: 700px;
 }
 
 .carousel.middle {
@@ -165,7 +165,7 @@ ul li {
   height: 50px;
   position: absolute;
   top: 60%;
-  right: 90%;
+  right: 95%;
   margin: auto;
   margin: auto;
   background: center/cover no-repeat url(/photo/svg/右箭头红.svg);
@@ -178,7 +178,7 @@ ul li {
   height: 50px;
   position: absolute;
   top: 60%;
-  left: 90%;
+  left: 95%;
   margin: auto;
   background: center/cover no-repeat url(/photo/svg/右箭头红.svg);
   cursor: pointer;

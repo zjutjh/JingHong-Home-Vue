@@ -7,10 +7,24 @@ const prop = defineProps<{
 </script>
 <template>
   <div
-    :class="{ 'container-large': type == 'large', 'container-small': type == 'small', 'container-large-m': type == 'large-m', 'container-small-m': type == 'small-m' }">
+    :class="{
+      'container-large': type == 'large',
+      'container-small': type == 'small',
+      'container-large-m': type == 'large-m',
+      'container-small-m': type == 'small-m',
+    }"
+  >
     <div
-      :class="{ 'title-large': type == 'large', 'title-small': type == 'small', 'title-large-m': type == 'large-m', 'title-small-m': type == 'small-m' }"
-      v-show="isTitle">{{ prop.title }}</div>
+      :class="{
+        'title-large': type == 'large',
+        'title-small': type == 'small',
+        'title-large-m': type == 'large-m',
+        'title-small-m': type == 'small-m',
+      }"
+      v-show="isTitle"
+    >
+      {{ prop.title }}
+    </div>
     <div class="content">
       <slot></slot>
     </div>
@@ -18,25 +32,24 @@ const prop = defineProps<{
 </template>
 <style scoped>
 .container-large {
-  margin: 20px;
-  width: 90%;
+  width: 80%;
   height: fit-content + 10px;
   background-color: white;
   margin: 3vw auto 0;
   box-shadow: 0 5px 10px #999999;
-  padding: 2vw;
+  padding: 20px;
   border-radius: 10px;
 }
 
 .title-large {
   width: fit-content;
-  padding: 1vw;
-  padding-inline: 10px;
+  padding: 10px;
+  padding-inline: 80px;
   height: 50px;
   background-color: #d20001;
   position: relative;
   top: 10px;
-  left: -4vw;
+  left: -6vw;
   font-size: x-large;
   color: white;
   font-weight: bolder;
@@ -122,6 +135,6 @@ const prop = defineProps<{
 }
 
 .content {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 </style>

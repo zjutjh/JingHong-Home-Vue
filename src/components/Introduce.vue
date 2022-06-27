@@ -11,7 +11,7 @@ const pageStore = usePageStore();
     <div class="introduce">
       <div class="title">
         {{
-          pageStore.pageType == "mini"
+          pageStore.pageType == "mini" || pageStore.pageType == "middle"
             ? "精弘网络 \nJinghong Union"
             : "精弘网络⼁Jinghong Union"
         }}
@@ -38,6 +38,8 @@ const pageStore = usePageStore();
   margin-top: 50px;
   margin-bottom: 100px;
   align-items: center;
+  width: 80%;
+  margin: auto;
 }
 .base.mini {
   display: unset;
@@ -48,6 +50,7 @@ const pageStore = usePageStore();
   width: 80%;
   margin: auto;
   margin-top: 50px;
+  align-items: center;
 }
 
 .title {
@@ -56,9 +59,7 @@ const pageStore = usePageStore();
   border-top-right-radius: 10px;
   font-size: xx-large;
   white-space: pre-line;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
+  padding: 10px;
 }
 .content {
   background-color: white;
@@ -77,6 +78,7 @@ const pageStore = usePageStore();
   font-size: small;
 }
 img {
+  position: relative;
   width: 100%;
 }
 </style>
