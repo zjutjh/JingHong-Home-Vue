@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, toRef } from "vue";
+import { onBeforeMount, onMounted, ref, toRef } from "vue";
 import { RouterView } from "vue-router";
 import { usePageStore } from "./stores/pages";
 const pageStore = usePageStore();

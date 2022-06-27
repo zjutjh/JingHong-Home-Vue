@@ -1,11 +1,17 @@
 <script lang="ts" setup>
-import { CSSProperties, reactive, ref } from 'vue';
+import { onMounted, ref } from "vue";
 import { usePageStore } from "../stores/pages";
 const pageStore = usePageStore();
-
+const loaded = ref<boolean>(false);
+onMounted(() => {
+  loaded.value = true;
+});
 </script>
 <template>
-  <div class="start" :class="pageStore.pageType">
+  <div
+    class="start"
+    :class="[pageStore.pageType, loaded ? 'loaded' : 'unloaded']"
+  >
     <div class="title1" :class="pageStore.pageType">精弘网络,取精用弘</div>
     <img class="downArrow" src="/photo/svg/downArrow.svg" />
   </div>
@@ -26,25 +32,23 @@ const pageStore = usePageStore();
 }
 .start.normal {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(/photo/index/startPc.jpg) no-repeat center;
+    url(/photo/index/startPc2.jpg) no-repeat center;
   background-size: cover;
   height: 100vh;
-  transition: background-image 1s;
 }
 .start.middle {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(/photo/index/startPc.jpg) no-repeat center;
+    url(/photo/index/startPc2.jpg) no-repeat center;
   background-size: cover;
   height: 100vh;
-  transition: background-image 1s;
 }
 .start.mini {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(/photo/index/startMobile.jpg) no-repeat center;
   background-size: cover;
   height: 100vh;
-  transition: background-image 1s;
 }
+
 .title1 {
   color: white;
   font-family: "song";

@@ -16,6 +16,7 @@ const router = useRouter();
 function toStory() {
   router.push("/story");
 }
+var loaded = false;
 </script>
 <style scoped>
 .story img {
@@ -42,7 +43,7 @@ function toStory() {
     type="large"
     class="story"
   >
-    <img src="/photo/index/startPc.jpg" />
+    <img src="/photo/index/story.jpg" />
     <JHButton type="middle" @click="toStory">
       我们的故事
       <img
