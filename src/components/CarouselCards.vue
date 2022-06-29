@@ -75,7 +75,8 @@ onMounted(() => {
   width: 80%;
   height: 100%;
   overflow: visible;
-  margin: 2rem auto 0;
+  margin: auto;
+  margin-top: -80px;
 }
 
 ul {

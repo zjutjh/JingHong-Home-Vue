@@ -26,7 +26,7 @@ const persons = [
   {
     img: "/photo/story/jiyu/小树.jpg",
     introduction:
-      "小树\n\n前精弘设计总监\n预计于2022年毕业于浙工大\n现就读于浙江工业大学",
+      "小树\n\n前精弘设计总监\n于2022年毕业于浙工大\n现就读于浙江工业大学",
     content:
       "大三的时候加入精弘，是我纠结了很久做的一个决定，现在想想倒觉得很庆幸。光是能够遇见你们，就已经很美好 了。\n       没有当客服的经验，从新生群同意每一个新生宝宝的入群验证到后来与他们的见面，对我来说都是新奇的体验。在很多新生的身上，我都能看到刚收到录取通知书时我的样子。不耐烦的回答一个个问题，也是希望她们能少走弯路。\n       深入接触后，发现精弘网络其实是一个很温暖的组织，可以说很多人都是“为爱发电”，有着很强的责任心。\n        希望大家在精弘的日子里可以收获到属于自己的美好。",
   },
@@ -101,6 +101,7 @@ function toProduct() {
 
 .shiming {
   text-align: start;
+  align-items: center;
   padding-left: 10%;
   border-left: 5px solid #d20001;
   height: fit-content;
@@ -108,6 +109,7 @@ function toProduct() {
 
 .shiming.mini {
   border-left: none;
+  padding-left: 0;
 }
 
 .shiming h2 {

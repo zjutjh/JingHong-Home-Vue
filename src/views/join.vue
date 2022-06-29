@@ -1,45 +1,59 @@
 <script setup lang="ts">
-import Footer from '../components/Footer.vue';
-import { useRouter } from 'vue-router';
-import JHCard from '../components/JHCard.vue';
-import { ENV } from '../utils/const';
-import { usePageStore } from '../stores/pages';
-import JHButton from '../components/JHButton.vue';
-import JHLabel from '../components/JHLabel.vue';
+import Footer from "../components/Footer.vue";
+import { useRouter } from "vue-router";
+import JHCard from "../components/JHCard.vue";
+import { ENV } from "../utils/const";
+import { usePageStore } from "../stores/pages";
+import JHButton from "../components/JHButton.vue";
+import JHLabel from "../components/JHLabel.vue";
 const pageStore = usePageStore();
 const router = useRouter();
 function toRecruit() {
-  window.open('/join/recruit');
+  window.open("/join/recruit");
 }
 function toLong() {
-  if (ENV == 'dev') {
-    window.open('/join/long');
+  if (ENV == "dev") {
+    window.open("/join/long");
   } else {
     return false;
   }
 }
 </script>
 <template>
-  <JHCard title="加入我们" type="large" :is-title="true" style="margin-top:20vh">
+  <JHCard
+    title="加入我们"
+    type="large"
+    :is-title="true"
+    style="margin-top: 20vh"
+  >
     <div class="base" :class="pageStore.pageType">
-      <img class="haibao" src="/photo/haibao/pc.jpg" v-if="pageStore.pageType == 'normal'" />
-      <img class="haibao" src="/photo/haibao/mob.jpg" v-if="pageStore.pageType != 'normal'" />
+      <img
+        class="haibao"
+        src="/photo/haibao/pc.jpg"
+        v-if="pageStore.pageType == 'normal'"
+      />
+      <img
+        class="haibao"
+        src="/photo/haibao/mob.jpg"
+        v-if="pageStore.pageType != 'normal'"
+      />
       <div class="detail-base" :class="pageStore.pageType">
         <div class="btn">
-          <JHButton type="middle" @click="toRecruit">招新季报名</JHButton>(点击报名)
-          <JHButton type="middle-disabled" @click="toLong">长期招新报名</JHButton>(暂未开放)
+          <JHButton type="middle" @click="toRecruit">招新季报名</JHButton
+          >(点击报名)
+          <JHButton type="middle-disabled" @click="toLong"
+            >长期招新报名</JHButton
+          >(暂未开放)
         </div>
         <div class="introduce" :class="pageStore.pageType">
           <JHLabel type="small">线下摆摊</JHLabel>屏峰：20212021年9月15日至16日
-          <br />地点：支干路
-          <br />
-          <br />朝晖：2021年9月15日至16日
+          <br />地点：支干路 <br />朝晖：2021年9月15日至16日
           <br />地点：上塘河畔
+          <div style="margin: 30px"></div>
           <JHLabel type="small">招新宣讲</JHLabel>屏峰：2021年9月10日晚6：30
-          <br />地点：广知C 301
-          <br />
-          <br />朝晖：2021年9月11日晚6：30
+          <br />地点：广知C 301 <br />朝晖：2021年9月11日晚6：30
           <br />地点：新教 201
+          <div style="margin: 30px"></div>
           <JHLabel type="small">招新群号</JHLabel>715270127
         </div>
       </div>
@@ -60,12 +74,19 @@ function toLong() {
   </JHCard>
 
   <JHCard title="部门结构一览图" type="large" :is-title="true">
-    <img src="/photo/haibao/structPc.png" style="width:70%" v-if="pageStore.pageType == 'normal'" />
-    <img src="/photo/haibao/structMob.png" style="width:70%" v-if="pageStore.pageType != 'normal'" />
+    <img
+      src="/photo/haibao/structPc.png"
+      style="width: 70%"
+      v-if="pageStore.pageType == 'normal'"
+    />
+    <img
+      src="/photo/haibao/structMob.png"
+      style="width: 70%"
+      v-if="pageStore.pageType != 'normal'"
+    />
   </JHCard>
   <Footer />
 </template>
-
 
 <style scoped>
 .base {

@@ -96,7 +96,7 @@ function toDepartment() {
 
 .detail .title {
   font-size: 24px;
-  padding-bottom: 15px;
+  padding-bottom: 30px;
   border-bottom: 5px solid #d20001;
   width: 80%;
   margin: auto;
@@ -118,6 +118,7 @@ function toDepartment() {
   width: 80%;
   margin: auto;
   font-size: 20px;
+  margin-top: 20px;
 }
 
 .detail img {

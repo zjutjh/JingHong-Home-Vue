@@ -1,11 +1,11 @@
 <script setup lang="ts">
 interface Props {
-  label: string,
-  type: string,
-  modelValue: string | number,
-  valid: boolean,
-  notice: string,
-  disabled: boolean,
+  label: string;
+  type: string;
+  modelValue: string | number;
+  valid: boolean;
+  notice: string;
+  disabled: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -23,7 +23,7 @@ function handleInput(event: Event) {
     <div class="label" :class="type">{{ props.label }}</div>
     <select
       class="select"
-      :class="type, valid ? 'valid' : 'invalid'"
+      :class="[type, valid ? 'valid' : 'invalid']"
       :value="modelValue"
       @input="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
       :disabled="disabled"
@@ -31,7 +31,9 @@ function handleInput(event: Event) {
       <slot></slot>
     </select>
     <span></span>
-    <div class="notice" :class="type, valid ? 'valid' : 'invalid'">* {{ props.notice }}</div>
+    <div class="notice" :class="[type, valid ? 'valid' : 'invalid']">
+      * {{ props.notice }}
+    </div>
   </div>
 </template>
 
@@ -54,7 +56,6 @@ function handleInput(event: Event) {
   font-size: 1vw;
   max-width: 25vw;
 }
-
 .select.normal {
   outline: none;
   background-color: white;
@@ -106,7 +107,7 @@ function handleInput(event: Event) {
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 8px;
+  font-size: 15px;
   border-radius: 10px;
   border: none;
 }

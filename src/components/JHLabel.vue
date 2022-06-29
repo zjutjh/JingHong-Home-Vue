@@ -73,23 +73,17 @@ const prop = defineProps<{
   /* height: 30px; */
   width: fit-content;
   border-radius: 5px;
-  display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  /* font-size: 15px; */
-  font-size: 1vw;
+  padding: 5px;
   padding-inline: 20px;
-  margin: 1vh;
+  margin: 10px;
 }
 
 .small .h {
   display: block;
-  font-size: 1vw;
-  margin-block-start: 0.67em;
-  margin-block-end: 0.67em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  font-size: 15px;
 }
 
 .nano {

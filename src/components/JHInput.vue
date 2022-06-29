@@ -1,10 +1,10 @@
 <script setup lang="ts">
 interface Props {
-  type: string,
-  modelValue: string,
-  label: string,
-  notice: string,
-  valid: boolean,
+  type: string;
+  modelValue: string;
+  label: string;
+  notice: string;
+  valid: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -13,19 +13,20 @@ const props = withDefaults(defineProps<Props>(), {
   notice: "此项不为空",
   valid: true,
 });
-
 </script>
 <template>
   <div class="base" :class="type">
     <div class="label" :class="type">{{ props.label }}</div>
     <input
       class="input"
-      :class="type, (valid ? 'valid' : 'invalid')"
+      :class="[type, valid ? 'valid' : 'invalid']"
       :value="modelValue"
       @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
     />
     <span></span>
-    <div class="notice" :class="type, valid ? 'valid' : 'invalid'">* {{ props.notice }}</div>
+    <div class="notice" :class="[type, valid ? 'valid' : 'invalid']">
+      * {{ props.notice }}
+    </div>
     <!-- {{ props }} -->
   </div>
 </template>
@@ -102,7 +103,7 @@ const props = withDefaults(defineProps<Props>(), {
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 8px;
+  font-size: 15px;
   border-radius: 10px;
   border: none;
 }
