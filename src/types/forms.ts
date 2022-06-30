@@ -11,6 +11,8 @@ export interface INormalForm {
   want2: string;
   profile: string;
   feedback: string;
+  captcha_id: string;
+  captcha_code: string;
 }
 
 export interface IDevelopForm {
@@ -59,4 +61,9 @@ export interface IFormsData {
   sj: department;
   kfb: department;
   yb: department;
+}
+
+export interface ICaptcha {
+  id: string;
+  b64s: string;
 }

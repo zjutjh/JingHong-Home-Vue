@@ -1,23 +1,31 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
 const props = defineProps<{
   show: boolean;
   type: string;
 }>();
 const emits = defineEmits<{
   (e: "changeShow"): void;
+  (e: "cancel"): void;
 }>();
-
+const refBack = ref<HTMLDivElement>();
 function confirmClicked() {
   emits("changeShow");
+}
+function cancelClicked(e: MouseEvent) {
+  if (e.target == refBack.value) {
+    emits("cancel");
+  }
 }
 </script>
 <template>
   <div v-if="props.show" :class="type">
-    <div class="back" @click="confirmClicked()">
+    <div class="back" @click="cancelClicked($event)" ref="refBack">
       <div class="notice">
-        <span class="message">
+        <div class="message">
           <slot></slot>
-        </span>
+        </div>
         <button class="button" @click="confirmClicked">确定</button>
       </div>
     </div>
