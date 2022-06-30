@@ -59,7 +59,7 @@ onMounted(() => {
 }
 
 .carousel {
-  height: 700px;
+  height: 800px;
 }
 
 .carousel.middle {

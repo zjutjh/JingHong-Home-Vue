@@ -20,13 +20,13 @@ const prop = defineProps<{
 <style scoped>
 .button-small {
   width: fit-content;
-  padding-inline: 20px;
-  height: 40px;
+  padding-inline: 24px;
+  height: 60px;
   margin: auto;
   border-radius: 20px;
   background-color: #d20001;
   color: white;
-  font-size: 15px;
+  font-size: 20px;
   justify-content: center;
   align-items: center;
   box-shadow: 0 2px 5px #999999;

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{
-  show: boolean,
-  type: string,
+  show: boolean;
+  type: string;
 }>();
 const emits = defineEmits<{
   (e: "changeShow"): void;
@@ -23,7 +23,8 @@ function confirmClicked() {
     </div>
   </div>
 </template>
-<style scoped>.pc .back {
+<style scoped>
+.pc .back {
   position: fixed;
   left: 0;
   top: 0;
@@ -50,7 +51,7 @@ function confirmClicked() {
 
 .pc .message {
   color: white;
-  font-size: 1.3vw;
+  font-size: 20px;
 }
 
 .pc .button {
@@ -59,6 +60,7 @@ function confirmClicked() {
   margin: auto;
   margin-bottom: 10px;
   font-size: 20px;
+  border: none;
 }
 
 .mob .back {
@@ -94,4 +96,6 @@ function confirmClicked() {
   width: fit-content;
   border-radius: 10px;
   margin: auto;
-}</style>
+  border: none;
+}
+</style>

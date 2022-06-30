@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { computed, onMounted, ref, watch } from 'vue';
-import { usePageStore } from '../stores/pages';
-import { RouterLink } from 'vue-router';
+import { computed, onMounted, ref, watch } from "vue";
+import { usePageStore } from "../stores/pages";
+import { RouterLink } from "vue-router";
 import store from "../stores/store";
-import { storeToRefs } from 'pinia';
+import { storeToRefs } from "pinia";
 const base = ref<HTMLDivElement>();
 const isAtTop = ref<boolean>(true);
 const pageStore = usePageStore(store);
@@ -14,7 +14,7 @@ const hide = ref<boolean>(false);
 const { pageNow } = storeToRefs(pageStore);
 watch(pageNow, () => {
   handleScroll();
-})
+});
 function handleScroll() {
   let nowScrollPosition = window.pageYOffset;
   if (nowScrollPosition < 300 && pageStore.pageNow == 0) {
@@ -32,39 +32,58 @@ function handleScroll() {
 }
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener("scroll", handleScroll);
   oldScrollPosition.value = 0;
-})
+});
 
 const links = [
-  { name: '首页', link: '/index' },
-  { name: '我们的故事', link: '/story' },
-  { name: '我们的产品', link: '/product' },
-  { name: '我的的部门', link: '/department' },
-  { name: '加入我们', link: '/join' },
-]
+  { name: "首页", link: "/index" },
+  { name: "我们的故事", link: "/story" },
+  { name: "我们的产品", link: "/product" },
+  { name: "我的的部门", link: "/department" },
+  { name: "加入我们", link: "/join" },
+];
 
 function listBtnClicked() {
   btnOn.value = !btnOn.value;
   listShow.value = !listShow.value;
 }
-
 </script>
 <template>
   <div
-    :class="isAtTop && pageStore.pageNow == 0 && btnOn == false ? 'atTop' : 'notAtTop', pageStore.pageType, hide ? 'hide' : ''"
-    class="base" ref="base">
+    :class="[
+      isAtTop && pageStore.pageNow == 0 && btnOn == false
+        ? 'atTop'
+        : 'notAtTop',
+      pageStore.pageType,
+      hide ? 'hide' : '',
+    ]"
+    class="base"
+    ref="base"
+  >
     <img class="logo" :class="pageStore.pageType" src="/photo/top/logo.png" />
-    <div v-for="(l, index) in links" class="link" :class="index == pageStore.pageNow ? 'select' : 'notSelect'"
-      v-show="pageStore.pageType == 'normal'">
+    <div
+      v-for="(l, index) in links"
+      class="link"
+      :class="index == pageStore.pageNow ? 'select' : 'notSelect'"
+      v-show="pageStore.pageType == 'normal'"
+    >
       <router-link :to="l.link">{{ l.name }}</router-link>
     </div>
-    <div class="listButton" :class="btnOn ? 'btnOn' : 'btnOff'"
-      v-show="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'" @click="listBtnClicked"></div>
+    <div
+      class="listButton"
+      :class="btnOn ? 'btnOn' : 'btnOff'"
+      v-show="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'"
+      @click="listBtnClicked"
+    ></div>
 
     <div class="list" :class="pageStore.pageType" v-show="listShow">
-      <div v-for="(l, index) in links" class="listItem" :class="index == pageStore.pageNow ? 'select' : 'notSelect'"
-        @click="listBtnClicked">
+      <div
+        v-for="(l, index) in links"
+        class="listItem"
+        :class="index == pageStore.pageNow ? 'select' : 'notSelect'"
+        @click="listBtnClicked"
+      >
         <router-link :to="l.link">{{ l.name }}</router-link>
       </div>
     </div>
@@ -127,12 +146,12 @@ a {
 
 .base.middle {
   height: 90px;
-  grid-template-columns: 1fr 50px;
+  grid-template-columns: 1fr 60px;
 }
 
 .base.mini {
   height: 50px;
-  grid-template-columns: 1fr 50px;
+  grid-template-columns: 1fr 60px;
 }
 
 .base.hide {
@@ -154,12 +173,6 @@ a {
 .logo.mini {
   width: 120px;
   transform: scale(0.8);
-}
-
-.testDiv {
-  width: 20px;
-  height: 20px;
-  background-color: white;
 }
 
 .link.select {
@@ -187,8 +200,8 @@ a {
 }
 
 .listButton {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
 }
 
 .listButton.btnOn {

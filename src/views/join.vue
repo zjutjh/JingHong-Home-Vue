@@ -58,7 +58,7 @@ function toLong() {
         </div>
       </div>
       <div class="qr">
-        <JHLabel type="small">最新动态</JHLabel>
+        <JHLabel type="small" style="margin: auto">最新动态</JHLabel>
         <div class="qr-base">
           <div class="qr-code">
             <img src="/photo/product/11.png" />
@@ -133,14 +133,15 @@ function toLong() {
 .introduce.mini .small {
   margin: auto;
 }
+
 .qr-base {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 200px;
   width: 200px;
   margin: auto;
 }
 .qr-base img {
+  margin-top: 20px;
   width: 80px;
   height: 80px;
 }
