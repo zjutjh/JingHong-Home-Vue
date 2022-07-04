@@ -97,7 +97,7 @@ function cancelClicked(e: MouseEvent) {
 
 .mob .message {
   color: white;
-  font-size: 4vw;
+  font-size: 18px;
 }
 
 .mob .button {

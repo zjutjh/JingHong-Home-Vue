@@ -48,22 +48,29 @@ const stuIDValid = ref(true);
 const wantValid = ref(false);
 const submitted = ref(false);
 const vertifyCaptchaNotice = ref<boolean>(false);
-function VerifyCaptcha() {
-  GetCaptcha();
-  vertifyCaptchaNotice.value = true;
-  while (!vertifyCaptchaNotice.value) {
-    if (form.captcha_code == "") {
-      return false;
-    } else {
-      return true;
-    }
-  }
-}
-function SubmitCaptcha() {
+async function SubmitCaptcha() {
   if (form.captcha_code == "") {
     alert("请输入验证码");
   } else {
+    alert("ok");
     vertifyCaptchaNotice.value = false;
+    var res = await NormalForm(form);
+    if (res.message == "ok") {
+      noticeMessage.value = "提交成功";
+      noticeShow.value = true;
+      vertifyCaptchaNotice.value = false;
+      while (true) {
+        await new Promise((resolve) => setTimeout(resolve, 3000));
+        if (noticeShow.value) {
+          noticeShow.value = false;
+          break;
+        }
+      }
+      router.push("/join");
+    } else {
+      noticeMessage.value = res.message; // 显示提示信息
+      noticeShow.value = true;
+    }
   }
 }
 async function submitClicked() {
@@ -78,26 +85,8 @@ async function submitClicked() {
     noticeShow.value = true;
     return;
   }
-
-  if (!VerifyCaptcha()) return; // 验证验证码
-
-  var res = await NormalForm(form);
-  if (res.message == "ok") {
-    noticeMessage.value = "提交成功";
-    noticeShow.value = true;
-    vertifyCaptchaNotice.value = false;
-    while (true) {
-      await new Promise((resolve) => setTimeout(resolve, 3000));
-      if (noticeShow.value) {
-        noticeShow.value = false;
-        break;
-      }
-    }
-    router.push("/join");
-  } else {
-    noticeMessage.value = res.message; // 显示提示信息
-    noticeShow.value = true;
-  }
+  GetCaptcha();
+  vertifyCaptchaNotice.value = true;
 }
 
 const noticeShow = ref(false);
@@ -164,15 +153,17 @@ async function GetCaptcha() {
     @changeShow="SubmitCaptcha"
     @cancel="vertifyCaptchaNotice = false"
   >
-    <div style="background-color: white; width: fit-content; margin: auto">
+    <div style="background-color: white; margin: auto; width: fit-content">
       <img
+        class="captcha"
+        :class="pageStore.pageType"
         :src="captcha.b64s"
         :style="captcha.b64s == '' ? 'display:none' : ''"
         @click="GetCaptcha"
       />
     </div>
     输入验证码：<br />
-    <input v-model="form.captcha_code" />
+    <input v-model="form.captcha_code" style="max-width: 80%" />
   </JHNotice>
   <div class="basic_info" :class="pageStore.pageType">
     <JHInput
@@ -332,7 +323,7 @@ async function GetCaptcha() {
   <Footer></Footer>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 template {
   min-width: 900px;
 }
@@ -505,5 +496,12 @@ template {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.captcha.mini,
+.captcha.middle {
+  width: 120px;
+}
+.captcha.normal {
+  width: 240px;
 }
 </style>
