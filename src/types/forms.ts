@@ -32,6 +32,8 @@ export interface IDevelopForm {
     document: boolean;
     git: boolean;
   }
+  captcha_id: string;
+  captcha_code: string;
 }
 
 interface department {

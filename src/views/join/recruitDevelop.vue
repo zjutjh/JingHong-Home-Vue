@@ -1,43 +1,81 @@
 <script setup lang="ts">
-import Footer from '../../components/Footer.vue';
-import { useRouter } from 'vue-router';
-import { DevelopForm } from '../../apis/forms';
-import { isPhone, isStuId } from '../../utils/valid';
-import { IDevelopForm } from '../../types/forms';
-import { reactive, ref } from 'vue';
-import { regions } from '../../utils/const';
-import JHButton from '../../components/JHButton.vue'
-import JHLabel from '../../components/JHLabel.vue';
-import JHNotice from '../../components/JHNotice.vue';
-import JHSelect from '../../components/JHSelect.vue';
-import JHInput from '../../components/JHInput.vue';
-import { usePageStore } from '../../stores/pages';
+import Footer from "../../components/Footer.vue";
+import { useRouter } from "vue-router";
+import { DevelopForm, NormalForm } from "../../apis/forms";
+import { isPhone, isStuId } from "../../utils/valid";
+import { ICaptcha, IDevelopForm } from "../../types/forms";
+import { reactive, ref } from "vue";
+import { regions } from "../../utils/const";
+import JHButton from "../../components/JHButton.vue";
+import JHLabel from "../../components/JHLabel.vue";
+import JHNotice from "../../components/JHNotice.vue";
+import JHSelect from "../../components/JHSelect.vue";
+import JHInput from "../../components/JHInput.vue";
+import { usePageStore } from "../../stores/pages";
+import { GetCaptchaForm } from "../../apis/captcha";
 const router = useRouter();
 const pageStore = usePageStore();
 const form = reactive(<IDevelopForm>{
-  name: '',
-  college: '',
-  gender: '-1',
-  phone: '',
-  stu_id: '',
-  qq: '',
-  campus: '',
-  region: 'no',
-
+  name: "",
+  college: "",
+  gender: "-1",
+  phone: "",
+  stu_id: "",
+  qq: "",
+  campus: "",
+  region: "no",
   ability: {
     api: false,
     front_end: false,
     document: false,
     git: false,
   },
-  ability_other: '',
-  feedback: '',
-})
-
+  ability_other: "",
+  feedback: "",
+  captcha_code: "",
+  captcha_id: "",
+});
+async function GetCaptcha() {
+  let res = await GetCaptchaForm();
+  console.log(res);
+  form.captcha_id = res.data.id;
+  captcha.b64s = res.data.b64s;
+}
 function returnClicked() {
-  router.push('/join');
+  router.push("/join");
 }
 
+const captcha = reactive(<ICaptcha>{
+  id: "",
+  b64s: "",
+});
+
+const vertifyCaptchaNotice = ref<boolean>(false);
+async function SubmitCaptcha() {
+  if (form.captcha_code == "") {
+    alert("请输入验证码");
+  } else {
+    alert("ok");
+    vertifyCaptchaNotice.value = false;
+    var res = await DevelopForm(form);
+    if (res.message == "ok") {
+      noticeMessage.value = "提交成功";
+      noticeShow.value = true;
+      vertifyCaptchaNotice.value = false;
+      while (true) {
+        await new Promise((resolve) => setTimeout(resolve, 3000));
+        if (noticeShow.value) {
+          noticeShow.value = false;
+          break;
+        }
+      }
+      router.push("/join");
+    } else {
+      noticeMessage.value = res.message; // 显示提示信息
+      noticeShow.value = true;
+    }
+  }
+}
 const phoneValid = ref(true);
 const stuIDValid = ref(true);
 const noticeShow = ref(false);
@@ -50,36 +88,21 @@ async function submitClicked() {
   nameValid.value = form.name.length > 2 && form.name.length < 12;
   submitted.value = true;
   if (!(phoneValid.value && stuIDValid.value && nameValid.value)) {
-    noticeMessage.value = "请将信息正确填写完整再提交"
+    noticeMessage.value = "请将信息正确填写完整再提交";
     noticeShow.value = true;
     return;
   }
   var ability = 0;
-  Object.values(form.ability).forEach(v => {
+  Object.values(form.ability).forEach((v) => {
     if (v) ability++;
   });
   if (ability < 2) {
-    noticeMessage.value = "请至少选择两项能力"
+    noticeMessage.value = "请至少选择两项能力";
     noticeShow.value = true;
     return;
   }
-  var res = await DevelopForm(form);
-  if (res.message == "ok") {
-    noticeMessage.value = "提交成功";
-    noticeShow.value = true;
-
-    while (true) {
-      await new Promise(resolve => setTimeout(resolve, 3000));
-      if (noticeShow.value) {
-        noticeShow.value = false;
-        break;
-      }
-      router.push('/join');
-    }
-  } else {
-    alert(res.message);
-    return;
-  }
+  GetCaptcha();
+  vertifyCaptchaNotice.value = true;
 }
 function closeNoticeShow() {
   noticeShow.value = false;
@@ -95,70 +118,156 @@ const genderOptions = [
 ];
 </script>
 <template>
-  <JHNotice :show="noticeShow" :type="pageStore.pageType == 'normal' ? 'pc' : 'mob'" @changeShow="closeNoticeShow"
-    type="pc">{{ noticeMessage }}</JHNotice>
-
-  <div style="height:20vh"></div>
+  <JHNotice
+    :show="noticeShow"
+    :type="pageStore.pageType == 'normal' ? 'pc' : 'mob'"
+    @changeShow="closeNoticeShow"
+    type="pc"
+    >{{ noticeMessage }}</JHNotice
+  >
+  <JHNotice
+    :show="vertifyCaptchaNotice"
+    :type="pageStore.pageType == 'normal' ? 'pc' : 'mob'"
+    @changeShow="SubmitCaptcha"
+    @cancel="vertifyCaptchaNotice = false"
+  >
+    <div style="background-color: white; margin: auto; width: fit-content">
+      <img
+        class="captcha"
+        :class="pageStore.pageType"
+        :src="captcha.b64s"
+        :style="captcha.b64s == '' ? 'display:none' : ''"
+        @click="GetCaptcha"
+      />
+    </div>
+    输入验证码：<br />
+    <input v-model="form.captcha_code" style="max-width: 80%" />
+  </JHNotice>
+  <div style="height: 20vh"></div>
   <JHLabel type="middle">技术部长期招新</JHLabel>
   <div class="basic_info">
-    <JHInput label="姓名" v-model="form.name" :valid="nameValid" notice="姓名长度2-12"
-      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"></JHInput>
-    <JHInput label="专业" v-model="form.campus" :valid="!(form.campus == '' && submitted)"
-      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'" notice="此项不为空"></JHInput>
-    <JHSelect label="性别" v-model.number:value="form.gender" :valid="!(form.gender == '-1' && submitted)"
-      :disabled="false" :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'" notice="此项不为空">
-      <option v-for="gender in genderOptions" :value="gender.value">{{ gender.label }}</option>
+    <JHInput
+      label="姓名"
+      v-model="form.name"
+      :valid="nameValid"
+      notice="姓名长度2-12"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
+    ></JHInput>
+    <JHInput
+      label="专业"
+      v-model="form.campus"
+      :valid="!(form.campus == '' && submitted)"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
+      notice="此项不为空"
+    ></JHInput>
+    <JHSelect
+      label="性别"
+      v-model.number:value="form.gender"
+      :valid="!(form.gender == '-1' && submitted)"
+      :disabled="false"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
+      notice="此项不为空"
+    >
+      <option v-for="gender in genderOptions" :value="gender.value">
+        {{ gender.label }}
+      </option>
     </JHSelect>
 
-    <JHInput label="联系电话" v-model="form.phone" :valid="phoneValid" notice="电话号码11位"
-      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"></JHInput>
-    <JHInput label="学号" v-model="form.stu_id" :valid="stuIDValid" notice="学号12位"
-      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"></JHInput>
-    <JHInput label="QQ" v-model="form.qq" :valid="!(form.qq == '' && submitted)"
-      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'" notice="此项不为空"></JHInput>
-    <JHInput label="学院" v-model="form.college" :valid="!(form.college == '' && submitted)" notice="此项不为空"
-      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"></JHInput>
+    <JHInput
+      label="联系电话"
+      v-model="form.phone"
+      :valid="phoneValid"
+      notice="电话号码11位"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
+    ></JHInput>
+    <JHInput
+      label="学号"
+      v-model="form.stu_id"
+      :valid="stuIDValid"
+      notice="学号12位"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
+    ></JHInput>
+    <JHInput
+      label="QQ"
+      v-model="form.qq"
+      :valid="!(form.qq == '' && submitted)"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
+      notice="此项不为空"
+    ></JHInput>
+    <JHInput
+      label="学院"
+      v-model="form.college"
+      :valid="!(form.college == '' && submitted)"
+      notice="此项不为空"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
+    ></JHInput>
 
-    <JHSelect label="校区" v-model="form.region" :valid="!(form.region == 'no' && submitted)" :disabled="false"
-      notice="此项不为空" :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'">
+    <JHSelect
+      label="校区"
+      v-model="form.region"
+      :valid="!(form.region == 'no' && submitted)"
+      :disabled="false"
+      notice="此项不为空"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"
+    >
       <option v-for="region in regions" :value="region">{{ region }}</option>
     </JHSelect>
   </div>
 
   <div class="other_info">
     <JHLabel type="small">必要能力勾选</JHLabel>
-    <div style="padding-bottom: 20px;border-bottom: 1px black solid;">
+    <div style="padding-bottom: 20px; border-bottom: 1px black solid">
       <div class="capability_1" :class="pageStore.pageType">
         <div>
           <input type="checkbox" v-model="form.ability.api" />能够独立开发api
         </div>
         <div>
-          <input type="checkbox" v-model="form.ability.front_end" />能够使用前端框架
+          <input
+            type="checkbox"
+            v-model="form.ability.front_end"
+          />能够使用前端框架
         </div>
         <div>
-          <input type="checkbox" v-model="form.ability.document" />能够独立撰写说明文档
+          <input
+            type="checkbox"
+            v-model="form.ability.document"
+          />能够独立撰写说明文档
         </div>
         <div>
-          <input type="checkbox" v-model="form.ability.git" />能够使用git进行团队协作交互
+          <input
+            type="checkbox"
+            v-model="form.ability.git"
+          />能够使用git进行团队协作交互
         </div>
       </div>
 
       <JHLabel type="small">其他能力</JHLabel>
-      <textarea class="capability_2" v-model="form.ability_other" :placeholder="textarea1Focused ? '' : '在这里输入你拥有的其他能力'"
-        @focusin="textarea1Focused = true" @focusout="textarea1Focused = false" />
+      <textarea
+        class="capability_2"
+        v-model="form.ability_other"
+        :placeholder="textarea1Focused ? '' : '在这里输入你拥有的其他能力'"
+        @focusin="textarea1Focused = true"
+        @focusout="textarea1Focused = false"
+      />
     </div>
 
     <JHLabel type="small">有什么想对技术部说的话，可以在这里告诉我们</JHLabel>
-    <textarea class="capability_2" v-model="form.feedback" :placeholder="textarea2Focused ? '' : '暂时想不到可以填写“无”'"
-      @focusin="textarea2Focused = true" @focusout="textarea2Focused = false" />
+    <textarea
+      class="capability_2"
+      v-model="form.feedback"
+      :placeholder="textarea2Focused ? '' : '暂时想不到可以填写“无”'"
+      @focusin="textarea2Focused = true"
+      @focusout="textarea2Focused = false"
+    />
   </div>
-  <div style="display:flex;">
+  <div style="display: flex">
     <JHButton type="small" @click="returnClicked">返回</JHButton>
     <JHButton type="small" @click="submitClicked">提交</JHButton>
   </div>
   <Footer />
 </template>
-<style scoped>template {
+<style scoped>
+template {
   min-width: 900px;
 }
 
@@ -243,4 +352,5 @@ const genderOptions = [
 
 .other_info option {
   width: 10px;
-}</style>
+}
+</style>

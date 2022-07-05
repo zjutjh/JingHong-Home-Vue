@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, reactive, ref, watch } from "vue";
+import { reactive, ref } from "vue";
 import Footer from "../../components/Footer.vue";
 import { useRouter } from "vue-router";
 import { usePageStore } from "../../stores/pages";
