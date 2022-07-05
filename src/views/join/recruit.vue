@@ -137,7 +137,6 @@ async function GetCaptcha() {
 
 <template>
   <div style="margin-top: 20vh"></div>
-  {{ form }}
   <Label type="middle">报名表</Label>
   <JHNotice
     :show="noticeShow"
@@ -310,7 +309,7 @@ async function GetCaptcha() {
     <JHButton type="small" @click="returnClicked">返回</JHButton>
     <JHButton type="small" @click="submitClicked">提交</JHButton>
   </div>
-  <button
+  <!-- <button
     @click="
       GetCaptcha();
       captcha.b64s =
@@ -319,7 +318,7 @@ async function GetCaptcha() {
     "
   >
     验证码测试
-  </button>
+  </button> -->
   <Footer></Footer>
 </template>
 

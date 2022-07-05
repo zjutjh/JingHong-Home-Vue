@@ -1,97 +1,74 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
-import Footer from '../../components/Footer.vue'
-import JHLabel from '../../components/JHLabel.vue'
-import JHCard from '../../components/JHCard.vue';
-import JHButton from '../../components/JHButton.vue';
-import { usePageStore } from '../../stores/pages';
+import { useRouter } from "vue-router";
+import Footer from "../../components/Footer.vue";
+import JHLabel from "../../components/JHLabel.vue";
+import JHCard from "../../components/JHCard.vue";
+import JHButton from "../../components/JHButton.vue";
+import { usePageStore } from "../../stores/pages";
 const router = useRouter();
 const pageStore = usePageStore();
 function developClicked() {
-  router.push('/join/develop');
+  router.push("/join/develop");
 }
 function returnClicked() {
-  router.push('/join');
+  router.push("/join");
 }
 </script>
 <template>
-  <div style="height: 20vh;"></div>
+  <div style="height: 20vh"></div>
   <JHLabel type="big">长期招新</JHLabel>
   <JHCard title="技术部" type="large" :is-title="true">
-    <div style="display: inline-block;">
-      <div class="des_jishu_content">
-        <div class="des_jishu_00">招新范围：</div>
-        <div class="des_jishu_01">浙工大全体学院、全体年级的学生</div>
+    <div class="base" :class="pageStore.pageType">
+      <div class="content">
+        招新范围：浙工大全体学院、全体年级的学生
         <br />
-        <div class="des_jishu_10">能力要求：</div>
-        <div class="des_jishu_11">1)能够独立开发api或使用前端框架</div>
-        <div class="des_jishu_21">2)能够独立撰写说明文档</div>
-        <div class="des_jishu_31">3)能够使用git进行团队协作交互</div>
+        <br />
+        能力要求： <br />
+        >1)能够独立开发api或使用前端框架 <br />
+        >2)能够独立撰写说明文档 <br />
+        >3)能够使用git进行团队协作交互
       </div>
+      <img
+        src="/photo/index/jingxiaohong.png"
+        class="img"
+        v-if="pageStore.pageType == 'normal'"
+      />
+      <JHButton type="small" @click="developClicked">报名</JHButton>
     </div>
-    <img src="/photo/index/jingxiaohong.png" class="img" v-if="pageStore.pageType == 'normal'" />
-    <JHButton type="small" @click="developClicked">报名</JHButton>
   </JHCard>
-
+  <div style="height: 20px"></div>
   <JHButton type="small" @click="returnClicked">返回</JHButton>
-  <div style="height:30vh"></div>
+  <div style="height: 30vh"></div>
   <Footer />
 </template>
 
-<style scoped>
-/* 样式 */
-template {
-  min-width: 900px;
-}
-.des_jishu_content {
-  margin: 20px;
-  text-align: left;
-  font-size: 18px;
-  display: grid;
-  grid-template-rows: repeat(4, 60px);
-  grid-template-columns: 100px;
-}
-.des_jishu_00 {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
-}
-.des_jishu_01 {
-  grid-column-start: 2;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
-}
-.des_jishu_10 {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 3;
-  grid-row-end: 4;
-}
-.des_jishu_11 {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 3;
-  grid-row-end: 4;
-}
-.des_jishu_21 {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 4;
-  grid-row-end: 5;
-}
-.des_jishu_31 {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 5;
-  grid-row-end: 6;
-}
-.img {
-  width: 20%;
-  /* width: vw; */
-  float: right;
-  margin-right: 10vw;
-  position: relative;
+<style scoped lang="scss">
+.base {
+  &.normal {
+    display: grid;
+    grid-template-areas:
+      "a b"
+      "a c";
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 1fr 50px;
+    grid-row-gap: 20px;
+    justify-items: center;
+  }
+  &.mini,
+  &.middle {
+    display: flex;
+    flex-direction: column;
+  }
+  .content {
+    grid-area: a;
+    padding: 20px;
+    text-align: left;
+  }
+
+  .img {
+    grid-area: b;
+    width: 200px;
+    object-fit: cover;
+  }
 }
 </style>
