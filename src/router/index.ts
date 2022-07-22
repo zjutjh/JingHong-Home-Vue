@@ -118,6 +118,10 @@ const routes = [
       navbar: () => import('../components/NavBarAdmin.vue'),
     },
   },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/index'
+  }
 ]
 
 const router = createRouter(
