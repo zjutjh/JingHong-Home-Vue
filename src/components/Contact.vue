@@ -138,15 +138,17 @@
 }
 .loading {
   height: 180px;
-  display: grid;
-  grid-template-rows: 30% 40% 30%;
+  /* display: grid; */
+  /* grid-template-rows: 30% 40% 30%; */
+  display: flex;
+  flex-direction: column;
 }
 .loading.mini {
   height: 100px;
 }
 .loading .loading-bar-border {
   width: 80%;
-  height: 50%;
+  height: 30px;
   border-radius: 100px;
   overflow: hidden;
   border: 5px solid #d20001;

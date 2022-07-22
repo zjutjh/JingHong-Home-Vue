@@ -38,7 +38,7 @@ onMounted(() => {
 }
 .start.middle {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(/photo/index/startPc2.jpg) no-repeat center;
+    url(/photo/index/startPc.jpg) no-repeat center;
   background-size: cover;
   height: 100vh;
 }

@@ -53,14 +53,7 @@ const routes = [
       navbar: () => import('../components/NavBar.vue'),
     }
   },
-  {
-    path: '/department/yunying',
-    name: 'department/yunying',
-    components: {
-      default: () => import('../views/department/yunying.vue'),
-      navbar: () => import('../components/NavBar.vue'),
-    }
-  },
+
   {
     path: '/department/sheji',
     name: 'department/sheji',

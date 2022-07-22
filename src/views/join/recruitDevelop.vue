@@ -144,7 +144,7 @@ const genderOptions = [
     <input v-model="form.captcha_code" style="max-width: 80%" />
   </JHNotice>
   <div style="height: 20vh"></div>
-  <JHLabel type="middle">技术部长期招新</JHLabel>
+  <JHLabel type="small">技术部长期招新</JHLabel>
   <div class="basic_info">
     <JHInput
       label="姓名"
@@ -215,7 +215,7 @@ const genderOptions = [
   </div>
 
   <div class="other_info">
-    <JHLabel type="small">必要能力勾选</JHLabel>
+    <JHLabel type="nano">必要能力勾选</JHLabel>
     <div style="padding-bottom: 20px; border-bottom: 1px black solid">
       <div class="capability_1" :class="pageStore.pageType">
         <div>
@@ -241,7 +241,7 @@ const genderOptions = [
         </div>
       </div>
 
-      <JHLabel type="small">其他能力</JHLabel>
+      <JHLabel type="nano">其他能力</JHLabel>
       <textarea
         class="capability_2"
         v-model="form.ability_other"
@@ -251,7 +251,7 @@ const genderOptions = [
       />
     </div>
 
-    <JHLabel type="small">有什么想对技术部说的话，可以在这里告诉我们</JHLabel>
+    <JHLabel type="nano">有什么想对技术部说的话，可以在这里告诉我们</JHLabel>
     <textarea
       class="capability_2"
       v-model="form.feedback"

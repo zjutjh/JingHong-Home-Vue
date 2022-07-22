@@ -10,6 +10,7 @@ import JHButton from "../components/JHButton.vue";
 import Footer from "../components/Footer.vue";
 import { onMounted, ref } from "vue";
 import Contact from "../components/Contact.vue";
+import PageTop from "../components/PageTop.vue";
 const pageStore = usePageStore();
 const router = useRouter();
 

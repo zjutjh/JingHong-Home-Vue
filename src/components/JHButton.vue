@@ -41,7 +41,7 @@ const prop = defineProps<{
   margin: auto;
   background-color: #d20001;
   border-radius: 30px;
-  font-size: x-large;
+  font-size: large;
   color: white;
   display: flex;
   justify-content: center;

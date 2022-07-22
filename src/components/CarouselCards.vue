@@ -47,7 +47,7 @@ onMounted(() => {
   }
 });
 </script>
-<style scoped>
+<style scoped lang="scss">
 * {
   border-radius: 15px;
 }
@@ -58,16 +58,25 @@ onMounted(() => {
   margin: auto;
 }
 
-.carousel {
-  height: 800px;
+.carousel.normal {
+  height: 1000px;
+  .content {
+    font-size: 18px;
+  }
 }
 
 .carousel.middle {
   height: 800px;
+  .content {
+    font-size: 15px;
+  }
 }
 
 .carousel.mini {
   height: 900px;
+  .content {
+    font-size: 12px;
+  }
 }
 
 .carousel .whole {
@@ -202,15 +211,16 @@ ul li {
   margin: 20px;
   font-size: 20px;
   overflow: auto;
+  color: #d20001;
 }
 
 .card .introduction::first-line {
   font-size: 30px;
   font-weight: border;
+  color: black;
 }
 
 .card .content {
-  font-size: 12px;
   text-align: left;
   white-space: pre-wrap;
   border-radius: 0;

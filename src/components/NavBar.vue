@@ -4,6 +4,7 @@ import { usePageStore } from "../stores/pages";
 import { RouterLink } from "vue-router";
 import store from "../stores/store";
 import { storeToRefs } from "pinia";
+import router from "../router";
 const base = ref<HTMLDivElement>();
 const isAtTop = ref<boolean>(true);
 const pageStore = usePageStore(store);
@@ -40,13 +41,17 @@ const links = [
   { name: "首页", link: "/index" },
   { name: "我们的故事", link: "/story" },
   { name: "我们的产品", link: "/product" },
-  { name: "我的的部门", link: "/department" },
+  { name: "我们的部门", link: "/department" },
   { name: "加入我们", link: "/join" },
 ];
 
 function listBtnClicked() {
   btnOn.value = !btnOn.value;
   listShow.value = !listShow.value;
+}
+
+function logoClicked() {
+  router.push("/index");
 }
 </script>
 <template>
@@ -61,7 +66,12 @@ function listBtnClicked() {
     class="base"
     ref="base"
   >
-    <img class="logo" :class="pageStore.pageType" src="/photo/top/logo.png" />
+    <img
+      class="logo"
+      :class="pageStore.pageType"
+      src="/photo/top/logo.png"
+      @click="logoClicked"
+    />
     <div
       v-for="(l, index) in links"
       class="link"

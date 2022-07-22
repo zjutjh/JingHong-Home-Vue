@@ -6,26 +6,25 @@ import { ENV } from "../utils/const";
 import { usePageStore } from "../stores/pages";
 import JHButton from "../components/JHButton.vue";
 import JHLabel from "../components/JHLabel.vue";
+import PageTop from "../components/PageTop.vue";
 const pageStore = usePageStore();
 const router = useRouter();
 function toRecruit() {
-  window.open("/join/recruit");
+  // window.open("/join/recruit");
+  return false;
 }
 function toLong() {
-  if (ENV == "dev") {
-    window.open("/join/long");
-  } else {
-    return false;
-  }
+  // if (ENV == "dev") {
+  //   window.open("/join/long");
+  // } else {
+  //   return false;
+  // }
+  return false;
 }
 </script>
 <template>
-  <JHCard
-    title="加入我们"
-    type="large"
-    :is-title="true"
-    style="margin-top: 20vh"
-  >
+  <PageTop />
+  <JHCard title="加入我们" type="large" :is-title="true">
     <div class="base" :class="pageStore.pageType">
       <img
         class="haibao"
@@ -39,41 +38,52 @@ function toLong() {
       />
       <div class="detail-base" :class="pageStore.pageType">
         <div class="btn">
-          <JHButton type="middle" @click="toRecruit">招新季报名</JHButton
-          >(点击报名)
+          <JHButton type="middle-disabled" @click="toRecruit"
+            >招新季报名</JHButton
+          >
+          <!-- (点击报名) -->
+          (暂未开放)
           <JHButton type="middle-disabled" @click="toLong"
             >长期招新报名</JHButton
           >(暂未开放)
         </div>
         <div class="introduce" :class="pageStore.pageType">
-          <JHLabel type="small">线下摆摊</JHLabel>屏峰：20212021年9月15日至16日
-          <br />地点：支干路 <br />朝晖：2021年9月15日至16日
-          <br />地点：上塘河畔
-          <div style="margin: 30px"></div>
-          <JHLabel type="small">招新宣讲</JHLabel>屏峰：2021年9月10日晚6：30
-          <br />地点：广知C 301 <br />朝晖：2021年9月11日晚6：30
-          <br />地点：新教 201
-          <div style="margin: 30px"></div>
-          <JHLabel type="small">招新群号</JHLabel>715270127
-        </div>
-      </div>
-      <div class="qr">
-        <JHLabel type="small" style="margin: auto">最新动态</JHLabel>
-        <div class="qr-base">
-          <div class="qr-code">
-            <img src="/photo/product/11.png" />
-            精弘网络
+          <JHLabel type="nano">线下摆摊</JHLabel>
+          <div class="content">
+            屏峰：暂时未定<br />
+            地点：支干路 <br />
+            朝晖：暂时未定 <br />
+            地点：上塘河畔
           </div>
-          <div class="qr-code">
-            <img src="/photo/product/10.png" />
-            精小弘在线
+
+          <JHLabel type="nano">招新宣讲</JHLabel>
+          <div class="content">
+            屏峰：暂时未定 <br />
+            地点：暂时未定 <br />
+            朝晖：暂时未定 <br />
+            地点：暂时未定
+          </div>
+          <JHLabel type="nano">招新群号</JHLabel>
+          <div class="content">768698717</div>
+        </div>
+        <div class="qr">
+          <JHLabel type="nano">最新动态</JHLabel>
+          <div class="qr-base">
+            <div class="qr-code">
+              <img src="/photo/product/11.png" />
+              精弘网络
+            </div>
+            <div class="qr-code">
+              <img src="/photo/product/10.png" />
+              精小弘在线
+            </div>
           </div>
         </div>
       </div>
     </div>
   </JHCard>
 
-  <JHCard title="部门结构一览图" type="large" :is-title="true">
+  <JHCard title="部门结构" type="large" :is-title="true">
     <img
       src="/photo/haibao/structPc.png"
       style="width: 70%"
@@ -88,14 +98,13 @@ function toLong() {
   <Footer />
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .base {
   display: grid;
 }
 .base.normal {
   grid-template-columns: 60% 40%;
   grid-gap: 20px;
-  grid-template-rows: 1100px 150px;
 }
 .base.middle {
   height: 2000px;
@@ -109,39 +118,55 @@ function toLong() {
 }
 
 .detail-base {
-  display: grid;
-  grid-template-rows: 200px 1fr;
+  display: flex;
+  flex-direction: column;
+  column-gap: 5px;
 }
 
 .btn {
   /* height: 450px; */
-  display: grid;
-  grid-template-rows: 40% 10% 40% 10%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 50%;
+  min-width: 300px;
 }
 
-.introduce {
+.introduce.normal {
   margin-top: 40px;
   text-align: start;
   font-size: 18px;
+  .content {
+    position: relative;
+    left: 50px;
+    margin-bottom: 20px;
+  }
 }
 .introduce.middle,
 .introduce.mini {
   text-align: center;
   font-size: 18px;
+  margin-top: 40px;
+  .content {
+    margin-bottom: 20px;
+  }
 }
 .introduce.middle .small,
 .introduce.mini .small {
   margin: auto;
 }
-
+.detail-base.middle,
+.detail-base.mini {
+  margin: auto;
+}
 .qr-base {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 200px;
-  margin: auto;
+  width: auto;
+  max-width: 300px;
+  margin-top: 20px;
 }
 .qr-base img {
-  margin-top: 20px;
   width: 80px;
   height: 80px;
 }

@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { HTMLAttributes } from "vue";
+import { usePageStore } from "../stores/pages";
 
 const prop = defineProps<{
   type: string;
 }>();
+const pageStore = usePageStore();
 </script>
 
 <template>
-  <div :class="prop.type">
+  <div :class="[prop.type, pageStore.pageType]">
     <div class="h">
       <slot></slot>
     </div>
@@ -37,7 +38,10 @@ const prop = defineProps<{
   margin-inline-end: 0px;
   font-weight: bold;
 }
-
+.title.middle,
+.title.mini {
+  margin: auto;
+}
 .big {
   width: 15rem;
   height: 5rem;
@@ -50,7 +54,7 @@ const prop = defineProps<{
   box-shadow: 0 5px 10px #999999;
 }
 
-.middle {
+.small {
   min-width: 10vw;
   width: fit-content;
   height: 5vh;
@@ -68,7 +72,7 @@ const prop = defineProps<{
   align-items: center;
 }
 
-.small {
+.nano {
   background-color: #d20001;
   /* height: 30px; */
   width: fit-content;
@@ -78,19 +82,13 @@ const prop = defineProps<{
   color: white;
   padding: 5px;
   padding-inline: 20px;
-  margin: 10px;
 }
-
-.small .h {
+.nano.mini,
+.nano.middle {
+  margin: auto;
+}
+.nano .h {
   display: block;
   font-size: 15px;
-}
-
-.nano {
-  height: 20px;
-  width: fit-content;
-  background-color: #d20001;
-  color: white;
-  border-radius: 2px;
 }
 </style>

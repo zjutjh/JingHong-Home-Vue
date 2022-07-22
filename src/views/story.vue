@@ -8,6 +8,7 @@ import CarouselPictures from "../components/CarouselPicturesBig.vue";
 import CarouselCards from "../components/CarouselCards.vue";
 import JHButton from "../components/JHButton.vue";
 import { useRouter } from "vue-router";
+import PageTop from "../components/PageTop.vue";
 const router = useRouter();
 const pageStore = usePageStore();
 const yixingImgs = [
@@ -26,7 +27,7 @@ const persons = [
   {
     img: "/photo/story/jiyu/小树.jpg",
     introduction:
-      "小树\n\n前精弘设计总监\n于2022年毕业于浙工大\n现就读于浙江工业大学",
+      "小树\n\n前精弘设计总监\n2022年毕业于浙工大\n现就读于浙江工业大学",
     content:
       "大三的时候加入精弘，是我纠结了很久做的一个决定，现在想想倒觉得很庆幸。光是能够遇见你们，就已经很美好 了。\n       没有当客服的经验，从新生群同意每一个新生宝宝的入群验证到后来与他们的见面，对我来说都是新奇的体验。在很多新生的身上，我都能看到刚收到录取通知书时我的样子。不耐烦的回答一个个问题，也是希望她们能少走弯路。\n       深入接触后，发现精弘网络其实是一个很温暖的组织，可以说很多人都是“为爱发电”，有着很强的责任心。\n        希望大家在精弘的日子里可以收获到属于自己的美好。",
   },
@@ -56,13 +57,14 @@ function toProduct() {
   router.push("/product");
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
 .shiming-base.normal {
   width: 80%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: auto;
   grid-column-gap: 10%;
+  align-items: center;
 }
 
 .shiming-base.middle {
@@ -110,6 +112,7 @@ function toProduct() {
 .shiming.mini {
   border-left: none;
   padding-left: 0;
+  font-size: small;
 }
 
 .shiming h2 {
@@ -136,35 +139,42 @@ function toProduct() {
 
 .shenghuo {
   width: 90%;
-  display: grid;
-  grid-template-rows: 200px 150px 200px 150px 200px 150px 150px;
-  grid-gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   margin: auto;
-}
 
-.shenghuo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 15px;
+  #img1,
+  #img2,
+  #img3 {
+    // height: 300px;
+    width: 60%;
+    margin: auto;
+  }
+  .shenghuo-imgs {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin: auto;
+    width: 80%;
+    img {
+      width: 50%;
+    }
+  }
+  .content {
+    font-size: 20px;
+  }
+  &.mini .content {
+    font-size: 15px;
+  }
 }
 
 .shenghuo .content {
   font-size: 20px;
 }
-
-.shenghuo-imgs {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
-}
-
-.shenghuo-imgs img {
-  height: 60%;
-}
 </style>
 <template>
-  <div style="height: 100px"></div>
+  <PageTop />
   <JHLabel type="title">我们的故事</JHLabel>
   <JHCard type="large" title="我们的使命" :isTitle="true">
     <div class="shiming-base" :class="pageStore.pageType">
@@ -211,19 +221,19 @@ function toProduct() {
     </div>
   </JHCard>
   <JHCard type="large" title="生活社交" :isTitle="true">
-    <div class="shenghuo">
-      <img src="/photo/story/shenghuo/shenghuo1.jpg" />
+    <div class="shenghuo" :class="pageStore.pageType">
+      <img src="/photo/story/shenghuo/shenghuo1.jpg" id="img1" />
       <div class="content">
         精弘还定期举行素质拓展，各种小游戏需要每一位成员的通力合作，在游戏中互相了解，感受精弘大家庭的温暖。
       </div>
-      <img src="/photo/story/shenghuo/shenghuo2.jpg" />
+      <img src="/photo/story/shenghuo/shenghuo2.jpg" id="img2" />
       <div class="content">
         在每年一度的年会上，精弘网络的每个部门都准备了具有特色的节目，既是对过去工作生活的总结，也是对来年生活的美好祝愿。
       </div>
-      <img src="/photo/story/shenghuo/shenghuo3.jpg" />
+      <img src="/photo/story/shenghuo/shenghuo3.jpg" id="img3" />
       <div class="shenghuo-imgs">
-        <img src="/photo/story/shenghuo/shenghuo4.jpg" />
-        <img src="/photo/story/shenghuo/shenghuo5.jpg" />
+        <img src="/photo/story/shenghuo/shenghuo4.jpg" id="img4" />
+        <img src="/photo/story/shenghuo/shenghuo5.jpg" id="img5" />
       </div>
       <div class="content">
         在各个部门内还有各式各样的轰趴活动，聚餐、唱K或是游西湖。在精弘，绝不是只有工作，还有数不清的快乐。

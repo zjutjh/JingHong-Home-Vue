@@ -6,6 +6,7 @@ import Footer from "../components/Footer.vue";
 import JHButton from "../components/JHButton.vue";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import PageTop from "../components/PageTop.vue";
 const router = useRouter();
 const pageStore = usePageStore();
 const isWechat = ref<boolean>(false);
@@ -88,7 +89,7 @@ function toDepartment() {
   left: 0rem;
   bottom: 0;
   width: 100%;
-  height: 80vh;
+  height: 70vh;
   background: white;
   border-radius: 15px;
   z-index: 1;
@@ -126,11 +127,20 @@ function toDepartment() {
   bottom: 20px;
   width: 50px;
 }
+.shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+}
 </style>
 
 <template>
-  <div style="margin-top: 100px"></div>
+  <PageTop />
   <JHLabel type="title">我们的产品</JHLabel>
+  <div class="shadow" v-if="isWejh || isWechat || isVisual || isEmail"></div>
   <div
     class="base"
     :class="pageStore.pageType"
