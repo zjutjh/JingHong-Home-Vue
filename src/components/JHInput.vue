@@ -34,22 +34,21 @@ const props = withDefaults(defineProps<Props>(), {
 .base.normal {
   display: grid;
   grid-template-columns: 20% 80%;
-  grid-template-rows: 70% 30%;
   grid-column-gap: 10%;
+  height: 55px;
 }
 
 .label.normal {
   background-color: #d20001;
   height: 30px;
-
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: white;
-  font-size: 1vw;
-  /* width: 8vw; */
+  font-size: 20px;
+  margin: auto;
+  width: 80%;
 }
 
 .input.normal {
@@ -80,9 +79,8 @@ const props = withDefaults(defineProps<Props>(), {
 .notice.mob,
 .notice.normal {
   color: red;
-  font-size: 0.5vw;
+  font-size: 12px;
   text-align: start;
-  padding: 5px;
 }
 .notice.mob.valid,
 .notice.normal.valid {
@@ -91,13 +89,13 @@ const props = withDefaults(defineProps<Props>(), {
 
 .base.mob {
   display: grid;
+  height: 50px;
   grid-template-columns: 40% 60%;
-  grid-template-rows: 70% 30%;
-  grid-column-gap: 3%;
+  grid-column-gap: 20px;
 }
 .label.mob {
   background-color: #d20001;
-  height: 100%;
+  height: 24px;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -109,7 +107,7 @@ const props = withDefaults(defineProps<Props>(), {
 }
 .input.mob {
   width: 90%;
-  height: 100%;
+  height: 24px;
   border-radius: 5px;
   text-align: left;
   box-sizing: border-box;

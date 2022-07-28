@@ -86,36 +86,44 @@ const routes = [
       navbar: () => import('../components/NavBar.vue'),
     }
   },
+  // {
+  //   path: '/join/recruit',
+  //   name: 'join/recruit',
+  //   components: {
+  //     default: () => import('../views/join/recruit.vue'),
+  //     navbar: () => import('../components/NavBar.vue'),
+  //   }
+  // },
+  // {
+  //   path: '/join/long',
+  //   name: 'join/long',
+  //   components: {
+  //     default: () => import('../views/join/recruitLong.vue'),
+  //     navbar: () => import('../components/NavBar.vue'),
+  //   },
+  // },
+  // {
+  //   path: '/join/develop',
+  //   name: 'join/develop',
+  //   components: {
+  //     default: () => import('../views/join/recruitDevelop.vue'),
+  //     navbar: () => import('../components/NavBar.vue'),
+  //   },
+  // },
+  // {
+  //   path: '/admin',
+  //   name: 'admin',
+  //   components: {
+  //     default: () => import('../views/admin.vue'),
+  //     navbar: () => import('../components/NavBarAdmin.vue'),
+  //   },
+  // },
   {
-    path: '/join/recruit',
-    name: 'join/recruit',
+    path: '/join/acm',
+    name: 'join/acm',
     components: {
-      default: () => import('../views/join/recruit.vue'),
+      default: () => import('../views/join/acm.vue'),
       navbar: () => import('../components/NavBar.vue'),
-    }
-  },
-  {
-    path: '/join/long',
-    name: 'join/long',
-    components: {
-      default: () => import('../views/join/recruitLong.vue'),
-      navbar: () => import('../components/NavBar.vue'),
-    },
-  },
-  {
-    path: '/join/develop',
-    name: 'join/develop',
-    components: {
-      default: () => import('../views/join/recruitDevelop.vue'),
-      navbar: () => import('../components/NavBar.vue'),
-    },
-  },
-  {
-    path: '/admin',
-    name: 'admin',
-    components: {
-      default: () => import('../views/admin.vue'),
-      navbar: () => import('../components/NavBarAdmin.vue'),
     },
   },
   {

@@ -12,3 +12,8 @@ export function isStuId(id: string): boolean {
   var reg = /[0-9]{12}/;
   return reg.test(id);
 }
+
+export function isID(id: string): boolean {
+  var reg = /[0-9]{17}[0-9|x|X]{1}/;
+  return reg.test(id);
+}

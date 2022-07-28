@@ -21,7 +21,7 @@ const prop = defineProps<{
 .button-small {
   width: fit-content;
   padding-inline: 24px;
-  height: 60px;
+  height: 30px;
   margin: auto;
   border-radius: 20px;
   background-color: #d20001;
@@ -56,7 +56,7 @@ const prop = defineProps<{
   margin: auto;
   background-color: #999999;
   border-radius: 30px;
-  font-size: x-large;
+  font-size: large;
   color: white;
   display: flex;
   justify-content: center;
