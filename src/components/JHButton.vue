@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const prop = defineProps<{
-  type: string;
+  type: string | [string];
 }>();
 </script>
 
@@ -11,6 +11,7 @@ const prop = defineProps<{
       'button-small': type == 'small',
       'button-middle': type == 'middle',
       'button-middle-disabled': type == 'middle-disabled',
+      'button-small-disabled': type == 'small-disabled',
     }"
   >
     <slot></slot>
@@ -32,6 +33,21 @@ const prop = defineProps<{
   box-shadow: 0 2px 5px #999999;
   border: none;
   cursor: pointer;
+  white-space: nowrap;
+}
+.button-small-disabled {
+  width: fit-content;
+  padding-inline: 24px;
+  height: 30px;
+  margin: auto;
+  border-radius: 20px;
+  background-color: #999999;
+  color: white;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: not-allowed;
   white-space: nowrap;
 }
 .button-middle {
