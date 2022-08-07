@@ -38,10 +38,10 @@ function toLong() {
       />
       <div class="detail-base" :class="pageStore.pageType">
         <div class="btn">
-          <JHButton type="middle" @click="router.push('/join/acm')">
+          <!-- <JHButton type="middle" @click="router.push('/join/acm')">
             ACM新生赛
           </JHButton>
-          (点击报名)
+          (点击报名) -->
           <JHButton type="middle-disabled" @click="toRecruit"
             >招新季报名</JHButton
           >

@@ -118,14 +118,14 @@ const routes = [
   //     navbar: () => import('../components/NavBarAdmin.vue'),
   //   },
   // },
-  {
-    path: '/join/acm',
-    name: 'join/acm',
-    components: {
-      default: () => import('../views/join/acm.vue'),
-      navbar: () => import('../components/NavBar.vue'),
-    },
-  },
+  // {
+  //   path: '/join/acm',
+  //   name: 'join/acm',
+  //   components: {
+  //     default: () => import('../views/join/acm.vue'),
+  //     navbar: () => import('../components/NavBar.vue'),
+  //   },
+  // },
   {
     path: '/:pathMatch(.*)*',
     redirect: '/index'

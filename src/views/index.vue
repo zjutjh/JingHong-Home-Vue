@@ -11,6 +11,7 @@ import Footer from "../components/Footer.vue";
 import { onMounted, ref } from "vue";
 import Contact from "../components/Contact.vue";
 import PageTop from "../components/PageTop.vue";
+import JHVideo from "../components/Video.vue";
 const pageStore = usePageStore();
 const router = useRouter();
 
@@ -34,6 +35,7 @@ var loaded = false;
 <template>
   <start />
   <introduce />
+  <JHVideo />
   <history v-if="pageStore.pageType == 'normal'" />
   <timeline
     v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'"
