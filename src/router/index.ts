@@ -86,14 +86,14 @@ const routes = [
       navbar: () => import('../components/NavBar.vue'),
     }
   },
-  // {
-  //   path: '/join/recruit',
-  //   name: 'join/recruit',
-  //   components: {
-  //     default: () => import('../views/join/recruit.vue'),
-  //     navbar: () => import('../components/NavBar.vue'),
-  //   }
-  // },
+  {
+    path: '/join/recruit',
+    name: 'join/recruit',
+    components: {
+      default: () => import('../views/join/recruit.vue'),
+      navbar: () => import('../components/NavBar.vue'),
+    }
+  },
   // {
   //   path: '/join/long',
   //   name: 'join/long',
@@ -110,14 +110,22 @@ const routes = [
   //     navbar: () => import('../components/NavBar.vue'),
   //   },
   // },
-  // {
-  //   path: '/admin',
-  //   name: 'admin',
-  //   components: {
-  //     default: () => import('../views/admin.vue'),
-  //     navbar: () => import('../components/NavBarAdmin.vue'),
-  //   },
-  // },
+  {
+    path: '/admin',
+    name: 'admin',
+    components: {
+      default: () => import('../views/admin.vue'),
+      navbar: () => import('../components/NavBarAdmin.vue'),
+    },
+  },
+  {
+    path: '/admin/total',
+    name: 'admin',
+    components: {
+      default: () => import('../views/admin/total.vue'),
+      navbar: () => import('../components/NavBarAdmin.vue'),
+    },
+  },
   // {
   //   path: '/join/acm',
   //   name: 'join/acm',

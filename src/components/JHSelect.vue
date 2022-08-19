@@ -19,15 +19,10 @@ function handleInput(event: Event) {
 }
 </script>
 <template>
-  <div class="base" :class="type">
+  <div class="jh-base" :class="type">
     <div class="label" :class="type">{{ props.label }}</div>
-    <select
-      class="select"
-      :class="[type, valid ? 'valid' : 'invalid']"
-      :value="modelValue"
-      @input="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
-      :disabled="disabled"
-    >
+    <select class="select" :class="[type, valid ? 'valid' : 'invalid']" :value="modelValue"
+      @input="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)" :disabled="disabled">
       <slot></slot>
     </select>
     <span></span>
@@ -37,12 +32,12 @@ function handleInput(event: Event) {
   </div>
 </template>
 
-<style scoped>
-.base.normal {
+<style scoped lang="scss">
+.jh-base.normal {
   display: grid;
   grid-template-columns: 20% 80%;
-  grid-template-rows: 70% 30%;
   grid-column-gap: 10%;
+  height: 55px;
 }
 
 .label.normal {
@@ -53,9 +48,11 @@ function handleInput(event: Event) {
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 1vw;
-  max-width: 25vw;
+  font-size: 20px;
+  margin: auto;
+  width: 80%;
 }
+
 .select.normal {
   outline: none;
   background-color: white;
@@ -72,16 +69,19 @@ function handleInput(event: Event) {
   box-shadow: 0 5px 10px #999999;
   height: 30px;
 }
+
 .select.mob.valid,
 .select.normal.valid {
   border: none;
 }
+
 .select.mob.invalid,
 .select.long.invalid,
 .select.normal.invalid {
   border: solid red;
   border-width: 2px;
 }
+
 .notice.mob,
 .notice.normal {
   color: red;
@@ -89,19 +89,22 @@ function handleInput(event: Event) {
   text-align: start;
   padding: 5px;
 }
+
 .notice.mob.valid,
 .notice.normal.valid {
   display: none;
 }
-.base.mob {
+
+.jh-base.mob {
   display: grid;
   grid-template-columns: 40% 60%;
-  grid-template-rows: 70% 30%;
-  grid-column-gap: 3%;
+  grid-column-gap: 20px;
+  height: 50px;
 }
+
 .label.mob {
   background-color: #d20001;
-  height: 100%;
+  height: 24px;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -111,9 +114,10 @@ function handleInput(event: Event) {
   border-radius: 10px;
   border: none;
 }
+
 .select.mob {
   width: 90%;
-  height: 100%;
+  height: 24px;
   border-radius: 5px;
   text-align: left;
   box-sizing: border-box;

@@ -1,3 +1,116 @@
+<template>
+  <PageTop />
+  <div class="pwd">
+    输入密码:
+    <input v-model="pwd" />
+    <!-- <button @click="submitClicked">刷新</button> -->
+  </div>
+  <div style="height: 50px"></div>
+  <JHLabel type="big">招新情况</JHLabel>
+  <JHCard title="总览" type="large" :is-title="true">
+    <div class="cards">
+      <JHDataPresent type="mob" title="报名总数">{{
+        data.total
+      }}</JHDataPresent>
+      <JHDataPresent type="mob" title="今日增加">{{
+        data.total_today
+      }}</JHDataPresent>
+      <span />
+      <JHDataPresent type="mob" title="屏峰">{{ data.total_pf }}</JHDataPresent>
+      <JHDataPresent type="mob" title="朝晖">{{ data.total_zh }}</JHDataPresent>
+      <JHDataPresent type="mob" title="莫干山">{{
+        data.total_mgs
+      }}</JHDataPresent>
+    </div>
+  </JHCard>
+  <JHCard title="统计图" type="large" :is-title="true">
+    <v-chart
+      class="chart"
+      :option="option"
+      id="chart"
+      ref="chart"
+      :autoresize="true"
+    />
+  </JHCard>
+  <div class="cards" :class="pageStore.pageType">
+    <JHCard title="办公室" type="small" :is-title="true">
+      <DepartmentsDataPresent
+        :data="data_bgs"
+        type="mob"
+      ></DepartmentsDataPresent>
+    </JHCard>
+    <JHCard title="活动部" type="small" :is-title="true">
+      <DepartmentsDataPresent
+        :data="data_hdb"
+        type="mob"
+      ></DepartmentsDataPresent>
+    </JHCard>
+    <JHCard title="秘书处" type="small" :is-title="true">
+      <DepartmentsDataPresent
+        :data="data_msc"
+        type="mob"
+      ></DepartmentsDataPresent>
+    </JHCard>
+    <JHCard title="Touch产品部" type="small" :is-title="true">
+      <DepartmentsDataPresent
+        :data="data_touch"
+        type="mob"
+      ></DepartmentsDataPresent>
+    </JHCard>
+    <JHCard title="小弘工作室" type="small" :is-title="true">
+      <DepartmentsDataPresent
+        :data="data_xh"
+        type="mob"
+      ></DepartmentsDataPresent>
+    </JHCard>
+    <JHCard title="编辑工作室" type="small" :is-title="true">
+      <DepartmentsDataPresent
+        :data="data_bj"
+        type="mob"
+      ></DepartmentsDataPresent>
+    </JHCard>
+    <JHCard title="视觉影像部" type="small" :is-title="true">
+      <DepartmentsDataPresent
+        :data="data_sj"
+        type="mob"
+      ></DepartmentsDataPresent>
+    </JHCard>
+    <JHCard title="技术部" type="small" :is-title="true">
+      <DepartmentsDataPresent
+        :data="data_kfb"
+        type="mob"
+      ></DepartmentsDataPresent>
+    </JHCard>
+    <JHCard title="易班文化工作站" type="small" :is-title="true">
+      <DepartmentsDataPresent
+        :data="data_yb"
+        type="mob"
+      ></DepartmentsDataPresent>
+    </JHCard>
+  </div>
+</template>
+<style scoped>
+.cards {
+  display: grid;
+  grid-template-rows: repeat(10, 10%);
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+  width: 90%;
+  margin: auto;
+}
+
+.cards.normal {
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 50px;
+  grid-column-gap: 100px;
+  grid-template-rows: none;
+}
+
+.chart {
+  height: 400px;
+}
+</style>
+
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { GetDataTotal } from "../../apis/admin";
@@ -18,6 +131,7 @@ import {
 import "echarts/lib/component/grid";
 import { DepartmentsData } from "../../types/components";
 import { usePageStore } from "../../stores/pages";
+import PageTop from "../../components/PageTop.vue";
 use([
   CanvasRenderer,
   BarChart,
@@ -354,115 +468,3 @@ const data_yb = computed(() => {
   };
 });
 </script>
-<template>
-  <div style="height: 100px"></div>
-  <div class="pwd">
-    输入密码:
-    <input v-model="pwd" />
-    <button @click="submitClicked">刷新</button>
-  </div>
-  <div style="height: 50px"></div>
-  <JHLabel type="big">招新情况</JHLabel>
-  <JHCard title="总览" type="large" :is-title="true">
-    <div class="cards">
-      <JHDataPresent type="mob" title="报名总数">{{
-        data.total
-      }}</JHDataPresent>
-      <JHDataPresent type="mob" title="今日增加">{{
-        data.total_today
-      }}</JHDataPresent>
-      <span />
-      <JHDataPresent type="mob" title="屏峰">{{ data.total_pf }}</JHDataPresent>
-      <JHDataPresent type="mob" title="朝晖">{{ data.total_zh }}</JHDataPresent>
-      <JHDataPresent type="mob" title="莫干山">{{
-        data.total_mgs
-      }}</JHDataPresent>
-    </div>
-  </JHCard>
-  <JHCard title="统计图" type="large" :is-title="true">
-    <v-chart
-      class="chart"
-      :option="option"
-      id="chart"
-      ref="chart"
-      :autoresize="true"
-    />
-  </JHCard>
-  <div class="cards" :class="pageStore.pageType">
-    <JHCard title="办公室" type="small" :is-title="true">
-      <DepartmentsDataPresent
-        :data="data_bgs"
-        type="mob"
-      ></DepartmentsDataPresent>
-    </JHCard>
-    <JHCard title="活动部" type="small" :is-title="true">
-      <DepartmentsDataPresent
-        :data="data_hdb"
-        type="mob"
-      ></DepartmentsDataPresent>
-    </JHCard>
-    <JHCard title="秘书处" type="small" :is-title="true">
-      <DepartmentsDataPresent
-        :data="data_msc"
-        type="mob"
-      ></DepartmentsDataPresent>
-    </JHCard>
-    <JHCard title="Touch产品部" type="small" :is-title="true">
-      <DepartmentsDataPresent
-        :data="data_touch"
-        type="mob"
-      ></DepartmentsDataPresent>
-    </JHCard>
-    <JHCard title="小弘工作室" type="small" :is-title="true">
-      <DepartmentsDataPresent
-        :data="data_xh"
-        type="mob"
-      ></DepartmentsDataPresent>
-    </JHCard>
-    <JHCard title="编辑工作室" type="small" :is-title="true">
-      <DepartmentsDataPresent
-        :data="data_bj"
-        type="mob"
-      ></DepartmentsDataPresent>
-    </JHCard>
-    <JHCard title="视觉影像部" type="small" :is-title="true">
-      <DepartmentsDataPresent
-        :data="data_sj"
-        type="mob"
-      ></DepartmentsDataPresent>
-    </JHCard>
-    <JHCard title="技术部" type="small" :is-title="true">
-      <DepartmentsDataPresent
-        :data="data_kfb"
-        type="mob"
-      ></DepartmentsDataPresent>
-    </JHCard>
-    <JHCard title="易班文化工作站" type="small" :is-title="true">
-      <DepartmentsDataPresent
-        :data="data_yb"
-        type="mob"
-      ></DepartmentsDataPresent>
-    </JHCard>
-  </div>
-</template>
-<style scoped>
-.cards {
-  display: grid;
-  grid-template-rows: repeat(10, 10%);
-  grid-row-gap: 20px;
-  grid-column-gap: 20px;
-  width: 90%;
-  margin: auto;
-}
-
-.cards.normal {
-  grid-template-columns: 1fr 1fr;
-  grid-row-gap: 50px;
-  grid-column-gap: 100px;
-  grid-template-rows: none;
-}
-
-.chart {
-  height: 400px;
-}
-</style>

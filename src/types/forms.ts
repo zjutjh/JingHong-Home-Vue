@@ -6,9 +6,9 @@ export interface INormalForm {
   campus: string;
   phone: string;
   qq: string;
-  region: string;
-  want1: string;
-  want2: string;
+  region: number;
+  want1: number;
+  want2: number;
   profile: string;
   feedback: string;
   captcha_id: string;

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 interface Props {
   type: string;
-  modelValue: string;
+  modelValue: string | number;
   label: string;
   notice: string;
   valid: boolean;
@@ -15,14 +15,10 @@ const props = withDefaults(defineProps<Props>(), {
 });
 </script>
 <template>
-  <div class="base" :class="type">
+  <div class="jh-base" :class="type">
     <div class="label" :class="type">{{ props.label }}</div>
-    <input
-      class="input"
-      :class="[type, valid ? 'valid' : 'invalid']"
-      :value="modelValue"
-      @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
-    />
+    <input class="input" :class="[type, valid ? 'valid' : 'invalid']" :value="modelValue"
+      @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)" />
     <span></span>
     <div class="notice" :class="[type, valid ? 'valid' : 'invalid']">
       * {{ props.notice }}
@@ -31,7 +27,7 @@ const props = withDefaults(defineProps<Props>(), {
   </div>
 </template>
 <style scoped>
-.base.normal {
+.jh-base.normal {
   display: grid;
   grid-template-columns: 20% 80%;
   grid-column-gap: 10%;
@@ -67,32 +63,37 @@ const props = withDefaults(defineProps<Props>(), {
   box-shadow: 0 5px 10px #999999;
   height: 30px;
 }
+
 .input.mob.valid,
 .input.normal.valid {
   border: none;
 }
+
 .input.mob.invalid,
 .input.normal.invalid {
   border: solid red;
   border-width: 2px;
 }
+
 .notice.mob,
 .notice.normal {
   color: red;
   font-size: 12px;
   text-align: start;
 }
+
 .notice.mob.valid,
 .notice.normal.valid {
   display: none;
 }
 
-.base.mob {
+.jh-base.mob {
   display: grid;
   height: 50px;
   grid-template-columns: 40% 60%;
   grid-column-gap: 20px;
 }
+
 .label.mob {
   background-color: #d20001;
   height: 24px;
@@ -105,6 +106,7 @@ const props = withDefaults(defineProps<Props>(), {
   border-radius: 10px;
   border: none;
 }
+
 .input.mob {
   width: 90%;
   height: 24px;
