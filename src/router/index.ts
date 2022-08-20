@@ -114,13 +114,13 @@ const routes = [
     path: '/admin',
     name: 'admin',
     components: {
-      default: () => import('../views/admin.vue'),
-      navbar: () => import('../components/NavBarAdmin.vue'),
+      default: () => import('@/views/admin.vue'),
+      navbar: () => import('@/components/NavBarAdmin.vue'),
     },
   },
   {
     path: '/admin/total',
-    name: 'admin',
+    name: 'admin/total',
     components: {
       default: () => import('../views/admin/total.vue'),
       navbar: () => import('../components/NavBarAdmin.vue'),

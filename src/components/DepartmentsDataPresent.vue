@@ -10,46 +10,46 @@ const props = defineProps<{
   <div class="base">
     <div class="item">
       <div class="label">第一志愿</div>
-      <div class="number">{{ props.data.want1 }}</div>
+      <div class="number">{{ props.data[0] }}</div>
     </div>
     <div class="item">
       <div class="label">第二志愿</div>
 
-      <div class="number">{{ props.data.want2 }}</div>
+      <div class="number">{{ props.data[4] }}</div>
     </div>
     <div class="item">
       <div class="label">朝晖</div>
-      <div class="number">{{ props.data.want1_zh }}</div>
+      <div class="number">{{ props.data[1] }}</div>
     </div>
     <div class="item">
       <div class="label">朝晖</div>
-      <div class="number">{{ props.data.want2_zh }}</div>
+      <div class="number">{{ props.data[5] }}</div>
     </div>
     <div class="item">
       <div class="label">屏峰</div>
-      <div class="number">{{ props.data.want1_pf }}</div>
+      <div class="number">{{ props.data[2] }}</div>
     </div>
     <div class="item">
       <div class="label">屏峰</div>
-      <div class="number">{{ props.data.want2_pf }}</div>
+      <div class="number">{{ props.data[6] }}</div>
     </div>
     <div class="item">
       <div class="label">莫干山</div>
-      <div class="number">{{ props.data.want1_mgs }}</div>
+      <div class="number">{{ props.data[3] }}</div>
     </div>
     <div class="item">
       <div class="label">莫干山</div>
-      <div class="number">{{ props.data.want2_mgs }}</div>
+      <div class="number">{{ props.data[7] }}</div>
     </div>
     <div class="item">
       招新情况
       <div class="label">总数</div>
 
-      <div class="number">{{ props.data.total }}</div>
+      <div class="number">{{ props.data[8] }}</div>
     </div>
     <div class="item">
       <div class="label">今日增加</div>
-      <div class="number">{{ props.data.today }}</div>
+      <div class="number">{{ props.data[9] }}</div>
     </div>
   </div>
 </template>
@@ -72,6 +72,7 @@ const props = defineProps<{
   text-align: center;
   margin: auto;
 }
+
 .label {
   display: inline-block;
   background-color: white;
@@ -80,6 +81,7 @@ const props = defineProps<{
   margin: auto;
   padding: 10px;
 }
+
 .number {
   margin-inline: 10px;
   display: inline;

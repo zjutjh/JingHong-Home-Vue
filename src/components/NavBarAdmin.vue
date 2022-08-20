@@ -33,7 +33,7 @@ onMounted(() => {
 
 const links = [
   { name: '总览', link: '/admin/total' },
-  { name: '详细', link: '/admin/detail' },
+  { name: '返回', link: '/index' },
 ]
 
 function listBtnClicked() {

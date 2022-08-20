@@ -1,19 +1,33 @@
 <script lang="ts" setup>
-import JHCard from "../components/JHCard.vue";
-import JHButton from "../components/JHButton.vue";
-import JHInput from "../components/JHInput.vue";
+import JHCard from "@/components/JHCard.vue";
+import JHButton from "@/components/JHButton.vue";
+import JHInput from "@/components/JHInput.vue";
 import { ref } from "vue";
-import Footer from "../components/Footer.vue";
-import JHNotice from "../components/JHNotice.vue";
-import PageTop from "../components/PageTop.vue";
+import Footer from "@/components/Footer.vue";
+import PageTop from "@/components/PageTop.vue";
+import { useRouter } from "vue-router";
+import { TestAdmin } from "@/apis/admin";
+import { usePageStore } from "@/stores/pages";
+import JHLabel from "@/components/JHLabel.vue";
 const pwd = ref("");
 const submitted = ref(false);
+const router = useRouter();
+const pageStore = usePageStore();
+async function handleLogin() {
+  const res = await TestAdmin(pwd.value)
+  if (res.message == "ok") {
+    alert("登陆成功")
+    pageStore.token = pwd.value;
+    router.push("/admin/total")
+  }
+}
 </script>
 <style scoped>
-.base {
+.page-base {
   margin: auto;
   margin-top: 20px;
-  width: 80%;
+  width: 60%;
+  height: 70vh;
 }
 
 .btn {
@@ -23,22 +37,16 @@ const submitted = ref(false);
 </style>
 <template>
   <PageTop />
-  <JHCard type="large" title="管理员登陆" :is-title="true">
-    <div class="base">
-      <JHInput
-        type="normal"
-        label="密码"
-        notice="此项不为空"
-        :valid="!(pwd == '' && submitted)"
-        v-model="pwd"
-      ></JHInput>
+  <div class="page-base">
+    <JHCard type="large" :is-title="false">
+      <JHLabel type="small"> 管理员登陆 </JHLabel>
+      <div style="height: 50px"></div>
+      <JHInput type="normal" label="密码" notice="此项不为空" :valid="!(pwd == '' && submitted)" v-model="pwd"></JHInput>
       <div class="btn">
-        <JHButton type="small">登陆</JHButton>
-        <JHButton type="small">返回</JHButton>
+        <JHButton type="small" @click="handleLogin">登陆</JHButton>
+        <JHButton type="small" @click="router.push('/index')">返回</JHButton>
       </div>
-    </div>
-  </JHCard>
-
-  <div style="height: 200px"></div>
+    </JHCard>
+  </div>
   <Footer />
 </template>

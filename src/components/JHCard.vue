@@ -1,28 +1,23 @@
 <script setup lang="ts">
 const prop = defineProps<{
-  title: string;
+  title?: string;
   type: string;
   isTitle: boolean;
 }>();
 </script>
 <template>
-  <div
-    :class="{
-      'container-large': type == 'large',
-      'container-small': type == 'small',
-      'container-large-m': type == 'large-m',
-      'container-small-m': type == 'small-m',
-    }"
-  >
-    <div
-      :class="{
-        'title-large': type == 'large',
-        'title-small': type == 'small',
-        'title-large-m': type == 'large-m',
-        'title-small-m': type == 'small-m',
-      }"
-      v-show="isTitle"
-    >
+  <div :class="{
+    'container-large': type == 'large',
+    'container-small': type == 'small',
+    'container-large-m': type == 'large-m',
+    'container-small-m': type == 'small-m',
+  }">
+    <div :class="{
+      'title-large': type == 'large',
+      'title-small': type == 'small',
+      'title-large-m': type == 'large-m',
+      'title-small-m': type == 'small-m',
+    }" v-show="isTitle">
       {{ prop.title }}
     </div>
     <div class="content">

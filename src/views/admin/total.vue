@@ -1,93 +1,41 @@
 <template>
   <PageTop />
-  <div class="pwd">
-    输入密码:
-    <input v-model="pwd" />
-    <!-- <button @click="submitClicked">刷新</button> -->
-  </div>
-  <div style="height: 50px"></div>
   <JHLabel type="big">招新情况</JHLabel>
-  <JHCard title="总览" type="large" :is-title="true">
-    <div class="cards">
-      <JHDataPresent type="mob" title="报名总数">{{
-        data.total
-      }}</JHDataPresent>
-      <JHDataPresent type="mob" title="今日增加">{{
-        data.total_today
-      }}</JHDataPresent>
-      <span />
-      <JHDataPresent type="mob" title="屏峰">{{ data.total_pf }}</JHDataPresent>
-      <JHDataPresent type="mob" title="朝晖">{{ data.total_zh }}</JHDataPresent>
-      <JHDataPresent type="mob" title="莫干山">{{
-        data.total_mgs
-      }}</JHDataPresent>
-    </div>
-  </JHCard>
+  <JHButton type="small" @click="submitClicked">刷新</JHButton>
   <JHCard title="统计图" type="large" :is-title="true">
-    <v-chart
-      class="chart"
-      :option="option"
-      id="chart"
-      ref="chart"
-      :autoresize="true"
-    />
+    <v-chart class="chart" :option="option" id="chart" ref="chart" :autoresize="true" />
+    （点击图例切换显示）
   </JHCard>
   <div class="cards" :class="pageStore.pageType">
     <JHCard title="办公室" type="small" :is-title="true">
-      <DepartmentsDataPresent
-        :data="data_bgs"
-        type="mob"
-      ></DepartmentsDataPresent>
+      <DepartmentsDataPresent :data="data![1]" type="mob"></DepartmentsDataPresent>
     </JHCard>
     <JHCard title="活动部" type="small" :is-title="true">
-      <DepartmentsDataPresent
-        :data="data_hdb"
-        type="mob"
-      ></DepartmentsDataPresent>
+      <DepartmentsDataPresent :data="data![2]" type="mob"></DepartmentsDataPresent>
     </JHCard>
     <JHCard title="秘书处" type="small" :is-title="true">
-      <DepartmentsDataPresent
-        :data="data_msc"
-        type="mob"
-      ></DepartmentsDataPresent>
+      <DepartmentsDataPresent :data="data![3]" type="mob"></DepartmentsDataPresent>
     </JHCard>
     <JHCard title="Touch产品部" type="small" :is-title="true">
-      <DepartmentsDataPresent
-        :data="data_touch"
-        type="mob"
-      ></DepartmentsDataPresent>
+      <DepartmentsDataPresent :data="data![4]" type="mob"></DepartmentsDataPresent>
     </JHCard>
     <JHCard title="小弘工作室" type="small" :is-title="true">
-      <DepartmentsDataPresent
-        :data="data_xh"
-        type="mob"
-      ></DepartmentsDataPresent>
+      <DepartmentsDataPresent :data="data![5]" type="mob"></DepartmentsDataPresent>
     </JHCard>
     <JHCard title="编辑工作室" type="small" :is-title="true">
-      <DepartmentsDataPresent
-        :data="data_bj"
-        type="mob"
-      ></DepartmentsDataPresent>
+      <DepartmentsDataPresent :data="data![6]" type="mob"></DepartmentsDataPresent>
     </JHCard>
     <JHCard title="视觉影像部" type="small" :is-title="true">
-      <DepartmentsDataPresent
-        :data="data_sj"
-        type="mob"
-      ></DepartmentsDataPresent>
+      <DepartmentsDataPresent :data="data![7]" type="mob"></DepartmentsDataPresent>
     </JHCard>
     <JHCard title="技术部" type="small" :is-title="true">
-      <DepartmentsDataPresent
-        :data="data_kfb"
-        type="mob"
-      ></DepartmentsDataPresent>
+      <DepartmentsDataPresent :data="data![8]" type="mob"></DepartmentsDataPresent>
     </JHCard>
     <JHCard title="易班文化工作站" type="small" :is-title="true">
-      <DepartmentsDataPresent
-        :data="data_yb"
-        type="mob"
-      ></DepartmentsDataPresent>
+      <DepartmentsDataPresent :data="data![9]" type="mob"></DepartmentsDataPresent>
     </JHCard>
   </div>
+  <Footer />
 </template>
 <style scoped>
 .cards {
@@ -112,7 +60,7 @@
 </style>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, onBeforeMount, onMounted, ref } from "vue";
 import { GetDataTotal } from "../../apis/admin";
 import { IFormsData, INormalForm } from "../../types/forms";
 import JHLabel from "../../components/JHLabel.vue";
@@ -132,6 +80,8 @@ import "echarts/lib/component/grid";
 import { DepartmentsData } from "../../types/components";
 import { usePageStore } from "../../stores/pages";
 import PageTop from "../../components/PageTop.vue";
+import JHButton from "@/components/JHButton.vue";
+import Footer from "@/components/Footer.vue";
 use([
   CanvasRenderer,
   BarChart,
@@ -140,128 +90,24 @@ use([
   LegendComponent,
 ]);
 const pageStore = usePageStore();
-const pwd = ref("");
-const data = ref(<IFormsData>{
-  total: 0,
-  total_today: 0,
-  total_zh: 0,
-  total_pf: 0,
-  total_mgs: 0,
-  bgs: {
-    total: 0,
-    today: 0,
-    want1: 0,
-    want2: 0,
-    want1_zh: 0,
-    want2_zh: 0,
-    want1_pf: 0,
-    want2_pf: 0,
-    want1_mgs: 0,
-    want2_mgs: 0,
-  },
-  msc: {
-    total: 0,
-    today: 0,
-    want1: 0,
-    want2: 0,
-    want1_zh: 0,
-    want2_zh: 0,
-    want1_pf: 0,
-    want2_pf: 0,
-    want1_mgs: 0,
-    want2_mgs: 0,
-  },
-  hdb: {
-    total: 0,
-    today: 0,
-    want1: 0,
-    want2: 0,
-    want1_zh: 0,
-    want2_zh: 0,
-    want1_pf: 0,
-    want2_pf: 0,
-    want1_mgs: 0,
-    want2_mgs: 0,
-  },
-  touch: {
-    total: 0,
-    today: 0,
-    want1: 0,
-    want2: 0,
-    want1_zh: 0,
-    want2_zh: 0,
-    want1_pf: 0,
-    want2_pf: 0,
-    want1_mgs: 0,
-    want2_mgs: 0,
-  },
-  xh: {
-    total: 0,
-    today: 0,
-    want1: 0,
-    want2: 0,
-    want1_zh: 0,
-    want2_zh: 0,
-    want1_pf: 0,
-    want2_pf: 0,
-    want1_mgs: 0,
-    want2_mgs: 0,
-  },
-  bj: {
-    total: 0,
-    today: 0,
-    want1: 0,
-    want2: 0,
-    want1_zh: 0,
-    want2_zh: 0,
-    want1_pf: 0,
-    want2_pf: 0,
-    want1_mgs: 0,
-    want2_mgs: 0,
-  },
-  sj: {
-    total: 0,
-    today: 0,
-    want1: 0,
-    want2: 0,
-    want1_zh: 0,
-    want2_zh: 0,
-    want1_pf: 0,
-    want2_pf: 0,
-    want1_mgs: 0,
-    want2_mgs: 0,
-  },
-  kfb: {
-    total: 0,
-    today: 0,
-    want1: 0,
-    want2: 0,
-    want1_zh: 0,
-    want2_zh: 0,
-    want1_pf: 0,
-    want2_pf: 0,
-    want1_mgs: 0,
-    want2_mgs: 0,
-  },
-  yb: {
-    total: 0,
-    today: 0,
-    want1: 0,
-    want2: 0,
-    want1_zh: 0,
-    want2_zh: 0,
-    want1_pf: 0,
-    want2_pf: 0,
-    want1_mgs: 0,
-    want2_mgs: 0,
-  },
-});
+const data = ref<IFormsData>([
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+]);
 
 async function submitClicked() {
-  const res = await GetDataTotal(pwd.value);
+  const res = await GetDataTotal(pageStore.token);
   data.value = res.data.data;
 }
-
+submitClicked()
 var option = ref({
   legend: {
     data: ["第一志愿", "第二志愿"],
@@ -297,174 +143,37 @@ var option = ref({
       name: "第一志愿",
       type: "bar",
       data: computed(() => {
-        return [
-          data.value.bgs.want1,
-          data.value.hdb.want1,
-          data.value.msc.want1,
-          data.value.touch.want1,
-          data.value.xh.want1,
-          data.value.bj.want1,
-          data.value.sj.want1,
-          data.value.kfb.want1,
-          data.value.yb.want1,
-        ];
+        if (data.value == undefined) return []
+        var res: number[] = [];
+        for (var i = 1; i <= 9; i++) {
+          res.push(data.value![i][0]);
+        }
+        return res
       }),
       label: {
         show: true,
         position: "top",
       },
-      // data: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-      // showBackground: true,
     },
     {
       color: "pink",
       name: "第二志愿",
       type: "bar",
       data: computed(() => {
-        return [
-          data.value.bgs.want2,
-          data.value.hdb.want2,
-          data.value.msc.want2,
-          data.value.touch.want2,
-          data.value.xh.want2,
-          data.value.bj.want2,
-          data.value.sj.want2,
-          data.value.kfb.want2,
-          data.value.yb.want2,
-        ];
+        if (data.value == undefined) return []
+        var res: number[] = [];
+        for (var i = 1; i <= 9; i++) {
+          res.push(data.value![i][4]);
+        }
+        return res
       }),
       label: {
         show: true,
         position: "top",
       },
-      // showBackground: true,
     },
   ]),
 });
-const data_bgs = computed(() => {
-  return <DepartmentsData>{
-    want1: data.value.bgs.want1,
-    want2: data.value.bgs.want2,
-    want1_zh: data.value.bgs.want1_zh,
-    want2_zh: data.value.bgs.want2_zh,
-    want1_mgs: data.value.bgs.want1_mgs,
-    want1_pf: data.value.bgs.want1_pf,
-    want2_mgs: data.value.bgs.want2_mgs,
-    want2_pf: data.value.bgs.want2_pf,
-    total: data.value.bgs.total,
-    today: data.value.bgs.today,
-  };
-});
-const data_hdb = computed(() => {
-  return <DepartmentsData>{
-    want1: data.value.hdb.want1,
-    want2: data.value.hdb.want2,
-    want1_zh: data.value.hdb.want1_zh,
-    want2_zh: data.value.hdb.want2_zh,
-    want1_mgs: data.value.hdb.want1_mgs,
-    want1_pf: data.value.hdb.want1_pf,
-    want2_mgs: data.value.hdb.want2_mgs,
-    want2_pf: data.value.hdb.want2_pf,
-    total: data.value.hdb.total,
-    today: data.value.hdb.today,
-  };
-});
-const data_msc = computed(() => {
-  return <DepartmentsData>{
-    want1: data.value.msc.want1,
-    want2: data.value.msc.want2,
-    want1_zh: data.value.msc.want1_zh,
-    want2_zh: data.value.msc.want2_zh,
-    want1_mgs: data.value.msc.want1_mgs,
-    want1_pf: data.value.msc.want1_pf,
-    want2_mgs: data.value.msc.want2_mgs,
-    want2_pf: data.value.msc.want2_pf,
-    total: data.value.msc.total,
-    today: data.value.msc.today,
-  };
-});
-const data_touch = computed(() => {
-  return <DepartmentsData>{
-    want1: data.value.touch.want1,
-    want2: data.value.touch.want2,
-    want1_zh: data.value.touch.want1_zh,
-    want2_zh: data.value.touch.want2_zh,
-    want1_mgs: data.value.touch.want1_mgs,
-    want1_pf: data.value.touch.want1_pf,
-    want2_mgs: data.value.touch.want2_mgs,
-    want2_pf: data.value.touch.want2_pf,
-    total: data.value.touch.total,
-    today: data.value.touch.today,
-  };
-});
-const data_xh = computed(() => {
-  return <DepartmentsData>{
-    want1: data.value.xh.want1,
-    want2: data.value.xh.want2,
-    want1_zh: data.value.xh.want1_zh,
-    want2_zh: data.value.xh.want2_zh,
-    want1_mgs: data.value.xh.want1_mgs,
-    want1_pf: data.value.xh.want1_pf,
-    want2_mgs: data.value.xh.want2_mgs,
-    want2_pf: data.value.xh.want2_pf,
-    total: data.value.xh.total,
-    today: data.value.xh.today,
-  };
-});
-const data_bj = computed(() => {
-  return <DepartmentsData>{
-    want1: data.value.bj.want1,
-    want2: data.value.bj.want2,
-    want1_zh: data.value.bj.want1_zh,
-    want2_zh: data.value.bj.want2_zh,
-    want1_mgs: data.value.bj.want1_mgs,
-    want1_pf: data.value.bj.want1_pf,
-    want2_mgs: data.value.bj.want2_mgs,
-    want2_pf: data.value.bj.want2_pf,
-    total: data.value.bj.total,
-    today: data.value.bj.today,
-  };
-});
-const data_sj = computed(() => {
-  return <DepartmentsData>{
-    want1: data.value.sj.want1,
-    want2: data.value.sj.want2,
-    want1_zh: data.value.sj.want1_zh,
-    want2_zh: data.value.sj.want2_zh,
-    want1_mgs: data.value.sj.want1_mgs,
-    want1_pf: data.value.sj.want1_pf,
-    want2_mgs: data.value.sj.want2_mgs,
-    want2_pf: data.value.sj.want2_pf,
-    total: data.value.sj.total,
-    today: data.value.sj.today,
-  };
-});
-const data_kfb = computed(() => {
-  return <DepartmentsData>{
-    want1: data.value.kfb.want1,
-    want2: data.value.kfb.want2,
-    want1_zh: data.value.kfb.want1_zh,
-    want2_zh: data.value.kfb.want2_zh,
-    want1_mgs: data.value.kfb.want1_mgs,
-    want1_pf: data.value.kfb.want1_pf,
-    want2_mgs: data.value.kfb.want2_mgs,
-    want2_pf: data.value.kfb.want2_pf,
-    total: data.value.kfb.total,
-    today: data.value.kfb.today,
-  };
-});
-const data_yb = computed(() => {
-  return <DepartmentsData>{
-    want1: data.value.yb.want1,
-    want2: data.value.yb.want2,
-    want1_zh: data.value.yb.want1_zh,
-    want2_zh: data.value.yb.want2_zh,
-    want1_mgs: data.value.yb.want1_mgs,
-    want1_pf: data.value.yb.want1_pf,
-    want2_mgs: data.value.yb.want2_mgs,
-    want2_pf: data.value.yb.want2_pf,
-    total: data.value.yb.total,
-    today: data.value.yb.today,
-  };
-});
+onBeforeMount(() => { submitClicked() })
+
 </script>

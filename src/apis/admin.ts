@@ -23,3 +23,13 @@ export const GetDataTotal = async (auth: string) => {
   })
   return res;
 }
+
+export const TestAdmin = async (auth: string) => {
+  return await request<IRequest>({
+    url: '/api/test_admin',
+    method: 'GET',
+    headers: {
+      'Authorization': auth
+    },
+  })
+}

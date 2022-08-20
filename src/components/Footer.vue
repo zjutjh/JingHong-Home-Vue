@@ -2,7 +2,7 @@
 import { useRouter } from "vue-router";
 const router = useRouter();
 function admin() {
-  // router.push('/admin');
+  router.push('/admin');
   return;
 }
 </script>
