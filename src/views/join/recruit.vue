@@ -5,7 +5,7 @@ import { useRouter } from "vue-router";
 import { usePageStore } from "@/stores/pages";
 import { INormalForm } from "@/types/forms";
 import { isPhone, isStuId } from "@/utils/valid";
-import { NormalForm } from "@/apis/forms";
+import { PostNormalForm } from "@/apis/forms";
 import { GetCaptchaForm } from "@/apis/captcha";
 import { ICaptcha } from "@/types/forms";
 import JHLabel from "@/components/JHLabel.vue";
@@ -68,9 +68,8 @@ async function SubmitCaptcha() {
   if (form.captcha_code == "") {
     alert("请输入验证码");
   } else {
-    alert("ok");
     vertifyCaptchaNotice.value = false;
-    var res = await NormalForm(form);
+    var res = await PostNormalForm(form);
     if (res.message == "ok") {
       noticeMessage.value = "提交成功";
       noticeShow.value = true;
@@ -129,7 +128,6 @@ async function GetCaptcha() {
 
 <template>
   <page-top />
-  {{ form }}
   <JHLabel type="small">报名表</JHLabel>
   <JHNotice :show="noticeShow" @changeShow="closeNoticeShow" @cancel="closeNoticeShow"
     :type="pageStore.pageType == 'normal' ? 'pc' : 'mob'">
@@ -165,7 +163,7 @@ async function GetCaptcha() {
     <JHInput label="学院" v-model="form.college" :valid="!(form.college == '' && submitted)" notice="此项不为空"
       :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"></JHInput>
 
-    <JHSelect label="校区" v-model="form.region" @change="regionChanged" :valid="!(form.region == 0 && submitted)"
+    <JHSelect label="校区" v-model.number="form.region" @change="regionChanged" :valid="!(form.region == 0 && submitted)"
       :disabled="false" notice="此项不为空" :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'">
       <option value="0" selected disabled>选择校区后才能选择志愿</option>
       <option v-for="(region, index) in regions.slice(1)" :value="index + 1">{{ region }}</option>
@@ -173,8 +171,8 @@ async function GetCaptcha() {
   </div>
 
   <div class="other_info">
-    <JHSelect label="第一志愿" v-model="form.want1" :disabled="form.region == 0" :valid="!(form.want1 == 0 && submitted)"
-      notice="此项不为空" :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'">
+    <JHSelect label="第一志愿" v-model.number="form.want1" :disabled="form.region == 0"
+      :valid="!(form.want1 == 0 && submitted)" notice="此项不为空" :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'">
       <option value="no" disabled="true">
         {{ form.region == 0 ? "请先选择校区" : "未选择" }}
       </option>
@@ -184,8 +182,8 @@ async function GetCaptcha() {
       </option>
     </JHSelect>
 
-    <JHSelect label="第二志愿" v-model="form.want2" :disabled="form.region == 0" :valid="!(form.want2 == 0 && submitted)"
-      notice="此项不为空" :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'">
+    <JHSelect label="第二志愿" v-model.number="form.want2" :disabled="form.region == 0"
+      :valid="!(form.want2 == 0 && submitted)" notice="此项不为空" :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'">
       <option value="no" disabled="true">
         {{ form.region == 0 ? "请先选择校区" : "未选择" }}
       </option>

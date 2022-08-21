@@ -35,6 +35,8 @@
       <DepartmentsDataPresent :data="data![9]" type="mob"></DepartmentsDataPresent>
     </JHCard>
   </div>
+  <div style="height: 50px"></div>
+  <JHButton type="small" @click="router.push('/admin/detail')">查看详情（需要高级管理员密钥）</JHButton>
   <Footer />
 </template>
 <style scoped>
@@ -82,6 +84,7 @@ import { usePageStore } from "../../stores/pages";
 import PageTop from "../../components/PageTop.vue";
 import JHButton from "@/components/JHButton.vue";
 import Footer from "@/components/Footer.vue";
+import { useRouter } from "vue-router";
 use([
   CanvasRenderer,
   BarChart,
@@ -102,7 +105,7 @@ const data = ref<IFormsData>([
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ]);
-
+const router = useRouter()
 async function submitClicked() {
   const res = await GetDataTotal(pageStore.token);
   data.value = res.data.data;

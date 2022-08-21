@@ -94,22 +94,6 @@ const routes = [
       navbar: () => import('../components/NavBar.vue'),
     }
   },
-  // {
-  //   path: '/join/long',
-  //   name: 'join/long',
-  //   components: {
-  //     default: () => import('../views/join/recruitLong.vue'),
-  //     navbar: () => import('../components/NavBar.vue'),
-  //   },
-  // },
-  // {
-  //   path: '/join/develop',
-  //   name: 'join/develop',
-  //   components: {
-  //     default: () => import('../views/join/recruitDevelop.vue'),
-  //     navbar: () => import('../components/NavBar.vue'),
-  //   },
-  // },
   {
     path: '/admin',
     name: 'admin',
@@ -126,14 +110,14 @@ const routes = [
       navbar: () => import('../components/NavBarAdmin.vue'),
     },
   },
-  // {
-  //   path: '/join/acm',
-  //   name: 'join/acm',
-  //   components: {
-  //     default: () => import('../views/join/acm.vue'),
-  //     navbar: () => import('../components/NavBar.vue'),
-  //   },
-  // },
+  {
+    path: '/admin/detail',
+    name: 'admin/detail',
+    components: {
+      default: () => import('../views/admin/detail.vue'),
+      navbar: () => import('../components/NavBarAdmin.vue'),
+    }
+  },
   {
     path: '/:pathMatch(.*)*',
     redirect: '/index'

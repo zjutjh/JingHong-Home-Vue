@@ -22,7 +22,9 @@ function handleInput(event: Event) {
   <div class="jh-base" :class="type">
     <div class="label" :class="type">{{ props.label }}</div>
     <select class="select" :class="[type, valid ? 'valid' : 'invalid']" :value="modelValue"
-      @input="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)" :disabled="disabled">
+      @input="$emit('update:modelValue', ($event.target as HTMLSelectElement).value as typeof modelValue)"
+      :disabled="disabled">
+
       <slot></slot>
     </select>
     <span></span>

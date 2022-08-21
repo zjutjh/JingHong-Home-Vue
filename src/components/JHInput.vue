@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<Props>(), {
   <div class="jh-base" :class="type">
     <div class="label" :class="type">{{ props.label }}</div>
     <input class="input" :class="[type, valid ? 'valid' : 'invalid']" :value="modelValue"
-      @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)" />
+      @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value as typeof modelValue)" />
     <span></span>
     <div class="notice" :class="[type, valid ? 'valid' : 'invalid']">
       * {{ props.notice }}

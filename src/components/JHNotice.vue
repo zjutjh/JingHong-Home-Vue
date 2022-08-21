@@ -85,8 +85,9 @@ function cancelClicked(e: MouseEvent) {
 }
 
 .mob .notice {
-  height: 200px;
-  width: 60%;
+  height: fit-content;
+  padding: 50px;
+  width: fit-content;
   background-color: #d20001;
   border-radius: 10px;
   display: grid;
@@ -98,6 +99,7 @@ function cancelClicked(e: MouseEvent) {
 .mob .message {
   color: white;
   font-size: 18px;
+  width: fit-content;
 }
 
 .mob .button {
