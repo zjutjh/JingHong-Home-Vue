@@ -56,6 +56,10 @@ export const GetExportAllForms = async (auth: string) => {
     headers: { 'Authorization': auth },
   }).then(
     (res) => {
+      if (res.data && res.data.type && res.data.type.includes("application/json")) {
+        alert("No Authorization")
+        return
+      }
       let url = window.URL.createObjectURL(new Blob([res.data]))
       let a = document.createElement('a')
       a.style.display = 'none'
