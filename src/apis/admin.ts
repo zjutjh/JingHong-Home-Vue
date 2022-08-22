@@ -25,7 +25,7 @@ export const GetDataTotal = async (auth: string) => {
 }
 
 export const TestAdmin = async (auth: string) => {
-  return await request<IRequest>({
+  return await request<{ data: string }>({
     url: '/api/test_admin',
     method: 'GET',
     headers: {

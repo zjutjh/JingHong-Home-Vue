@@ -36,7 +36,7 @@
     </JHCard>
   </div>
   <div style="height: 50px"></div>
-  <JHButton type="small" @click="router.push('/admin/detail')">查看详情（需要高级管理员密钥）</JHButton>
+  <JHButton type="small" @click="handelShowDetail">查看详情（需要高级管理员密钥）</JHButton>
   <Footer />
 </template>
 <style scoped>
@@ -178,5 +178,10 @@ var option = ref({
   ]),
 });
 onBeforeMount(() => { submitClicked() })
-
+function handelShowDetail() {
+  if (pageStore.admin == "advance")
+    router.push("/admin/detail")
+  else
+    alert("未授权")
+}
 </script>

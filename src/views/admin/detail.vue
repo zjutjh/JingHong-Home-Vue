@@ -134,7 +134,7 @@ import Footer from '@/components/Footer.vue';
 import JHNotice from '@/components/JHNotice.vue';
 import JHButton from '@/components/JHButton.vue';
 import { INormalFormBrief, INormalForm } from '@/types/forms'
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { GetAllNormalFormsBrief, GetNormalForm, GetExportAllForms } from '@/apis/forms';
 import { usePageStore } from '@/stores/pages';
 import { departments, regions } from '@/utils/const';
@@ -159,4 +159,7 @@ async function handelShowDetail(stu_id: string) {
 async function handelExport() {
   await GetExportAllForms(pageStore.token)
 }
+onMounted(() => {
+  handelFlush();
+})
 </script>

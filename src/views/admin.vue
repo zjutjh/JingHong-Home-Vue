@@ -17,8 +17,12 @@ async function handleLogin() {
   const res = await TestAdmin(pwd.value)
   if (res.message == "ok") {
     alert("登陆成功")
+    pageStore.admin = res.data.data
     pageStore.token = pwd.value;
     router.push("/admin/total")
+  } else {
+    alert("登陆失败")
+    return
   }
 }
 </script>

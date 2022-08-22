@@ -9,6 +9,7 @@ export const usePageStore = defineStore(
         oldScrollPosition: 0,
         pageType: 'normal',
         token: '',
+        admin: '',
       }
     }
   },
