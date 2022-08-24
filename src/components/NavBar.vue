@@ -55,45 +55,24 @@ function logoClicked() {
 }
 </script>
 <template>
-  <div
-    :class="[
-      isAtTop && pageStore.pageNow == 0 && btnOn == false
-        ? 'atTop'
-        : 'notAtTop',
-      pageStore.pageType,
-      hide ? 'hide' : '',
-    ]"
-    class="base"
-    ref="base"
-  >
-    <img
-      class="logo"
-      :class="pageStore.pageType"
-      src="/photo/top/logo.png"
-      @click="logoClicked"
-    />
-    <div
-      v-for="(l, index) in links"
-      class="link"
-      :class="index == pageStore.pageNow ? 'select' : 'notSelect'"
-      v-show="pageStore.pageType == 'normal'"
-    >
+  <div :class="[
+    isAtTop && pageStore.pageNow == 0 && btnOn == false
+      ? 'atTop'
+      : 'notAtTop',
+    pageStore.pageType,
+    hide ? 'hide' : '',
+  ]" class="base" ref="base">
+    <img class="logo" :class="pageStore.pageType" src="/photo/top/logo.png" @click="logoClicked" />
+    <div v-for="(l, index) in links" class="link" :class="index == pageStore.pageNow ? 'select' : 'notSelect'"
+      v-show="pageStore.pageType == 'normal'">
       <router-link :to="l.link">{{ l.name }}</router-link>
     </div>
-    <div
-      class="listButton"
-      :class="btnOn ? 'btnOn' : 'btnOff'"
-      v-show="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'"
-      @click="listBtnClicked"
-    ></div>
+    <div class="listButton" :class="btnOn ? 'btnOn' : 'btnOff'"
+      v-show="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'" @click="listBtnClicked"></div>
 
     <div class="list" :class="pageStore.pageType" v-show="listShow">
-      <div
-        v-for="(l, index) in links"
-        class="listItem"
-        :class="index == pageStore.pageNow ? 'select' : 'notSelect'"
-        @click="listBtnClicked"
-      >
+      <div v-for="(l, index) in links" class="listItem" :class="index == pageStore.pageNow ? 'select' : 'notSelect'"
+        @click="listBtnClicked">
         <router-link :to="l.link">{{ l.name }}</router-link>
       </div>
     </div>
@@ -145,7 +124,6 @@ a {
   position: fixed;
   align-items: center;
   transition: top linear 0.4s, background linear 0.2s;
-  /* transition: background linear 0.2s; */
   top: 0;
 }
 
@@ -235,7 +213,6 @@ a {
   background-color: white;
   align-items: center;
   justify-items: center;
-  /* transition: all 0.5s ease; */
   animation: showList 0.1s ease;
 }
 
@@ -245,7 +222,7 @@ a {
 
 .list .listItem {
   width: 40%;
-  margin-inline: auto;
+  margin: auto;
   margin-top: 20px;
   padding: 5px;
   border: 2px solid;
