@@ -3,7 +3,7 @@ interface Props {
   label: string;
   type: string;
   modelValue: string | number;
-  valid: boolean;
+  valid?: boolean;
   notice: string;
   disabled: boolean;
 }

@@ -93,7 +93,7 @@ async function submitClicked() {
   nameValid.value = form.name.length > 2 && form.name.length < 12;
   phoneValid.value = isPhone(form.phone);
   stuIDValid.value = isStuId(form.stu_id);
-  wantValid.value = form.want1 != 0 && form.want2 != 0;
+  wantValid.value = form.want1 != 0;
 
   if (!(phoneValid.value && stuIDValid.value && wantValid.value)) {
     noticeMessage.value = "请将信息正确填写完整再提交";
@@ -173,7 +173,7 @@ async function GetCaptcha() {
   <div class="other_info">
     <JHSelect label="第一志愿" v-model.number="form.want1" :disabled="form.region == 0"
       :valid="!(form.want1 == 0 && submitted)" notice="此项不为空" :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'">
-      <option value="no" disabled="true">
+      <option value="0" disabled="true">
         {{ form.region == 0 ? "请先选择校区" : "未选择" }}
       </option>
       <option v-for="item in choices[form.region]" :value="departments.indexOf(item)"
@@ -182,9 +182,9 @@ async function GetCaptcha() {
       </option>
     </JHSelect>
 
-    <JHSelect label="第二志愿" v-model.number="form.want2" :disabled="form.region == 0"
-      :valid="!(form.want2 == 0 && submitted)" notice="此项不为空" :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'">
-      <option value="no" disabled="true">
+    <JHSelect label="第二志愿" v-model.number="form.want2" :disabled="form.region == 0" notice="此项不为空"
+      :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'">
+      <option value="0">
         {{ form.region == 0 ? "请先选择校区" : "未选择" }}
       </option>
       <option v-for="item in choices[form.region]" :value="departments.indexOf(item)"
@@ -242,8 +242,7 @@ template {
   width: 70%;
   grid-template-columns: 50% 50%;
   grid-template-rows: repeat(4, 40px);
-  grid-gap: 20px 2.8%;
-
+  grid-gap: 20px;
   margin: auto;
   padding-bottom: 20px;
   border-bottom: 1px black solid;
@@ -251,10 +250,10 @@ template {
 
 .basic_info.mini {
   display: grid;
-  width: 90%;
+  width: 80%;
   grid-template-columns: 50% 50%;
-  grid-template-rows: repeat(4, 40px);
-  grid-gap: 10px;
+  grid-template-rows: repeat(4, 30px);
+  grid-gap: 20px;
   margin: auto;
   padding-bottom: 20px;
   border-bottom: 1px black solid;
@@ -274,7 +273,6 @@ template {
 }
 
 .item_content {
-  /* background-color: #dfdfdf; */
   outline: none;
   background-color: white;
 
@@ -306,7 +304,6 @@ template {
   outline: none;
   width: 100%;
   height: 150px;
-  /* background-color: #dfdfdf; */
 
   background-color: white;
   border-radius: 10px;

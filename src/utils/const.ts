@@ -1,8 +1,7 @@
 export var ENV = 'dev';
-// dev 开发模式
-// pro 生产模式
-// export const BASE_URL = 'http://localhost:8888/'
-export const BASE_URL = 'http://101.34.27.200:8888/'
+export const BASE_URL = 'http://localhost:8888/'
+// export const BASE_URL = 'http://101.34.27.200:8888/'
+// export const BASE_URL = 'http://www.jh.zjut.edu.cn/'
 export const ACM_BASE_URL = 'http://zhangjinhong.top:8081'
 export const regions = ['未选择', "朝晖", "屏峰", "莫干山"];
 export const choices = [
@@ -52,4 +51,3 @@ export const product_details = [
   { title: "视觉影像", img: "/photo/product/3.jpg", content: "校园学习生活、学校各类大型活动的记录团队，专注于摄影、视频前期拍摄和后期剪辑，致力于用最优秀的制作呈现最美的工大人、工大景。视觉影像像期待用最用心的摄制给你带来最高级的视听盛宴!" },  //欢迎关注 b站:浙江工业大学精弘网络微信视频号:精小弘在线。
   { title: "学术邮箱", img: "/photo/product/4.png", content: "学校为每一位学生提供邮箱，由精弘网络提供运营服务，是你参与学校工作、学习、生活等各类活动的官方邮箱，伴随你的大学四年乃至一生，毕业后仍可享受校方的服务。" },
 ];
-
