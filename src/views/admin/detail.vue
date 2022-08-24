@@ -16,7 +16,7 @@
       </div>
       <div class="item">
         <label>性别</label>
-        {{ detailForm!.gender }}
+        {{ detailForm!.gender == '0' ? '男' : '女' }}
       </div>
       <div class="item">
         <label>学院</label>
@@ -24,7 +24,7 @@
       </div>
       <div class="item">
         <label>校区</label>
-        {{ detailForm!.region }}
+        {{ regions[detailForm!.region] }}
       </div>
       <div class="item">
         <label>专业</label>
@@ -40,11 +40,11 @@
       </div>
       <div class="item">
         <label>第一志愿</label>
-        {{ detailForm!.want1 }}
+        {{ departments[detailForm!.want1] }}
       </div>
       <div class="item">
         <label>第二志愿</label>
-        {{ detailForm!.want2 }}
+        {{ departments[detailForm!.want2] }}
       </div>
       <div class="item">
         <label>自我介绍</label>
