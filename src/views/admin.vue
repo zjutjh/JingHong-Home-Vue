@@ -45,7 +45,9 @@ async function handleLogin() {
     <JHCard type="large" :is-title="false">
       <JHLabel type="small"> 管理员登陆 </JHLabel>
       <div style="height: 50px"></div>
-      <JHInput type="normal" label="密码" notice="此项不为空" :valid="!(pwd == '' && submitted)" v-model="pwd"></JHInput>
+      <JHInput :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'" label="密码" notice="此项不为空"
+        :valid="!(pwd == '' && submitted)" v-model="pwd">
+      </JHInput>
       <div class="btn">
         <JHButton type="small" @click="handleLogin">登陆</JHButton>
         <JHButton type="small" @click="router.push('/index')">返回</JHButton>
