@@ -71,17 +71,12 @@ async function SubmitCaptcha() {
     vertifyCaptchaNotice.value = false;
     var res = await PostNormalForm(form);
     if (res.message == "ok") {
-      noticeMessage.value = "提交成功";
+      noticeMessage.value = "提交成功, (两秒后返回)";
       noticeShow.value = true;
       vertifyCaptchaNotice.value = false;
-      while (true) {
-        await new Promise((resolve) => setTimeout(resolve, 3000));
-        if (noticeShow.value) {
-          noticeShow.value = false;
-          break;
-        }
-      }
-      router.push("/join");
+      setTimeout(() => {
+        router.push("/join");
+      }, 2000);
     } else {
       noticeMessage.value = res.message; // 显示提示信息
       noticeShow.value = true;
@@ -90,7 +85,7 @@ async function SubmitCaptcha() {
 }
 async function submitClicked() {
   submitted.value = true;
-  nameValid.value = form.name.length > 2 && form.name.length < 12;
+  nameValid.value = form.name.length >= 2 && form.name.length <= 12;
   phoneValid.value = isPhone(form.phone);
   stuIDValid.value = isStuId(form.stu_id);
   wantValid.value = form.want1 != 0;
@@ -120,10 +115,10 @@ const genderOptions = [
 const noticeMessage = ref<string>("请将信息正确填写完整再提交");
 async function GetCaptcha() {
   let res = await GetCaptchaForm();
-  console.log(res);
   form.captcha_id = res.data.id;
   captcha.b64s = res.data.b64s;
 }
+
 </script>
 
 <template>
@@ -242,7 +237,7 @@ template {
   width: 70%;
   grid-template-columns: 50% 50%;
   grid-template-rows: repeat(4, 40px);
-  grid-gap: 20px;
+  grid-gap: 10px;
   margin: auto;
   padding-bottom: 20px;
   border-bottom: 1px black solid;

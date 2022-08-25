@@ -100,7 +100,7 @@ function handleInput(event: Event) {
 .jh-base.mob {
   display: grid;
   grid-template-columns: 40% 60%;
-  grid-column-gap: 20px;
+  grid-column-gap: 10px;
   height: 50px;
 }
 

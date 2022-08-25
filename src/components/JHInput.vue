@@ -91,7 +91,7 @@ const props = withDefaults(defineProps<Props>(), {
   display: grid;
   height: 50px;
   grid-template-columns: 40% 60%;
-  grid-column-gap: 20px;
+  grid-column-gap: 10px;
 }
 
 .label.mob {
