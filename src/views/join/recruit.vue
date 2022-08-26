@@ -75,10 +75,10 @@ async function SubmitCaptcha() {
       noticeShow.value = true;
       vertifyCaptchaNotice.value = false;
       setTimeout(() => {
-        router.push("/join");
+        router.push("/index");
       }, 2000);
     } else {
-      noticeMessage.value = res.message; // 显示提示信息
+      noticeMessage.value = res.message;
       noticeShow.value = true;
     }
   }
@@ -140,7 +140,7 @@ async function GetCaptcha() {
   <div class="basic_info" :class="pageStore.pageType">
     <JHInput label="姓名" v-model="form.name" :valid="nameValid" notice="姓名长度2-12"
       :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"></JHInput>
-    <JHInput label="专业" v-model="form.campus" :valid="!(form.campus == '' && submitted)"
+    <JHInput label="学院" v-model="form.campus" :valid="!(form.campus == '' && submitted)"
       :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'" notice="此项不为空"></JHInput>
     <JHSelect label="性别" v-model.number:value="form.gender" :valid="!(form.gender == '-1' && submitted)"
       :disabled="false" :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'" notice="此项不为空">
@@ -155,7 +155,7 @@ async function GetCaptcha() {
       :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"></JHInput>
     <JHInput label="QQ" v-model="form.qq" :valid="!(form.qq == '' && submitted)"
       :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'" notice="此项不为空"></JHInput>
-    <JHInput label="学院" v-model="form.college" :valid="!(form.college == '' && submitted)" notice="此项不为空"
+    <JHInput label="专业" v-model="form.college" :valid="!(form.college == '' && submitted)" notice="此项不为空"
       :type="pageStore.pageType == 'normal' ? 'normal' : 'mob'"></JHInput>
 
     <JHSelect label="校区" v-model.number="form.region" @change="regionChanged" :valid="!(form.region == 0 && submitted)"
@@ -204,11 +204,12 @@ async function GetCaptcha() {
     </div>
   </div>
 
-  <div style="display:flex; center">
+  <div style="display:flex;">
     <JHButton type="small" @click="returnClicked">返回</JHButton>
     <JHButton type="small" @click="submitClicked">提交</JHButton>
   </div>
 
+  (提交成功后自动返回首页)
   <Footer></Footer>
 </template>
 

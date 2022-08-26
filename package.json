@@ -1,7 +1,7 @@
 {
     "name": "join-us-vue",
     "private": true,
-    "version": "2.5.2.1",
+    "version": "2.5.2",
     "scripts": {
         "dev": "vite",
         "build": "vue-tsc --noEmit && vite build",
