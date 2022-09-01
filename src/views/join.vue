@@ -26,16 +26,8 @@ function toLong() {
   <PageTop />
   <JHCard title="加入我们" type="large" :is-title="true">
     <div class="base" :class="pageStore.pageType">
-      <img
-        class="haibao"
-        src="/photo/haibao/pc.jpg"
-        v-if="pageStore.pageType == 'normal'"
-      />
-      <img
-        class="haibao"
-        src="/photo/haibao/mob.jpg"
-        v-if="pageStore.pageType != 'normal'"
-      />
+      <img class="haibao" src="/photo/haibao/pc.jpg" v-if="pageStore.pageType == 'normal'" />
+      <img class="haibao" src="/photo/haibao/mob.jpg" v-if="pageStore.pageType != 'normal'" />
       <div class="detail-base" :class="pageStore.pageType">
         <div class="btn">
           <!-- <JHButton type="middle" @click="router.push('/join/acm')">
@@ -44,26 +36,23 @@ function toLong() {
           (点击报名) -->
           <JHButton type="middle" @click="toRecruit">招新季报名</JHButton>
           (点击报名)
-          <!-- (暂未开放) -->
-          <JHButton type="middle-disabled" @click="toLong"
-            >长期招新报名</JHButton
-          >(暂未开放)
+
+          <JHButton type="middle-disabled" @click="toLong">长期招新报名</JHButton>(暂未开放)
         </div>
         <div class="introduce" :class="pageStore.pageType">
           <JHLabel type="nano">线下摆摊</JHLabel>
           <div class="content">
-            屏峰：暂时未定<br />
+            屏峰：2022年9月3日及4日<br />
             地点：支干路 <br />
-            朝晖：暂时未定 <br />
-            地点：上塘河畔
+            朝晖：2022年9月3日及4日<br />
+            地点：存中楼门口
           </div>
 
           <JHLabel type="nano">招新宣讲</JHLabel>
           <div class="content">
-            屏峰：暂时未定 <br />
-            地点：暂时未定 <br />
-            朝晖：暂时未定 <br />
-            地点：暂时未定
+
+            朝晖：2022年9月3日晚6点半 <br />
+            地点：新教202
           </div>
           <JHLabel type="nano">招新群号</JHLabel>
           <div class="content">768698717</div>
@@ -86,16 +75,8 @@ function toLong() {
   </JHCard>
 
   <JHCard title="部门结构" type="large" :is-title="true">
-    <img
-      src="/photo/haibao/structPc.png"
-      style="width: 70%"
-      v-if="pageStore.pageType == 'normal'"
-    />
-    <img
-      src="/photo/haibao/structMob.png"
-      style="width: 70%"
-      v-if="pageStore.pageType != 'normal'"
-    />
+    <img src="/photo/haibao/structPc.png" style="width: 70%" v-if="pageStore.pageType == 'normal'" />
+    <img src="/photo/haibao/structMob.png" style="width: 70%" v-if="pageStore.pageType != 'normal'" />
   </JHCard>
   <Footer />
 </template>
@@ -104,10 +85,12 @@ function toLong() {
 .base {
   display: grid;
 }
+
 .base.normal {
   grid-template-columns: 60% 40%;
   grid-gap: 20px;
 }
+
 .base.middle {
   height: 2000px;
   grid-template-rows: 1100px 700px 100px;
@@ -138,29 +121,35 @@ function toLong() {
   margin-top: 40px;
   text-align: start;
   font-size: 18px;
+
   .content {
     position: relative;
     left: 50px;
     margin-bottom: 20px;
   }
 }
+
 .introduce.middle,
 .introduce.mini {
   text-align: center;
   font-size: 18px;
   margin-top: 40px;
+
   .content {
     margin-bottom: 20px;
   }
 }
+
 .introduce.middle .small,
 .introduce.mini .small {
   margin: auto;
 }
+
 .detail-base.middle,
 .detail-base.mini {
   margin: auto;
 }
+
 .qr-base {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -168,6 +157,7 @@ function toLong() {
   max-width: 300px;
   margin-top: 20px;
 }
+
 .qr-base img {
   width: 80px;
   height: 80px;
