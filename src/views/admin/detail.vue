@@ -138,7 +138,6 @@ import { onMounted, ref } from 'vue';
 import { GetAllNormalFormsBrief, GetNormalForm, GetExportAllForms } from '@/apis/forms';
 import { usePageStore } from '@/stores/pages';
 import { departments, regions } from '@/utils/const';
-import { abort } from 'process';
 const briefForms = ref<INormalFormBrief[]>();
 const detailForm = ref<INormalForm>();
 const pageStore = usePageStore();

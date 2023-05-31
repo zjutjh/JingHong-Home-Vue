@@ -115,6 +115,7 @@ function toDepartment() {
   border: 2px;
   box-shadow: 0 1px 5px #999;
 }
+
 .detail .content {
   width: 80%;
   margin: auto;
@@ -127,6 +128,7 @@ function toDepartment() {
   bottom: 20px;
   width: 50px;
 }
+
 .shadow {
   position: absolute;
   top: 0;
@@ -141,23 +143,19 @@ function toDepartment() {
   <PageTop />
   <JHLabel type="title">我们的产品</JHLabel>
   <div class="shadow" v-if="isWejh || isWechat || isVisual || isEmail"></div>
-  <div
-    class="base"
-    :class="pageStore.pageType"
-    v-if="pageStore.pageType == 'normal'"
-  >
+  <div class="base" :class="pageStore.pageType" v-if="pageStore.pageType == 'normal'">
     <JHCard type="large" :is-title="true" title="微信公众号">
       <div class="wechat">
         <div class="introduction">
           浙江工业大学精弘网络微信公众号,提供结合精弘网络产品的实用功能,推出微精弘板块等系列服务,是工大学子学习生活的好帮手。
         </div>
         <div>
-          <img src="/photo/product/10.png" />
+          <img src="/photo/product/11.png" />
           <h3>浙江工业大学精弘网络</h3>
         </div>
         <div>
-          <img src="/photo/product/11.png" />
-          <h3>精小弘在线</h3>
+          <img src="/photo/product/10.jpg" />
+          <h3>浙工大微学工</h3>
         </div>
       </div>
     </JHCard>
@@ -260,10 +258,7 @@ function toDepartment() {
   <div style="height: 100px"></div>
   <JHButton type="middle" @click="toDepartment">
     我们的部门
-    <img
-      src="/photo/svg/rightArrow.svg"
-      style="width: 20px; margin-left: 20px"
-    />
+    <img src="/photo/svg/rightArrow.svg" style="width: 20px; margin-left: 20px" />
   </JHButton>
   <Footer />
 </template>

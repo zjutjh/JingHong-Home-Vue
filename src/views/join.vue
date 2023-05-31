@@ -65,8 +65,8 @@ function toLong() {
               精弘网络
             </div>
             <div class="qr-code">
-              <img src="/photo/product/10.png" />
-              精小弘在线
+              <img src="/photo/product/10.jpg" />
+              浙工大微学工
             </div>
           </div>
         </div>

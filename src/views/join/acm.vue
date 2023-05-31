@@ -12,7 +12,6 @@ import router from "../../router";
 import { getCaptcha, registerUser } from "../../apis/acm";
 import { GetCaptchaForm } from "../../apis/captcha";
 var captchaTime = ref(0);
-var captchaTimer: NodeJS.Timer;
 const data = reactive<IACMUser>({
   name: "",
   phone: "",
@@ -45,14 +44,6 @@ async function captchaClicked() {
   if (res != "OK") alert("提交失败");
   else alert("验证码已发送");
   captchaTime.value = 60;
-  captchaTimer = setInterval(() => {
-    captchaTime.value--;
-    if (captchaTime.value <= 0) {
-      clearInterval(captchaTimer);
-      captchaTime.value = 0;
-    }
-  }, 1000);
-  return;
 }
 async function submitClicked() {
   if (!dataValid.value || data.code == "") {
@@ -86,7 +77,7 @@ onMounted(() => {
     <div class="btns">
       <JHButton type="small" @click="returnClicked">返回</JHButton>
       <JHButton :type="captchaTime == 0 ? 'small' : 'small-disabled'" @click="captchaClicked">{{
-          captchaTime == 0 ? "获取验证码" : "获取验证码(" + captchaTime + ")"
+        captchaTime == 0 ? "获取验证码" : "获取验证码(" + captchaTime + ")"
       }}</JHButton>
       <JHButton type="small" @click="submitClicked">提交</JHButton>
     </div>
