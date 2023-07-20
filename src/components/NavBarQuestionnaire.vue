@@ -35,8 +35,8 @@ onMounted(() => {
 })
 
 const links = [
-  { name: '总览', link: '/admin/total' },
-  { name: '返回', link: '/index' },
+  { name: '问卷', link: '/questionnaire' },
+  { name: '草稿箱', link: '/quetionnaire/draft' },
 ]
 
 function listBtnClicked() {
@@ -52,7 +52,7 @@ function logoClicked() {
   <div :class="pageStore.pageType, hide ? 'hide' : ''" class="base" ref="base">
     <img class="logo" :class="pageStore.pageType" src="/photo/top/logo.png" @click="logoClicked" />
     <div class="options" v-if="pageStore.pageType == 'normal'">
-    <div v-for="(l, index) in props.links? props.links : links" class="link" :class="index == pageStore.pageAdminNow ? 'select' : 'notSelect'">
+    <div v-for="(l, index) in props.links? props.links : links" class="link" :class="select">
       <router-link :to="l.link">{{ l.name }}</router-link>
     </div>
     </div>
