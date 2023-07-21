@@ -35,7 +35,8 @@ var loaded = false;
 <template>
   <start />
   <introduce />
-  <JHVideo />
+  <!-- 21届部长团没有拍客服视频 故取消 -->
+  <!--  <JHVideo />-->
   <history v-if="pageStore.pageType == 'normal'" />
   <timeline
     v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'"

@@ -7,7 +7,7 @@ function admin() {
 }
 </script>
 <template>
-  <div class="footer" @click="admin">©2022 浙江工业大学-精弘网络</div>
+  <div class="footer" @click="admin">©2023 浙江工业大学-精弘网络</div>
 </template>
 
 <style scoped>

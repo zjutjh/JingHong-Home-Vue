@@ -55,7 +55,7 @@ function toLong() {
             地点：新教202
           </div>
           <JHLabel type="nano">招新群号</JHLabel>
-          <div class="content">768698717</div>
+          <div class="content">885342047</div>
         </div>
         <div class="qr">
           <JHLabel type="nano">最新动态</JHLabel>

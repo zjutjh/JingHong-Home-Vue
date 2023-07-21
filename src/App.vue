@@ -1,4 +1,4 @@
-<script setup lang="ts">
+4<script setup lang="ts">
 import { onBeforeMount, onMounted, ref, toRef } from "vue";
 import { RouterView } from "vue-router";
 import { usePageStore } from "./stores/pages";
