@@ -18,19 +18,15 @@
     <JHCard type="small" :is-title="false" title="no">
       <div class="contact-us" :class="pageStore.pageType">
         <img
-            v-if="isHovering"
-            src="/photo/index/QR.jpg"
-            @mouseout="onMouseOut"
-        />
-        <img
-            v-else
             src="/photo/svg/wechat.svg"
             @mouseover="onMouseOver"
         />
         <img
-            v-if="showQR"
+            v-if="isHovering"
             src="/photo/index/QR.jpg"
-            style="width: 100px; height: 100px;"
+            class="qrcode"
+            @mouseout="onMouseOut"
+            style="width: auto; height: 20%;z-index:1; position: absolute;"
         />
         <div style="width: 99%">
           <h1>联系我们 | 关注我们</h1>
@@ -181,6 +177,19 @@
   width: 30%;
   margin: auto;
 }
+
+.qrcode {
+  width: auto;
+  height: 20%;
+  position: absolute;
+  z-index: 99;
+  border: 3px solid #fff;
+  border-radius: 3px;
+  background-color: #fff;
+  padding: 0.5rem;
+  opacity: 1;
+  transition: all 0.1s ease-in 0s;
+}
 </style>
 
 <script setup lang="ts">
@@ -193,7 +202,6 @@ const pageStore = usePageStore();
 const router = useRouter();
 const loadingBarTimer = ref(0);
 const loadingWidth = ref(0);
-const showQR = ref(false);
 const isHovering = ref(false);
 function onMouseOver() {
   isHovering.value = true;
