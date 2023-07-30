@@ -10,15 +10,15 @@ onMounted(() => {
   document.title = "技术版块";
 });
 const imgs = [
-  "/photo/department/jishu/kaifabu/1.jpg",
-  "/photo/department/jishu/kaifabu/2.jpg",
-  "/photo/department/jishu/kaifabu/3.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/jishu/kaifabu/1.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/jishu/kaifabu/2.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/jishu/kaifabu/3.jpg",
 ];
 const imgs2 = [
-  "/photo/department/jishu/chanpinbu/1.jpg",
-  "/photo/department/jishu/chanpinbu/2.jpg",
-  "/photo/department/jishu/chanpinbu/3.jpg",
-  "/photo/department/jishu/chanpinbu/4.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/jishu/chanpinbu/1.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/jishu/chanpinbu/2.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/jishu/chanpinbu/3.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/jishu/chanpinbu/4.jpg",
 ];
 </script>
 <style scoped>
@@ -39,9 +39,9 @@ img {
   <JHLabel type="big">技术版块</JHLabel>
   <JHCard type="large" title="开发部" :isTitle="true">
     <div class="imgs">
-      <!-- <img src="/photo/department/jishu/kaifabu/1.jpg" />
-      <img src="/photo/department/jishu/kaifabu/2.jpg" />
-      <img src="/photo/department/jishu/kaifabu/3.jpg" /> -->
+      <!-- <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/jishu/kaifabu/1.jpg" />
+      <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/jishu/kaifabu/2.jpg" />
+      <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/jishu/kaifabu/3.jpg" /> -->
       <CarouselPicturesBig :imgs="imgs" />
     </div>
     <JHLabel type="small">部门介绍</JHLabel>
@@ -67,10 +67,10 @@ img {
     </div>
   </JHCard>
   <JHCard type="large" title="产品部" :isTitle="true">
-    <!-- <img src="/photo/department/jishu/chanpinbu/1.jpg" />
-    <img src="/photo/department/jishu/chanpinbu/2.jpg" />
-    <img src="/photo/department/jishu/chanpinbu/3.jpg" />
-    <img src="/photo/department/jishu/chanpinbu/4.jpg" /> -->
+    <!-- <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/jishu/chanpinbu/1.jpg" />
+    <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/jishu/chanpinbu/2.jpg" />
+    <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/jishu/chanpinbu/3.jpg" />
+    <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/jishu/chanpinbu/4.jpg" /> -->
     <CarouselPicturesBig :imgs="imgs2" />
     <JHLabel type="small">部门介绍</JHLabel>
     <div class="content">
@@ -82,7 +82,7 @@ img {
     </div>
   </JHCard>
   <img
-    src="/photo/department/fork.png"
+    src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/fork.png"
     style="width: 80px; height: 80px; margin-top: 50px; cursor: pointer"
     @click="router.push('/department')"
   />

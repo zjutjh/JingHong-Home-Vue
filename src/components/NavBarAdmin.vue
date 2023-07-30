@@ -47,7 +47,7 @@ function logoClicked() {
 </script>
 <template>
   <div :class="pageStore.pageType, hide ? 'hide' : ''" class="base" ref="base">
-    <img class="logo" :class="pageStore.pageType" src="/photo/top/logo.png" @click="logoClicked" />
+    <img class="logo" :class="pageStore.pageType" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/top/logo.png" @click="logoClicked" />
     <div v-for="(l, index) in links" class="link" :class="index == pageStore.pageAdminNow ? 'select' : 'notSelect'"
       v-show="pageStore.pageType == 'normal'">
       <router-link :to="l.link">{{ l.name }}</router-link>
@@ -67,7 +67,7 @@ function logoClicked() {
 <style scoped>
 @font-face {
   font-family: "song";
-  src: url("/font/逐浪雅宋体.ttf");
+  src: url("https://download.tooc.xlj0.com/uploads/22/jhhome/public/font/逐浪雅宋体.ttf");
 }
 
 @keyframes showList {
@@ -177,13 +177,13 @@ a {
 }
 
 .listButton.btnOn {
-  background-image: url("/photo/svg/close.svg");
+  background-image: url("https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/close.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .listButton.btnOff {
-  background-image: url("/photo/svg/list.svg");
+  background-image: url("https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/list.svg");
   background-repeat: no-repeat;
   background-position: center;
 }

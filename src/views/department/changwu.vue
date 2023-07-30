@@ -10,19 +10,19 @@ onMounted(() => {
   document.title = "常务模块";
 });
 const imgs1 = [
-  "/photo/department/changwu/mishuchu/1.jpg",
-  "/photo/department/changwu/mishuchu/2.jpg",
-  "/photo/department/changwu/mishuchu/3.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/changwu/mishuchu/1.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/changwu/mishuchu/2.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/changwu/mishuchu/3.jpg",
 ];
 const imgs2 = [
-  "/photo/department/changwu/bangongshi/1.jpg",
-  "/photo/department/changwu/bangongshi/2.jpg",
-  "/photo/department/changwu/bangongshi/3.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/changwu/bangongshi/1.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/changwu/bangongshi/2.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/changwu/bangongshi/3.jpg",
 ];
 const imgs3 = [
-  "/photo/department/changwu/huodongbu/1.jpg",
-  "/photo/department/changwu/huodongbu/2.jpg",
-  "/photo/department/changwu/huodongbu/3.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/changwu/huodongbu/1.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/changwu/huodongbu/2.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/changwu/huodongbu/3.jpg",
 ];
 </script>
 <style scoped>
@@ -84,7 +84,7 @@ img {
     </div>
   </JHCard>
   <img
-    src="/photo/department/fork.png"
+    src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/fork.png"
     style="width: 80px; height: 80px; margin-top: 50px; cursor: pointer"
     @click="router.push('/department')"
   />

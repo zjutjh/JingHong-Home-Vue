@@ -87,7 +87,7 @@ const router = useRouter();
       <div class="item">
         <div
           class="img"
-          style="background-image: url(/photo/svg/changwu.svg)"
+          style="background-image: url(https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/changwu.svg)"
           id="img1"
         ></div>
         <JHButton
@@ -100,7 +100,7 @@ const router = useRouter();
       <div class="item">
         <div
           class="img"
-          style="background-image: url(/photo/svg/jishu.svg)"
+          style="background-image: url(https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/jishu.svg)"
           id="img2"
         ></div>
 
@@ -116,7 +116,7 @@ const router = useRouter();
       <div class="item">
         <div
           class="img"
-          style="background-image: url(/photo/svg/sheji.svg)"
+          style="background-image: url(https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/sheji.svg)"
           id="img3"
         ></div>
 
@@ -130,7 +130,7 @@ const router = useRouter();
       <div class="item">
         <div
           class="img"
-          style="background-image: url(/photo/svg/xinmeiti.svg)"
+          style="background-image: url(https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/xinmeiti.svg)"
           id="img4"
         ></div>
 
@@ -144,7 +144,7 @@ const router = useRouter();
       <div class="item">
         <div
           class="img"
-          style="background-image: url(/photo/svg/yiban.svg)"
+          style="background-image: url(https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/yiban.svg)"
           id="img5"
         ></div>
 
@@ -161,7 +161,7 @@ const router = useRouter();
   <JHButton type="middle" @click="router.push('/join')">
     加入我们
     <img
-      src="/photo/svg/rightArrow.svg"
+      src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/rightArrow.svg"
       style="width: 20px; margin-left: 20px"
     />
   </JHButton>

@@ -37,7 +37,7 @@ onMounted(() => {
 
 @font-face {
   font-family: "SC-VF";
-  src: url("/font/SourceHanSansSC-VF.otf");
+  src: url("https://download.tooc.xlj0.com/uploads/22/jhhome/public/font/SourceHanSansSC-VF.otf");
 }
 
 #app {

@@ -26,8 +26,8 @@ function toLong() {
   <PageTop />
   <JHCard title="加入我们" type="large" :is-title="true">
     <div class="base" :class="pageStore.pageType">
-      <img class="haibao" src="/photo/haibao/pc.jpg" v-if="pageStore.pageType == 'normal'" />
-      <img class="haibao" src="/photo/haibao/mob.jpg" v-if="pageStore.pageType != 'normal'" />
+      <img class="haibao" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/pc.jpg" v-if="pageStore.pageType == 'normal'" />
+      <img class="haibao" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/mob.jpg" v-if="pageStore.pageType != 'normal'" />
       <div class="detail-base" :class="pageStore.pageType">
         <div class="btn">
           <!-- <JHButton type="middle" @click="router.push('/join/acm')">
@@ -61,11 +61,11 @@ function toLong() {
           <JHLabel type="nano">最新动态</JHLabel>
           <div class="qr-base">
             <div class="qr-code">
-              <img src="/photo/product/11.png" />
+              <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/11.png" />
               精弘网络
             </div>
             <div class="qr-code">
-              <img src="/photo/product/10.jpg" />
+              <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/10.jpg" />
               浙工大微学工
             </div>
           </div>
@@ -75,8 +75,8 @@ function toLong() {
   </JHCard>
 
   <JHCard title="部门结构" type="large" :is-title="true">
-    <img src="/photo/haibao/structPc.png" style="width: 70%" v-if="pageStore.pageType == 'normal'" />
-    <img src="/photo/haibao/structMob.png" style="width: 70%" v-if="pageStore.pageType != 'normal'" />
+    <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/structPc.png" style="width: 70%" v-if="pageStore.pageType == 'normal'" />
+    <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/structMob.png" style="width: 70%" v-if="pageStore.pageType != 'normal'" />
   </JHCard>
   <Footer />
 </template>

@@ -10,15 +10,15 @@ onMounted(() => {
   document.title = "新媒体模块";
 });
 const imgs1 = [
-  "/photo/department/xinmeiti/shijue/1.jpg",
-  "/photo/department/xinmeiti/shijue/2.jpg",
-  "/photo/department/xinmeiti/shijue/3.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/xinmeiti/shijue/1.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/xinmeiti/shijue/2.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/xinmeiti/shijue/3.jpg",
 ];
 const imgs2 = [
-  "/photo/department/xinmeiti/bianji/1.jpg",
-  "/photo/department/xinmeiti/bianji/2.png",
-  "/photo/department/xinmeiti/bianji/3.jpg",
-  "/photo/department/xinmeiti/bianji/4.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/xinmeiti/bianji/1.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/xinmeiti/bianji/2.png",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/xinmeiti/bianji/3.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/xinmeiti/bianji/4.jpg",
 ];
 </script>
 <style scoped>
@@ -60,7 +60,7 @@ img {
     </div>
   </JHCard>
   <img
-    src="/photo/department/fork.png"
+    src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/fork.png"
     style="width: 80px; height: 80px; margin-top: 50px; cursor: pointer"
     @click="router.push('/department')"
   />

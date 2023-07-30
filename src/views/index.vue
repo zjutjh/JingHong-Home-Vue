@@ -47,11 +47,11 @@ var loaded = false;
     type="large"
     class="story"
   >
-    <img src="/photo/index/story.jpg" />
+    <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story.jpg" />
     <JHButton type="middle" @click="toStory">
       我们的故事
       <img
-        src="/photo/svg/rightArrow.svg"
+        src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/rightArrow.svg"
         style="width: 20px; margin-left: 20px"
       />
     </JHButton>

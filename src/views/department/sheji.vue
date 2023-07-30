@@ -11,11 +11,11 @@ onMounted(() => {
   document.title = "设计模块";
 });
 const imgs = [
-  "/photo/department/sheji/xiaohong/1.jpg",
-  "/photo/department/sheji/xiaohong/2.jpg",
-  "/photo/department/sheji/xiaohong/3.jpg",
-  "/photo/department/sheji/xiaohong/4.jpg",
-  "/photo/department/sheji/xiaohong/5.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/sheji/xiaohong/1.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/sheji/xiaohong/2.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/sheji/xiaohong/3.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/sheji/xiaohong/4.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/sheji/xiaohong/5.jpg",
 ];
 </script>
 <style scoped>
@@ -60,7 +60,7 @@ img {
     </div>
   </JHCard>
   <img
-    src="/photo/department/fork.png"
+    src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/fork.png"
     style="width: 80px; height: 80px; margin-top: 50px; cursor: pointer"
     @click="router.push('/department')"
   />

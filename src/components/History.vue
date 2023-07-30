@@ -4,46 +4,46 @@ import { usePageStore } from "../stores/pages";
 import { ref } from "vue";
 const pageStore = usePageStore();
 const Events = [
-  ["2002年5月", "精弘网络成立", "/photo/index/story1.png", "精弘网络"],
+  ["2002年5月", "精弘网络成立", "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story1.png", "精弘网络"],
   [
     "2003年5月",
     "推出精弘论坛\nbbs.zjut.com",
-    "/photo/index/story2.png",
+    "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story2.png",
     "精弘论坛",
   ],
   [
     "2004年10月",
     "Feel电台创立\n radio.zjut.com",
-    "/photo/index/story3.png",
+    "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story3.png",
     "Feel电台",
   ],
   [
     "2005年5月",
     "推出第一版学生邮箱\n mail.zjut.com",
-    "/photo/index/story4.png",
+    "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story4.png",
     "学生邮箱",
   ],
-  ["2012年3月", "第一届精弘毅行", "/photo/index/story5.jpg", "精弘毅行"],
+  ["2012年3月", "第一届精弘毅行", "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story5.jpg", "精弘毅行"],
   [
     "2012年12月",
     '荣获第五届"全国高校百佳网站"的荣誉称号',
-    "/photo/index/story6.png",
+    "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story6.png",
     "百佳网站",
   ],
   [
     "2015年12月",
     '承办浙江工业大学首届"网络安全宣传月"活动',
-    "/photo/index/story7.jpg",
+    "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story7.jpg",
     "网络安全宣传",
   ],
   [
     "2016年8月",
     '精弘网络微信服务号"获全国高校东部地区榜亚军"',
-    "/photo/index/story8.jpg",
+    "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story8.jpg",
     "微信服务号",
   ],
-  ["2017年2月", "微精弘改版正式上线", "/photo/index/story9.png", "微精弘"],
-  ["2020年2月", "第十三届精弘毅行", "/photo/index/story5.jpg", "精弘毅行"],
+  ["2017年2月", "微精弘改版正式上线", "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story9.png", "微精弘"],
+  ["2020年2月", "第十三届精弘毅行", "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story5.jpg", "精弘毅行"],
 ];
 const eventNow = ref<number>(0);
 </script>
@@ -59,7 +59,7 @@ const eventNow = ref<number>(0);
     <div class="history-right" :class="pageStore.pageType">
       <div class="time">{{ Events[eventNow][0] }}</div>
       <div class="content">{{ Events[eventNow][1] }}</div>
-      <img src="/photo/index/jingxiaohong.png" border="2" />
+      <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/jingxiaohong.png" border="2" />
     </div>
   </div>
   <div class="history-choice">
