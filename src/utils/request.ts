@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { ResponseType } from '../types/apis'
-import { ACM_BASE_URL, BASE_URL, ENV } from './const';
+import { ACM_BASE_URL, BASE_URL, ENV ,Q_BASE_URL_DEV} from './const';
 const instance = axios.create({
   baseURL: BASE_URL
 })
@@ -34,5 +34,21 @@ export const request_acm = async (config: AxiosRequestConfig): Promise<string | 
     return message
   }
 
+}
+
+const instance_q = axios.create({
+  baseURL: Q_BASE_URL_DEV
+});
+
+export const request_q = async (config: AxiosRequestConfig): Promise<string | undefined> => {
+  try {
+    const data = await instance_q.request<string>(config)
+    return data.data
+  }
+  catch (err: any) {
+    const message = err.message || '请求失败'
+    console.error(message)
+    return message
+  }
 }
 export default request

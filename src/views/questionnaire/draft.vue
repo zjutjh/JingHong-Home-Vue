@@ -1,22 +1,32 @@
 <template>
-    <div class="container"> 
-    <div>
-    这是草稿箱
-    </div>
-       <QuestionCard></QuestionCard>
+    <div class="container">
+      <div class="none" v-if="!draftQuestionnaire">
+        暂无草稿
+      </div>
+        <div v-for="item in draftQuestionnaire" :key="item.id">
+         <QuestionCard :is="true" :title="item.title" :id="item.id"></QuestionCard>
+        </div>
     </div>
   </template>
-  
+
   <script setup lang="ts">
-  import NavBarAdmin from '../../components/NavBarAdmin.vue'
   import QuestionCard from '../../components/QuestionCard.vue'
-  import JHCard from '../../components/JHCard.vue'
-  const links = [
-    { name: '问卷', link: '/questionnaire' },
-    { name: '草稿箱', link: '/questionnaire/draft' },
-  ]
+  import {onMounted} from "vue";
+  import {ref} from "vue";
+  import {getQuestionnaire} from "@/apis/questionnaire";
+  const questionnaire = ref();
+  const draftQuestionnaire = ref();
+  onMounted(() => {
+    getQuestionnaire().then(res => {
+      questionnaire.value = res.data;
+      console.log(questionnaire.value);
+      draftQuestionnaire.value = questionnaire.value.filter(item => item.draft === true);
+    })
+   if (!draftQuestionnaire.value)
+     alert("当前没有草稿");
+  })
   </script>
-  
+
   <style scoped>
   .container {
     margin-top: 5%;
@@ -29,5 +39,11 @@
     align-items: center;
     gap: 5%;
   }
-  
+
+  .none{
+    background: #2c3e50;
+    height: 20vh;
+    width: 20vw;
+    margin-top: 15vh;
+  }
   </style>

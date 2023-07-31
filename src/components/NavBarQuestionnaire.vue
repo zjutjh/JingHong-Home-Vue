@@ -36,7 +36,7 @@ onMounted(() => {
 
 const links = [
   { name: '问卷', link: '/questionnaire' },
-  { name: '草稿箱', link: '/quetionnaire/draft' },
+  { name: '草稿箱', link: '/questionnaire/draft' },
 ]
 
 function listBtnClicked() {
