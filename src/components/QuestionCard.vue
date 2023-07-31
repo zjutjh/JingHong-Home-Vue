@@ -3,21 +3,23 @@
     <div  class="card-container" >
       <div class="text-container">
         <div class="text">
-          + 创建新问卷
+          {{ !props.is? "+ 创建新问卷" : props.title }}
         </div>
       </div>
       <div class="bar">
-        <div>
-          发布
-        </div>
-        <div>
-          数据
-        </div>
-        <div>
-          编辑
-        </div>
-        <div>
-          删除
+        <div class="bar" v-if="props.is">
+          <div>
+            发布
+          </div>
+          <div @click="nav2Data()">
+            数据
+          </div>
+          <div @click="nav2Edit()">
+            编辑
+          </div>
+          <div @click="deleteQuestionnaire() ">
+            删除
+          </div>
         </div>
       </div>
     </div>
@@ -30,8 +32,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 35vh;
-  width: 35vw;
+  height: 14rem;
+  width: 35rem;
   margin-top: 8%;
   border-radius: 20px;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.3);
@@ -46,6 +48,7 @@
   font-size: 2em;
   text-align: center;
 }
+
 .bar {
     margin-top: 5vh;
   display: flex;
@@ -56,4 +59,29 @@
 </style>
 
 <script setup>
+import {useQuestionnaireStore} from "@/stores/questionnaire";
+import router from "@/router";
+const nowId = useQuestionnaireStore();
+const props = defineProps({
+  id: Number,
+  title: String,
+  is: Boolean
+})
+function nav2Data(){
+   nowId.setId(props.id);
+   router.push('/questionnaire/data');
+}
+function nav2Edit(){
+  nowId.setId(props.id);
+  router.push('/questionnaire/create');
+}
+function deleteQuestionnaire(){
+  const confirm = window.confirm('确定删除该问卷吗？');
+  if(confirm){
+    console.log('delete');
+  }
+  else {
+    console.log('cancel');
+  }
+}
 </script>

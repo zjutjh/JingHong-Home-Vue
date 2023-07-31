@@ -1,29 +1,40 @@
 <template>
-  <div class="container"> 
-     <QuestionCard @click="addQuestion"></QuestionCard>
-     <QuestionCard></QuestionCard>
-     <QuestionCard></QuestionCard>
-     <QuestionCard></QuestionCard>
+  <div class="container">
+     <QuestionCard @click="addQuestion" :is="false"></QuestionCard>
+    <div v-for="item in questionnaire" :key="item.id">
+      <QuestionCard :is="true" :title="item.title" :id="item.id"></QuestionCard>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import NavBarAdmin from '../components/NavBarAdmin.vue'
 import QuestionCard from '../components/QuestionCard.vue'
-import JHCard from '../components/JHCard.vue'
 import router from '@/router';
+import {getQuestionnaire} from "@/apis/questionnaire";
+import {onMounted, ref} from "vue";
+import {useQuestionnaireStore} from "@/stores/questionnaire";
 function addQuestion() {
+  const pinia = useQuestionnaireStore();
+  pinia.setId(-1);
   console.log('addQuestion');
   router.push('/questionnaire/create');
 }
+const questionnaire = ref();
 
+
+onMounted(() => {
+  getQuestionnaire().then(res => {
+    questionnaire.value = res.data.filter(item => item.draft === false);
+    console.log(questionnaire.value);
+
+})
+})
 </script>
 
 <style scoped>
 .container {
   margin-top: 5%;
   width: 100vw;
-  height: 100vh;
   background-color: rgb(239, 239, 239);
   display: flex;
   flex-direction: column;

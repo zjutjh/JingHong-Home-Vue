@@ -143,6 +143,29 @@ const routes = [
     }
   },
   {
+    path: '/questionnaire/data',
+    name: 'questionnaire/data',
+    components: {
+        default: () => import('../views/questionnaire/data.vue'),
+        navbar: () => import('../components/NavBarQuestionnaire.vue'),
+    }
+  },
+  {
+    path: '/questionnaire/detail',
+    name: 'questionnaire/detail',
+    components: {
+      default: () => import('../views/questionnaire/detail.vue'),
+      navbar: () => import('../components/NavBarQuestionnaire.vue'),
+    }
+  },
+  {
+    path: '/questionnaire/survey',
+    name: 'questionnaire/survey',
+    components: {
+      default: () => import('../views/questionnaire/survey.vue'),
+    }
+  },
+  {
     path: '/:pathMatch(.*)*',
     redirect: '/index'
   }
