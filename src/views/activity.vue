@@ -14,8 +14,8 @@ const pageStore = usePageStore();
   <JHLabel type="title" v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'">我们的活动</JHLabel>
   <JHCard title="ACM新生赛" type="large" :is-title="true">
     <div class="base" :class="pageStore.pageType">
-      <img class="haibao" src="/photo/haibao/pc.jpg" v-if="pageStore.pageType == 'normal'" />
-      <img class="haibao" src="/photo/haibao/mob.jpg" v-if="pageStore.pageType != 'normal'" />
+      <img class="haibao" src="/photo/haibao/future.png" v-if="pageStore.pageType == 'normal'" />
+      <img class="haibao" src="/photo/haibao/future.png" v-if="pageStore.pageType != 'normal'" />
       <div class="detail-base" :class="pageStore.pageType">
         <div style="height: 50px"></div>
         <div class="btn">
@@ -33,23 +33,23 @@ const pageStore = usePageStore();
             大家更快更好地入门~
           </div>
           <JHLabel type="nano">竞赛群号</JHLabel>
-          <div class="content">(敬请等待通知)</div>
+          <div class="content">467849640</div>
         </div>
         <div class="qr">
           <JHLabel type="nano">群二维码</JHLabel>
           <div class="qr-base">
             <div class="qr-code">
-              <img src="/photo/product/11.png" />
+              <img src="/photo/activity/ACM_Group_qrcode.png" />
             </div>
           </div>
         </div>
       </div>
     </div>
   </JHCard>
-  <JHCard title="精弘毅行" type="large" :is-title="true">
+  <!-- <JHCard title="精弘毅行" type="large" :is-title="true">
     <div class="base" :class="pageStore.pageType">
-      <img class="haibao" src="/photo/haibao/pc.jpg" v-if="pageStore.pageType == 'normal'" />
-      <img class="haibao" src="/photo/haibao/mob.jpg" v-if="pageStore.pageType != 'normal'" />
+      <img class="haibao" src="/photo/haibao/future.png" v-if="pageStore.pageType == 'normal'" />
+      <img class="haibao" src="/photo/haibao/future.png" v-if="pageStore.pageType != 'normal'" />
       <div class="detail-base" :class="pageStore.pageType">
         <div style="height: 50px"></div>
         <div class="btn">
@@ -76,7 +76,7 @@ const pageStore = usePageStore();
         </div>
       </div>
     </div>
-  </JHCard>
+  </JHCard> -->
   <div style="height: 100px"></div>
   <JHButton type="middle" @click="router.push('/join')">
     加入我们
