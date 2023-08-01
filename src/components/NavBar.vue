@@ -42,6 +42,7 @@ const links = [
   { name: "我们的故事", link: "/story" },
   { name: "我们的产品", link: "/product" },
   { name: "我们的部门", link: "/department" },
+  { name: "我们的活动", link: "/activity"},
   { name: "加入我们", link: "/join" },
 ];
 
@@ -129,7 +130,7 @@ a {
 
 .base.normal {
   height: 90px;
-  grid-template-columns: 30% repeat(5, 1fr);
+  grid-template-columns: 30% repeat(6, 1fr);
 }
 
 .base.middle {
