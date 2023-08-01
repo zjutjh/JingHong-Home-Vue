@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import JHLabel from "../components/JHLabel.vue";
 import { usePageStore } from "../stores/pages";
+import JHCard from "../components/JHCard.vue";
 import JHButton from "../components/JHButton.vue";
 import Footer from "../components/Footer.vue";
 import { useRouter } from "vue-router";
@@ -82,6 +83,11 @@ const router = useRouter();
 <template>
   <PageTop />
   <JHLabel type="title" v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'">我们的部门</JHLabel>
+  <JHCard title="部门结构" type="large" :is-title="true">
+    <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/structPc.png" style="width: 70%" v-if="pageStore.pageType == 'normal'" />
+    <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/structMob.png" style="width: 70%" v-if="pageStore.pageType != 'normal'" />
+  </JHCard>
+  <div style="height: 100px"></div>
   <div class="base" :class="pageStore.pageType">
     <div class="line1">
       <div class="item">

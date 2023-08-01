@@ -73,11 +73,6 @@ function toLong() {
       </div>
     </div>
   </JHCard>
-
-  <JHCard title="部门结构" type="large" :is-title="true">
-    <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/structPc.png" style="width: 70%" v-if="pageStore.pageType == 'normal'" />
-    <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/structMob.png" style="width: 70%" v-if="pageStore.pageType != 'normal'" />
-  </JHCard>
   <Footer />
 </template>
 
