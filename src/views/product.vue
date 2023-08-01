@@ -117,6 +117,7 @@ function toDepartment() {
 }
 
 .detail .content {
+  text-align: start;
   width: 80%;
   margin: auto;
   font-size: 20px;
@@ -174,8 +175,8 @@ function toDepartment() {
       <div class="visual">
         <div class="introduction">
           校园学习生活、学校各类大型活动的记录团队，专注于摄影、视频前期拍摄和后期剪辑,致力于用最优秀的制作呈现最美的工大人、工大景。视觉影像像期待用最用心的摄制给你带来最高级的视听盛宴!
-          欢迎关注
-          <br />b站:浙江工业大学精弘网络 <br />微信视频号:精小弘在线。
+          <br />欢迎关注
+          <br />哔哩哔哩: 浙工大精弘网络 <br />微信视频号: 精小弘在线
         </div>
         <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/13.png" />
       </div>
@@ -240,7 +241,7 @@ function toDepartment() {
       </div>
       <div class="content">
         校园学习生活、学校各类大型活动的记录团队，专注于摄影、视频前期拍摄和后期剪辑,致力于用最优秀的制作呈现最美的工大人、工大景。视觉影像像期待用最用心的摄制给你带来最高级的视听盛宴!
-        欢迎关注 b站:浙江工业大学精弘网络 微信视频号:精小弘在线。
+        欢迎关注<br /><center>b站:浙工大精弘网络</center><center>微信视频号:精小弘在线</center>。
       </div>
       <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/return.svg" @click="isVisual = false" />
     </div>

@@ -99,6 +99,7 @@ function toProduct() {
 .shiming-base .shiming-img {
   width: 80%;
   min-width: 200px;
+  margin-bottom: 10%;
 }
 
 .shiming {
@@ -197,11 +198,10 @@ function toProduct() {
         精弘网络采用朝晖、屏峰、莫干山三个校区共同建制
         <br />目前运营和维护的平台包括但不仅限
         <br />浙江工业大学精弘网络微信服务号、
-        <br />精小弘在线微信服务号、微精弘微信小程序、
+        <br />浙工大微学工微信服务号、微精弘微信小程序、
         <br />浙工大易班官方机构号、知乎官方机构号、
         <br />邮件系统(https://mail.zjut.edu.cn/)、
-        <br />工大云盘(http://pan.zjut.edu.cn/)、
-        <br />精弘论坛、精弘直播、Feel电台等。
+        <br />浙工大精弘网络b站账号、精弘直播等。
       </div>
     </div>
   </JHCard>
