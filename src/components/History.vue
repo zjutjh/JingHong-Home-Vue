@@ -44,6 +44,8 @@ const Events = [
   ],
   ["2017年2月", "微精弘改版正式上线", "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story9.png", "微精弘"],
   ["2020年2月", "第十三届精弘毅行", "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story5.jpg", "精弘毅行"],
+  ["2022年8月", "微精弘2.0发布", "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story9.png", "微精弘"],
+  ["2023年4月", "面向校组织合作，助力数字化转型", "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story10.jpg", "“For You”工程"]
 ];
 const eventNow = ref<number>(0);
 </script>
@@ -205,7 +207,7 @@ const eventNow = ref<number>(0);
 
 .red-line {
   position: absolute;
-  width: 1100px;
+  width: 1400px;
   height: 0.7rem;
   background-color: #d20001;
   z-index: 1;

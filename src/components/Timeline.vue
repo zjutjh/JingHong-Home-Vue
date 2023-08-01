@@ -61,6 +61,18 @@ const items = [
     time: "2020年2月",
     content: "第十三届精弘毅行",
   },
+  {
+    id: 10,
+    img: "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story9.png",
+    time: "2022年8月",
+    content: "微精弘2.0发布",
+  },
+  {
+    id: 11,
+    img: "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story10.jpg",
+    time: "2023年4月",
+    content: "面向校组织合作，助力数字化转型",
+  },
 ];
 const angle = (Math.atan(0.5) * 180) / Math.PI + "deg";
 const angle2 = (-Math.atan(0.5) * 180) / Math.PI + "deg";
@@ -70,7 +82,7 @@ const styleVal = (function (index: number): CSSProperties {
     '--angle': index % 2 === 0 ? angle : angle2,
     '--scale': scale,
     '--border': index % 2 === 0 ? 'dashed' : 'solid',
-    '--line_seen': index === 9 ? 'none' : 'block',
+    '--line_seen': index === 11 ? 'none' : 'block',
   }
 });
 const top111 = ref(0);
