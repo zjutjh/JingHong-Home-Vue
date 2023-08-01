@@ -142,7 +142,7 @@ function toDepartment() {
 
 <template>
   <PageTop />
-  <JHLabel type="title">我们的产品</JHLabel>
+  <JHLabel type="title" v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'">我们的产品</JHLabel>
   <div class="shadow" v-if="isWejh || isWechat || isVisual || isEmail"></div>
   <div class="base" :class="pageStore.pageType" v-if="pageStore.pageType == 'normal'">
     <JHCard type="large" :is-title="true" title="微信公众号">

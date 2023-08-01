@@ -176,7 +176,7 @@ function toProduct() {
 </style>
 <template>
   <PageTop />
-  <JHLabel type="title">我们的故事</JHLabel>
+  <JHLabel type="title" v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'">我们的故事</JHLabel>
   <JHCard type="large" title="我们的使命" :isTitle="true">
     <div class="shiming-base" :class="pageStore.pageType">
       <img

@@ -11,7 +11,7 @@ const pageStore = usePageStore();
 
 <template>
   <PageTop />
-  <JHLabel type="title">我们的活动</JHLabel>
+  <JHLabel type="title" v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'">我们的活动</JHLabel>
   <JHCard title="ACM新生赛" type="large" :is-title="true">
     <div class="base" :class="pageStore.pageType">
       <img class="haibao" src="/photo/haibao/pc.jpg" v-if="pageStore.pageType == 'normal'" />

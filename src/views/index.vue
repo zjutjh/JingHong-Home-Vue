@@ -43,9 +43,10 @@ var loaded = false;
   />
   <JHCard
     title="我们的故事"
-    :is-title="pageStore.pageType == 'normal'"
+    :is-title="true"
     type="large"
     class="story"
+    v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'"
   >
     <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story.jpg" />
     <JHButton type="middle" @click="toStory">

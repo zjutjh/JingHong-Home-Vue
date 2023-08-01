@@ -81,7 +81,7 @@ const router = useRouter();
 </style>
 <template>
   <PageTop />
-  <JHLabel type="title">我们的部门</JHLabel>
+  <JHLabel type="title" v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'">我们的部门</JHLabel>
   <div class="base" :class="pageStore.pageType">
     <div class="line1">
       <div class="item">
