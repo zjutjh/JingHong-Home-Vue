@@ -87,7 +87,7 @@ const router = useRouter();
     <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/structPc.png" style="width: 70%" v-if="pageStore.pageType == 'normal'" />
     <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/structMob.png" style="width: 70%" v-if="pageStore.pageType != 'normal'" />
   </JHCard>
-  <div style="height: 100px"></div>
+  <div v-show="pageStore.pageType == 'normal'" style="height: 100px"></div>
   <div class="base" :class="pageStore.pageType">
     <div class="line1">
       <div class="item">
