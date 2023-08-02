@@ -26,8 +26,8 @@ function toLong() {
   <PageTop />
   <JHCard title="加入我们" type="large" :is-title="true">
     <div class="base" :class="pageStore.pageType">
-      <img class="haibao" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/pc.jpg" v-if="pageStore.pageType == 'normal'" />
-      <img class="haibao" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/mob.jpg" v-if="pageStore.pageType != 'normal'" />
+      <img class="haibao" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/future.png" v-if="pageStore.pageType == 'normal'" />
+      <img class="haibao" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/future.png" v-if="pageStore.pageType != 'normal'" />
       <div class="detail-base" :class="pageStore.pageType">
         <div class="btn">
           <!-- <JHButton type="middle" @click="router.push('/join/acm')">
@@ -42,17 +42,12 @@ function toLong() {
         <div class="introduce" :class="pageStore.pageType">
           <JHLabel type="nano">线下摆摊</JHLabel>
           <div class="content">
-            屏峰：2022年9月3日及4日<br />
-            地点：支干路 <br />
-            朝晖：2022年9月3日及4日<br />
-            地点：存中楼门口
+            敬请期待
           </div>
 
           <JHLabel type="nano">招新宣讲</JHLabel>
           <div class="content">
-
-            朝晖：2022年9月3日晚6点半 <br />
-            地点：新教202
+            敬请期待
           </div>
           <JHLabel type="nano">招新群号</JHLabel>
           <div class="content">885342047</div>
