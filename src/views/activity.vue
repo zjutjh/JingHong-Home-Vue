@@ -24,13 +24,8 @@ const pageStore = usePageStore();
         <div class="introduce" :class="pageStore.pageType">
           <JHLabel type="nano">活动介绍</JHLabel>
           <div class="content">
-            无论你是熟稔各类算法与数据结构的编程大佬，<br />
-            还是从未接触过编程语言的萌新小白，在精弘<br />
-            ACM新生赛这个大舞台上，都能尽情地体验算法<br />
-            的魅力੭ ᐕ)੭*⁾⁾<br />
-            除了比赛舞台外，8月初还有ACM校队学长学姐<br />
-            为萌新们精心准备的编程与算法基础课程，助力<br />
-            大家更快更好地入门~
+            无论你是熟稔各类算法与数据结构的编程大佬，还是从未接触过编程语言的萌新小白，在精弘ACM新生赛这个大舞台上，都能尽情地体验算法的魅力੭ ᐕ)੭*⁾⁾
+            除了比赛舞台外，8月初还有ACM校队学长学姐为萌新们精心准备的编程与算法基础课程，助力大家更快更好地入门~
           </div>
           <JHLabel type="nano">竞赛群号</JHLabel>
           <div class="content">467849640</div>
@@ -113,6 +108,7 @@ const pageStore = usePageStore();
   display: flex;
   flex-direction: column;
   column-gap: 5px;
+  max-width: 70%;
 }
 
 .btn {
