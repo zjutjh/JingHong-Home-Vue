@@ -66,7 +66,9 @@ function logoClicked() {
     <img class="logo" :class="pageStore.pageType" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/top/logo.png" @click="logoClicked" />
     <div v-for="(l, index) in links" class="link" :class="index == pageStore.pageNow ? 'select' : 'notSelect'"
       v-show="pageStore.pageType == 'normal'">
-      <router-link :to="l.link">{{ l.name }}</router-link>
+      <div style="width: 100%;">
+        <router-link :to="l.link">{{ l.name }}</router-link>
+      </div>
     </div>
     <div class="listButton" :class="btnOn ? 'btnOn' : 'btnOff'"
       v-show="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'" @click="listBtnClicked"></div>
@@ -74,7 +76,11 @@ function logoClicked() {
     <div class="list" :class="pageStore.pageType" v-show="listShow">
       <div v-for="(l, index) in links" class="listItem" :class="index == pageStore.pageNow ? 'select' : 'notSelect'"
         @click="listBtnClicked">
-        <router-link :to="l.link">{{ l.name }}</router-link>
+        <router-link :to="l.link">
+          <div style="width: 100%;">
+            {{ l.name }}
+          </div>
+        </router-link>
       </div>
     </div>
   </div>
