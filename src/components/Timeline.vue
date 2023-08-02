@@ -69,9 +69,9 @@ const items = [
   },
   {
     id: 11,
-    img: "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story10.jpg",
+    img: "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story10.png",
     time: "2023年4月",
-    content: "面向校组织合作，助力数字化转型",
+    content: "成为校级组织数字化转型解决方案的提供者",
   },
 ];
 const angle = (Math.atan(0.5) * 180) / Math.PI + "deg";
