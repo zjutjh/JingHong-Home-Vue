@@ -33,9 +33,9 @@ const pageStore = usePageStore();
         </div>
         <div class="qr">
           <JHLabel type="nano">群二维码</JHLabel>
-          <div class="qr-base">
+          <div class="qr-base" :class="pageStore.pageType">
             <div class="qr-code">
-              <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/activity/ACM_Group_qrcode.png" />
+              <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/activity/ACM_Group_qrcode.png"/>
             </div>
           </div>
         </div>
@@ -156,10 +156,13 @@ const pageStore = usePageStore();
 
 .qr-base {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   width: auto;
-  max-width: 300px;
   margin-top: 20px;
+}
+
+.qr-base.normal {
+  grid-template-columns: 1fr 1fr;
 }
 
 .qr-base img {
