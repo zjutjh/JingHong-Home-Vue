@@ -15,7 +15,7 @@ const router = useRouter();
 const pageStore = usePageStore();
 async function handleLogin() {
   const res = await TestAdmin(pwd.value)
-  if (res.message == "ok") {
+  if (res.msg == "ok") {
     alert("登陆成功")
     pageStore.admin = res.data.data
     pageStore.token = pwd.value;

@@ -113,7 +113,7 @@ function deleteQ(){
 function changePublic(){
   let postData = {
     id: props.id,
-    public: isPublic.value,
+    public: !isPublic.value,
     draft: false,
   }
   changeQuestionnaireStatus(postData).then(res => {
@@ -121,6 +121,9 @@ function changePublic(){
     {
       alert("修改成功");
      isPublic.value = !isPublic.value;
+     if(props.draft===true && isPublic.value===true){
+       isDeleted.value = true;
+     }
     }
     else {
       alert("请求错误");
