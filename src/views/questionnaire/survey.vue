@@ -10,7 +10,7 @@
           <label class="issue-title">{{index + 1}}. {{item.text}}</label>
           <div v-if="item.type === 'Single'">
             <div v-for="(option,i) in item.options">
-              <input type="radio"  :value="i" v-model="answers[item.qid]">
+              <input type="radio"  :value="option" v-model="answers[item.qid]">
               <label>{{option}}</label>
             </div>
           </div>
@@ -21,7 +21,7 @@
             </div>
           </div>
           <div v-else>
-            <input type="text" v-model="answers[item.qid]">
+            <textarea class="my-textarea" v-model="answers[item.qid]"></textarea>
           </div>
           <hr>
       </div>
@@ -39,6 +39,7 @@ import {onMounted, ref} from "vue";
 import {useQuestionnaireStore} from "@/stores/questionnaire";
 import {UserGetQuestionnaireData , UserSubmitQuestionnaireData} from "@/apis/questionnaire";
 import JHButton from "@/components/JHButton.vue";
+import router from "@/router";
 const data = ref();
 const title = ref();
 const questions = ref();
@@ -95,6 +96,7 @@ function submit(){
     if(res.msg === "ok")
     {
       alert("提交成功");
+      router.push('/questionnaire/user');
     }
     else
       alert("提交失败");
@@ -132,5 +134,17 @@ hr {
 .issue {
   text-align: left;
   margin-left: 5%;
+}
+.issue-title {
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+.my-textarea {
+  display: inline-block;
+  width: 90%;
+  height: 5rem;
+  line-height: 30px;
+  font-size: 20px;
+  resize: none;
 }
 </style>

@@ -4,7 +4,7 @@
         暂无草稿
       </div>
         <div v-for="item in draftQuestionnaire" :key="item.id">
-         <QuestionCard :is="true" :title="item.title" :id="item.id"></QuestionCard>
+         <QuestionCard :is="true" :title="item.title" :id="item.id" :draft="true"></QuestionCard>
         </div>
     </div>
   </template>
@@ -19,11 +19,10 @@
   onMounted(() => {
     getQuestionnaire().then(res => {
       questionnaire.value = res.data;
-      console.log(questionnaire.value);
       draftQuestionnaire.value = questionnaire.value.filter(item => item.draft === true);
+      if (!draftQuestionnaire.value)
+        alert("当前没有草稿");
     })
-   if (!draftQuestionnaire.value)
-     alert("当前没有草稿");
   })
   </script>
 
@@ -41,7 +40,6 @@
   }
 
   .none{
-    background: #2c3e50;
     height: 20vh;
     width: 20vw;
     margin-top: 15vh;
