@@ -159,6 +159,13 @@ const routes = [
     }
   },
   {
+    path: '/questionnaire/user',
+    name: 'questionnaire/user',
+    components: {
+      default: () => import('../views/questionnaire/user.vue'),
+    }
+  },
+  {
     path: '/questionnaire/survey',
     name: 'questionnaire/survey',
     components: {

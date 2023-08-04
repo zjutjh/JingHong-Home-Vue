@@ -8,8 +8,10 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@types/file-saver": "^2.0.5",
         "axios": "^0.26.1",
         "echarts": "^5.4.2",
+        "file-saver": "^2.0.5",
         "pinia": "^2.1.4",
         "qs": "^6.11.2",
         "sass": "^1.63.6",

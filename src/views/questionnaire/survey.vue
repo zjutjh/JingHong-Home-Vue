@@ -2,12 +2,32 @@
   <div class="container">
     <div class="content">
        <div class="title">
-            {{"问卷"}}
+            {{title}}
        </div>
       <hr>
-      <div v-for="(item,index) in questions" :key="index">
-        
+      <div class="issue">
+        <div v-for="(item,index) in questions" :key="index">
+          <label class="issue-title">{{index + 1}}. {{item.text}}</label>
+          <div v-if="item.type === 'Single'">
+            <div v-for="(option,i) in item.options">
+              <input type="radio"  :value="i" v-model="answers[item.qid]">
+              <label>{{option}}</label>
+            </div>
+          </div>
+          <div v-else-if="item.type === 'Multiple'">
+            <div v-for="(option,i) in item.options">
+              <input type="checkbox"  :value="i" v-model="answers[item.qid]">
+              <label>{{option}}</label>
+            </div>
+          </div>
+          <div v-else>
+            <input type="text" v-model="answers[item.qid]">
+          </div>
+          <hr>
       </div>
+
+      </div>
+      <j-h-button type="middle" @click="submit">提交</j-h-button>
     </div>
   </div>
 </template>
@@ -17,20 +37,69 @@
 
 import {onMounted, ref} from "vue";
 import {useQuestionnaireStore} from "@/stores/questionnaire";
-import {getQuestionnaireData} from "@/apis/questionnaire";
+import {UserGetQuestionnaireData , UserSubmitQuestionnaireData} from "@/apis/questionnaire";
+import JHButton from "@/components/JHButton.vue";
 const data = ref();
 const title = ref();
 const questions = ref();
+const answers = ref({});
 onMounted(() => {
   const pinia = useQuestionnaireStore();
-  getQuestionnaireData(pinia.selectedId).then(res => {
-    console.log(res.data);
-    data.value = res.data;
-    title.value = data.value.title;
-    questions.value = data.value.questions
-    console.log(questions.value);
+  UserGetQuestionnaireData(pinia.selectedId).then(res => {
+
+    if(res.msg === "ok")
+    {
+      console.log(res.data);
+      data.value = res.data;
+      title.value = data.value.title;
+      questions.value = data.value.list;
+      console.log(questions.value);
+      questions.value.forEach(item => {
+        if(item.type === "Single")
+          answers.value[item.qid] = "";
+        else if(item.type === "Multiple")
+          answers.value[item.qid] = [];
+        else
+          answers.value[item.qid] = "";
+      })
+    }
+    else
+      alert("获取问卷数据失败");
   })
 })
+
+function submit(){
+
+  console.log(answers.value);
+  const pinia = useQuestionnaireStore();
+  let ans = Object.entries(answers.value).reduce((acc, [key, value]) => {
+    if (Array.isArray(value)) {
+      acc[key] = value.join('');
+    } else {
+      acc[key] = value.toString();
+    }
+    return acc;
+  }, {});
+  let list: { qid: any; content: any; }[] = [];
+  questions.value.forEach(item => {
+    list.push({
+      qid: item.qid,
+      content: ans[item.qid]
+    })
+  })
+  let data = {
+    id: pinia.selectedId,
+    list: list
+  }
+  UserSubmitQuestionnaireData(data).then(res => {
+    if(res.msg === "ok")
+    {
+      alert("提交成功");
+    }
+    else
+      alert("提交失败");
+  })
+}
 
 </script>
 
@@ -53,8 +122,15 @@ onMounted(() => {
   font-weight: bolder;
 }
 hr {
-  width: 80%;
+  width: 90%;
   height: 2px;
-  background-color: black;
+  background-color: rgb(239, 239, 239);
+}
+.issue-title {
+   margin-left: -1%;
+}
+.issue {
+  text-align: left;
+  margin-left: 5%;
 }
 </style>

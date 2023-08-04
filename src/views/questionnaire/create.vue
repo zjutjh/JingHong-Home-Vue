@@ -20,8 +20,8 @@
        <issueCard :type="item.type" :data="item" :index="index" @update="onUpdated" @deleteIssue="deleteIssue"></issueCard>
      </div>
      <div class="buttom-container">
-       <j-h-button type="middle" @click="saveDraft()" >保存为草稿</j-h-button>
-          <j-h-button type="middle">提交</j-h-button>
+       <j-h-button v-if="isNew" type="middle" @click="saveDraft()" >保存为草稿</j-h-button>
+          <j-h-button v-else @click="updateQ()" type="middle">提交</j-h-button>
      </div>
    </div>
 </div>
@@ -31,24 +31,30 @@
 import JHButton from "@/components/JHButton.vue";
 import {onMounted , ref} from "vue";
 import IssueCard from "@/components/IssueCard.vue";
-import {getQuestionnaireById} from "@/apis/questionnaire";
+import {getQuestionnaireById , updateQuestionnaire , createQuestionnaire} from "@/apis/questionnaire";
 import {useQuestionnaireStore} from "@/stores/questionnaire";
 const data = ref();
 const questions = ref([]);
 const title = ref();
 const isNew = ref();
+const pinia = useQuestionnaireStore();
 onMounted(() => {
   console.log('create');
-  const pinia = useQuestionnaireStore();
   console.log(pinia.selectedId);
   if(pinia.selectedId !== -1)
    {
      isNew.value = false;
     getQuestionnaireById(pinia.selectedId).then(res => {
-      console.log(res.data);
-      data.value = res.data;
-      title.value = data.value.title;
-      questions.value = data.value.questions;
+      if( res.msg === 'ok')
+      {
+        console.log(res.data);
+        data.value = res.data;
+        title.value = data.value.title;
+        questions.value = data.value.list;
+      }
+      else {
+        alert('请求错误');
+      }
     })
   }
   else {
@@ -83,13 +89,48 @@ function saveDraft(){
 
   let data = {
     title: title.value,
-    questions: questions.value,
-    draft: true,
-    public: false
+    list: questions.value,
   }
   console.log('最终发送的数据：')
   console.log(data);
+  createQuestionnaire(data).then(res => {
+    if(res.msg === 'ok')
+    {
+      alert('保存成功');
+    }
+    else {
+      alert('保存失败');
+    }
+  })
 }
+
+function updateQ(){
+  let list = [];
+  questions.value.forEach(item => {
+    let question = {
+      type: item.type,
+      text: item.text,
+      options: item.options
+    }
+    list.push(question);
+  })
+  let postData = {
+    id: pinia.selectedId,
+    list: list,
+  }
+  console.log("最终发送的数据：")
+  console.log(postData);
+  updateQuestionnaire(postData).then(res => {
+    if(res.msg === 'ok')
+    {
+      alert('更新成功');
+    }
+    else {
+      alert('更新失败');
+    }
+  })
+}
+
 </script>
 
 <style scoped>

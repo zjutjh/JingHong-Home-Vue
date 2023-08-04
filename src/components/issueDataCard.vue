@@ -1,11 +1,11 @@
 <template>
 <div class="contain">
    <div class="text">
-     {{props.number + "." + props.data.text}}
+     {{props.number + "." + props.qdata[props.number].text}}
    </div>
-  <div class="options" >
-    <div>
-      <span style="float: left ;margin-left: 5%">选项测试一</span> <span style="float: right;margin-right: 5%">66人</span>
+  <div class="options">
+    <div v-for="(key,value) in props.adata[props.number] " v-if="props.qdata[props.number].type !=='Subjective'">
+      <span style="float: left ;margin-left: 5%">{{value}}</span> <span style="float: right;margin-right: 5%">{{key}}人</span>
     </div>
   </div>
   <hr>
@@ -16,7 +16,8 @@
 
 const props = defineProps({
   'number': Number,
-  'data': Object,
+  'adata': Object,
+  'qdata': Object,
 })
 </script>
 

@@ -1,38 +1,36 @@
 <template>
   <div class="container">
-     <QuestionCard @click="addQuestion" :is="false"></QuestionCard>
     <div v-for="item in questionnaire" :key="item.id">
-      <QuestionCard :is="true" :title="item.title" :id="item.id" :public="item.public" :draft="item.draft"></QuestionCard>
+      <QuestionCard @click="fillQuestionnaire(item.id)" :admin="false" :is="true" :title="item.title" :id="item.id" :public="item.public" :draft="item.draft"></QuestionCard>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import QuestionCard from '../components/QuestionCard.vue'
+import QuestionCard from '../../components/QuestionCard.vue'
 import router from '@/router';
 import {getQuestionnaire} from "@/apis/questionnaire";
 import {onMounted, ref} from "vue";
 import {useQuestionnaireStore} from "@/stores/questionnaire";
-function addQuestion() {
-  const pinia = useQuestionnaireStore();
-  pinia.setId(-1);
-  console.log('addQuestion');
-  router.push('/questionnaire/create');
-}
 const questionnaire = ref();
 
+function fillQuestionnaire(id: number) {
+  const pinia = useQuestionnaireStore();
+  pinia.setId(id);
+  router.push('/questionnaire/survey');
+}
 
 onMounted(() => {
   getQuestionnaire().then(res => {
     if (res.msg === 'ok')
     {
-      questionnaire.value = res.data.filter(item => item.draft === false);
+      questionnaire.value = res.data.filter(item => (item.draft === false && item.public === true));
       console.log(questionnaire.value);
     }
     else {
       alert("请求错误");
     }
-})
+  })
 })
 </script>
 
