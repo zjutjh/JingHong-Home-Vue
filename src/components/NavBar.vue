@@ -42,6 +42,7 @@ const links = [
   { name: "我们的故事", link: "/story" },
   { name: "我们的产品", link: "/product" },
   { name: "我们的部门", link: "/department" },
+  { name: "我们的活动", link: "/activity"},
   { name: "加入我们", link: "/join" },
 ];
 
@@ -62,10 +63,12 @@ function logoClicked() {
     pageStore.pageType,
     hide ? 'hide' : '',
   ]" class="base" ref="base">
-    <img class="logo" :class="pageStore.pageType" src="/photo/top/logo.png" @click="logoClicked" />
+    <img class="logo" :class="pageStore.pageType" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/top/logo.png" @click="logoClicked" />
     <div v-for="(l, index) in links" class="link" :class="index == pageStore.pageNow ? 'select' : 'notSelect'"
       v-show="pageStore.pageType == 'normal'">
-      <router-link :to="l.link">{{ l.name }}</router-link>
+      <div style="width: 100%;">
+        <router-link :to="l.link">{{ l.name }}</router-link>
+      </div>
     </div>
     <div class="listButton" :class="btnOn ? 'btnOn' : 'btnOff'"
       v-show="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'" @click="listBtnClicked"></div>
@@ -73,7 +76,11 @@ function logoClicked() {
     <div class="list" :class="pageStore.pageType" v-show="listShow">
       <div v-for="(l, index) in links" class="listItem" :class="index == pageStore.pageNow ? 'select' : 'notSelect'"
         @click="listBtnClicked">
-        <router-link :to="l.link">{{ l.name }}</router-link>
+        <router-link :to="l.link">
+          <div style="width: 100%;">
+            {{ l.name }}
+          </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -82,7 +89,7 @@ function logoClicked() {
 <style scoped>
 @font-face {
   font-family: "song";
-  src: url("/font/逐浪雅宋体.ttf");
+  src: url("https://download.tooc.xlj0.com/uploads/22/jhhome/public/font/逐浪雅宋体.ttf");
 }
 
 @keyframes showList {
@@ -129,7 +136,7 @@ a {
 
 .base.normal {
   height: 90px;
-  grid-template-columns: 30% repeat(5, 1fr);
+  grid-template-columns: 30% repeat(6, 1fr);
 }
 
 .base.middle {
@@ -193,13 +200,13 @@ a {
 }
 
 .listButton.btnOn {
-  background-image: url("/photo/svg/close.svg");
+  background-image: url("https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/close.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .listButton.btnOff {
-  background-image: url("/photo/svg/list.svg");
+  background-image: url("https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/list.svg");
   background-repeat: no-repeat;
   background-position: center;
 }

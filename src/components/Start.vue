@@ -13,14 +13,14 @@ onMounted(() => {
     :class="[pageStore.pageType, loaded ? 'loaded' : 'unloaded']"
   >
     <div class="title1" :class="pageStore.pageType">精弘网络,取精用弘</div>
-    <img class="downArrow" src="/photo/svg/downArrow.svg" />
+    <img class="downArrow" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/downArrow.svg" />
   </div>
 </template>
 
 <style scoped>
 @font-face {
   font-family: "song";
-  src: url("/font/逐浪雅宋体.ttf");
+  src: url("https://download.tooc.xlj0.com/uploads/22/jhhome/public/font/逐浪雅宋体.ttf");
 }
 .start {
   background-position: 0 0;
@@ -32,19 +32,19 @@ onMounted(() => {
 }
 .start.normal {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(/photo/index/startPc2.jpg) no-repeat center;
+    url(https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/startPc2.jpg) no-repeat center;
   background-size: cover;
   height: 100vh;
 }
 .start.middle {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(/photo/index/startPc.jpg) no-repeat center;
+    url(https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/startPc.jpg) no-repeat center;
   background-size: cover;
   height: 100vh;
 }
 .start.mini {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(/photo/index/startMobile.jpg) no-repeat center;
+    url(https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/startMobile.jpg) no-repeat center;
   background-size: cover;
   height: 100vh;
 }

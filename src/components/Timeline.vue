@@ -4,62 +4,74 @@ import JHCard from './JHCard.vue';
 const items = [
   {
     id: 0,
-    img: "/photo/index/story1.png",
+    img: "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story1.png",
     content: "2002年5月\n精弘网络成立",
   },
   {
     id: 1,
-    img: "/photo/index/story2.png",
+    img: "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story2.png",
     time: "2003年5月",
     content: "推出精弘论坛\nbbs.zjut.com",
   },
   {
     id: 2,
-    img: "/photo/index/story3.png",
+    img: "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story3.png",
     time: "2004年10月",
     content: "Feel电台创立\nradio.zjut.com",
   },
   {
     id: 3,
-    img: "/photo/index/story4.png",
+    img: "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story4.png",
     time: "2006年5月",
     content: "推出第一版学生邮箱\nmail.zjut.com",
   },
   {
     id: 4,
-    img: "/photo/index/story5.jpg",
+    img: "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story5.jpg",
     time: "2012年3月",
     content: "第一届精弘毅行",
   },
   {
     id: 5,
-    img: "/photo/index/story6.png",
+    img: "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story6.png",
     time: "2012年12月",
     content: '荣获第五届\n"全国高校百佳网站"\n荣誉称号',
   },
   {
     id: 6,
-    img: "/photo/index/story7.jpg",
+    img: "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story7.jpg",
     time: "2015年12月",
     content: '承办浙江工业大学首届\n"网络安全宣传月"活动',
   },
   {
     id: 7,
-    img: "/photo/index/story8.jpg",
+    img: "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story8.jpg",
     time: "2016年8月",
     content: '精弘网络微信服务号获\n"全国高校东部地区榜亚军"',
   },
   {
     id: 8,
-    img: "/photo/index/story9.png",
+    img: "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story9.png",
     time: "2017年2月",
     content: "微精弘改版正式上线",
   },
   {
     id: 9,
-    img: "/photo/index/story5.jpg",
+    img: "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story5.jpg",
     time: "2020年2月",
     content: "第十三届精弘毅行",
+  },
+  {
+    id: 10,
+    img: "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story9.png",
+    time: "2022年8月",
+    content: "微精弘2.0发布",
+  },
+  {
+    id: 11,
+    img: "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story10.png",
+    time: "2023年4月",
+    content: "成为校级组织数字化转型解决方案的提供者",
   },
 ];
 const angle = (Math.atan(0.5) * 180) / Math.PI + "deg";
@@ -70,7 +82,7 @@ const styleVal = (function (index: number): CSSProperties {
     '--angle': index % 2 === 0 ? angle : angle2,
     '--scale': scale,
     '--border': index % 2 === 0 ? 'dashed' : 'solid',
-    '--line_seen': index === 9 ? 'none' : 'block',
+    '--line_seen': index === 11 ? 'none' : 'block',
   }
 });
 const top111 = ref(0);

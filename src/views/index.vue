@@ -35,22 +35,24 @@ var loaded = false;
 <template>
   <start />
   <introduce />
-  <JHVideo />
+  <!-- 21届部长团没有拍客服视频 故取消 -->
+  <!--  <JHVideo />-->
   <history v-if="pageStore.pageType == 'normal'" />
   <timeline
     v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'"
   />
   <JHCard
     title="我们的故事"
-    :is-title="pageStore.pageType == 'normal'"
+    :is-title="true"
     type="large"
     class="story"
+    v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'"
   >
-    <img src="/photo/index/story.jpg" />
+    <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story.jpg" />
     <JHButton type="middle" @click="toStory">
       我们的故事
       <img
-        src="/photo/svg/rightArrow.svg"
+        src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/rightArrow.svg"
         style="width: 20px; margin-left: 20px"
       />
     </JHButton>

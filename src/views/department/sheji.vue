@@ -11,9 +11,11 @@ onMounted(() => {
   document.title = "设计模块";
 });
 const imgs = [
-  "/photo/department/sheji/xiaohong/1.jpg",
-  "/photo/department/sheji/xiaohong/2.jpg",
-  "/photo/department/sheji/xiaohong/3.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/sheji/xiaohong/1.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/sheji/xiaohong/2.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/sheji/xiaohong/3.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/sheji/xiaohong/4.jpg",
+  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/sheji/xiaohong/5.jpg",
 ];
 </script>
 <style scoped>
@@ -36,10 +38,21 @@ img {
   <JHLabel type="big">设计模块</JHLabel>
   <JHCard type="large" title="小弘工作室" :isTitle="true">
     <CarouselPicturesBig :imgs="imgs"></CarouselPicturesBig>
-    <!-- <Carousel :imgs="imgs"></Carousel> -->
     <JHLabel type="small">部门介绍</JHLabel>
     <div class="content">
-      小弘工作室是属于精弘网络的一个创意创新服务部门，针对学校活动的宣传方案进行设计。在工作中，部门成员之间会一起协作，为活动的宣传拿出一套完整有创意的设计。其中设计的主要内容包括：海报设计、喷绘设计、UI界面设计、精弘网络周边文创类产品设计以及各类视觉方案设计。
+      小弘工作室是属于精弘网络的一个创意创新服务部门，针对学校活动的宣传方案进行设计。部门成员之间会一起协作，为活动的宣传拿出一套完整的设计。
+    </div>
+    <div class="content">
+      主要活动:毅行、网络安全宣传月、网络文化节等。
+    </div>
+    <div class="content">
+      主要事物:海报设计、喷绘设计、UI界面设计、精弘网络周边文创类产品设计以及各类视觉方案设计。
+    </div>
+    <div class="content">
+      在小弘工作室，你不仅能够交到兴趣相似的伙伴，还能够丰富课余生活，提升专业技能。除去基本的聚餐、轰趴、给小部员过生日等福利，部门还开设了ps、ai等设计软件的课程，各种绘画的技巧教学，我们注重对于部门成员各种设计综合技能的培养。
+    </div>
+    <div class="content">
+      在大学里加入很多部门你可能会发现部门繁冗的零碎事情太多，占用你太多的课余时间，但小弘工作室不会。你一定能得到你想要的进步。全方位包装，pick的就是你啦~
     </div>
     <JHLabel type="small">招新宣言</JHLabel>
     <div class="content">
@@ -47,7 +60,7 @@ img {
     </div>
   </JHCard>
   <img
-    src="/photo/department/fork.png"
+    src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/fork.png"
     style="width: 80px; height: 80px; margin-top: 50px; cursor: pointer"
     @click="router.push('/department')"
   />

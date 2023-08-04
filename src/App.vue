@@ -1,4 +1,4 @@
-<script setup lang="ts">
+4<script setup lang="ts">
 import { onBeforeMount, onMounted, ref, toRef } from "vue";
 import { RouterView } from "vue-router";
 import { usePageStore } from "./stores/pages";
@@ -37,7 +37,7 @@ onMounted(() => {
 
 @font-face {
   font-family: "SC-VF";
-  src: url("/font/SourceHanSansSC-VF.otf");
+  src: url("https://download.tooc.xlj0.com/uploads/22/jhhome/public/font/SourceHanSansSC-VF.otf");
 }
 
 #app {

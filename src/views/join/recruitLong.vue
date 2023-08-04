@@ -29,7 +29,7 @@ function returnClicked() {
         >3)能够使用git进行团队协作交互
       </div>
       <img
-        src="/photo/index/jingxiaohong.png"
+        src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/jingxiaohong.png"
         class="img"
         v-if="pageStore.pageType == 'normal'"
       />
