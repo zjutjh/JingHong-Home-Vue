@@ -6,11 +6,11 @@
         </div>
      <hr>
      <div v-for="(item,index) in questions" :key="index">
-       <issueDataCard :number="index" :data="item" ></issueDataCard>
+       <issue-data-card :number="index" :adata="Adata" :qdata="Qdata"></issue-data-card>
      </div>
      <div class="buttom-container">
        <JHButton type="middle" @click="nav2Detail">在线查看数据</JHButton>
-       <JHButton type="middle" >导出数据</JHButton>
+       <JHButton type="middle" @click="outputData">导出数据</JHButton>
      </div>
    </div>
 
@@ -20,30 +20,57 @@
 <script setup lang="ts">
 import issueDataCard from "@/components/issueDataCard.vue";
 import {onMounted} from "vue";
+import {Q_BASE_URL_DEV} from "@/utils/const";
 import {useQuestionnaireStore} from "@/stores/questionnaire";
-import {getQuestionnaireData} from "@/apis/questionnaire";
+import {getQuestionnaireById, getQuestionnaireDataById} from "@/apis/questionnaire";
 import {ref} from "vue";
 import JHButton from "@/components/JHButton.vue";
 import router from "@/router";
-
-const data = ref();
+import IssueDataCard from "@/components/issueDataCard.vue";
+import {saveAs} from 'file-saver';
+const Adata = ref();
+const Qdata = ref();
 const title = ref();
 const questions = ref();
+const pinia = useQuestionnaireStore();
 onMounted(() => {
     console.log('data');
-    const pinia = useQuestionnaireStore();
-    getQuestionnaireData(pinia.selectedId).then(res => {
-        console.log(res.data);
-        data.value = res.data;
-        title.value = data.value.title;
-        questions.value = data.value.questions
-      console.log(questions.value);
+
+    getQuestionnaireDataById(pinia.selectedId).then(res => {
+      Adata.value = res.data.reduce((acc, curr) => {
+        curr.forEach(item => {
+          if (!acc[item.qid - 1]) {
+            acc[item.qid - 1] = {};
+          }
+          if (!acc[item.qid - 1][item.content]) {
+            acc[item.qid - 1][item.content] = 0;
+          }
+          acc[item.qid - 1][item.content]++;
+        });
+        return acc;
+      }, []);
+
     })
+    getQuestionnaireById(pinia.selectedId).then(res => {
+      Qdata.value = res.data.list;
+      title.value = res.data.title;
+      questions.value = Qdata.value;
+      console.log("A-Q");
+      console.log(Qdata.value);
+    })
+
 })
 function nav2Detail(){
     console.log('nav2Detail');
     router.push('/questionnaire/detail');
 }
+
+function outputData(){
+    console.log('outputData');
+    let url = Q_BASE_URL_DEV + "/api/admin/download/" + pinia.selectedId;
+    saveAs(url,"问卷数据.xlsx")
+}
+
 </script>
 
 <style scoped>

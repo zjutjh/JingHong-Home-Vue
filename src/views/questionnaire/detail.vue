@@ -3,15 +3,12 @@
     <div class="content">
        <table>
          <tr>
-           <th v-for="item in tmpHead">{{item.title}}</th>
+           <th v-for="item in Qdata">{{item.text}}</th>
          </tr>
-         <tr>
-           <td>row 1, cell 1</td>
-           <td>row 1, cell 2</td>
-         </tr>
-         <tr>
-           <td>row 2, cell 1</td>
-           <td>row 2, cell 2</td>
+         <tr v-for="person in Adata">
+           <td v-for="item in person">
+              {{item.content}}
+           </td>
          </tr>
        </table>
     </div>
@@ -19,6 +16,10 @@
 </template>
 
 <script setup lang="ts">
+import {onMounted , ref} from "vue";
+import {useQuestionnaireStore} from "@/stores/questionnaire";
+import {getQuestionnaireById, getQuestionnaireDataById} from "@/apis/questionnaire";
+
 const tmpHead=[
   {
     title: 'Header 1',
@@ -33,6 +34,19 @@ const tmpData=[
   },
 
 ]
+const Qdata = ref();
+const Adata = ref();
+onMounted(() => {
+  console.log('data');
+  const pinia = useQuestionnaireStore();
+  getQuestionnaireDataById(pinia.selectedId).then(res => {
+    Adata.value = res.data;
+  })
+  getQuestionnaireById(pinia.selectedId).then(res => {
+    Qdata.value = res.data.list;
+  })
+
+})
 </script>
 
 <style scoped>
