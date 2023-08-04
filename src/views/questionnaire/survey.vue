@@ -16,7 +16,7 @@
           </div>
           <div v-else-if="item.type === 'Multiple'">
             <div v-for="(option,i) in item.options">
-              <input type="checkbox"  :value="i" v-model="answers[item.qid]">
+              <input type="checkbox"  :value="String.fromCharCode(i+65)" v-model="answers[item.qid]">
               <label>{{option}}</label>
             </div>
           </div>
