@@ -39,10 +39,10 @@ const Adata = ref();
 onMounted(() => {
   console.log('data');
   const pinia = useQuestionnaireStore();
-  getQuestionnaireDataById(pinia.selectedId).then(res => {
+  getQuestionnaireDataById(pinia.selectedId.toString()).then(res => {
     Adata.value = res.data;
   })
-  getQuestionnaireById(pinia.selectedId).then(res => {
+  getQuestionnaireById(pinia.selectedId.toString()).then(res => {
     Qdata.value = res.data.list;
   })
 

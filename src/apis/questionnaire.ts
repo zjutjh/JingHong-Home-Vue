@@ -1,4 +1,5 @@
 import {request_q} from '@/utils/request'
+import {QRequest} from "@/types/apis";
 
 export const getQuestionnaire = async () => {
   const res = await request_q({
@@ -36,15 +37,14 @@ export const createQuestionnaire = async (data: any) => {
   return res;
 }
 
-export const deleteQuestionnaire = async (id: string) => {
-  const res = await request_q({
-    url: '/api/admin/delete',
-    method: 'post',
-    params: {
-      id
-    }
-  })
-  return res;
+export const deleteQuestionnaire = async (id: String) => {
+    return await request_q<QRequest>({
+      url: '/api/admin/delete',
+      method: 'post',
+      params: {
+          id
+      }
+  });
 }
 
 export const changeQuestionnaireStatus = async (data: any) => {

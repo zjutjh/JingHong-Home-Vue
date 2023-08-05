@@ -25,7 +25,7 @@ export const GetDataTotal = async (auth: string) => {
 }
 
 export const TestAdmin = async (auth: string) => {
-  return await request<{ data: string }>({
+  return await request<{ data: string, msg: string }>({
     url: '/api/user/login',
     method: 'POST',
     data: {

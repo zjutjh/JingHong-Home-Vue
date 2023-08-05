@@ -63,7 +63,7 @@
 }
 </style>
 
-<script setup>
+<script lang="ts" setup>
 import {deleteQuestionnaire , changeQuestionnaireStatus} from "@/apis/questionnaire";
 import {useQuestionnaireStore } from "@/stores/questionnaire";
 import router from "@/router";
@@ -94,7 +94,8 @@ function deleteQ(){
   const confirm = window.confirm('确定删除该问卷吗？');
   if(confirm){
     console.log('delete');
-    deleteQuestionnaire(props.id).then(res => {
+    deleteQuestionnaire(props.id.toString()).then(res => {
+
       if (res.msg === 'ok')
       {
         alert("删除成功");

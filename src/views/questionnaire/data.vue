@@ -36,7 +36,7 @@ const pinia = useQuestionnaireStore();
 onMounted(() => {
     console.log('data');
 
-    getQuestionnaireDataById(pinia.selectedId).then(res => {
+    getQuestionnaireDataById(pinia.selectedId.toString()).then(res => {
       Adata.value = res.data.reduce((acc, curr) => {
         curr.forEach(item => {
           if (!acc[item.qid - 1]) {
@@ -51,7 +51,7 @@ onMounted(() => {
       }, []);
 
     })
-    getQuestionnaireById(pinia.selectedId).then(res => {
+    getQuestionnaireById(pinia.selectedId.toString()).then(res => {
       Qdata.value = res.data.list;
       title.value = res.data.title;
       questions.value = Qdata.value;

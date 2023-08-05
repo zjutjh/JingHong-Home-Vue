@@ -27,7 +27,7 @@
 </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import JHButton from "@/components/JHButton.vue";
 import {onMounted , ref} from "vue";
 import IssueCard from "@/components/IssueCard.vue";
@@ -44,7 +44,7 @@ onMounted(() => {
   if(pinia.selectedId !== -1)
    {
      isNew.value = false;
-    getQuestionnaireById(pinia.selectedId).then(res => {
+    getQuestionnaireById(pinia.selectedId.toString()).then(res => {
       if( res.msg === 'ok')
       {
         console.log(res.data);

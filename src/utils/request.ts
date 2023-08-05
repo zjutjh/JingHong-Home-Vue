@@ -1,23 +1,9 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { ResponseType } from '../types/apis'
+import {QRequest, ResponseType} from '../types/apis'
 import { ACM_BASE_URL, BASE_URL, ENV ,Q_BASE_URL_DEV} from './const';
 const instance = axios.create({
   baseURL: BASE_URL
 })
-
-const request = async <T = any>(config: AxiosRequestConfig): Promise<ResponseType<T>> => {
-  try {
-    const { data } = await instance.request<ResponseType<T>>(config)
-    return data
-  } catch (err: any) {
-    const message = err.message || '请求失败'
-
-    return {
-      message: message,
-      data: null as any
-    }
-  }
-}
 
 const instance_acm = axios.create({
   baseURL: ACM_BASE_URL
@@ -36,14 +22,31 @@ export const request_acm = async (config: AxiosRequestConfig): Promise<string | 
 
 }
 
+const request = async <T = any>(config: AxiosRequestConfig): Promise<{
+    msg: string; data: any; message: string
+}> => {
+  try {
+    const { data } = await instance.request<ResponseType<T>>(config)
+    return data
+  } catch (err: any) {
+    const message = err.message || '请求失败'
+
+    return {
+      message: message,
+      msg: message,
+      data: null as any
+    }
+  }
+}
+
 const instance_q = axios.create({
   baseURL: Q_BASE_URL_DEV
 });
 
-export const request_q = async (config: AxiosRequestConfig): Promise<string | undefined> => {
+export const request_q = async <T = any>(config: AxiosRequestConfig): Promise<QRequest<T>> => {
   try {
-    const data = await instance_q.request<string>(config)
-    return data.data
+    const { data } = await instance_q.request<QRequest<T>>(config)
+    return data
   }
   catch (err: any) {
     const message = err.message || '请求失败'

@@ -52,16 +52,16 @@ function logoClicked() {
   <div :class="pageStore.pageType, hide ? 'hide' : ''" class="base" ref="base">
     <img class="logo" :class="pageStore.pageType" src="/photo/top/logo.png" @click="logoClicked" />
     <div class="options" v-if="pageStore.pageType == 'normal'">
-    <div v-for="(l, index) in props.links? props.links : links" class="link" :class="select">
+    <div v-for="(l, index) in props.links? props.links : links" class="link">
       <router-link :to="l.link">{{ l.name }}</router-link>
     </div>
     </div>
     <div class="listButton" :class="btnOn ? 'btnOn' : 'btnOff'"
-      v-show="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'" @click="listBtnClicked"></div>
+         v-show="pageStore.pageType === 'mini' || pageStore.pageType === 'middle'" @click="listBtnClicked"></div>
 
     <div class="list" :class="pageStore.pageType" v-show="listShow">
       <div v-for="(l, index) in props.links? props.links : links" class="listItem"
-        :class="index == pageStore.pageAdminNow ? 'select' : 'notSelect'" @click="listBtnClicked">
+           :class="index.toString() === pageStore.pageAdminNow.toString() ? 'select' : 'notSelect'" @click="listBtnClicked">
         <router-link :to="l.link">{{ l.name }}</router-link>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory , RouterOptions} from 'vue-router';
 import { usePageStore } from '../stores/pages';
 
 const routes = [
@@ -181,8 +181,9 @@ const routes = [
 const router = createRouter(
   {
     history: createWebHistory(),
-    routes,
-  },
+    //@ts-ignore
+    routes
+    }
 );
 
 router.beforeEach((to, from) => {
