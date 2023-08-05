@@ -1,8 +1,10 @@
 export var ENV = 'dev';
 // export const BASE_URL = 'http://localhost:8888/'
 // export const BASE_URL = 'http://101.34.27.200:8888/'
-export const BASE_URL = 'http://www.jh.zjut.edu.cn/'
+// export const BASE_URL = 'http://www.jh.zjut.edu.cn/'
+export const BASE_URL =  'http://127.0.0.1:4523/m1/3091111-0-default/'
 export const ACM_BASE_URL = 'http://zhangjinhong.top:8081'
+export const Q_BASE_URL_DEV = 'http://127.0.0.1:4523/m1/3091111-0-default/'
 export const regions = ['未选择', "朝晖", "屏峰", "莫干山"];
 export const choices = [
   ["办公室", "活动部",

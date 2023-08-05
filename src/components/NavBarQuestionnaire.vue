@@ -35,8 +35,8 @@ onMounted(() => {
 })
 
 const links = [
-  { name: '总览', link: '/admin/total' },
-  { name: '返回', link: '/index' },
+  { name: '问卷', link: '/questionnaire' },
+  { name: '草稿箱', link: '/questionnaire/draft' },
 ]
 
 function listBtnClicked() {
@@ -50,18 +50,18 @@ function logoClicked() {
 </script>
 <template>
   <div :class="pageStore.pageType, hide ? 'hide' : ''" class="base" ref="base">
-    <img class="logo" :class="pageStore.pageType" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/top/logo.png" @click="logoClicked" />
+    <img class="logo" :class="pageStore.pageType" src="/photo/top/logo.png" @click="logoClicked" />
     <div class="options" v-if="pageStore.pageType == 'normal'">
-    <div v-for="(l, index) in props.links? props.links : links" class="link" :class="index.toString() === pageStore.pageAdminNow.toString() ? 'select' : 'notSelect'">
+    <div v-for="(l, index) in props.links? props.links : links" class="link">
       <router-link :to="l.link">{{ l.name }}</router-link>
     </div>
     </div>
     <div class="listButton" :class="btnOn ? 'btnOn' : 'btnOff'"
-      v-show="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'" @click="listBtnClicked"></div>
+         v-show="pageStore.pageType === 'mini' || pageStore.pageType === 'middle'" @click="listBtnClicked"></div>
 
     <div class="list" :class="pageStore.pageType" v-show="listShow">
       <div v-for="(l, index) in props.links? props.links : links" class="listItem"
-        :class="index.toString() === pageStore.pageAdminNow.toString() ? 'select' : 'notSelect'" @click="listBtnClicked">
+           :class="index.toString() === pageStore.pageAdminNow.toString() ? 'select' : 'notSelect'" @click="listBtnClicked">
         <router-link :to="l.link">{{ l.name }}</router-link>
       </div>
     </div>
@@ -71,7 +71,7 @@ function logoClicked() {
 <style scoped>
 @font-face {
   font-family: "song";
-  src: url("https://download.tooc.xlj0.com/uploads/22/jhhome/public/font/逐浪雅宋体.ttf");
+  src: url("/font/逐浪雅宋体.ttf");
 }
 
 @keyframes showList {
@@ -191,13 +191,13 @@ a {
 }
 
 .listButton.btnOn {
-  background-image: url("https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/close.svg");
+  background-image: url("/photo/svg/close.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .listButton.btnOff {
-  background-image: url("https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/list.svg");
+  background-image: url("/photo/svg/list.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
