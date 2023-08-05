@@ -44,8 +44,8 @@ const pageStore = usePageStore();
   </JHCard>
   <!-- <JHCard title="精弘毅行" type="large" :is-title="true">
     <div class="base" :class="pageStore.pageType">
-      <img class="haibao" src="/photo/haibao/future.png" v-if="pageStore.pageType == 'normal'" />
-      <img class="haibao" src="/photo/haibao/future.png" v-if="pageStore.pageType != 'normal'" />
+      <img class="haibao" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/future.png" v-if="pageStore.pageType == 'normal'" />
+      <img class="haibao" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/future.png" v-if="pageStore.pageType != 'normal'" />
       <div class="detail-base" :class="pageStore.pageType">
         <div style="height: 50px"></div>
         <div class="btn">
@@ -66,7 +66,7 @@ const pageStore = usePageStore();
           <JHLabel type="nano">群二维码</JHLabel>
           <div class="qr-base">
             <div class="qr-code">
-              <img src="/photo/product/11.png" />
+              <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/11.png" />
             </div>
           </div>
         </div>
