@@ -95,27 +95,11 @@ const routes = [
     }
   },
   {
-    path: '/admin',
-    name: 'admin',
+    path: '/activity',
+    name: 'activity',
     components: {
-      default: () => import('@/views/admin.vue'),
-      navbar: () => import('@/components/NavBarAdmin.vue'),
-    },
-  },
-  {
-    path: '/admin/total',
-    name: 'admin/total',
-    components: {
-      default: () => import('../views/admin/total.vue'),
-      navbar: () => import('../components/NavBarAdmin.vue'),
-    },
-  },
-  {
-    path: '/admin/detail',
-    name: 'admin/detail',
-    components: {
-      default: () => import('../views/admin/detail.vue'),
-      navbar: () => import('../components/NavBarAdmin.vue'),
+      default: () => import('../views/activity.vue'),
+      navbar: () => import('../components/NavBar.vue'),
     }
   },
   {
@@ -201,14 +185,14 @@ router.beforeEach((to, from) => {
     pageStore.pageNow = 2;
     document.title = "我们的产品";
   } else if (to.fullPath.split('/')[1] == 'join') {
-    pageStore.pageNow = 4;
+    pageStore.pageNow = 5;
     document.title = "加入我们";
   } else if (to.fullPath.split('/')[1] == 'department') {
     pageStore.pageNow = 3;
     document.title = "我们的部门";
-  } else if (to.fullPath == '/admin') {
+  }else if (to.fullPath == '/activity') {
     pageStore.pageNow = 4;
-    document.title = "管理页面";
+    document.title = "我们的活动";
   }
 })
 

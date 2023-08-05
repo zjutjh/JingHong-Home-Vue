@@ -2,28 +2,38 @@
   <div class="contact-base" :class="pageStore.pageType">
     <JHCard type="small" :is-title="false" title="no">
       <div class="loading" :class="pageStore.pageType">
-        <img src="/photo/index/2022.png" />
+        <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/2023.png" />
         <div class="loading-bar-border">
           <div class="loading-bar" :style="{ left: loadingWidth + '%' }"></div>
         </div>
-        <img src="/photo/index/loading.png" />
+        <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/loading.png" />
       </div>
     </JHCard>
     <img
       class="jh"
       :class="pageStore.pageType"
-      src="/photo/index/story1.png"
+      src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story1.png"
       border="5"
     />
     <JHCard type="small" :is-title="false" title="no">
       <div class="contact-us" :class="pageStore.pageType">
-        <img src="/photo/svg/wechat.svg" />
+        <img
+            src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/wechat.svg"
+            @mouseover="onMouseOver"
+        />
+        <img
+            v-if="isHovering"
+            src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/QR.jpg"
+            class="qrcode"
+            @mouseout="onMouseOut"
+            style="width: auto; height: 20%;z-index:1; position: absolute;"
+        />
         <div style="width: 99%">
           <h1>联系我们 | 关注我们</h1>
           <h4>jhwl@zjut.edu.cn</h4>
         </div>
         <img
-          src="/photo/svg/LogoGitHub.svg"
+          src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/LogoGitHub.svg"
           style="cursor: pointer"
           @click="toGithub"
         />
@@ -167,6 +177,19 @@
   width: 30%;
   margin: auto;
 }
+
+.qrcode {
+  width: auto;
+  height: 20%;
+  position: absolute;
+  z-index: 99;
+  border: 3px solid #fff;
+  border-radius: 3px;
+  background-color: #fff;
+  padding: 0.5rem;
+  opacity: 1;
+  transition: all 0.1s ease-in 0s;
+}
 </style>
 
 <script setup lang="ts">
@@ -179,6 +202,14 @@ const pageStore = usePageStore();
 const router = useRouter();
 const loadingBarTimer = ref(0);
 const loadingWidth = ref(0);
+const isHovering = ref(false);
+function onMouseOver() {
+  isHovering.value = true;
+}
+
+function onMouseOut() {
+  isHovering.value = false;
+}
 function toGithub() {
   window.open("https://www.github.com/zjutjh", "_blank");
 }

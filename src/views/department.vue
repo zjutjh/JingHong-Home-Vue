@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import JHLabel from "../components/JHLabel.vue";
 import { usePageStore } from "../stores/pages";
+import JHCard from "../components/JHCard.vue";
 import JHButton from "../components/JHButton.vue";
 import Footer from "../components/Footer.vue";
 import { useRouter } from "vue-router";
@@ -81,13 +82,18 @@ const router = useRouter();
 </style>
 <template>
   <PageTop />
-  <JHLabel type="title">我们的部门</JHLabel>
+  <JHLabel type="title" v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'">我们的部门</JHLabel>
+  <JHCard title="部门结构" type="large" :is-title="true">
+    <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/structPc.png" style="width: 70%" v-if="pageStore.pageType == 'normal'" />
+    <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/structMob.png" style="width: 70%" v-if="pageStore.pageType != 'normal'" />
+  </JHCard>
+  <div v-show="pageStore.pageType == 'normal'" style="height: 100px"></div>
   <div class="base" :class="pageStore.pageType">
     <div class="line1">
       <div class="item">
         <div
           class="img"
-          style="background-image: url(/photo/svg/changwu.svg)"
+          style="background-image: url(https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/changwu.svg)"
           id="img1"
         ></div>
         <JHButton
@@ -100,7 +106,7 @@ const router = useRouter();
       <div class="item">
         <div
           class="img"
-          style="background-image: url(/photo/svg/jishu.svg)"
+          style="background-image: url(https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/jishu.svg)"
           id="img2"
         ></div>
 
@@ -116,7 +122,7 @@ const router = useRouter();
       <div class="item">
         <div
           class="img"
-          style="background-image: url(/photo/svg/sheji.svg)"
+          style="background-image: url(https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/sheji.svg)"
           id="img3"
         ></div>
 
@@ -130,7 +136,7 @@ const router = useRouter();
       <div class="item">
         <div
           class="img"
-          style="background-image: url(/photo/svg/xinmeiti.svg)"
+          style="background-image: url(https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/xinmeiti.svg)"
           id="img4"
         ></div>
 
@@ -144,7 +150,7 @@ const router = useRouter();
       <div class="item">
         <div
           class="img"
-          style="background-image: url(/photo/svg/yiban.svg)"
+          style="background-image: url(https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/yiban.svg)"
           id="img5"
         ></div>
 
@@ -158,10 +164,10 @@ const router = useRouter();
     </div>
   </div>
   <div style="height: 100px"></div>
-  <JHButton type="middle" @click="router.push('/join')">
-    加入我们
+  <JHButton type="middle" @click="router.push('/activity')">
+    我们的活动
     <img
-      src="/photo/svg/rightArrow.svg"
+      src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/rightArrow.svg"
       style="width: 20px; margin-left: 20px"
     />
   </JHButton>

@@ -5,7 +5,7 @@ const pageStore = usePageStore();
 <template>
   <div class="base" :class="pageStore.pageType">
     <img
-      src="/photo/index/xiaohongLeft.png"
+      src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/xiaohongLeft.png"
       v-if="!(pageStore.pageType == 'mini')"
     />
     <div class="introduce">
@@ -26,7 +26,7 @@ const pageStore = usePageStore();
       </div>
     </div>
     <img
-      src="/photo/index/xiaohongRight.png"
+      src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/xiaohongRight.png"
       v-if="!(pageStore.pageType == 'mini')"
     />
   </div>
