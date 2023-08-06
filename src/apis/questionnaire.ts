@@ -48,12 +48,11 @@ export const deleteQuestionnaire = async (id: String) => {
 }
 
 export const changeQuestionnaireStatus = async (data: any) => {
-    const res = await request_q({
+    return await request_q({
         url: '/api/admin/draft/status',
         method: 'post',
         data
-    })
-    return res;
+    });
 }
 
 export const getQuestionnaireDataById = async (id: string) => {
@@ -68,29 +67,26 @@ export const getQuestionnaireDataById = async (id: string) => {
 }
 
 export const UserGetQuestionnaireAll = async () => {
-    const res = await request_q({
+    return await request_q({
         url: '/api/user/all/get',
         method: 'GET',
-    })
-    return res;
+    });
 }
 
 export const UserGetQuestionnaireData = async (id: number) => {
-    const res = await request_q({
+    return await request_q({
         url: '/api/user/get',
         method: 'GET',
         params: {
-        id
+            id
         }
-    })
-    return res;
+    });
 }
 
 export const UserSubmitQuestionnaireData = async (data: any) => {
-    const res = await request_q({
+    return await request_q({
         url: '/api/user/add',
         method: 'POST',
         data
-    })
-    return res;
+    });
 }

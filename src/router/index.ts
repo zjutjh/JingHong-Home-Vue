@@ -150,7 +150,7 @@ const routes = [
     }
   },
   {
-    path: '/questionnaire/survey',
+    path: '/questionnaire/survey/:id',
     name: 'questionnaire/survey',
     components: {
       default: () => import('../views/questionnaire/survey.vue'),

@@ -17,7 +17,7 @@ const pinia = useQuestionnaireStore();
 
 function fillQuestionnaire(id: number) {
   pinia.setId(id);
-  router.push('/questionnaire/survey');
+  router.push('/questionnaire/survey/'+id.toString());
 }
 
 onMounted(() => {
