@@ -9,6 +9,7 @@ import router from "@/router";
 import { TestAdmin } from "@/apis/admin";
 import { usePageStore } from "@/stores/pages";
 import JHLabel from "@/components/JHLabel.vue";
+import {useQuestionnaireStore} from "@/stores/questionnaire";
 const pwd = ref("");
 const submitted = ref(false);
 const pageStore = usePageStore();
@@ -17,6 +18,8 @@ async function handleLogin() {
 
   if (res.msg == "ok") {
     alert("登陆成功")
+    const pinia = useQuestionnaireStore();
+    pinia.isAdmin = true;
     router.push('/questionnaire');
     pageStore.admin = res.data.data
     pageStore.token = pwd.value;

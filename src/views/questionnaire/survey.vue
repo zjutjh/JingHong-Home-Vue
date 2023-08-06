@@ -46,8 +46,9 @@ const questions = ref();
 const answers = ref({});
 onMounted(() => {
   const pinia = useQuestionnaireStore();
+  if(pinia.selectedId === -1)
+    router.push('/questionnaire/user');
   UserGetQuestionnaireData(pinia.selectedId).then(res => {
-
     if(res.msg === "ok")
     {
       console.log(res.data);

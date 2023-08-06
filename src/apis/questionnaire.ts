@@ -41,8 +41,8 @@ export const deleteQuestionnaire = async (id: String) => {
     return await request_q<QRequest>({
       url: '/api/admin/delete',
       method: 'post',
-      params: {
-          id
+      data: {
+          id: id,
       }
   });
 }
@@ -63,6 +63,14 @@ export const getQuestionnaireDataById = async (id: string) => {
         params: {
         id
         }
+    })
+    return res;
+}
+
+export const UserGetQuestionnaireAll = async () => {
+    const res = await request_q({
+        url: '/api/user/all/get',
+        method: 'GET',
     })
     return res;
 }

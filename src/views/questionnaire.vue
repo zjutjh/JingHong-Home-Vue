@@ -13,8 +13,8 @@ import router from '@/router';
 import {getQuestionnaire} from "@/apis/questionnaire";
 import {onMounted, ref} from "vue";
 import {useQuestionnaireStore} from "@/stores/questionnaire";
+const pinia = useQuestionnaireStore();
 function addQuestion() {
-  const pinia = useQuestionnaireStore();
   pinia.setId(-1);
   console.log('addQuestion');
   router.push('/questionnaire/create');
@@ -23,6 +23,9 @@ const questionnaire = ref();
 
 
 onMounted(() => {
+  pinia.setId(-1);
+  if(pinia.isAdmin === false)
+    router.push('/questionnaire/user');
   getQuestionnaire().then(res => {
     if (res.msg === 'ok')
     {
