@@ -157,6 +157,31 @@ const routes = [
     }
   },
   {
+    path: '/admin',
+    name: 'admin',
+    components: {
+      default: () => import('@/views/admin.vue'),
+      navbar: () => import('@/components/NavBarAdmin.vue'),
+    },
+  },
+  {
+    path: '/admin/total',
+    name: 'admin/total',
+    components: {
+      default: () => import('../views/admin/total.vue'),
+      navbar: () => import('../components/NavBarAdmin.vue'),
+    },
+  },
+  {
+    path: '/admin/detail',
+    name: 'admin/detail',
+    components: {
+      default: () => import('../views/admin/detail.vue'),
+      navbar: () => import('../components/NavBarAdmin.vue'),
+
+    }
+  },
+  {
     path: '/:pathMatch(.*)*',
     redirect: '/index'
   }
@@ -193,6 +218,9 @@ router.beforeEach((to, from) => {
   }else if (to.fullPath == '/activity') {
     pageStore.pageNow = 4;
     document.title = "我们的活动";
+  } else if (to.fullPath == '/admin') {
+    pageStore.pageNow = 6;
+    document.title = "管理页面";
   }
 })
 
