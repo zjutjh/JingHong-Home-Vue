@@ -19,6 +19,7 @@
 import {onMounted , ref} from "vue";
 import {useQuestionnaireStore} from "@/stores/questionnaire";
 import {getQuestionnaireById, getQuestionnaireDataById} from "@/apis/questionnaire";
+import router from "@/router";
 
 const tmpHead=[
   {
@@ -36,9 +37,11 @@ const tmpData=[
 ]
 const Qdata = ref();
 const Adata = ref();
+const pinia = useQuestionnaireStore();
 onMounted(() => {
   console.log('data');
-  const pinia = useQuestionnaireStore();
+  if (pinia.getIsAdmin() !== "true")
+    router.push('/questionnaire/user');
   getQuestionnaireDataById(pinia.selectedId.toString()).then(res => {
     Adata.value = res.data;
   })

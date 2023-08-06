@@ -30,6 +30,7 @@
 <script lang="ts" setup>
 import JHButton from "@/components/JHButton.vue";
 import {onMounted , ref} from "vue";
+import router from "@/router";
 import IssueCard from "@/components/IssueCard.vue";
 import {getQuestionnaireById , updateQuestionnaire , createQuestionnaire} from "@/apis/questionnaire";
 import {useQuestionnaireStore} from "@/stores/questionnaire";
@@ -41,6 +42,8 @@ const pinia = useQuestionnaireStore();
 onMounted(() => {
   console.log('create');
   console.log(pinia.selectedId);
+  if(pinia.getIsAdmin() !== "true")
+    router.push('/questionnaire/user');
   if(pinia.selectedId !== -1)
    {
      isNew.value = false;

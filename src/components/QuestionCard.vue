@@ -94,7 +94,7 @@ function deleteQ(){
   const confirm = window.confirm('确定删除该问卷吗？');
   if(confirm){
     console.log('delete');
-    deleteQuestionnaire(props.id.toString()).then(res => {
+    deleteQuestionnaire(props.id).then(res => {
 
       if (res.msg === 'ok')
       {

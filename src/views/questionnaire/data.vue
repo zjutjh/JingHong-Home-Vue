@@ -35,7 +35,8 @@ const questions = ref();
 const pinia = useQuestionnaireStore();
 onMounted(() => {
     console.log('data');
-
+    if(pinia.getIsAdmin() !== "true")
+      router.push('/questionnaire/user');
     getQuestionnaireDataById(pinia.selectedId.toString()).then(res => {
       Adata.value = res.data.reduce((acc, curr) => {
         curr.forEach(item => {

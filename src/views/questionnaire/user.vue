@@ -9,19 +9,20 @@
 <script setup lang="ts">
 import QuestionCard from '../../components/QuestionCard.vue'
 import router from '@/router';
-import {getQuestionnaire} from "@/apis/questionnaire";
+import {UserGetQuestionnaireAll} from "@/apis/questionnaire";
 import {onMounted, ref} from "vue";
 import {useQuestionnaireStore} from "@/stores/questionnaire";
 const questionnaire = ref();
+const pinia = useQuestionnaireStore();
 
 function fillQuestionnaire(id: number) {
-  const pinia = useQuestionnaireStore();
   pinia.setId(id);
-  router.push('/questionnaire/survey');
+  router.push('/questionnaire/survey/'+id.toString());
 }
 
 onMounted(() => {
-  getQuestionnaire().then(res => {
+  pinia.setId(-1);
+  UserGetQuestionnaireAll().then(res => {
     if (res.msg === 'ok')
     {
       questionnaire.value = res.data.filter(item => (item.draft === false && item.public === true));

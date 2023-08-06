@@ -37,23 +37,22 @@ export const createQuestionnaire = async (data: any) => {
   return res;
 }
 
-export const deleteQuestionnaire = async (id: String) => {
+export const deleteQuestionnaire = async (id: number) => {
     return await request_q<QRequest>({
       url: '/api/admin/delete',
       method: 'post',
-      params: {
-          id
+      data: {
+          id: id,
       }
   });
 }
 
 export const changeQuestionnaireStatus = async (data: any) => {
-    const res = await request_q({
+    return await request_q({
         url: '/api/admin/draft/status',
         method: 'post',
         data
-    })
-    return res;
+    });
 }
 
 export const getQuestionnaireDataById = async (id: string) => {
@@ -67,22 +66,27 @@ export const getQuestionnaireDataById = async (id: string) => {
     return res;
 }
 
+export const UserGetQuestionnaireAll = async () => {
+    return await request_q({
+        url: '/api/user/all/get',
+        method: 'GET',
+    });
+}
+
 export const UserGetQuestionnaireData = async (id: number) => {
-    const res = await request_q({
+    return await request_q({
         url: '/api/user/get',
         method: 'GET',
         params: {
-        id
+            id
         }
-    })
-    return res;
+    });
 }
 
 export const UserSubmitQuestionnaireData = async (data: any) => {
-    const res = await request_q({
+    return await request_q({
         url: '/api/user/add',
         method: 'POST',
         data
-    })
-    return res;
+    });
 }

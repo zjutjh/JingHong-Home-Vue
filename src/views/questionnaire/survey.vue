@@ -38,16 +38,19 @@
 import {onMounted, ref} from "vue";
 import {useQuestionnaireStore} from "@/stores/questionnaire";
 import {UserGetQuestionnaireData , UserSubmitQuestionnaireData} from "@/apis/questionnaire";
+import {getCurrentInstance} from "vue";
 import JHButton from "@/components/JHButton.vue";
 import router from "@/router";
 const data = ref();
 const title = ref();
 const questions = ref();
+const currentInstance = getCurrentInstance();
+const currentRoute = currentInstance.proxy.$route.params.id;
+const pinia = useQuestionnaireStore();
 const answers = ref({});
+pinia.setId(Number(currentRoute));
 onMounted(() => {
-  const pinia = useQuestionnaireStore();
   UserGetQuestionnaireData(pinia.selectedId).then(res => {
-
     if(res.msg === "ok")
     {
       console.log(res.data);
