@@ -37,7 +37,7 @@ export const createQuestionnaire = async (data: any) => {
   return res;
 }
 
-export const deleteQuestionnaire = async (id: String) => {
+export const deleteQuestionnaire = async (id: number) => {
     return await request_q<QRequest>({
       url: '/api/admin/delete',
       method: 'post',
