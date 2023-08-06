@@ -13,10 +13,15 @@
   import QuestionCard from '../../components/QuestionCard.vue'
   import {onMounted} from "vue";
   import {ref} from "vue";
+  import router from "@/router";
+  import {useQuestionnaireStore} from "@/stores/questionnaire";
   import {getQuestionnaire} from "@/apis/questionnaire";
   const questionnaire = ref();
+  const pinia = useQuestionnaireStore();
   const draftQuestionnaire = ref();
   onMounted(() => {
+    if (pinia.getIsAdmin() !== "true")
+      router.push('/questionnaire/user');
     getQuestionnaire().then(res => {
       questionnaire.value = res.data;
       draftQuestionnaire.value = questionnaire.value.filter(item => item.draft === true);

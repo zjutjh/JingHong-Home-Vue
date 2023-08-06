@@ -5,10 +5,16 @@ export const useQuestionnaireStore = defineStore('questionnaire', () => {
     const setId = (id: number) => {
         selectedId.value = id;
     }
-    const isAdmin = ref(false);
+    const getIsAdmin = () => {
+       return  sessionStorage.getItem('isAdmin');
+    }
+    const setIsAdmin = () => {
+        sessionStorage.setItem('isAdmin', 'true');
+    }
     return {
         selectedId,
-        isAdmin,
+        getIsAdmin,
+        setIsAdmin,
         setId
     }
 })

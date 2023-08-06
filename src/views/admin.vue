@@ -19,7 +19,7 @@ async function handleLogin() {
   if (res.msg == "ok") {
     alert("登陆成功")
     const pinia = useQuestionnaireStore();
-    pinia.isAdmin = true;
+    pinia.setIsAdmin();
     router.push('/questionnaire');
     pageStore.admin = res.data.data
     pageStore.token = pwd.value;

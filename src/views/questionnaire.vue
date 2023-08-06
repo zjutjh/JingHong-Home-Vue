@@ -24,7 +24,8 @@ const questionnaire = ref();
 
 onMounted(() => {
   pinia.setId(-1);
-  if(pinia.isAdmin === false)
+  console.log(pinia.getIsAdmin());
+  if(pinia.getIsAdmin() !== "true")
     router.push('/questionnaire/user');
   getQuestionnaire().then(res => {
     if (res.msg === 'ok')

@@ -42,7 +42,7 @@ const pinia = useQuestionnaireStore();
 onMounted(() => {
   console.log('create');
   console.log(pinia.selectedId);
-  if(pinia.isAdmin === false)
+  if(pinia.getIsAdmin() !== "true")
     router.push('/questionnaire/user');
   if(pinia.selectedId !== -1)
    {
