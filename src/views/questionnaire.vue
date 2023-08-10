@@ -1,9 +1,8 @@
 <template>
   <div class="container">
     <QuestionCard @click="addQuestion" :is="false"></QuestionCard>
-    <div v-for="item in questionnaire" :key="item.id">
-      <QuestionCard :is="true" :title="item.title" :id="item.id" :public="item.public" :draft="item.draft"></QuestionCard>
-    </div>
+    <QuestionCard v-for="item in questionnaire" :is="true" :title="item.title" :id="item.id" :public="item.public"
+      :draft="item.draft"></QuestionCard>
   </div>
 </template>
 

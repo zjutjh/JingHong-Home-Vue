@@ -7,56 +7,62 @@
     </div>
     <div class="bar" v-if="props.admin">
       <div class="bar" v-if="props.is">
-        <div @click="changePublic()">
+        <button @click="changePublic()">
           <div v-if="!isPublic">
             发布
           </div>
           <div v-else>
             取消发布
           </div>
-        </div>
-        <div @click="nav2Data()" v-if="!draft">
+        </button>
+        <button @click="nav2Data()" v-if="!draft">
           数据
-        </div>
-        <div @click="nav2Edit()" v-if="draft">
+        </button>
+        <button @click="nav2Edit()" v-if="draft">
           编辑
-        </div>
-        <div @click="deleteQ()">
+        </button>
+        <button @click="deleteQ()">
           删除
-        </div>
+        </button>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .card-container {
   background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 200px;
-  width: 40%;
+  min-height: 200px;
+  width: 50%;
   border-radius: 20px;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.3);
-}
 
-.text-container {
-  display: block;
-  margin-top: 20px;
-}
+  .text-container {
+    display: block;
+    margin-top: 20px;
 
-.text {
-  font-size: 24px;
-  text-align: center;
-}
+    .text {
+      font-size: 24px;
+      text-align: center;
+    }
+  }
 
-.bar {
-  margin-top: 80px;
-  display: flex;
-  width: 80%;
-  justify-content: space-around;
+  .bar {
+    margin-top: 80px;
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+
+    button {
+      padding: 10px 20px;
+      border-radius: 20px;
+    }
+  }
+
 }
 </style>
 
