@@ -36,6 +36,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+
   min-height: 200px;
   width: 50%;
   border-radius: 20px;
@@ -62,7 +63,6 @@
       border-radius: 20px;
     }
   }
-
 }
 </style>
 
