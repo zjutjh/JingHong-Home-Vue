@@ -1,44 +1,39 @@
 <template>
   <div class="container">
-    <div class="content">
-       <div class="title">
-            {{title}}
-       </div>
-      <hr>
-      <div class="issue">
-        <div v-for="(item,index) in questions" :key="index">
-          <label class="issue-title">{{index + 1}}. {{item.text}}</label>
-          <div v-if="item.type === 'Single'">
-            <div v-for="(option,i) in item.options">
-              <input type="radio"  :value="option" v-model="answers[item.qid]">
-              <label>{{option}}</label>
-            </div>
-          </div>
-          <div v-else-if="item.type === 'Multiple'">
-            <div v-for="(option,i) in item.options">
-              <input type="checkbox"  :value="String.fromCharCode(i+65)" v-model="answers[item.qid]">
-              <label>{{option}}</label>
-            </div>
-          </div>
-          <div v-else>
-            <textarea class="my-textarea" v-model="answers[item.qid]"></textarea>
-          </div>
-          <hr>
-      </div>
-
-      </div>
-      <j-h-button type="middle" @click="submit">提交</j-h-button>
+    <div class="title">
+      {{ title }}
     </div>
+    <div class="content">
+      <div v-for="(item, index) in questions" :key="index" class="issue">
+        <label class="issue-title">{{ index + 1 }}. {{ item.text }}</label>
+        <div v-if="item.type === 'Single'">
+          <div v-for="(option, i) in item.options">
+            <input type="radio" :value="option" v-model="answers[item.qid]">
+            <label>{{ option }}</label>
+          </div>
+        </div>
+        <div v-else-if="item.type === 'Multiple'">
+          <div v-for="(option, i) in item.options">
+            <input type="checkbox" :value="String.fromCharCode(i + 65)" v-model="answers[item.qid]">
+            <label>{{ option }}</label>
+          </div>
+        </div>
+        <div v-else>
+          <textarea class="my-textarea" v-model="answers[item.qid]"></textarea>
+        </div>
+      </div>
+    </div>
+    <j-h-button type="middle" @click="submit">提交</j-h-button>
   </div>
 </template>
 
 
 <script setup lang="ts">
 
-import {onMounted, ref} from "vue";
-import {useQuestionnaireStore} from "@/stores/questionnaire";
-import {UserGetQuestionnaireData , UserSubmitQuestionnaireData} from "@/apis/questionnaire";
-import {getCurrentInstance} from "vue";
+import { onMounted, ref } from "vue";
+import { useQuestionnaireStore } from "@/stores/questionnaire";
+import { UserGetQuestionnaireData, UserSubmitQuestionnaireData } from "@/apis/questionnaire";
+import { getCurrentInstance } from "vue";
 import JHButton from "@/components/JHButton.vue";
 import router from "@/router";
 const data = ref();
@@ -51,17 +46,16 @@ const answers = ref({});
 pinia.setId(Number(currentRoute));
 onMounted(() => {
   UserGetQuestionnaireData(pinia.selectedId).then(res => {
-    if(res.msg === "ok")
-    {
+    if (res.msg === "ok") {
       console.log(res.data);
       data.value = res.data;
       title.value = data.value.title;
       questions.value = data.value.list;
       console.log(questions.value);
       questions.value.forEach(item => {
-        if(item.type === "Single")
+        if (item.type === "Single")
           answers.value[item.qid] = "";
-        else if(item.type === "Multiple")
+        else if (item.type === "Multiple")
           answers.value[item.qid] = [];
         else
           answers.value[item.qid] = "";
@@ -72,7 +66,7 @@ onMounted(() => {
   })
 })
 
-function submit(){
+function submit() {
 
   console.log(answers.value);
   const pinia = useQuestionnaireStore();
@@ -96,8 +90,7 @@ function submit(){
     list: list
   }
   UserSubmitQuestionnaireData(data).then(res => {
-    if(res.msg === "ok")
-    {
+    if (res.msg === "ok") {
       alert("提交成功");
       router.push('/questionnaire/user');
     }
@@ -108,46 +101,50 @@ function submit(){
 
 </script>
 
-<style scoped>
-.container{
-  margin-top: 15%;
+<style scoped lang="scss">
+.container {
+  margin-top: 100px;
   background-color: rgb(239, 239, 239);
-  width: 100vw;
   display: flex;
+  flex-direction: column;
+  row-gap: 20px;
   justify-content: center;
+  width: fit-content;
+  margin-inline: auto;
 }
-.content{
-  width: 70vw;
+
+.content {
   background: white;
-  border-radius: 30px;
+  border-radius: 20px;
 }
-.title{
+
+.title {
   font-size: 2.5em;
   text-align: center;
   font-weight: bolder;
+  border-bottom: 2px solid rgb(239, 239, 239);
 }
-hr {
-  width: 90%;
-  height: 2px;
-  background-color: rgb(239, 239, 239);
-}
-.issue-title {
-   margin-left: -1%;
-}
+
 .issue {
   text-align: left;
-  margin-left: 5%;
+  margin-inline: 20px;
+  border-bottom: 2px solid rgb(239, 239, 239);
 }
+
 .issue-title {
-  font-size: 1.5em;
+  font-size: 20px;
   font-weight: bolder;
 }
+
 .my-textarea {
   display: inline-block;
-  width: 90%;
-  height: 5rem;
-  line-height: 30px;
-  font-size: 20px;
+  min-height: 100px;
+  min-width: 300px;
+  font-size: 16px;
   resize: none;
+}
+
+input {
+  margin-right: 10px;
 }
 </style>
