@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory , RouterOptions} from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import { usePageStore } from '../stores/pages';
 
 const routes = [
@@ -103,60 +103,6 @@ const routes = [
     }
   },
   {
-    path: '/questionnaire',
-    name: 'questionnaire',
-    components: {
-      default: () => import('../views/questionnaire.vue'),
-      navbar: () => import('../components/NavBarQuestionnaire.vue'),
-    }
-  },
-  {
-    path: '/questionnaire/draft',
-    name: 'questionnaire/draft',
-    components: {
-      default: () => import('../views/questionnaire/draft.vue'),
-      navbar: () => import('../components/NavBarQuestionnaire.vue'),
-    }
-  },
-  {
-    path: '/questionnaire/create',
-    name: 'questionnaire/create',
-    components: {
-      default: () => import('../views/questionnaire/create.vue'),
-      navbar: () => import('../components/NavBarQuestionnaire.vue'),
-    }
-  },
-  {
-    path: '/questionnaire/data',
-    name: 'questionnaire/data',
-    components: {
-        default: () => import('../views/questionnaire/data.vue'),
-        navbar: () => import('../components/NavBarQuestionnaire.vue'),
-    }
-  },
-  {
-    path: '/questionnaire/detail',
-    name: 'questionnaire/detail',
-    components: {
-      default: () => import('../views/questionnaire/detail.vue'),
-      navbar: () => import('../components/NavBarQuestionnaire.vue'),
-    }
-  },
-  {
-    path: '/questionnaire/user',
-    name: 'questionnaire/user',
-    components: {
-      default: () => import('../views/questionnaire/user.vue'),
-    }
-  },
-  {
-    path: '/questionnaire/survey/:id',
-    name: 'questionnaire/survey',
-    components: {
-      default: () => import('../views/questionnaire/survey.vue'),
-    }
-  },
-  {
     path: '/admin',
     name: 'admin',
     components: {
@@ -178,7 +124,6 @@ const routes = [
     components: {
       default: () => import('../views/admin/detail.vue'),
       navbar: () => import('../components/NavBarAdmin.vue'),
-
     }
   },
   {
@@ -190,9 +135,8 @@ const routes = [
 const router = createRouter(
   {
     history: createWebHistory(),
-    //@ts-ignore
-    routes
-    }
+    routes,
+  },
 );
 
 router.beforeEach((to, from) => {

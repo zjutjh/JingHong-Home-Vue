@@ -93,5 +93,4 @@ const prop = defineProps<{
   border: none;
   margin: auto;
 }
-
 </style>

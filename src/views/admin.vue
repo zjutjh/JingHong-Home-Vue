@@ -5,24 +5,21 @@ import JHInput from "@/components/JHInput.vue";
 import { ref } from "vue";
 import Footer from "@/components/Footer.vue";
 import PageTop from "@/components/PageTop.vue";
-import router from "@/router";
+import { useRouter } from "vue-router";
 import { TestAdmin } from "@/apis/admin";
 import { usePageStore } from "@/stores/pages";
 import JHLabel from "@/components/JHLabel.vue";
-import {useQuestionnaireStore} from "@/stores/questionnaire";
 const pwd = ref("");
 const submitted = ref(false);
+const router = useRouter();
 const pageStore = usePageStore();
 async function handleLogin() {
   const res = await TestAdmin(pwd.value)
-
-  if (res.msg == "ok") {
+  if (res.message == "ok") {
     alert("登陆成功")
-    const pinia = useQuestionnaireStore();
-    pinia.setIsAdmin();
-    router.push('/questionnaire');
     pageStore.admin = res.data.data
     pageStore.token = pwd.value;
+    router.push("/admin/total")
   } else {
     alert("登陆失败")
     return

@@ -11,9 +11,6 @@ const btnOn = ref<boolean>(false);
 const listShow = ref<boolean>(false);
 const oldScrollPosition = ref<number>(0);
 const hide = ref<boolean>(false);
-const props = defineProps({
-  links: Object,
-});
 const { pageAdminNow } = storeToRefs(pageStore);
 watch(pageAdminNow, () => {
   handleScroll();
@@ -51,17 +48,16 @@ function logoClicked() {
 <template>
   <div :class="pageStore.pageType, hide ? 'hide' : ''" class="base" ref="base">
     <img class="logo" :class="pageStore.pageType" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/top/logo.png" @click="logoClicked" />
-    <div class="options" v-if="pageStore.pageType == 'normal'">
-    <div v-for="(l, index) in props.links? props.links : links" class="link" :class="index.toString() === pageStore.pageAdminNow.toString() ? 'select' : 'notSelect'">
+    <div v-for="(l, index) in links" class="link" :class="index == pageStore.pageAdminNow ? 'select' : 'notSelect'"
+      v-show="pageStore.pageType == 'normal'">
       <router-link :to="l.link">{{ l.name }}</router-link>
-    </div>
     </div>
     <div class="listButton" :class="btnOn ? 'btnOn' : 'btnOff'"
       v-show="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'" @click="listBtnClicked"></div>
 
     <div class="list" :class="pageStore.pageType" v-show="listShow">
-      <div v-for="(l, index) in props.links? props.links : links" class="listItem"
-        :class="index.toString() === pageStore.pageAdminNow.toString() ? 'select' : 'notSelect'" @click="listBtnClicked">
+      <div v-for="(l, index) in links" class="listItem"
+        :class="index == pageStore.pageAdminNow ? 'select' : 'notSelect'" @click="listBtnClicked">
         <router-link :to="l.link">{{ l.name }}</router-link>
       </div>
     </div>
@@ -95,16 +91,6 @@ a {
   font-size: large;
 }
 
-.link {
-  width: 10vw;
-  margin-left: auto;
-}
-
-.options {
-  display: flex;
-  width: 30vw;
-  margin-left: auto;
-}
 
 .base {
   z-index: 10;
