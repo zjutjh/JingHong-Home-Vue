@@ -86,14 +86,14 @@ const routes = [
       navbar: () => import('../components/NavBar.vue'),
     }
   },
-  {
-    path: '/join/recruit',
-    name: 'join/recruit',
-    components: {
-      default: () => import('../views/join/recruit.vue'),
-      navbar: () => import('../components/NavBar.vue'),
-    }
-  },
+  // {
+  //   path: '/join/recruit',
+  //   name: 'join/recruit',
+  //   components: {
+  //     default: () => import('../views/join/recruit.vue'),
+  //     navbar: () => import('../components/NavBar.vue'),
+  //   }
+  // },
   {
     path: '/activity',
     name: 'activity',
