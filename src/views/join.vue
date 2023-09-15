@@ -10,7 +10,7 @@ import PageTop from "../components/PageTop.vue";
 const pageStore = usePageStore();
 const router = useRouter();
 function toRecruit() {
-  window.open("/join/recruit");
+  // window.open("/join/recruit");
   return false;
 }
 function toLong() {
@@ -34,8 +34,8 @@ function toLong() {
             ACM新// 生赛
           </JHButton>
           (点击报名) -->
-          <JHButton type="middle" @click="toRecruit">招新季报名</JHButton>
-          (现已开启)
+          <JHButton type="middle-disabled" @click="toRecruit">招新季报名</JHButton>
+          (现已截止)
 
           <JHButton type="middle-disabled" @click="toLong">长期招新报名</JHButton>(暂未开放)
         </div>
