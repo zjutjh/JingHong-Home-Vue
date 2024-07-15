@@ -48,11 +48,11 @@ var loaded = false;
     class="story"
     v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'"
   >
-    <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story.jpg" />
+    <img src="https://img.lonesome.cn/jhwl/home/photo/index/story.webp" />
     <JHButton type="middle" @click="toStory">
       我们的故事
       <img
-        src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/rightArrow.svg"
+        src="https://img.lonesome.cn/jhwl/home/photo/svg/rightArrow.svg"
         style="width: 20px; margin-left: 20px"
       />
     </JHButton>

@@ -38,10 +38,10 @@ const routes = [
     }
   },
   {
-    path: '/department/changwu',
-    name: 'department/changwu',
+    path: '/department/ganshi',
+    name: 'department/ganshi',
     components: {
-      default: () => import('../views/department/changwu.vue'),
+      default: () => import('../views/department/ganshi.vue'),
       navbar: () => import('../components/NavBar.vue'),
     }
   },
