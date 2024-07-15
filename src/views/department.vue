@@ -150,19 +150,6 @@ const router = useRouter();
           >新媒体中心</JHButton
         >
       </div>
-<!--      <div class="item">-->
-<!--        <div-->
-<!--          class="img"-->
-<!--          style="background-image: url(https://img.lonesome.cn/jhwl/home/photo/svg/yiban.svg)"-->
-<!--          id="img5"-->
-<!--        ></div>-->
-<!--        <JHButton-->
-<!--          type="small"-->
-<!--          @click="router.push('/department/yiban')"-->
-<!--          class="button"-->
-<!--          >易班文化工作站</JHButton-->
-<!--        >-->
-<!--      </div>-->
     </div>
   </div>
   <div style="height: 100px"></div>

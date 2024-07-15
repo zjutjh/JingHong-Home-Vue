@@ -10,24 +10,13 @@ const router = useRouter();
 onMounted(() => {
   document.title = "技术研发中心";
 });
-const imgs = [
-  "https://img.lonesome.cn/jhwl/home/photo/department/jishu/kaifabu/1.webp",
-  "https://img.lonesome.cn/jhwl/home/photo/department/jishu/kaifabu/2.webp",
-  "https://img.lonesome.cn/jhwl/home/photo/department/jishu/kaifabu/3.webp",
-];
-const imgs2 = [
-  "https://img.lonesome.cn/jhwl/home/photo/department/jishu/chanpinbu/1.webp",
-  "https://img.lonesome.cn/jhwl/home/photo/department/jishu/chanpinbu/2.webp",
-  "https://img.lonesome.cn/jhwl/home/photo/department/jishu/chanpinbu/3.webp",
-  "https://img.lonesome.cn/jhwl/home/photo/department/jishu/chanpinbu/4.webp",
-];
-const img3 = [
+const img1 = [
     "https://img.lonesome.cn/jhwl/home/photo/department/jishu/chanyan/chanpin/1.webp",
     "https://img.lonesome.cn/jhwl/home/photo/department/jishu/chanyan/chanpin/2.webp",
     "https://img.lonesome.cn/jhwl/home/photo/department/jishu/chanyan/chanpin/3.webp",
     "https://img.lonesome.cn/jhwl/home/photo/department/jishu/chanyan/chanpin/4.webp",
 ];
-const img4 = [
+const img2 = [
     "https://img.lonesome.cn/jhwl/home/photo/department/jishu/chanyan/jishu/1.webp",
     "https://img.lonesome.cn/jhwl/home/photo/department/jishu/chanyan/jishu/2.webp",
     "https://img.lonesome.cn/jhwl/home/photo/department/jishu/chanyan/jishu/3.webp",
@@ -49,53 +38,9 @@ img {
 <template>
   <div style="height: 100px"></div>
   <JHLabel type="big">技术研发中心</JHLabel>
-<!--  <JHCard type="large" title="开发部" :isTitle="true">-->
-<!--    <div class="imgs">-->
-<!--      &lt;!&ndash; <img src="https://img.lonesome.cn/jhwl/home/photo/department/jishu/kaifabu/1.webp" />-->
-<!--      <img src="https://img.lonesome.cn/jhwl/home/photo/department/jishu/kaifabu/2.webp" />-->
-<!--      <img src="https://img.lonesome.cn/jhwl/home/photo/department/jishu/kaifabu/3.webp" /> &ndash;&gt;-->
-<!--      <CarouselPicturesBig :imgs="imgs" />-->
-<!--    </div>-->
-<!--    <JHLabel type="small">部门介绍</JHLabel>-->
-<!--    <div class="content">-->
-<!--      我们是微精弘和各精弘应用平台的开发者和维护者，更是现在校级组织数字化转型解决方案的提供者！作为全工大唯一一个学生技术部门，成员自然也是身怀绝技。除此之外，吃锅团建也是我们精弘技术部的老传统（划掉）。-->
-<!--    </div>-->
-<!--    <div class="content">-->
-<!--      现在主要开发技术栈： Go, HTML, CSS, JavaScript, Vue.js, Vuex, TypeScript-->
-<!--    </div>-->
-<!--    <div class="content">-->
-<!--      如果想让自己在工大一展身手，那么就务必来技术部康康。我们部门会在暑假放入网络开发相关学习课程，欢迎大家来观看！-->
-<!--    </div>-->
-<!--    <JHLabel type="small">招新宣言</JHLabel>-->
-<!--    <div class="content">-->
-<!--      你对开发、运维有兴趣吗？你对计算机有兴趣吗？你对一个项目是如何从一个idea一步步变成成熟的产品有兴趣吗？如果有的话，请不要错过精弘技术部！我们需要你这样热爱开发的人！-->
-<!--    </div>-->
-<!--  </JHCard>-->
-<!--  <JHCard type="large" title="运维部" :isTitle="true">-->
-<!--    <JHLabel type="small">部门介绍</JHLabel>-->
-
-<!--    <div class="content">-->
-<!--      精弘运维部是浙江工业大学精弘网络的重要组成部分，与开发部紧密相连，主要负责的是技术运维工作，主业务是先开发之忧而忧，后产品之乐而乐，副业务是和开发部门一起团建，吃锅。我们的准则是“稳定是基础，安全是保障，高效是王道，调优就是价值的直观体现”。-->
-<!--    </div>-->
-<!--  </JHCard>-->
-<!--  <JHCard type="large" title="产品部" :isTitle="true">-->
-<!--    &lt;!&ndash; <img src="https://img.lonesome.cn/jhwl/home/photo/department/jishu/chanpinbu/1.webp" />-->
-<!--    <img src="https://img.lonesome.cn/jhwl/home/photo/department/jishu/chanpinbu/2.webp" />-->
-<!--    <img src="https://img.lonesome.cn/jhwl/home/photo/department/jishu/chanpinbu/3.webp" />-->
-<!--    <img src="https://img.lonesome.cn/jhwl/home/photo/department/jishu/chanpinbu/4.webp" /> &ndash;&gt;-->
-<!--    <CarouselPicturesBig :imgs="imgs2" />-->
-<!--    <JHLabel type="small">部门介绍</JHLabel>-->
-<!--    <div class="content">-->
-<!--      哈喽你好哇！这里是听起来或许有些陌生的产品部，我们既不是敲代码的也不是做实体产品的，而是扮演产品经理的角色，探讨工大师生们的需求，和精弘的各位小伙伴一起合作，更新迭代实用的原有产品以及开发出好看又好用的新产品。不管是服务了广大学生的微精弘小程序，还是你现在看到的精弘首页，都是我们的产品。我们的目标是用产品改变世界！-->
-<!--    </div>-->
-<!--    <JHLabel type="small">招新宣言</JHLabel>-->
-<!--    <div class="content">-->
-<!--      如果你渴望提前在校园里亲身体验互联网企业中重要的产品经理岗位，那么加入产品部将是一个不容错过的机会喔！在这里你可以亲手设计各种有趣的产品，为微精弘小程序等校园产品构想更多有用的功能，还能与技术和设计人员紧密合作，将你的创意变成现实。不必担心目前对产品知识的了解甚少，因为我们将从零开始教学！让我们一同成长，开启这段激动人心的旅程吧！-->
-<!--    </div>-->
-<!--  </JHCard>-->
   <JHCard type="large" title="产研部" :isTitle="true">
     <JHLabel type="big">产品</JHLabel>
-    <CarouselPicturesBig :imgs="img3"></CarouselPicturesBig>
+    <CarouselPicturesBig :imgs="img1"></CarouselPicturesBig>
     <JHLabel type="small">部门介绍</JHLabel>
     <div class="content">
       产研部的“产”是产品的含义，我们既不敲代码也不制作实体产品，而是在精弘网络这样一个微型的互联网产品组织中扮演产品经理的角色，调研收集工大师生们的需求，设计产品的功能架构与交互，和精弘的各部门小伙伴一起合作，对现有的精弘产品进行更新迭代并开发出更多紧跟当下互联网节奏、满足更多师生需求的新产品。不论是从学习、生活方面服务了广大学生的微精弘小程序，还是你现在所在浏览的精弘首页，亦或是即将到来的精弘论坛，都是我们的产品。我们的目标是用产品改变世界！
@@ -105,7 +50,7 @@ img {
       如果你对产品经理这一角色心怀好奇，或是希望参与一个互联网产品的设计，或是渴望在校园中就亲身体验互联网企业中重要的产品经理岗位，那么加入产品部将是绝佳的机会！在这里，你可以参与有趣的产品设计，为我们的产品构想更多实用的功能，还能与精弘网络的技术和设计小伙伴交流合作，将你想象的创意落地成为被广大师生使用的现实。当然，看到这里你可能会想“我完全不了解产品经理的具体工作也能进这个部门吗”。我们想说的是当然可以！我们会从零开始教学，并带你参与真实的产品工作。快来加入我们，一起开启这段丰富有趣的旅程！
     </div>
     <JHLabel type="big" style="margin-top: 5%">技术</JHLabel>
-    <CarouselPicturesBig :imgs="img4"></CarouselPicturesBig>
+    <CarouselPicturesBig :imgs="img2"></CarouselPicturesBig>
     <JHLabel type="small">部门介绍</JHLabel>
     <div class="content">
       我们是微精弘和各精弘应用平台的开发者和维护者,什么是微精弘?哦我的上帝,这个小程序承载了精弘几代人的心血,是全体工大学生的的校园生活助手与管家.精弘论坛也会在今年重新上线,成为工大师生交流的平台.作为全工大唯一一个学生技术部门,成员们各怀绝技.在交流技术的同时,我们也是一个温暖有爱的大家庭,在学习与生活中互帮互助.我们是一群志同道合的人,因为热爱技术而聚在一起;我们是一群心怀梦想的人，因为追求创新而共同前行。我们是一群不懈努力的人，因为坚持信念而不断进步；
