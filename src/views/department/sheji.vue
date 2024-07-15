@@ -8,14 +8,14 @@ import CarouselPicturesBig from "../../components/CarouselPicturesBig.vue";
 import Carousel from "../../components/Carousel.vue";
 const router = useRouter();
 onMounted(() => {
-  document.title = "设计模块";
+  document.title = "设计服务中心";
 });
 const imgs = [
-  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/sheji/xiaohong/1.jpg",
-  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/sheji/xiaohong/2.jpg",
-  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/sheji/xiaohong/3.jpg",
-  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/sheji/xiaohong/4.jpg",
-  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/sheji/xiaohong/5.jpg",
+  "https://img.lonesome.cn/jhwl/home/photo/department/sheji/xiaohong/1.webp",
+  "https://img.lonesome.cn/jhwl/home/photo/department/sheji/xiaohong/2.webp",
+  "https://img.lonesome.cn/jhwl/home/photo/department/sheji/xiaohong/3.webp",
+  "https://img.lonesome.cn/jhwl/home/photo/department/sheji/xiaohong/4.webp",
+  "https://img.lonesome.cn/jhwl/home/photo/department/sheji/xiaohong/5.webp",
 ];
 </script>
 <style scoped>
@@ -35,7 +35,7 @@ img {
 </style>
 <template>
   <div style="height: 100px"></div>
-  <JHLabel type="big">设计模块</JHLabel>
+  <JHLabel type="big">设计服务中心</JHLabel>
   <JHCard type="large" title="小弘工作室" :isTitle="true">
     <CarouselPicturesBig :imgs="imgs"></CarouselPicturesBig>
     <JHLabel type="small">部门介绍</JHLabel>
@@ -60,7 +60,7 @@ img {
     </div>
   </JHCard>
   <img
-    src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/fork.png"
+    src="https://img.lonesome.cn/jhwl/home/photo/department/fork.webp"
     style="width: 80px; height: 80px; margin-top: 50px; cursor: pointer"
     @click="router.push('/department')"
   />

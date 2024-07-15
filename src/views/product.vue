@@ -155,11 +155,11 @@ function toDepartment() {
           浙江工业大学精弘网络微信公众号,提供结合精弘网络产品的实用功能,推出微精弘板块等系列服务,是工大学子学习生活的好帮手。
         </div>
         <div>
-          <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/11.png" />
+          <img src="https://img.lonesome.cn/jhwl/home/photo/product/11.webp" />
           <h3>浙江工业大学精弘网络</h3>
         </div>
         <div>
-          <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/10.jpg" />
+          <img src="https://img.lonesome.cn/jhwl/home/photo/product/10.webp" />
           <h3>浙工大微学工</h3>
         </div>
       </div>
@@ -170,7 +170,7 @@ function toDepartment() {
           微精弘是专属于zjuter的微信小程序,集课表、成绩查询、考试安排、空教室查询、一卡通、借阅等功能于一身，是工大学子必不可少的一体化校园移动门户。
         </div>
         <div>
-          <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/1.png" />
+          <img src="https://img.lonesome.cn/jhwl/home/photo/product/1.webp" />
           <h3>微精弘小程序</h3>
         </div>
       </div>
@@ -182,7 +182,7 @@ function toDepartment() {
           <br />欢迎关注!
           <br />哔哩哔哩: 浙工大精弘网络 <br />微信视频号: 精小弘在线
         </div>
-        <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/13.png" />
+        <img src="https://img.lonesome.cn/jhwl/home/photo/product/13.webp" />
       </div>
     </JHCard>
     <JHCard type="large" :is-title="true" title="学生邮箱">
@@ -190,7 +190,7 @@ function toDepartment() {
         <div class="introduction">
           学校为每一位学生提供邮箱,由精弘网络提供运营服务,是你参与学校工作、学习、生活等各类活动的官方邮箱,伴随你的大学四年乃至一生,毕业后仍可享受校方的服务。
         </div>
-        <img id="email-img" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/4.png" />
+        <img id="email-img" src="https://img.lonesome.cn/jhwl/home/photo/product/4.webp" />
         <h3>邮箱网址：mail.zjut.edu.cn</h3>
       </div>
     </JHCard>
@@ -199,19 +199,19 @@ function toDepartment() {
     <JHCard type="large" :is-title="false" title="no">
       <div class="base" :class="pageStore.pageType">
         <div class="product-item">
-          <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/1.png" />
+          <img src="https://img.lonesome.cn/jhwl/home/photo/product/1.webp" />
           <JHButton type="middle" @click="isWejh = true">微信小程序</JHButton>
         </div>
         <div class="product-item">
-          <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/2.png" />
+          <img src="https://img.lonesome.cn/jhwl/home/photo/product/2.webp" />
           <JHButton type="middle" @click="isWechat = true">微信服务号</JHButton>
         </div>
         <div class="product-item">
-          <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/3.jpg" />
+          <img src="https://img.lonesome.cn/jhwl/home/photo/product/3.webp" />
           <JHButton type="middle" @click="isVisual = true">视觉影像</JHButton>
         </div>
         <div class="product-item">
-          <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/4.png" />
+          <img src="https://img.lonesome.cn/jhwl/home/photo/product/4.webp" />
           <JHButton type="middle" @click="isEmail = true">学生邮箱</JHButton>
         </div>
       </div>
@@ -219,51 +219,51 @@ function toDepartment() {
     <div class="detail" v-if="isWejh">
       <div class="title">
         微精弘
-        <img class="icon" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/1.png" />
+        <img class="icon" src="https://img.lonesome.cn/jhwl/home/photo/product/1.webp" />
       </div>
 
       <div class="content">
         微精弘是专属于zjuter的微信小程序，集课表、成绩查询、考试安排、空教室查询、一卡通、借阅等功能于一身，是工大学子必不可少的一体化校园移动门户。
       </div>
-      <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/return.svg" @click="isWejh = false" class="retbtn"/>
+      <img src="https://img.lonesome.cn/jhwl/home/photo/svg/return.svg" @click="isWejh = false" class="retbtn"/>
     </div>
     <div class="detail" v-if="isWechat">
       <div class="title">
         微信公众号
-        <img class="icon" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/2.png" />
+        <img class="icon" src="https://img.lonesome.cn/jhwl/home/photo/product/2.webp" />
       </div>
 
       <div class="content">
         浙江工业大学精弘网络微信公众号,提供结合精弘网络产品的实用功能,推出微精弘板块等系列服务,是工大学子学习生活的好帮手。
       </div>
-      <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/return.svg" @click="isWechat = false" class="retbtn"/>
+      <img src="https://img.lonesome.cn/jhwl/home/photo/svg/return.svg" @click="isWechat = false" class="retbtn"/>
     </div>
     <div class="detail" v-if="isVisual">
       <div class="title">
         视觉影像
-        <img class="icon" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/3.jpg" />
+        <img class="icon" src="https://img.lonesome.cn/jhwl/home/photo/product/3.webp" />
       </div>
       <div class="content" style="font-size: 18px;">
         校园学习生活、学校各类大型活动的记录团队，专注于摄影、视频前期拍摄和后期剪辑,致力于用最优秀的制作呈现最美的工大人、工大景。视觉影像像期待用最用心的摄制给你带来最高级的视听盛宴!
         欢迎关注!<br /><center>b站:浙工大精弘网络</center><center>微信视频号:精小弘在线</center>
       </div>
-      <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/return.svg" @click="isVisual = false" class="retbtn"/>
+      <img src="https://img.lonesome.cn/jhwl/home/photo/svg/return.svg" @click="isVisual = false" class="retbtn"/>
     </div>
     <div class="detail" v-if="isEmail">
       <div class="title">
         学生邮箱
-        <img class="icon" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/4.png" />
+        <img class="icon" src="https://img.lonesome.cn/jhwl/home/photo/product/4.webp" />
       </div>
       <div class="content">
         学校为每一位学生提供邮箱,由精弘网络提供运营服务,是你参与学校工作、学习、生活等各类活动的官方邮箱,伴随你的大学四年乃至一生,毕业后仍可享受校方的服务。
       </div>
-      <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/return.svg" @click="isEmail = false" class="retbtn"/>
+      <img src="https://img.lonesome.cn/jhwl/home/photo/svg/return.svg" @click="isEmail = false" class="retbtn"/>
     </div>
   </div>
   <div style="height: 100px"></div>
   <JHButton type="middle" @click="toDepartment">
     我们的部门
-    <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/rightArrow.svg" style="width: 20px; margin-left: 20px" />
+    <img src="https://img.lonesome.cn/jhwl/home/photo/svg/rightArrow.svg" style="width: 20px; margin-left: 20px" />
   </JHButton>
   <Footer />
 </template>
