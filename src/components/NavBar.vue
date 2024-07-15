@@ -63,7 +63,7 @@ function logoClicked() {
     pageStore.pageType,
     hide ? 'hide' : '',
   ]" class="base" ref="base">
-    <img class="logo" :class="pageStore.pageType" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/top/logo.png" @click="logoClicked" />
+    <img class="logo" :class="pageStore.pageType" src="https://img.lonesome.cn/jhwl/home/photo/top/logo.webp" @click="logoClicked" />
     <div v-for="(l, index) in links" class="link" :class="index == pageStore.pageNow ? 'select' : 'notSelect'"
       v-show="pageStore.pageType == 'normal'">
       <div style="width: 100%;">
@@ -89,7 +89,7 @@ function logoClicked() {
 <style scoped>
 @font-face {
   font-family: "song";
-  src: url("https://download.tooc.xlj0.com/uploads/22/jhhome/public/font/逐浪雅宋体.ttf");
+  src: url("/font/逐浪雅宋体.ttf");
 }
 
 @keyframes showList {
@@ -200,13 +200,13 @@ a {
 }
 
 .listButton.btnOn {
-  background-image: url("https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/close.svg");
+  background-image: url("https://download.tooc.xlj0.com/uploads/22/jhhome/publichttps://img.lonesome.cn/jhwl/home/photo/svg/close.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .listButton.btnOff {
-  background-image: url("https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/list.svg");
+  background-image: url("https://download.tooc.xlj0.com/uploads/22/jhhome/publichttps://img.lonesome.cn/jhwl/home/photo/svg/list.svg");
   background-repeat: no-repeat;
   background-position: center;
 }

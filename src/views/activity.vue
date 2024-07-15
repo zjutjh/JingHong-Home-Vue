@@ -14,7 +14,7 @@ const pageStore = usePageStore();
   <JHLabel type="title" v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'">我们的活动</JHLabel>
   <JHCard title="ACM新生赛" type="large" :is-title="true">
     <div class="base" :class="pageStore.pageType">
-      <img class="haibao" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/activity/ACM_Poster.png" />
+      <img class="haibao" src="https://img.lonesome.cn/jhwl/home/photo/activity/ACM_Poster.webp" />
       <div class="detail-base" :class="pageStore.pageType">
         <div style="height: 50px"></div>
         <div class="btn">
@@ -34,7 +34,7 @@ const pageStore = usePageStore();
           <JHLabel type="nano">群二维码</JHLabel>
           <div class="qr-base" :class="pageStore.pageType">
             <div class="qr-code">
-              <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/activity/ACM_Group_qrcode.png"/>
+              <img src="https://img.lonesome.cn/jhwl/home/photo/activity/ACM_Group_qrcode.webp"/>
             </div>
           </div>
         </div>
@@ -43,8 +43,8 @@ const pageStore = usePageStore();
   </JHCard>
   <!-- <JHCard title="精弘毅行" type="large" :is-title="true">
     <div class="base" :class="pageStore.pageType">
-      <img class="haibao" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/future.png" v-if="pageStore.pageType == 'normal'" />
-      <img class="haibao" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/future.png" v-if="pageStore.pageType != 'normal'" />
+      <img class="haibao" src="https://img.lonesome.cn/jhwl/home/photo/haibao/future.webp" v-if="pageStore.pageType == 'normal'" />
+      <img class="haibao" src="https://img.lonesome.cn/jhwl/home/photo/haibao/future.webp" v-if="pageStore.pageType != 'normal'" />
       <div class="detail-base" :class="pageStore.pageType">
         <div style="height: 50px"></div>
         <div class="btn">
@@ -65,7 +65,7 @@ const pageStore = usePageStore();
           <JHLabel type="nano">群二维码</JHLabel>
           <div class="qr-base">
             <div class="qr-code">
-              <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/11.png" />
+              <img src="https://img.lonesome.cn/jhwl/home/photo/product/11.webp" />
             </div>
           </div>
         </div>
@@ -76,7 +76,7 @@ const pageStore = usePageStore();
   <JHButton type="middle" @click="router.push('/join')">
     加入我们
     <img
-        src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/rightArrow.svg"
+        src="https://img.lonesome.cn/jhwl/home/photo/svg/rightArrow.svg"
         style="width: 20px; margin-left: 20px"
     />
   </JHButton>

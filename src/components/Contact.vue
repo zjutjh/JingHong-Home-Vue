@@ -2,28 +2,28 @@
   <div class="contact-base" :class="pageStore.pageType">
     <JHCard type="small" :is-title="false" title="no">
       <div class="loading" :class="pageStore.pageType">
-        <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/2023.png" />
+        <img src="https://img.lonesome.cn/jhwl/home/photo/index/2024.webp" />
         <div class="loading-bar-border">
           <div class="loading-bar" :style="{ left: loadingWidth + '%' }"></div>
         </div>
-        <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/loading.png" />
+        <img src="https://img.lonesome.cn/jhwl/home/photo/index/loading.webp" />
       </div>
     </JHCard>
     <img
       class="jh"
       :class="pageStore.pageType"
-      src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/story1.png"
+      src="https://img.lonesome.cn/jhwl/home/photo/index/story1.webp"
       border="5"
     />
     <JHCard type="small" :is-title="false" title="no">
       <div class="contact-us" :class="pageStore.pageType">
         <img
-            src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/wechat.svg"
+            src="https://img.lonesome.cn/jhwl/home/photo/svg/wechat.svg"
             @mouseover="onMouseOver"
         />
         <img
             v-if="isHovering"
-            src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/index/QR.jpg"
+            src="https://img.lonesome.cn/jhwl/home/photo/index/QR.webp"
             class="qrcode"
             @mouseout="onMouseOut"
             style="width: auto; height: 20%;z-index:1; position: absolute;"
@@ -33,7 +33,7 @@
           <h4>jhwl@zjut.edu.cn</h4>
         </div>
         <img
-          src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/svg/LogoGitHub.svg"
+          src="https://img.lonesome.cn/jhwl/home/photo/svg/LogoGitHub.svg"
           style="cursor: pointer"
           @click="toGithub"
         />
