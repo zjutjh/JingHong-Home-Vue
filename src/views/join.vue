@@ -26,8 +26,8 @@ function toLong() {
   <PageTop />
   <JHCard title="加入我们" type="large" :is-title="true">
     <div class="base" :class="pageStore.pageType">
-      <img class="haibao" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/future.png" v-if="pageStore.pageType == 'normal'" />
-      <img class="haibao" src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/haibao/future.png" v-if="pageStore.pageType != 'normal'" />
+      <img class="haibao" src="https://img.lonesome.cn/jhwl/home/photo/haibao/future.webp" v-if="pageStore.pageType == 'normal'" />
+      <img class="haibao" src="https://img.lonesome.cn/jhwl/home/photo/haibao/future.webp" v-if="pageStore.pageType != 'normal'" />
       <div class="detail-base" :class="pageStore.pageType">
         <div class="btn">
           <!-- <JHButton type="middle" @click="router.push('/join/acm')">
@@ -56,11 +56,11 @@ function toLong() {
           <JHLabel type="nano">最新动态</JHLabel>
           <div class="qr-base">
             <div class="qr-code">
-              <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/11.png" />
+              <img src="https://img.lonesome.cn/jhwl/home/photo/product/11.webp" />
               精弘网络
             </div>
             <div class="qr-code">
-              <img src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/product/10.jpg" />
+              <img src="https://img.lonesome.cn/jhwl/home/photo/product/10.webp" />
               浙工大微学工
             </div>
           </div>

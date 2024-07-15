@@ -7,18 +7,18 @@ import { useRouter } from "vue-router";
 import CarouselPicturesBig from "../../components/CarouselPicturesBig.vue";
 const router = useRouter();
 onMounted(() => {
-  document.title = "新媒体模块";
+  document.title = "新媒体中心";
 });
 const imgs1 = [
-  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/xinmeiti/shijue/1.jpg",
-  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/xinmeiti/shijue/2.jpg",
-  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/xinmeiti/shijue/3.jpg",
+  "https://img.lonesome.cn/jhwl/home/photo/department/xinmeiti/shijue/1.webp",
+  "https://img.lonesome.cn/jhwl/home/photo/department/xinmeiti/shijue/2.webp",
+  "https://img.lonesome.cn/jhwl/home/photo/department/xinmeiti/shijue/3.webp",
 ];
 const imgs2 = [
-  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/xinmeiti/bianji/1.jpg",
-  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/xinmeiti/bianji/2.png",
-  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/xinmeiti/bianji/3.jpg",
-  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/xinmeiti/bianji/4.jpg",
+  "https://img.lonesome.cn/jhwl/home/photo/department/xinmeiti/bianji/1.webp",
+  "https://img.lonesome.cn/jhwl/home/photo/department/xinmeiti/bianji/2.webp",
+  "https://img.lonesome.cn/jhwl/home/photo/department/xinmeiti/bianji/3.webp",
+  "https://img.lonesome.cn/jhwl/home/photo/department/xinmeiti/bianji/4.webp",
 ];
 </script>
 <style scoped>
@@ -36,7 +36,7 @@ img {
 </style>
 <template>
   <div style="height: 100px"></div>
-  <JHLabel type="big">新媒体模块</JHLabel>
+  <JHLabel type="big">新媒体中心</JHLabel>
   <JHCard type="large" title="视觉影像部" :isTitle="true">
     <CarouselPicturesBig :imgs="imgs1" />
     <JHLabel type="small">部门介绍</JHLabel>
@@ -60,7 +60,7 @@ img {
     </div>
   </JHCard>
   <img
-    src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/fork.png"
+    src="https://img.lonesome.cn/jhwl/home/photo/department/fork.webp"
     style="width: 80px; height: 80px; margin-top: 50px; cursor: pointer"
     @click="router.push('/department')"
   />

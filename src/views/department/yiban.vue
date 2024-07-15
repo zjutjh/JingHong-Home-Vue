@@ -10,10 +10,10 @@ onMounted(() => {
   document.title = "易班文化工作站";
 });
 const imgs = [
-  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/yiban/1.jpg",
-  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/yiban/2.png",
-  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/yiban/3.jpg",
-  "https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/yiban/4.jpg",
+  "https://img.lonesome.cn/jhwl/home/photo/department/yiban/1.webp",
+  "https://img.lonesome.cn/jhwl/home/photo/department/yiban/2.webp",
+  "https://img.lonesome.cn/jhwl/home/photo/department/yiban/3.webp",
+  "https://img.lonesome.cn/jhwl/home/photo/department/yiban/4.webp",
 ];
 </script>
 <style scoped>
@@ -47,7 +47,7 @@ img {
     </div>
   </JHCard>
   <img
-    src="https://download.tooc.xlj0.com/uploads/22/jhhome/public/photo/department/fork.png"
+    src="https://img.lonesome.cn/jhwl/home/photo/department/fork.webp"
     style="width: 80px; height: 80px; margin-top: 50px; cursor: pointer"
     @click="router.push('/department')"
   />
