@@ -10,7 +10,7 @@ import PageTop from "../components/PageTop.vue";
 const pageStore = usePageStore();
 const router = useRouter();
 function toRecruit() {
-  // window.open("/join/recruit");
+  window.open("https://qa.lonesome.cn/View?id=U2FsdGVkX19UEB+uRsNHAYqqAg8jDOpPsArMP9WR/sw=");
   return false;
 }
 function toLong() {
@@ -26,32 +26,39 @@ function toLong() {
   <PageTop />
   <JHCard title="加入我们" type="large" :is-title="true">
     <div class="base" :class="pageStore.pageType">
-      <img class="haibao" src="https://img.lonesome.cn/jhwl/home/photo/haibao/future.webp" v-if="pageStore.pageType == 'normal'" />
-      <img class="haibao" src="https://img.lonesome.cn/jhwl/home/photo/haibao/future.webp" v-if="pageStore.pageType != 'normal'" />
+      <img class="haibao" src="https://img.lonesome.cn/jhwl/home/photo/haibao/pc.webp" v-if="pageStore.pageType == 'normal'" />
+      <img class="haibao" src="https://img.lonesome.cn/jhwl/home/photo/haibao/pc.webp" v-if="pageStore.pageType != 'normal'" />
       <div class="detail-base" :class="pageStore.pageType">
         <div class="btn">
           <!-- <JHButton type="middle" @click="router.push('/join/acm')">
             ACM新// 生赛
           </JHButton>
           (点击报名) -->
-          <JHButton type="middle-disabled" @click="toRecruit">招新季报名</JHButton>
-          (现已截止)
-
-          <JHButton type="middle-disabled" @click="toLong">长期招新报名</JHButton>(暂未开放)
+          <JHButton type="middle" @click="toRecruit">点我报名</JHButton>
         </div>
         <div class="introduce" :class="pageStore.pageType">
           <JHLabel type="nano">线下摆摊</JHLabel>
           <div class="content">
-            敬请期待
+            <div>朝晖：2024年9月14日及15日</div>
+            <div>地址：上塘河畔/综合楼下</div>
+            <div style="margin-top: 20px">屏峰：2024年9月14日</div>
+            <div>地址：支干路</div>
           </div>
 
           <JHLabel type="nano">招新宣讲</JHLabel>
           <div class="content">
-            敬请期待
+            <div>朝晖：2024年9月14日 晚6点半</div>
+            <div>地址：子良A145</div>
           </div>
           <JHLabel type="nano">招新群号</JHLabel>
-          <div class="content">885342047</div>
-        </div>
+          <div class="content">
+            <div>常务处：794740428</div>
+            <div>小弘工作室：620939413</div>
+            <div>产研部——技术：965992603</div>
+            <div>产研部——产品：819870388</div>
+            <div>编辑工作室&视觉影像部：168952824</div>
+          </div>
+    </div>
         <div class="qr">
           <JHLabel type="nano">最新动态</JHLabel>
           <div class="qr-base">
@@ -87,7 +94,7 @@ function toLong() {
 }
 
 .haibao {
-  max-height: 1000px;
+  max-height: 750px;
   max-width: 80%;
   margin: auto;
 }
@@ -142,7 +149,7 @@ function toLong() {
 
 .qr-base {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   width: auto;
   max-width: 300px;
   margin-top: 20px;
