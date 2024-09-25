@@ -48,7 +48,7 @@ jobs:
           mkdir -p ~/.ssh/
           echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan blog.zhullyb.top >> ~/.ssh/known_hosts
+          ssh-keyscan -p 8022 aliyunhk.cname.5435486.xyz >> ~/.ssh/known_hosts
       
       - name: Install rsync
         run: |
@@ -57,6 +57,6 @@ jobs:
       - name: Deploy
         id: deployment
         run: |
-          rsync -avz --delete dist/ root@blog.zhullyb.top:/var/www/jh/
+          rsync -avz -e "ssh -p 8022" --delete dist/ root@aliyunhk.cname.5435486.xyz:/var/www/myzjut.org/
 
           
