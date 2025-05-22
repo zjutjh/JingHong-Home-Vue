@@ -88,7 +88,7 @@ const router = useRouter();
   <JHLabel type="title" v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'">我们的部门</JHLabel>
   <JHCard title="部门结构" type="large" :is-title="true">
     <img src="https://img.lonesome.cn/jhwl/home/photo/haibao/structPc.webp" style="width: 70%" v-if="pageStore.pageType == 'normal'" />
-    <img src="https://img.lonesome.cn/jhwl/home/photo/haibao/structMob.webp" style="width: 70%" v-if="pageStore.pageType != 'normal'" />
+    <img src="https://img.lonesome.cn/jhwl/home/photo/haibao/structPc.webp" style="width: 70%" v-if="pageStore.pageType != 'normal'" />
   </JHCard>
   <div v-show="pageStore.pageType == 'normal'" style="height: 100px"></div>
   <div class="base" :class="pageStore.pageType">
