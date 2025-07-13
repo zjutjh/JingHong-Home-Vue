@@ -19,10 +19,5 @@
     "yuren",
     "zjut",
     "zjuter"
-  ],
-  "workbench.colorCustomizations": {
-    "activityBar.background": "#213309",
-    "titleBar.activeBackground": "#2E470C",
-    "titleBar.activeForeground": "#F6FCEE"
-  }
+  ]
 }
