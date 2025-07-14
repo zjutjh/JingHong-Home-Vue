@@ -68,7 +68,7 @@ function toLong() {
               精弘网络
             </div>
             <div class="qr-code">
-              <img src="https://img.lonesome.cn/jhwl/home/photo/product/10.webp" />
+              <img src="https://qiuniu.phlin.cn/bucket/20250714225620675.webp" />
               浙工大微学工
             </div>
           </div>
