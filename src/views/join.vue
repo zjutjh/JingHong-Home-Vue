@@ -40,15 +40,15 @@ function toLong() {
           <div class="content">
             <div>朝晖：2025年9月</div>
             <!-- <div>地址：上塘河畔/综合楼下</div> -->
-            <div style="margin-top: 20px">屏峰：2024年9月14日</div>
-            <div>地址：支干路</div>
+            <div style="margin-top: 20px">屏峰：2024年9月</div>
+            <!-- <div>地址：支干路</div> -->
           </div>
 
-          <JHLabel type="nano">招新宣讲</JHLabel>
+          <!-- <JHLabel type="nano">招新宣讲</JHLabel>
           <div class="content">
             <div>朝晖：2024年9月14日 晚6点半</div>
             <div>地址：子良A145</div>
-          </div>
+          </div> -->
           <JHLabel type="nano">招新群号</JHLabel>
           <div class="content">
             <div>招新大群：1051180494</div>
