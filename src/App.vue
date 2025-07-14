@@ -2,6 +2,7 @@
 import { onBeforeMount, onMounted, ref, toRef } from "vue";
 import { RouterView } from "vue-router";
 import { usePageStore } from "./stores/pages";
+import { welcome } from "./utils/const";
 const pageStore = usePageStore();
 var pageSize = ref(1440);
 function handleResize() {
@@ -22,6 +23,8 @@ onMounted(() => {
   window.onresize = () => {
     handleResize();
   };
+  //字符画欢迎花活
+  welcome()
 });
 </script>
 

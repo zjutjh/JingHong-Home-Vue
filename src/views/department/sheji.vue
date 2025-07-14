@@ -11,11 +11,9 @@ onMounted(() => {
   document.title = "设计服务中心";
 });
 const imgs = [
-  "https://img.lonesome.cn/jhwl/home/photo/department/sheji/xiaohong/1.webp",
-  "https://img.lonesome.cn/jhwl/home/photo/department/sheji/xiaohong/2.webp",
-  "https://img.lonesome.cn/jhwl/home/photo/department/sheji/xiaohong/3.webp",
-  "https://img.lonesome.cn/jhwl/home/photo/department/sheji/xiaohong/4.webp",
-  "https://img.lonesome.cn/jhwl/home/photo/department/sheji/xiaohong/5.webp",
+  "https://qiuniu.phlin.cn/bucket/20250714233605144.webp",
+  "https://qiuniu.phlin.cn/bucket/20250714233605145.webp",
+  "https://qiuniu.phlin.cn/bucket/20250714233605146.webp"
 ];
 </script>
 <style scoped>
@@ -40,19 +38,19 @@ img {
     <CarouselPicturesBig :imgs="imgs"></CarouselPicturesBig>
     <JHLabel type="small">部门介绍</JHLabel>
     <div class="content">
-      小弘工作室是属于精弘网络的一个创意创新服务部门，针对学校活动的宣传方案进行设计。部门成员之间会一起协作，为活动的宣传拿出一套完整的设计。
+      小弘工作室是精弘网络的一个创新创意服务部门，针对学校活动的宣传方案进行设计。部门成员之间会进行协作，为活动的宣传制作一套完整的设计方案。
     </div>
     <div class="content">
-      主要活动:毅行、网络安全宣传月、网络文化节等。
+      主要活动:精弘毅行、网络安全宣传月、网络文化节等。
     </div>
     <div class="content">
       主要事物:海报设计、喷绘设计、UI界面设计、精弘网络周边文创类产品设计以及各类视觉方案设计。
     </div>
     <div class="content">
-      在小弘工作室，你不仅能够交到兴趣相似的伙伴，还能够丰富课余生活，提升专业技能。除去基本的聚餐、轰趴、给小部员过生日等福利，部门还开设了ps、ai等设计软件的课程，各种绘画的技巧教学，我们注重对于部门成员各种设计综合技能的培养。
+      在小弘工作室，你不仅能够交到兴趣相似的伙伴，还能够丰富课余生活，提升专业技能。除了基本的聚餐、轰趴、给小部员过生日等福利以外，部门还开设了ps、ai等设计软件的课程以及设计方面的各种技巧教学，我们注重对部门成员综合设计技能的培养与提升。  
     </div>
     <div class="content">
-      在大学里加入很多部门你可能会发现部门繁冗的零碎事情太多，占用你太多的课余时间，但小弘工作室不会。你一定能得到你想要的进步。全方位包装，pick的就是你啦~
+      在大学里加入很多部门之后，你可能会发现繁冗的零碎事情太多，占用了太多的课余时间，但小弘工作室不会。你一定能得到你想要的进步。全方位包装，pick的就是你啦~
     </div>
     <JHLabel type="small">招新宣言</JHLabel>
     <div class="content">

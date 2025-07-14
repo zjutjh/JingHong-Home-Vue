@@ -10,9 +10,9 @@ onMounted(() => {
   document.title = "干事培训中心";
 });
 const img1 = [
-    "https://img.lonesome.cn/jhwl/home/photo/department/ganshi/changwu/1.webp",
-    "https://img.lonesome.cn/jhwl/home/photo/department/ganshi/changwu/2.webp",
-    "https://img.lonesome.cn/jhwl/home/photo/department/ganshi/changwu/3.webp",
+  "https://qiuniu.phlin.cn/bucket/20250714233516860.webp",
+  "https://qiuniu.phlin.cn/bucket/20250714233516861.webp",
+  "https://qiuniu.phlin.cn/bucket/20250714233516862.webp"
 ]
 </script>
 <style scoped>
@@ -36,10 +36,49 @@ img {
     <CarouselPicturesBig :imgs="img1"></CarouselPicturesBig>
     <JHLabel type="small">部门介绍</JHLabel>
     <div class="content">
-      Hello大家好！！！这里是精弘网络常务处，是精弘的交通枢纽，是组织运行的润滑油！我们无处不在，我们不可或缺。我们的工作主要分为日常类和活动类。在日常工作中，我们将迎来会议旁听和记录，部门对接及任务整合，委托书撰写等任务。而当活动来临，我们将围绕精弘网络各类活动进行策划，奖品物资挑选及管理，当然还有后勤工作。同时，常务处还负责对接各种外联。这需要用聪明的脑袋来想出各种活动，还要有三寸不烂之舌与商家交流。在这里，你不仅可以锻炼到个人能力，也能结识到各种各样的小伙伴！在工作之余，常务处也是一个快乐的部门，有着丰富多彩的团建活动：海底捞，看日出，生日会，以及团建必备的桌游……常务处的目标就是——工作和吃喝玩乐都不落下的六边形战士！</div>
+      Hello大家好！这里是精弘网络常务处——组织的核心纽带，团队高效运转的强力保障！
+    </div>
+    <div class="content">
+      我们活跃在学校的三个校区，始终是精弘网络最坚实的后盾。
+    </div>
+    <div class="content">
+      我们的工作主要分为两大板块：
+    </div>
+    <div class="content">
+      日常运营：会议记录与跟进、跨部门协调与资源整合、重要文书起草与管理
+    </div>
+    <div class="content">
+      活动支持：从创意策划到落地执行，从物资筹备到后勤保障，我们全程护航每一场精彩活动！
+    </div>
+    <div class="content">
+      同时，我们还肩负着外联沟通的重要使命。既要脑洞大开设计趣味方案，又要化身谈判达人争取优质资源。在这里，你不仅能收获全方位的技能成长，更能遇见一群温暖又有趣的灵魂！
+    </div>
+    <div class="content">
+      工作认真，玩得更嗨！我们的团建清单永远充满惊喜：深夜海底捞、凌晨追日出、通宵KTV......在常务处，我们誓要做既能扛事又会搞事的超级团队！
+    </div>
+
     <JHLabel type="small">招新宣言</JHLabel>
     <div class="content">
-      亲爱的学弟学妹们～欢迎来到常务处大家庭！我们是一个相亲相爱的集体，也是精弘网络的小金库！在这里，你会拥有每周一次的例会party！在这里，每一个小朋友都会有属于自己的生日蛋糕和祝福！在这里，学长学姐们会耐心为初来工大的你们解决一系列难题！在接下来的一年里，我们会一起见证日出的磅礴大气，一起欣赏日落的血色夕阳，一起度过在工大的四季！我们将共同工作，共同学习，共同成长。请期待在常务处的每一个明天！</div>
+      亲爱的学弟学妹们～欢迎加入常务处的温暖小窝！我们不仅是高效运转的团队，更是彼此陪伴的家人！
+    </div>
+    <div class="content">
+      在这里，例会从不枯燥——它是每周一次的欢乐聚会！
+    </div>
+    <div class="content">
+      在这里，你的生日绝不会被遗忘——全员的祝福，仪式感拉满！
+    </div>
+    <div class="content">
+      在这里，学长学姐24小时在线——学习、生活、情感……任何问题，我们随时“捞”你！
+    </div>
+    <div class="content">
+      常务处，不只是一个部门——
+    </div>
+    <div class="content">
+      它是你大学生活的“第一站温暖”，是随时可以回来的“家”！
+    </div>
+    <div class="content">
+      让我们一起期待在常务处的每一个明天！！！
+    </div>
   </JHCard>
   <img
     src="https://img.lonesome.cn/jhwl/home/photo/department/fork.webp"

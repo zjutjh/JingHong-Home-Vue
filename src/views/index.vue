@@ -8,9 +8,7 @@ import JHCard from "../components/JHCard.vue";
 import { useRouter } from "vue-router";
 import JHButton from "../components/JHButton.vue";
 import Footer from "../components/Footer.vue";
-import { onMounted, ref } from "vue";
 import Contact from "../components/Contact.vue";
-import PageTop from "../components/PageTop.vue";
 import JHVideo from "../components/Video.vue";
 const pageStore = usePageStore();
 const router = useRouter();
@@ -36,7 +34,7 @@ var loaded = false;
   <start />
   <introduce />
   <!-- 21届部长团没有拍客服视频 故取消 -->
-  <!--  <JHVideo />-->
+   <!-- <JHVideo /> -->
   <history v-if="pageStore.pageType == 'normal'" />
   <timeline
     v-if="pageStore.pageType == 'mini' || pageStore.pageType == 'middle'"

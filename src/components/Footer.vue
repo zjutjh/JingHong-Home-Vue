@@ -3,7 +3,7 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 </script>
 <template>
-  <div class="footer">©2024 浙江工业大学-精弘网络</div>
+  <div class="footer">©2025 浙江工业大学-精弘网络</div>
 </template>
 
 <style scoped>

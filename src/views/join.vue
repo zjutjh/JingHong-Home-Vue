@@ -26,37 +26,38 @@ function toLong() {
   <PageTop />
   <JHCard title="加入我们" type="large" :is-title="true">
     <div class="base" :class="pageStore.pageType">
-      <img class="haibao" src="https://img.lonesome.cn/jhwl/home/photo/haibao/pc.webp" v-if="pageStore.pageType == 'normal'" />
-      <img class="haibao" src="https://img.lonesome.cn/jhwl/home/photo/haibao/pc.webp" v-if="pageStore.pageType != 'normal'" />
+      <!-- <img class="haibao" src="https://img.lonesome.cn/jhwl/home/photo/haibao/pc.webp" /> -->
       <div class="detail-base" :class="pageStore.pageType">
         <div class="btn">
           <!-- <JHButton type="middle" @click="router.push('/join/acm')">
             ACM新// 生赛
           </JHButton>
           (点击报名) -->
-          <JHButton type="middle" @click="toRecruit">点我报名</JHButton>
+          <!-- <JHButton type="middle" @click="toRecruit">点我报名</JHButton> -->
         </div>
         <div class="introduce" :class="pageStore.pageType">
           <JHLabel type="nano">线下摆摊</JHLabel>
           <div class="content">
-            <div>朝晖：2024年9月14日及15日</div>
-            <div>地址：上塘河畔/综合楼下</div>
-            <div style="margin-top: 20px">屏峰：2024年9月14日</div>
-            <div>地址：支干路</div>
+            <div>朝晖：2025年9月</div>
+            <!-- <div>地址：上塘河畔/综合楼下</div> -->
+            <div style="margin-top: 20px">屏峰：2024年9月</div>
+            <!-- <div>地址：支干路</div> -->
           </div>
 
-          <JHLabel type="nano">招新宣讲</JHLabel>
+          <!-- <JHLabel type="nano">招新宣讲</JHLabel>
           <div class="content">
             <div>朝晖：2024年9月14日 晚6点半</div>
             <div>地址：子良A145</div>
-          </div>
+          </div> -->
           <JHLabel type="nano">招新群号</JHLabel>
           <div class="content">
-            <div>常务处：794740428</div>
+            <div>招新大群：1051180494</div>
+            <div>常务处：454924780</div>
             <div>小弘工作室：620939413</div>
-            <div>产研部——技术：965992603</div>
-            <div>产研部——产品：819870388</div>
-            <div>编辑工作室&视觉影像部：168952824</div>
+            <div>产研部——技术：1053493293</div>
+            <div>产研部——产品：553548291</div>
+            <div>编辑工作室：1056431987</div>
+            <div>视觉影像部：1056574464</div>
           </div>
     </div>
         <div class="qr">
@@ -67,7 +68,7 @@ function toLong() {
               精弘网络
             </div>
             <div class="qr-code">
-              <img src="https://img.lonesome.cn/jhwl/home/photo/product/10.webp" />
+              <img src="https://qiuniu.phlin.cn/bucket/20250714225620675.webp" />
               浙工大微学工
             </div>
           </div>
@@ -84,7 +85,8 @@ function toLong() {
 }
 
 .base.normal {
-  grid-template-columns: 60% 40%;
+  // grid-template-columns: 60% 40%;
+  justify-content: center;
   grid-gap: 20px;
 }
 
@@ -115,6 +117,7 @@ function toLong() {
 }
 
 .introduce.normal {
+  flex-direction: row;
   margin-top: 40px;
   text-align: start;
   font-size: 18px;
