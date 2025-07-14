@@ -23,7 +23,7 @@
         />
         <img
             v-if="isHovering"
-            src="https://img.lonesome.cn/jhwl/home/photo/index/QR.webp"
+            src="https://qiuniu.phlin.cn/bucket/20250714225620675.webp"
             class="qrcode"
             @mouseout="onMouseOut"
             style="width: auto; height: 20%;z-index:1; position: absolute;"

@@ -32,7 +32,7 @@ onMounted(() => {
 }
 .start.normal {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(https://img.lonesome.cn/jhwl/home/photo/index/startPc2.webp) no-repeat center;
+    url(https://qiuniu.phlin.cn/bucket/20250714225558291.webp) no-repeat center;
   background-size: cover;
   height: 100vh;
 }

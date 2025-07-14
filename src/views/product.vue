@@ -159,7 +159,7 @@ function toDepartment() {
           <h3>浙江工业大学精弘网络</h3>
         </div>
         <div>
-          <img src="https://img.lonesome.cn/jhwl/home/photo/product/10.webp" />
+          <img src="https://qiuniu.phlin.cn/bucket/20250714225620675.webp" />
           <h3>浙工大微学工</h3>
         </div>
       </div>
