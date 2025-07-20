@@ -40,7 +40,7 @@ function toLong() {
           <div class="content">
             <div>朝晖：2025年9月</div>
             <!-- <div>地址：上塘河畔/综合楼下</div> -->
-            <div style="margin-top: 20px">屏峰：2024年9月</div>
+            <div style="margin-top: 20px">屏峰：2025年9月</div>
             <!-- <div>地址：支干路</div> -->
           </div>
 
