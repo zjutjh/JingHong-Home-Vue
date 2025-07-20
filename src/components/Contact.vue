@@ -2,7 +2,7 @@
   <div class="contact-base" :class="pageStore.pageType">
     <JHCard type="small" :is-title="false" title="no">
       <div class="loading" :class="pageStore.pageType">
-        <img src="https://img.lonesome.cn/jhwl/home/photo/index/2024.webp" />
+        <img src="https://qiuniu.phlin.cn/bucket/20250720215651909.svg" />
         <div class="loading-bar-border">
           <div class="loading-bar" :style="{ left: loadingWidth + '%' }"></div>
         </div>
