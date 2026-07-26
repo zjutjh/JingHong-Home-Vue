@@ -25,7 +25,7 @@ watch(
 watch(
   () => pageStore.pageSize,
   (newSize) => {
-    if (mobileColumnMenuDisplay.value && newSize === "normal") listBtnClicked();
+    if (mobileColumnMenuDisplay.value && newSize === PageSize.normal) listBtnClicked();
   }
 );
 
@@ -78,7 +78,7 @@ const menuColumns = [
       <NuxtImg src="common/logo.webp" alt="Logo" style="width: 100%; object-fit: contain" />
     </router-link>
 
-    <template v-if="pageStore.pageSize === 'normal'">
+    <template v-if="pageStore.pageSize === PageSize.normal">
       <div
         v-for="(l, index) in menuColumns"
         :key="l.link"

@@ -7,7 +7,10 @@ const assetsBaseURL = useRuntimeConfig().public.cubeBaseURL;
 
 <template>
   <div>
-    <JhLabel v-if="pageStore.pageSize == 'mini' || pageStore.pageSize == 'middle'" type="title">
+    <JhLabel
+      v-if="pageStore.pageSize === PageSize.mini || pageStore.pageSize === PageSize.middle"
+      type="title"
+    >
       我们的部门
     </JhLabel>
     <JhCard title="部门结构" type="large">

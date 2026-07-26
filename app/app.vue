@@ -4,14 +4,17 @@ import { useWindowSize } from "@vueuse/core";
 const pageStore = usePageStore();
 const { width } = useWindowSize();
 
+// 响应式断点：监听窗口宽度，写入全局 pageStore.pageSize。
+// 取值与触发条件见 app/stores/pages.ts（PageSize 常量注释）。
+// 该值会作为 CSS 类名被各组件直接引用，因此字符串不可更改。
 function handleResize() {
   try {
     if (width.value >= 1024) {
-      pageStore.pageSize = "normal";
+      pageStore.pageSize = PageSize.normal;
     } else if (width.value >= 768) {
-      pageStore.pageSize = "middle";
+      pageStore.pageSize = PageSize.middle;
     } else {
-      pageStore.pageSize = "mini";
+      pageStore.pageSize = PageSize.mini;
     }
   } catch (error) {
     console.error("[App] Error handling resize:", error);

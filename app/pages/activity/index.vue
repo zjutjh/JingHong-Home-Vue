@@ -8,7 +8,10 @@ const pageStore = usePageStore();
 
 <template>
   <div>
-    <JhLabel v-if="pageStore.pageSize == 'mini' || pageStore.pageSize == 'middle'" type="title">
+    <JhLabel
+      v-if="pageStore.pageSize === PageSize.mini || pageStore.pageSize === PageSize.middle"
+      type="title"
+    >
       我们的活动
     </JhLabel>
     <JhCard title="ACM新生赛" type="large">

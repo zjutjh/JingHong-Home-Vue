@@ -76,6 +76,34 @@ pnpm dev
 
 在 `nuxt.config.ts` 中配置 `cubeBaseURL`，图片服务基于 [精弘立方储存](https://github.com/zjutjh/Cube-Go) 实现。
 
+## 📐 响应式页面尺寸
+
+项目通过 `usePageStore().pageSize` 全局追踪当前响应式断点。`app/app.vue` 监听窗口宽度并写入该值，各组件再据此切换布局或样式。
+
+类型与常量定义在 `app/stores/pages.ts`：
+
+| 常量              | 字符串值   | 触发条件              | 含义        |
+| ----------------- | ---------- | --------------------- | ----------- |
+| `PageSize.normal` | `"normal"` | `width >= 1024`       | 桌面宽屏    |
+| `PageSize.middle` | `"middle"` | `768 <= width < 1024` | 平板 / 中屏 |
+| `PageSize.mini`   | `"mini"`   | `width < 768`         | 手机窄屏    |
+
+使用方式：
+
+```ts
+// 逻辑判断
+if (pageStore.pageSize === PageSize.normal) {
+  /* ... */
+}
+
+// 模板中作为 CSS 类名直接绑定（与上述字符串值一一对应）
+// <div :class="pageStore.pageSize" />
+```
+
+> ⚠️ 该值同时作为 CSS 类名使用（`.normal` / `.middle` / `.mini`），因此字符串值不可随意更改。代码中请通过 `PageSize.normal` 等命名常量访问，避免散落字符串字面量。
+>
+> 注意：`JhButton` 的 `type` 属性（`"mini" | "small" | "middle"`）是按钮尺寸，与页面尺寸无关，不要混淆。
+
 ## 📄 License
 
 本项目基于 [MIT License](LICENSE) 开源。

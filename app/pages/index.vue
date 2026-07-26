@@ -12,7 +12,7 @@ useSeoMeta({
   <div>
     <Cover />
     <Introduce />
-    <History v-if="usePageStore().pageSize === 'normal'" />
+    <History v-if="usePageStore().pageSize === PageSize.normal" />
     <template v-else>
       <Timeline />
       <JhCard title="我们的故事" type="large">

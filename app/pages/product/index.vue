@@ -22,7 +22,7 @@ function setDetail(part: DetailPart | null) {
 watch(
   () => pageStore.pageSize,
   (newSize) => {
-    if (newSize === "normal") {
+    if (newSize === PageSize.normal) {
       setDetail(null);
     }
   }
@@ -35,11 +35,14 @@ onUnmounted(() => {
 
 <template>
   <div>
-    <JhLabel v-if="pageStore.pageSize == 'mini' || pageStore.pageSize == 'middle'" type="title">
+    <JhLabel
+      v-if="pageStore.pageSize === PageSize.mini || pageStore.pageSize === PageSize.middle"
+      type="title"
+    >
       我们的产品
     </JhLabel>
     <!-- MARK: 宽屏 -->
-    <div v-if="pageStore.pageSize == 'normal'" class="base normal">
+    <div v-if="pageStore.pageSize === PageSize.normal" class="base normal">
       <JhCard type="large" :title="productsContent.wechat.title">
         <div class="wechat">
           <div class="introduction">
