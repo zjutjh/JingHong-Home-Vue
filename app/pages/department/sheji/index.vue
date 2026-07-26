@@ -34,9 +34,4 @@ useSeoMeta({ title: "设计服务中心 | 我们的部门" });
 
 <style scoped lang="scss">
 @use "../detail.scss";
-
-img {
-  width: 80%;
-  height: 300px;
-}
 </style>

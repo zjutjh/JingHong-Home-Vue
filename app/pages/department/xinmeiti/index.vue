@@ -56,8 +56,4 @@ useSeoMeta({ title: "新媒体中心 | 我们的部门" });
 
 <style scoped lang="scss">
 @use "../detail.scss";
-
-img {
-  width: 80%;
-}
 </style>
