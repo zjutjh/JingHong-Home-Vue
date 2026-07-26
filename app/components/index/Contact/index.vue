@@ -176,6 +176,10 @@ onUnmounted(() => {
     display: flex;
     flex-direction: column;
 
+    &.normal {
+      max-width: 300px;
+    }
+
     &.mini {
       height: 100px;
     }
