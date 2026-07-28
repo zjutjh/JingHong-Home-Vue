@@ -1,6 +1,7 @@
 import { defineNuxtConfig } from "nuxt/config";
 
 const cubeBaseURL = "https://img.phlin.cn/api/file?update=1&bucket=homepage&object_key=";
+const lastUpdateYear = 2026;
 
 export default defineNuxtConfig({
   compatibilityDate: "2026-01-01",
@@ -27,7 +28,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       cubeBaseURL,
-      lastUpdateYear: 2026,
+      lastUpdateYear,
       contact: {
         email: "jhwl2002@zjut.edu.cn",
         github: "https://github.com/zjutjh",

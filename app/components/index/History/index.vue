@@ -20,7 +20,10 @@ const currentEvent = computed(() => historyEvents[eventNow.value] as HistoryEven
     </div>
   </div>
   <div class="choices-container">
-    <div class="choices">
+    <div
+      class="choices"
+      :style="{ gridTemplateColumns: `repeat(${historyEvents.length}, minmax(75px, 90px))` }"
+    >
       <div
         v-for="(item, index) in historyEvents"
         :key="index"
@@ -37,8 +40,4 @@ const currentEvent = computed(() => historyEvents[eventNow.value] as HistoryEven
 
 <style scoped lang="scss">
 @use "style.scss";
-
-.choices {
-  grid-template-columns: repeat(v-bind("historyEvents.length"), minmax(75px, 90px));
-}
 </style>
