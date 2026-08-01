@@ -1,7 +1,7 @@
 {
   "name": "jh-homepage",
   "private": true,
-  "version": "3.2.2",
+  "version": "3.2.3",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "nuxt dev",
@@ -11,7 +11,7 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint ."
   },
-  "packageManager": "pnpm@11.12.0",
+  "packageManager": "pnpm@11.18.0",
   "dependencies": {
     "@nuxt/image": "^2.0.0",
     "@nuxtjs/seo": "^3.4.0",

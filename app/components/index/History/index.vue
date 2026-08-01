@@ -30,7 +30,7 @@ const currentEvent = computed(() => historyEvents[eventNow.value] as HistoryEven
         class="item"
         :class="{ select: eventNow == index }"
         :style="{
-          'background-image': 'url(' + useRuntimeConfig().public.cubeBaseURL + item.img + ')'
+          'background-image': `url(${useRuntimeConfig().public.cubeBaseURL}${item.img})`
         }"
         @click="eventNow = index"
       />
