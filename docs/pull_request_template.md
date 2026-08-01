@@ -1,3 +1,4 @@
 # 检查清单
 
-- [ ] `nuxt.config.ts` 已更新 `lastUpdateYear` 字段
+- [ ] 使用 `pnpm version patch` 更新了版本号
+- [ ] `LICENSE` 年份已更新

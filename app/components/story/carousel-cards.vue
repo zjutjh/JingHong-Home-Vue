@@ -60,7 +60,7 @@ onMounted(() => {
         <div
           class="img"
           :style="{
-            backgroundImage: 'url(' + useRuntimeConfig().public.cubeBaseURL + item.img + ')'
+            backgroundImage: `url(${useRuntimeConfig().public.cubeBaseURL}${item.img})`
           }"
         />
         <div class="introduction">{{ item.introduction }}</div>

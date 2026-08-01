@@ -40,7 +40,7 @@ const hasMeasured = computed(
                 : 'history-img-hide'
             ]"
             :style="{
-              'background-image': 'url(' + useRuntimeConfig().public.cubeBaseURL + item.img + ')'
+              'background-image': `url(${useRuntimeConfig().public.cubeBaseURL}${item.img})`
             }"
           >
             <div class="history-content">
