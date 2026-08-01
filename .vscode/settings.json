@@ -1,16 +1,24 @@
 {
   "cSpell.words": [
     "bangongshi",
+    "bilibili",
     "changwu",
-    "echarts",
-    "haibao",
-    "IACM",
+    "jinghong",
+    "jingxiaohong",
     "jishu",
     "jiyu",
     "mishuchu",
+    "nuxt",
+    "nuxtjs",
+    "open.weixin.qq.com",
+    "pinia",
     "sheji",
     "shenghuo",
     "shiming",
+    "trixie",
+    "vercel",
+    "vueuse",
+    "wechat",
     "wejh",
     "xinmeiti",
     "yiban",
@@ -18,6 +26,10 @@
     "yunying",
     "yuren",
     "zjut",
-    "zjuter"
-  ]
+    "zjuter",
+    "zjutjh",
+    "ZoomlaYasong"
+  ],
+  "eslint.useFlatConfig": true,
+  "eslint.validate": ["vue", "typescript"]
 }

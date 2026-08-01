@@ -1,3 +1,10 @@
 {
-  "recommendations": ["johnsoncodehk.volar"]
+  "recommendations": [
+    "vue.volar",
+    "streetsidesoftware.code-spell-checker",
+    "ms-vsliveshare.vsliveshare",
+    "esbenp.prettier-vscode",
+    "pkief.material-icon-theme",
+    "editorconfig.editorconfig"
+  ]
 }

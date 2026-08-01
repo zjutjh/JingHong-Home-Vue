@@ -1,0 +1,6 @@
+allowBuilds:
+  "@parcel/watcher": true
+  "@zjutjh/eslint-config": false
+  esbuild: true
+  sharp: true
+  unrs-resolver: true

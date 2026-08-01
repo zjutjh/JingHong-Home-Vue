@@ -1,0 +1,154 @@
+.base-pc {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  margin: auto;
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-lg);
+  width: 80%;
+  overflow: hidden;
+}
+
+.history-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--accent-color);
+  height: 300px;
+
+  img {
+    border: 1;
+    border-color: white;
+    border-radius: 50%;
+    background-color: white;
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.history-right {
+  position: relative;
+  background-color: var(--card-bg);
+  padding: 40px;
+  white-space: pre-wrap;
+
+  img {
+    position: absolute;
+    top: 30px;
+    right: 36px;
+    transform: rotate(-15deg);
+    border-radius: 50%;
+    background-color: var(--bg-color);
+    width: 250px;
+    height: 250px;
+  }
+
+  &::before {
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    border-top: var(--muted) solid 3px;
+    border-right: var(--muted) solid 3px;
+    width: 40%;
+    height: 30%;
+    content: "";
+  }
+
+  &::after {
+    position: absolute;
+    bottom: 4%;
+    left: 4%;
+    border-bottom: var(--muted) solid 3px;
+    border-left: var(--muted) solid 3px;
+    width: 40%;
+    height: 30%;
+    content: "";
+  }
+}
+
+.event-name {
+  margin: 10px;
+  color: white;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.time {
+  margin-bottom: 20px;
+  border-bottom: var(--muted) solid 3px;
+  padding: 0 10px;
+  width: 175px;
+  font-weight: 600;
+  font-size: 30px;
+  text-align: left;
+}
+
+.content {
+  width: 50%;
+  color: var(--text-content);
+  font-size: 18px;
+  line-height: 1.8;
+  text-align: left;
+}
+
+img {
+  width: 80%;
+}
+
+.choices-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 10px 24px;
+  touch-action: pan-x;
+
+  .choices {
+    display: grid;
+    position: relative;
+    grid-auto-flow: column;
+    gap: 20px;
+    margin: auto;
+    padding: 20px;
+    width: fit-content;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      right: 40px;
+      left: 40px;
+      transform: translateY(-50%);
+      background: linear-gradient(
+        to right,
+        var(--secondary-color) 0%,
+        var(--accent-color) 50%,
+        var(--secondary-color) 100%
+      );
+      height: 6px;
+      pointer-events: none;
+      content: "";
+    }
+
+    .item {
+      position: relative;
+      transition:
+        transform 200ms ease-in-out,
+        box-shadow 200ms ease-in-out;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      border: 5px solid var(--primary-color);
+      border-radius: 50%;
+      background-size: cover;
+      background-color: var(--card-bg);
+      aspect-ratio: 1;
+      user-select: none;
+
+      &.select {
+        transform: scale(1.25);
+        box-shadow: var(--shadow-accent-lg);
+      }
+
+      &:hover:not(.select) {
+        box-shadow: var(--shadow-lg);
+      }
+    }
+  }
+}

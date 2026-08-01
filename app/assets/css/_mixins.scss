@@ -1,0 +1,53 @@
+/**
+ * JH 组件通用样式 Mixins
+ */
+
+/**
+ * 主色调样式
+ * 应用主题色背景、白色文字和无边框
+ */
+@mixin primary-styled {
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/**
+ * Flex 居中布局
+ */
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/**
+ * 按钮基础样式
+ */
+@mixin button-base {
+  @include primary-styled;
+  @include flex-center;
+  cursor: pointer;
+  margin: auto;
+  width: fit-content;
+}
+
+/**
+ * 卡片基础样式
+ */
+@mixin card-base {
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-md);
+  background-color: var(--card-bg);
+}
+
+/**
+ * 标题样式（用于卡片标题等）
+ */
+@mixin title-styled {
+  @include primary-styled;
+  @include flex-center;
+  position: relative;
+  border-radius: 0;
+  font-weight: bolder;
+}

@@ -1,0 +1,14 @@
+.content {
+  margin: auto;
+  margin-bottom: 16px;
+  width: 85%;
+  color: var(--text-content);
+  font-size: 18px;
+  line-height: 1.8;
+  text-align: start;
+  text-indent: 2em;
+
+  &:last-of-type {
+    margin-bottom: 24px;
+  }
+}
