@@ -1,9 +1,20 @@
 <script setup lang="ts">
-const props = defineProps<{ type: "mini" | "small" | "middle" }>();
+const props = defineProps<{ type: "mini" | "small" | "middle"; href?: string }>();
+
+function handleClick() {
+  if (!props.href) return;
+  window.open(props.href, "_blank");
+}
 </script>
 
 <template>
-  <button type="button" class="jh-button" :class="props.type">
+  <button
+    type="button"
+    class="jh-button"
+    :class="props.type"
+    :disabled="props.href === ''"
+    @click="handleClick"
+  >
     <slot />
   </button>
 </template>

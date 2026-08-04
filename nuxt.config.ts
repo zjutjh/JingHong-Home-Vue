@@ -1,6 +1,6 @@
 import { defineNuxtConfig } from "nuxt/config";
 
-const cubeBaseURL = "https://img.phlin.cn/files/homepage/";
+const cubeBaseURL = process.env.CUBE_BASE_URL || "https://img.phlin.cn/files/homepage/";
 
 export default defineNuxtConfig({
   compatibilityDate: "2026-01-01",
@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   sitemap: { zeroRuntime: true },
 
   site: {
-    url: "https://myzjut.org",
+    url: "https://www.myzjut.org",
     name: "浙江工业大学精弘网络",
     defaultLocale: "zh-CN"
   },
@@ -40,6 +40,9 @@ export default defineNuxtConfig({
   },
 
   vite: {
+    optimizeDeps: {
+      include: ["@vueuse/core"]
+    },
     css: {
       preprocessorOptions: {
         scss: {

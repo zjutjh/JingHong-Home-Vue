@@ -4,10 +4,6 @@ import { posterImage, recruitmentInfo } from "~~/constants/recruitment";
 definePageMeta({ pageNo: 5 });
 useSeoMeta({ title: "加入我们" });
 const pageStore = usePageStore();
-
-function toRecruit() {
-  window.open(recruitmentInfo.registrationUrl);
-}
 </script>
 
 <template>
@@ -16,28 +12,27 @@ function toRecruit() {
       <NuxtImg class="poster" :src="posterImage" alt="招新海报" />
       <div class="detail-base" :class="pageStore.pageSize">
         <div class="introduce" :class="pageStore.pageSize">
-          <JhButton type="middle" style="position: relative; margin-bottom: 20px" @click="toRecruit"
-            >点我报名
-          </JhButton>
+          <JhButton type="middle" :href="recruitmentInfo.registrationUrl">点我报名</JhButton>
+          <br />
           <JhLabel type="nano">线下摆摊</JhLabel>
           <div class="content">
-            <div>朝晖: {{ recruitmentInfo.offline.chaohuiDate }}</div>
-            <div>地址：{{ recruitmentInfo.offline.chaohuiLocation }}</div>
+            <div>朝晖: {{ recruitmentInfo.offline.zhaohuiDate }}</div>
+            <div>地址：{{ recruitmentInfo.offline.zhaohuiLocation }}</div>
             <div style="margin-top: 20px">屏峰: {{ recruitmentInfo.offline.pingfengDate }}</div>
             <div>地址：{{ recruitmentInfo.offline.pingfengLocation }}</div>
           </div>
 
           <JhLabel type="nano">招新宣讲</JhLabel>
           <div class="content">
-            <div>朝晖: {{ recruitmentInfo.presentation.chaohuiDate }}</div>
-            <div>地址: {{ recruitmentInfo.presentation.chaohuiLocation }}</div>
+            <div>朝晖: {{ recruitmentInfo.presentation.zhaohuiDate }}</div>
+            <div>地址: {{ recruitmentInfo.presentation.zhaohuiLocation }}</div>
           </div>
           <JhLabel type="nano">招新群号</JhLabel>
-          <div class="content">
-            <div v-for="group in recruitmentInfo.recruitmentGroups" :key="group.number" class="row">
-              <span>{{ group.name }}</span
-              ><span>{{ group.number }}</span>
-            </div>
+          <div class="sheet">
+            <template v-for="group in recruitmentInfo.recruitmentGroups" :key="group.number">
+              <span>{{ group.name }}</span>
+              <span>{{ group.number }}</span>
+            </template>
           </div>
         </div>
         <div class="qr">

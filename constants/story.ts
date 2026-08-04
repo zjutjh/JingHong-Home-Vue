@@ -11,8 +11,7 @@ export const yurenImages = Array.from({ length: 5 }, (_, i) => `groupPhoto/yuren
 
 export const missionContent = {
   title: "相关平台 | Related Platform",
-  description:
-    "精弘网络采用朝晖、屏峰、莫干山三个校区共同建制\n目前运营和维护的平台包括但不限于\n浙江工业大学精弘网络微信服务号、\n浙工大精小弘在线微信服务号、微精弘微信小程序、\n邮件系统(https://mail.zjut.edu.cn/)、\n浙工大精弘网络b站账号、精弘直播等。"
+  description: `精弘网络成立于2002年5月，得名于工大“取精用弘”的学风，是校党委学工部指导下的校级A类学生社团。秉承自由、共享、团结、创新的精神，精弘网络为工大师生提供了优质的服务与交流平台，创造便利多彩的校园文化生活。自主研发了“微精弘”小程序、精弘问卷系统、“精小弘在线”“浙江工业大学精弘网络”公众号、“精小弘在线”视频号、“浙工大精弘网络”B站号等服务和产品，曾连续两届获评"全国高校百家网站"荣誉称号。`
 };
 
 export const yixingContent = [

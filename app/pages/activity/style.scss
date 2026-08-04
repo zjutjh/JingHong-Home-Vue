@@ -3,6 +3,7 @@
 
   &.normal {
     grid-template-columns: 60% 40%;
+    justify-content: center;
     grid-gap: 20px;
   }
 
@@ -22,7 +23,6 @@
   display: flex;
   column-gap: 5px;
   flex-direction: column;
-  max-width: 70%;
 
   &.middle,
   &.mini {
@@ -39,8 +39,9 @@
 
     .content {
       position: relative;
-      left: 50px;
+      left: 30px;
       margin-bottom: 20px;
+      width: calc(100% - 30px);
       color: var(--text-content);
       line-height: 1.8;
 

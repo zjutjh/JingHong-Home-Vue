@@ -1,7 +1,9 @@
-export default defineNuxtPlugin(() => {
-  try {
-    console.info(
-      `
+export default defineNuxtPlugin({
+  name: "welcome",
+  setup() {
+    try {
+      console.info(
+        `
               %ckkkkkkkkkkkkkkkkkkkkkkkk
           dkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
        bkkkkkkkkkkkkkkkkkkkk      kbk kkkkkkk
@@ -25,14 +27,15 @@ bkbkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
            kkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
                kkkkkkkkkkkkkkkkkkkkkk
 `,
-      "color: red;"
-    );
+        "color: red;"
+      );
 
-    console.info(
-      "%c浙工大精弘网络欢迎您",
-      "font-size: 20px; color: #fff; border-radius: 5px; padding: 10px 25px;background: linear-gradient(315deg, #cdb4db 0%, #ffafcc 50%, #a2d2ff 100%)"
-    );
-  } catch (error) {
-    console.error("[Welcome Plugin] Error displaying welcome message:", error);
+      console.info(
+        "%c浙工大精弘网络欢迎您",
+        "font-size: 20px; color: #fff; border-radius: 5px; padding: 10px 25px;background: linear-gradient(315deg, #cdb4db 0%, #ffafcc 50%, #a2d2ff 100%)"
+      );
+    } catch (error) {
+      console.error("[Welcome Plugin] Error displaying welcome message:", error);
+    }
   }
 });

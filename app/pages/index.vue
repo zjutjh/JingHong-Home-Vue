@@ -4,8 +4,10 @@ import { indexStoryContent } from "~~/constants/index";
 definePageMeta({ pageNo: 0 });
 useSeoMeta({
   description:
-    "成立于2002年5月，精弘的名字取自工大学风“取精用弘”，是浙江工业大学的学术网络组织。精弘网络秉承着自由、共享、团结、创新的精神，全心全意为在校师生提供优质的服务和交流平台，收到了广泛好评。"
+    "成立于2002年5月，精弘的名字取自工大学风“取精用弘”，是浙江工业大学的学术网络组织。精弘网络秉承着自由、共享、团结、创新的精神，全心全意为在校师生提供优质的服务和交流平台，收到了广泛好评。",
+  ogImage: `${useRuntimeConfig().public.cubeBaseURL}groupPhoto/2025.webp`
 });
+defineArticle({ image: `${useRuntimeConfig().public.cubeBaseURL}groupPhoto/2025.webp` });
 </script>
 
 <template>

@@ -21,7 +21,7 @@ const pageStore = usePageStore();
   &.normal {
     background:
       linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      url("#{$cubeBaseURL}groupPhoto/2024.webp") no-repeat center;
+      url("#{$cubeBaseURL}groupPhoto/2025.webp") no-repeat center;
     background-size: cover;
   }
 

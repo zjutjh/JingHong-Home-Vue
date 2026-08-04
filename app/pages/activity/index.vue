@@ -19,6 +19,10 @@ const pageStore = usePageStore();
         <NuxtImg class="poster" :src="acmCompetitionInfo.posterImage" alt="海报" />
         <div class="detail-base" :class="pageStore.pageSize">
           <div class="introduce" :class="pageStore.pageSize">
+            <JhButton type="middle" :href="acmCompetitionInfo.registrationUrl" target="_blank">
+              立即报名
+            </JhButton>
+            <br />
             <JhLabel type="nano">活动介绍</JhLabel>
             <div class="content">
               <pre style="white-space: pre-wrap; font-family: inherit">{{

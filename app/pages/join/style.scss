@@ -34,17 +34,23 @@
 
     .content {
       position: relative;
-      left: 50px;
+      left: 30px;
       margin-bottom: 20px;
+      width: calc(100% - 30px);
       color: var(--text-content);
       line-height: 1.8;
+    }
 
-      .row {
-        display: grid;
-        grid-template-columns: 110px 100px;
-        margin-bottom: 12px;
-        line-height: 1.6;
-      }
+    .sheet {
+      display: grid;
+      position: relative;
+      left: 30px;
+      grid-template-columns: 125px 120px;
+      gap: 8px 25px;
+      margin-bottom: 20px;
+      width: calc(100% - 30px);
+      color: var(--text-content);
+      line-height: 1.6;
     }
   }
 

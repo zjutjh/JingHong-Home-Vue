@@ -30,6 +30,11 @@
   cursor: pointer;
   margin: auto;
   width: fit-content;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 /**
