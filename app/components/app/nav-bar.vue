@@ -74,9 +74,9 @@ const menuColumns = [
     ]"
     @touchmove.prevent
   >
-    <router-link to="/" class="logo" :class="pageStore.pageSize">
+    <NuxtLink to="/" class="logo" :class="pageStore.pageSize">
       <NuxtImg src="common/logo.webp" alt="Logo" style="width: 100%; object-fit: contain" />
-    </router-link>
+    </NuxtLink>
 
     <template v-if="pageStore.pageSize === PageSize.normal">
       <div
@@ -85,7 +85,7 @@ const menuColumns = [
         class="link"
         :class="index === route.meta.pageNo ? 'select' : 'notSelect'"
       >
-        <router-link :to="l.link">{{ l.name }}</router-link>
+        <NuxtLink :to="l.link">{{ l.name }}</NuxtLink>
       </div>
     </template>
     <template v-else>
@@ -106,11 +106,11 @@ const menuColumns = [
               :class="index === route.meta.pageNo ? 'select' : 'notSelect'"
               @click="listBtnClicked"
             >
-              <router-link :to="l.link">
+              <NuxtLink :to="l.link">
                 <div style="width: 100%">
                   {{ l.name }}
                 </div>
-              </router-link>
+              </NuxtLink>
             </div>
           </div>
         </Transition>
