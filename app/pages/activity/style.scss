@@ -40,7 +40,7 @@
       position: relative;
       left: 30px;
       margin-bottom: 20px;
-      width: calc(100% - 30px);
+      width: calc(100% - 40px);
       color: var(--text-content);
       line-height: 1.8;
 
@@ -61,10 +61,6 @@
     .content {
       margin-bottom: 20px;
       color: var(--text-content);
-    }
-
-    .small {
-      margin: auto;
     }
   }
 }

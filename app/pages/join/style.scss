@@ -26,6 +26,16 @@
 }
 
 .introduce {
+  .sheet {
+    display: grid;
+    position: relative;
+    grid-template-columns: 125px 120px;
+    gap: 6px 15px;
+    margin-bottom: 20px;
+    color: var(--text-content);
+    line-height: 1.6;
+  }
+
   &.normal {
     flex-direction: row;
     font-size: 18px;
@@ -36,21 +46,14 @@
       position: relative;
       left: 30px;
       margin-bottom: 20px;
-      width: calc(100% - 30px);
+      width: calc(100% - 40px);
       color: var(--text-content);
       line-height: 1.8;
     }
 
     .sheet {
-      display: grid;
-      position: relative;
       left: 30px;
-      grid-template-columns: 125px 120px;
-      gap: 8px 25px;
-      margin-bottom: 20px;
-      width: calc(100% - 30px);
-      color: var(--text-content);
-      line-height: 1.6;
+      width: calc(100% - 40px);
     }
   }
 
@@ -64,17 +67,6 @@
     .content {
       margin-bottom: 20px;
       color: var(--text-content);
-
-      .row {
-        display: grid;
-        grid-template-columns: 100px 100px;
-        margin: 0 10px 12px 30px;
-        line-height: 1.6;
-      }
-    }
-
-    .small {
-      width: 90%;
     }
   }
 }
@@ -82,7 +74,7 @@
 .qr {
   .qr-base {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
     margin-top: 10px;
     width: auto;
     max-width: 300px;
