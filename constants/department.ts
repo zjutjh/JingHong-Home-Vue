@@ -117,9 +117,10 @@ export const technologyImages = [
 ];
 
 export const affairsImages = [
-  "groupPhoto/affairs0.webp",
-  "groupPhoto/affairs1.webp",
-  "groupPhoto/affairs2.webp"
+  "groupPhoto/2026/changwu0.webp",
+  "groupPhoto/2026/changwu1.webp",
+  "groupPhoto/2026/changwu2.webp",
+  "groupPhoto/2026/changwu3.webp"
 ];
 
 export const designImages = [
