@@ -15,7 +15,8 @@ function handleClick() {
     :disabled="props.href === ''"
     @click="handleClick"
   >
-    <slot />
+    <slot v-if="props.href != ''" />
+    <slot v-else name="disabled">尚未开放</slot>
   </button>
 </template>
 

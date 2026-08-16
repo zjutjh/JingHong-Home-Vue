@@ -13,7 +13,7 @@ const pageStore = usePageStore();
       <div class="detail-base" :class="pageStore.pageSize">
         <div class="introduce" :class="pageStore.pageSize">
           <JhButton type="middle" :href="recruitmentInfo.registrationUrl">{{
-            recruitmentInfo.registrationUrl ? "点我报名" : "尚未开放"
+            "点我报名"
           }}</JhButton>
           <br />
           <JhLabel type="nano">线下摆摊</JhLabel>
