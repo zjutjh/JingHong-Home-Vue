@@ -125,9 +125,9 @@ export const affairsImages = [
 ];
 
 export const designImages = [
-  "groupPhoto/design0.webp",
-  "groupPhoto/design1.webp",
-  "groupPhoto/design2.webp"
+  "groupPhoto/2026/xiaohong0.webp",
+  "groupPhoto/2026/xiaohong1.webp",
+  "groupPhoto/2026/xiaohong2.webp"
 ];
 
 export const visualImages = [
