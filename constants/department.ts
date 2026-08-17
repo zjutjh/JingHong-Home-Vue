@@ -118,12 +118,15 @@ export const designImages: string[] = [
 ];
 
 export const visualImages: string[] = [
-  "groupPhoto/visual0.webp",
+  "groupPhoto/2026/shijue0.webp",
+  "groupPhoto/2026/shijue1.webp",
   "groupPhoto/visual1.webp",
   "groupPhoto/visual2.webp"
 ];
 
 export const editorialImages: string[] = [
+  "groupPhoto/2026/bianji0.webp",
+  "groupPhoto/2026/bianji1.webp",
   "groupPhoto/editorial0.webp",
   "groupPhoto/editorial1.webp",
   "groupPhoto/editorial2.webp"

@@ -5,6 +5,7 @@
     "ms-vsliveshare.vsliveshare",
     "esbenp.prettier-vscode",
     "pkief.material-icon-theme",
-    "editorconfig.editorconfig"
+    "editorconfig.editorconfig",
+    "shy.cube-oss"
   ]
 }
