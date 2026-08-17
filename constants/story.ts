@@ -1,6 +1,6 @@
 // 我们的故事
 
-export interface Person {
+export interface AlumniProfile {
   img: string;
   introduction: string;
   content: string;
@@ -28,7 +28,7 @@ export const socialLifeContent = [
   "在各个部门内还有各式各样的轰趴活动，聚餐、唱K或是游西湖。在精弘，绝不是只有工作，还有数不清的快乐。"
 ];
 
-export const persons: Person[] = [
+export const persons: AlumniProfile[] = [
   {
     img: "portrait/paidaxin.webp",
     introduction: "派大星\n第21届精弘会长兼技术总监\n2025年毕业于浙工大\n现工作于阿里巴巴-钉钉",
