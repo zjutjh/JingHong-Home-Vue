@@ -1,8 +1,9 @@
 // 我们的活动
 // 每年需要更新
 // 当前数据：2026 年
+
 export const acmCompetitionInfo = {
-  registrationUrl: "", // TODO
+  registrationUrl: "https://qa.phlin.cn/View?id=U2FsdGVkX1+CLE3dzCvWw+CvmSrFnJw/2XHCcpPyT+A=",
   competitionGroup: "929556219",
 
   introduction: `从水下第一个生命的萌芽开始，到石器时代的巨型野兽，再到人类第一次直立行走，你已经历许多。现在，无论你对算法掌握到如何，在精弘ACM新生赛这个大舞台上，你都能尽情地绽放光彩！
