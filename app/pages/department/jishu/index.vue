@@ -13,12 +13,20 @@ useSeoMeta({ title: "技术研发中心 | 我们的部门" });
       <JhLabel type="big">产品</JhLabel>
 
       <JhLabel type="small">部门介绍</JhLabel>
-      <div class="content">
-        {{ departmentContent.product.introduction }}
+      <div
+        v-for="(para, index) in departmentContent.product.introduction"
+        :key="index"
+        class="content"
+      >
+        {{ para }}
       </div>
       <JhLabel type="small">招新宣言</JhLabel>
-      <div class="content">
-        {{ departmentContent.product.recruitment }}
+      <div
+        v-for="(para, index) in departmentContent.product.recruitment"
+        :key="index"
+        class="content"
+      >
+        {{ para }}
       </div>
       <JhLabel type="big" style="margin-top: 5%">技术</JhLabel>
       <JhLabel type="small">部门介绍</JhLabel>

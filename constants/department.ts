@@ -8,7 +8,7 @@ type DepartmentDetail = {
   recruitment: Array<string>;
 };
 
-export const departmentContent: Record<string, DepartmentDetail> = {
+export const departmentContent = {
   product: {
     title: "产品",
     introduction: [
@@ -93,7 +93,7 @@ export const departmentContent: Record<string, DepartmentDetail> = {
       "期待与你在编辑工作室进行思想碰撞、同频共鸣！"
     ]
   }
-};
+} satisfies Record<string, DepartmentDetail>;
 
 export const technologyImages: string[] = [
   "groupPhoto/technology0.webp",
