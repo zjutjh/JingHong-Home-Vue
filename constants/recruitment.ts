@@ -3,7 +3,7 @@
 // 当前数据：2026 年
 export const recruitmentInfo = {
   year: 2026,
-  registrationUrl: "", // TODO
+  registrationUrl: "https://qa.phlin.cn/View?id=U2FsdGVkX18is8X2AWl+vYpOrPAQ6r1P+bkD8ECPB34=",
 
   offline: {
     zhaohuiDate: "", // TODO
@@ -29,4 +29,4 @@ export const recruitmentInfo = {
   ]
 };
 
-export const posterImage = "common/poster.webp";
+export const posterImage = "common/2026_recruit_qa_qr.webp";
