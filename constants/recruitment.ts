@@ -6,15 +6,15 @@ export const recruitmentInfo = {
   registrationUrl: "https://qa.phlin.cn/View?id=U2FsdGVkX18is8X2AWl+vYpOrPAQ6r1P+bkD8ECPB34=",
 
   offline: {
-    zhaohuiDate: "", // TODO
+    zhaohuiDate: "2026 年 9 月 3 至 4 日 18:30 前",
     zhaohuiLocation: "上塘河畔 / 综合楼下",
-    pingfengDate: "", // TODO
+    pingfengDate: "2026 年 9 月 4 日 18:30 前",
     pingfengLocation: "支干路"
   },
 
   presentation: {
-    zhaohuiDate: "", // TODO
-    zhaohuiLocation: "" // TODO
+    zhaohuiDate: "9 月 4 日 18:30",
+    zhaohuiLocation: "朝晖校区 新教楼 804"
   },
 
   recruitmentGroups: [
