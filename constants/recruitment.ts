@@ -28,5 +28,6 @@ export const recruitmentInfo = {
     { name: "视觉影像部", number: "1054940293" }
   ]
 };
+export const qrImage = "common/2026_recruit_qa_qr.webp";
 
-export const posterImage = "common/2026_recruit_qa_qr.webp";
+export const posterImage = ["common/2026_1.webp", "common/2026_2.webp"];

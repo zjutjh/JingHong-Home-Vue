@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { posterImage, recruitmentInfo } from "~~/constants/recruitment";
+import { posterImage, qrImage, recruitmentInfo } from "~~/constants/recruitment";
 
 definePageMeta({ pageNo: 5 });
 useSeoMeta({ title: "加入我们" });
@@ -9,12 +9,20 @@ const pageStore = usePageStore();
 <template>
   <JhCard title="加入我们" type="large">
     <div class="base" :class="pageStore.pageSize">
-      <NuxtImg class="poster" :src="posterImage" alt="招新海报" />
+      <div>
+        <NuxtImg
+          v-for="value in posterImage"
+          :key="value"
+          class="poster"
+          :src="value"
+          alt="招新海报"
+        />
+      </div>
       <div class="detail-base" :class="pageStore.pageSize">
         <div class="introduce" :class="pageStore.pageSize">
-          <JhButton type="middle" :href="recruitmentInfo.registrationUrl">{{
-            "点我报名"
-          }}</JhButton>
+          <JhButton type="middle" :href="recruitmentInfo.registrationUrl"> 点我报名 </JhButton>
+          <br />
+          <NuxtImg :src="qrImage" alt="报名二维码" class="qa-qr" />
           <br />
           <JhLabel type="nano">线下摆摊</JhLabel>
           <div class="content">
